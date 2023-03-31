@@ -1,16 +1,26 @@
+import { useState } from 'react';
+import { merge, get } from 'lodash';
+import { ThemeProvider } from 'styled-components';
+import { baseTheme } from '../../theme';
+import { MainText, MainDiv } from './SomeComp';
+
+const modes = ['light', 'dark'];
+
+const getTheme = mode =>
+  merge({}, baseTheme, {
+    colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
+  });
+
 export const App = () => {
+  const [mode, setMode] = useState(modes[0]);
+  const theme = getTheme(mode);
+  // setMode(modes[0]);
+
   return (
-    <div
-      style={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        fontSize: 40,
-        color: "#010101",
-      }}
-    >
-      React homework template
-    </div>
+    <ThemeProvider theme={theme}>
+      <MainDiv>
+        <MainText>React homework template</MainText>
+      </MainDiv>
+    </ThemeProvider>
   );
 };
