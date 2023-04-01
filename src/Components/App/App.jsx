@@ -1,22 +1,21 @@
-import { useState } from 'react';
-import { merge, get } from 'lodash';
-import { ThemeProvider } from 'styled-components';
-import { baseTheme } from '../../theme';
-import { MainText, MainDiv } from './SomeComp';
+import { useState } from "react";
+import { merge, get } from "lodash";
+import { ThemeProvider } from "styled-components";
+import { baseTheme } from "../../theme";
+import { MainText, MainDiv } from "./SomeComp";
 // import { Button } from 'Components/Button/Button';
 
-const modes = ['light', 'dark'];
+const modes = ["light", "dark"];
 
-const getTheme = mode =>
+const getTheme = (mode) =>
   merge({}, baseTheme, {
     colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
   });
 
-
 export const App = () => {
   const [mode, setMode] = useState(modes[0]);
   const theme = getTheme(mode);
-  // setMode(modes[0]);
+  setMode(modes[0]);
 
   return (
     <ThemeProvider theme={theme}>
