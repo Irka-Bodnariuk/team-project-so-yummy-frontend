@@ -4,7 +4,10 @@ export const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${({ look }) => {
+  padding: ${({ look, size }) => {
+    if (size) {
+      return size;
+    }
     switch (look) {
       case 'subscribe':
         return '21px 138px';
