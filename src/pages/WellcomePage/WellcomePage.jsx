@@ -25,11 +25,11 @@ export const WellcomePage = () => {
         </Subtitle>
         <ButtonsWrapper>
           <Button
-            look="rounded"
+            look="rounded_dark"
             fontSize="14px"
             fontSizeTablet="16px"
             size="40px 24px"
-            sizeTablet="58px 50px"
+            sizeTablet="50px 42px"
           >
             Registration
           </Button>
@@ -38,7 +38,7 @@ export const WellcomePage = () => {
             fontSize="14px"
             fontSizeTablet="16px"
             size="40px 24px"
-            sizeTablet="58px 50px"
+            sizeTablet="50px 42px"
           >
             Sign In
           </Button>

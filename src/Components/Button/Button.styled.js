@@ -29,7 +29,7 @@ export const ButtonStyled = styled.button`
 
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: ${p => p.theme.fontWeights.bold};
+  font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
   line-height: 21px;
 
@@ -41,7 +41,7 @@ export const ButtonStyled = styled.button`
   background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
-        return '';
+        return '#8baa36';
       case 'subscribe_dark':
         return '#1E1F28';
       case 'rounded':
