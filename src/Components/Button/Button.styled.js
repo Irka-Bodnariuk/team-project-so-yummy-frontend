@@ -4,16 +4,14 @@ export const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${({ look, size }) => {
-    if (size) {
-      return size;
-    }
-
+  padding: ${({ look, screenType }) => {
+  
+  if (screenType === "mobile") {
     switch (look) {
       case 'subscribe':
-        return '21px 138px';
+        return '11px 70px';
       case 'subscribe_dark':
-        return '21px 138px';
+        return '11px 70px';
       case 'rounded':
         return '50px 42px';
       case 'rounded_dark':
@@ -25,7 +23,24 @@ export const ButtonStyled = styled.button`
       default:
         return '#22252a';
     }
-  }};
+    switch (look) {
+      case 'subscribe':
+        return '21px 134px';
+      case 'subscribe_dark':
+        return '21px 134px';
+      case 'rounded':
+        return '50px 42px';
+      case 'rounded_dark':
+        return '50px 42px';
+      case 'logout':
+        return '21px 39px';
+      case 'cancel':
+        return '21px 39px';
+      default:
+        return '#22252a';
+    }
+   } 
+}};
 
   font-family: 'Poppins', sans-serif;
   font-style: normal;

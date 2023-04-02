@@ -2,10 +2,10 @@ import { useState } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
-import { MainDiv } from './SomeComp';
+import { Routes, Route } from "react-router-dom";
 import { useEffect } from 'react';
 // import { Button } from 'Components/Button/Button';
-import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
+import Footer from 'Layout/Footer/Footer';
 
 const modes = ['light', 'dark'];
 
@@ -24,9 +24,15 @@ export const App = () => {
 
   return (
     <ThemeProvider theme={theme}>
-      <MainDiv>
-        <WellcomePage />
-      </MainDiv>
+      <Routes>
+        <Route path="/" element={<Footer />}>
+          <Route path="/search" element={<Footer />} />
+          <Route path="/add" element={<Footer />} />
+          <Route path="/my" element={<Footer />} />
+          <Route path="/favorite" element={<Footer />} />
+          <Route path="/shopping-list" element={<Footer />}/>
+        </Route>
+      </Routes>
     </ThemeProvider>
   );
 };
