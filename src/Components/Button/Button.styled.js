@@ -4,15 +4,14 @@ export const ButtonStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: ${({ look, size }) => {
-    if (size) {
-      return size;
-    }
+  padding: ${({ look, screenType }) => {
+  
+  if (screenType === "mobile") {
     switch (look) {
       case 'subscribe':
-        return '21px 138px';
+        return '11px 70px';
       case 'subscribe_dark':
-        return '21px 138px';
+        return '11px 70px';
       case 'rounded':
         return '50px 42px';
       case 'rounded_dark':
@@ -24,12 +23,55 @@ export const ButtonStyled = styled.button`
       default:
         return '#22252a';
     }
-  }};
+  }
+
+  if (screenType === "tablet") {
+     switch (look) {
+      case 'subscribe':
+        return '16px 52px';
+      case 'subscribe_dark':
+        return '16px 52px';
+      case 'rounded':
+        return '50px 42px';
+      case 'rounded_dark':
+        return '50px 42px';
+      case 'logout':
+        return '21px 39px';
+      case 'cancel':
+        return '21px 39px';
+      default:
+        return '#22252a';
+    }
+  }
+  if (screenType === "desktop") {
+    switch (look) {
+      case 'subscribe':
+        return '21px 134px';
+      case 'subscribe_dark':
+        return '21px 134px';
+      case 'rounded':
+        return '50px 42px';
+      case 'rounded_dark':
+        return '50px 42px';
+      case 'logout':
+        return '21px 39px';
+      case 'cancel':
+        return '21px 39px';
+      default:
+        return '#22252a';
+    }
+   } 
+}};
 
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: ${({ screenType }) => {
+  if (screenType === "mobile") {
+    return "14px";
+  }  
+  return "16px";
+  }};
   line-height: 18px;
 
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
