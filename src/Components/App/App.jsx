@@ -2,9 +2,10 @@ import { useState } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
-import { MainText, MainDiv } from './SomeComp';
+import { MainDiv } from './SomeComp';
 import { useEffect } from 'react';
 // import { Button } from 'Components/Button/Button';
+import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
 
 const modes = ['light', 'dark'];
 
@@ -24,7 +25,7 @@ export const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <MainDiv>
-        <MainText>React homework template</MainText>
+        <WellcomePage />
       </MainDiv>
     </ThemeProvider>
   );
