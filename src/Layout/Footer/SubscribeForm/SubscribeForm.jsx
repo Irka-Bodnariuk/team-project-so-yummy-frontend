@@ -6,7 +6,6 @@ import { Input, EmailIcon, NameInput } from "./SubscribeForm.styled";
 
 const SubscribeForm = () => {
     const { screenType } = useMedia();
-    console.log(screenType);
 
     const handleSubmit = (values, { resetForm }) => {
         console.log(values);
