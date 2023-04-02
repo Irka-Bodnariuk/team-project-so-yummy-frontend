@@ -16,7 +16,7 @@ jobs:
           npm install
           npm run lint:js
           npm run build
-          react-scripts
+          npm run react-scripts
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
