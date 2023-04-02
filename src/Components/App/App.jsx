@@ -1,40 +1,90 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-// import { Button } from 'Components/Button/Button';
-import Footer from 'Layout/Footer/Footer';
-import { WellcomePage } from 'pages/WellcomePage/WellcomePage';
-import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
-const modes = ['light', 'dark'];
+import { useDispatch, useSelector } from 'react-redux';
+import { refreshUser } from 'store/auth/authOperations';
+import { WellcomePage, LoginPage, SingUpPage, MainPage } from 'pages';
+import { SharedLayout } from 'Layout/SharedLayout/SharedLayout';
+import { RestrictedRoute } from 'Components/RestrictedRoute';
+import { PrivateRoute } from 'Components/PrivateRoute';
 
 const getTheme = mode =>
   merge({}, baseTheme, {
     colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
   });
 
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
 export const App = () => {
-  const [mode, setMode] = useState(modes[0]);
+  const dispatch = useDispatch();
+  const { isRefreshing, isLoggedIn } = useSelector(state => state.auth);
+  const [mode, setMode] = useState('light');
+  const darkMode = useSelector(state => state.theme.darkMode);
   const theme = getTheme(mode);
 
+  React.useMemo(() => {
+    if (darkMode) {
+      setMode('dark');
+    } else {
+      setMode('light');
+    }
+  }, [darkMode]);
+
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    []
+  );
+
   useEffect(() => {
-    setMode(modes[0]);
+    setMode('light');
   }, []);
 
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
-    <ThemeProvider theme={theme}>
-      <RegisterPage />
-      {/* <Routes>
-        <Route path="/" element={<Footer />}>
-          <Route path="/search" element={<Footer />} />
-          <Route path="/add" element={<Footer />} />
-          <Route path="/my" element={<Footer />} />
-          <Route path="/favorite" element={<Footer />} />
-          <Route path="/shopping-list" element={<Footer />} />
-        </Route>
-      </Routes> */}
-    </ThemeProvider>
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        {!isRefreshing && (
+          <Routes>
+            {!isLoggedIn && <Route index element={<WellcomePage />} />}
+
+            {isLoggedIn && (
+              <Route
+                path="/"
+                element={<SharedLayout colorModeContext={ColorModeContext} />}
+              >
+                <Route
+                  path="/main"
+                  element={
+                    <PrivateRoute component={MainPage} redirectTo="/login" />
+                  }
+                />
+              </Route>
+            )}
+
+            <Route
+              index
+              path="/register"
+              element={
+                <RestrictedRoute component={SingUpPage} redirectTo="/" />
+              }
+            />
+            <Route
+              path="/signin"
+              element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
+            />
+          </Routes>
+        )}
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 };
