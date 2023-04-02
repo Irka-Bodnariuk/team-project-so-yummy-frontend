@@ -1,6 +1,7 @@
 import { ButtonStyled } from './Button.styled';
 
 export const Button = ({
+  type,
   children,
   look,
   size,
@@ -12,7 +13,7 @@ export const Button = ({
 }) => {
   return (
     <ButtonStyled
-      type="button"
+      type={type}
       look={look}
       size={size}
       sizeTablet={sizeTablet}
@@ -23,5 +24,3 @@ export const Button = ({
     </ButtonStyled>
   );
 };
-
- 
