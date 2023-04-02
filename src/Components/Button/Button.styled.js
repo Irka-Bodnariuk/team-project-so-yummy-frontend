@@ -23,27 +23,6 @@ export const ButtonStyled = styled.button`
       default:
         return '#22252a';
     }
-  }
-
-  if (screenType === "tablet") {
-     switch (look) {
-      case 'subscribe':
-        return '16px 52px';
-      case 'subscribe_dark':
-        return '16px 52px';
-      case 'rounded':
-        return '50px 42px';
-      case 'rounded_dark':
-        return '50px 42px';
-      case 'logout':
-        return '21px 39px';
-      case 'cancel':
-        return '21px 39px';
-      default:
-        return '#22252a';
-    }
-  }
-  if (screenType === "desktop") {
     switch (look) {
       case 'subscribe':
         return '21px 134px';
@@ -65,24 +44,19 @@ export const ButtonStyled = styled.button`
 
   font-family: 'Poppins', sans-serif;
   font-style: normal;
-  font-weight: 400;
-  font-size: ${({ screenType }) => {
-  if (screenType === "mobile") {
-    return "14px";
-  }  
-  return "16px";
-  }};
-  line-height: 18px;
+  font-weight: ${p => p.theme.fontWeights.bold};
+  font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
+  line-height: 21px;
 
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   clip-path: ${({ look }) =>
     look === 'rounded' || look === 'rounded_dark'
       ? 'inset(25% 0 25% 0 round 15% 35% 15% 30%)'
       : 'none'};
-  background-color: ${({ look }) => {
+  background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
-        return '#8baa36';
+        return '';
       case 'subscribe_dark':
         return '#1E1F28';
       case 'rounded':
@@ -103,6 +77,32 @@ export const ButtonStyled = styled.button`
 
   transition: color 250ms ease, background-color 250ms ease, border 250ms ease;
 
+  @media screen and (min-width: 768px) {
+    font-size: ${({ fontSizeTablet }) =>
+      fontSizeTablet ? fontSizeTablet : '16px'};
+    padding: ${({ look, sizeTablet }) => {
+      if (sizeTablet) {
+        return sizeTablet;
+      }
+
+      switch (look) {
+        case 'subscribe':
+          return '21px 138px';
+        case 'subscribe_dark':
+          return '21px 138px';
+        case 'rounded':
+          return '50px 42px';
+        case 'rounded_dark':
+          return '50px 42px';
+        case 'logout':
+          return '21px 39px';
+        case 'cancel':
+          return '21px 39px';
+        default:
+          return '#22252a';
+      }
+    }};
+  }
   :hover,
   :focus {
     background-color: ${({ look }) => {

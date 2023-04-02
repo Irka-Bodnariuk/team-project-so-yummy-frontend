@@ -6,6 +6,7 @@ export const MainDiv = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${p => p.theme.colors.background};
+  background-image: url('../../images/mobile/mainMob-min.png');
 `;
 
 export const MainText = styled.p`
