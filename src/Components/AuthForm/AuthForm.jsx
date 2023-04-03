@@ -1,7 +1,16 @@
 import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import { Formik, Form } from 'formik';
+import { Box } from 'Components/Box';
 
 import { Button } from 'Components/Button/Button';
+import {
+  FormWrapper,
+  FormTitle,
+  FormInput,
+  FormInputWrapper,
+  FormLink,
+  IconName,
+} from './AuthForm.styled';
 
 export const AuthForm = () => {
   const initialValues = {
@@ -19,14 +28,28 @@ export const AuthForm = () => {
       onSubmit={handleSubmit}
       // validationSchema={schema}
     >
-      <Form>
-        <Field type="text" name="name" />
-        <Field type="email" name="email" />
-        <Field type="password" name="password" />
-        <Button type="submit" look="subscribe" size="14px 110px">
-          Sign up
-        </Button>
-      </Form>
+      <FormWrapper>
+        <FormTitle>Registration</FormTitle>
+        <Form>
+          <Box display="flex" flexDirection="column" gridGap="12px" mb="28px">
+            <FormInputWrapper>
+              <IconName />
+              <FormInput type="text" name="name" placeholder="Name" />
+            </FormInputWrapper>
+            <FormInput type="email" name="email" placeholder="Email" />
+            <FormInput type="password" name="password" placeholder="Password" />
+          </Box>
+          <Button
+            type="submit"
+            look="subscribe"
+            size="14px 108px"
+            fontSize="16px"
+          >
+            Sign up
+          </Button>
+        </Form>
+        <FormLink to="/login">Sign In</FormLink>
+      </FormWrapper>
     </Formik>
   );
 };

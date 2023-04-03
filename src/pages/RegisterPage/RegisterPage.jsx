@@ -6,6 +6,7 @@ import { useMediaQuery } from 'react-responsive';
 import { Mobile } from 'helpers/react-responsive';
 
 import { RegisterMain, RegisterImage, RegisterBg } from './RegisterPage.styled';
+
 import regImage from '../../images/mobile/AuthPanaMob-min.png';
 import regImageRetina from '../../images/mobile/AuthPanaMobRet-min.png';
 

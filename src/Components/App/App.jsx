@@ -10,6 +10,7 @@ import { WellcomePage, LoginPage, SingUpPage, MainPage } from 'pages';
 import { SharedLayout } from 'Layout/SharedLayout/SharedLayout';
 import { RestrictedRoute } from 'Components/RestrictedRoute';
 import { PrivateRoute } from 'Components/PrivateRoute';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -53,37 +54,7 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        {!isRefreshing && (
-          <Routes>
-            {!isLoggedIn && <Route index element={<WellcomePage />} />}
-
-            {isLoggedIn && (
-              <Route
-                path="/"
-                element={<SharedLayout colorModeContext={ColorModeContext} />}
-              >
-                <Route
-                  path="/main"
-                  element={
-                    <PrivateRoute component={MainPage} redirectTo="/login" />
-                  }
-                />
-              </Route>
-            )}
-
-            <Route
-              index
-              path="/register"
-              element={
-                <RestrictedRoute component={SingUpPage} redirectTo="/" />
-              }
-            />
-            <Route
-              path="/signin"
-              element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
-            />
-          </Routes>
-        )}
+        <RegisterPage />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
