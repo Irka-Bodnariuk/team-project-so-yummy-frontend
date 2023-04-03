@@ -2,7 +2,7 @@
   "name": "team-project-so-yummy-frontend",
   "version": "0.1.0",
   "private": true,
-
+  "homepage": "https://Irka-Bodnariuk.github.io/team-project-so-yummy-frontend/",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.3",
     "axios": "^1.3.4",
