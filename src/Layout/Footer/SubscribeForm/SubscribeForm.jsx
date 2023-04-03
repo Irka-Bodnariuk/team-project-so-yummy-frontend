@@ -1,8 +1,8 @@
-import { Button } from 'Components/Button/Button';
-import { useMedia } from 'hooks';
-import { Formik, Form } from 'formik';
-import { Box } from 'Components/Box';
-import { Input, EmailIcon, NameInput } from './SubscribeForm.styled';
+import { Button } from "components/Button/Button";
+import { useMedia } from "hooks";
+import { Formik, Form } from "formik";
+import { Box } from "components/Box";
+import { Input, EmailIcon, NameInput } from "./SubscribeForm.styled";
 
 const SubscribeForm = () => {
   const { screenType } = useMedia();
@@ -21,7 +21,7 @@ const SubscribeForm = () => {
       marginRight="auto"
       marginBottom="44px"
     >
-      <Formik initialValues={{ subscribe: '' }} onSubmit={handleSubmit}>
+      <Formik initialValues={{ subscribe: "" }} onSubmit={handleSubmit}>
         <Form>
           <NameInput>
             <EmailIcon
