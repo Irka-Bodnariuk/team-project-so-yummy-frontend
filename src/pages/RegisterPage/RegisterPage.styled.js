@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 // import regImage from '../../images/mobile/AuthPanaMob-min.png';
 // import regImageRetina from '../../images/mobile/AuthPanaMobRet-min.png';
-import regBg from '../../images/mobile/FormAuthMob-min.png';
+import regBg from "../../images/mobile/form-auth-mob-min.png";
 
 export const RegisterMain = styled.main`
   height: 100vh;

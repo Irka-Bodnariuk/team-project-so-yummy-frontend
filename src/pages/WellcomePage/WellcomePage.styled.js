@@ -1,10 +1,10 @@
-import styled from 'styled-components';
-import mainBgMobile from '../../images/mobile/mainMob-min.png';
-import mainBgMobileRetina from '../../images/mobile/mainMobRet-min.png';
-import mainBgTablet from '../../images/tablet/mainTab-min.png';
-import mainBgTabletRetina from '../../images/tablet/mainTabRet-min.png';
-import mainBgDesktop from '../../images/desktop/mainDes.png';
-import mainBgDesktopRetina from '../../images/desktop/mainDesRet.png';
+import styled from "styled-components";
+import mainBgMobile from "../../images/mobile/main-mob-min.png";
+import mainBgMobileRetina from "../../images/mobile/main-mob-ret-min.png";
+import mainBgTablet from "../../images/tablet/main-tab-min.png";
+import mainBgTabletRetina from "../../images/tablet/main-tab-ret-min.png";
+import mainBgDesktop from "../../images/desktop/main-des.png";
+import mainBgDesktopRetina from "../../images/desktop/main-des-ret.png";
 
 export const SvgWrapper = styled.div`
   display: flex;

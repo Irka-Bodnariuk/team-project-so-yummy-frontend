@@ -1,14 +1,14 @@
-import React from 'react';
-import { Button } from 'Components/Button/Button';
+import React from "react";
+import { Button } from "components/Button/Button";
 import {
   Main,
   Title,
   Subtitle,
   SvgWrapper,
   ButtonsWrapper,
-} from './WellcomePage.styled';
-import { Box } from 'Components/Box';
-import { AddSvg } from 'Components/AddSvg/AddSvg';
+} from "./WellcomePage.styled";
+import { Box } from "components/Box";
+import { AddSvg } from "components/AddSvg/AddSvg";
 
 export const WellcomePage = () => {
   return (

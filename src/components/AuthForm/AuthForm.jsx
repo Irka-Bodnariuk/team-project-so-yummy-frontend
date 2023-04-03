@@ -1,16 +1,16 @@
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
+import React from "react";
+import { Formik, Form, Field } from "formik";
 
-import { Button } from 'Components/Button/Button';
+import { Button } from "components/Button/Button";
 
 export const AuthForm = () => {
   const initialValues = {
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = (values) => {
     console.log(values);
   };
   return (
