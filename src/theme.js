@@ -38,6 +38,7 @@ export const baseTheme = {
       inputError: '#E74A3B',
       inputConfirm: '#3CBC81',
       inputWarning: '#F6C23E',
+      formBackground: '#2a2c36',
     },
 
     modes: {
