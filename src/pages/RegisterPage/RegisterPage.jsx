@@ -1,16 +1,17 @@
-import React from "react";
+import React from 'react';
 
-import { AuthForm } from "components/AuthForm/AuthForm";
+import { AuthForm } from 'components/AuthForm/AuthForm';
 
-import { useMediaQuery } from "react-responsive";
-import { Mobile } from "helpers/react-responsive";
+import { useMediaQuery } from 'react-responsive';
+import { Mobile } from 'helpers/react-responsive';
 
-import { RegisterMain, RegisterImage, RegisterBg } from "./RegisterPage.styled";
-import regImage from "../../images/mobile/auth-pana-mob-min.png";
-import regImageRetina from "../../images/mobile/auth-pana-mob-ret-min.png";
+import { RegisterMain, RegisterImage, RegisterBg } from './RegisterPage.styled';
+
+import regImage from '../../images/mobile/auth-pana-mob-min.png';
+import regImageRetina from '../../images/mobile/auth-pana-mob-ret-min.png';
 
 export const RegisterPage = () => {
-  const isRetina = useMediaQuery({ query: "(min-resolution: 2dppx)" });
+  const isRetina = useMediaQuery({ query: '(min-resolution: 2dppx)' });
 
   return (
     <RegisterMain>
