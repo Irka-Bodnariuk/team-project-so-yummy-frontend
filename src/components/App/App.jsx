@@ -7,7 +7,8 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { refreshUser } from "store/auth/authOperations";
 import { WellcomePage, LoginPage, SingUpPage, MainPage } from "pages";
-import { SharedLayout } from "Layout/SharedLayout/SharedLayout";
+import { SharedLayout } from "components/Layout/SharedLayout/SharedLayout";
+
 import { RestrictedRoute } from "components/RestrictedRoute";
 import { PrivateRoute } from "components/PrivateRoute";
 

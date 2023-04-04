@@ -1,5 +1,5 @@
-import React from 'react';
-import Footer from 'Layout/Footer/Footer';
+import React from "react";
+import Footer from "./../Footer/Footer";
 
 export const SharedLayout = () => {
   return (
