@@ -7,7 +7,7 @@ import regImageRetina from '../../images/mobile/auth-pana-mob-ret-min.png';
 import regImageTablet from '../../images/tablet/auth-pana-tab-min.png';
 import regImageTabletRetina from '../../images/tablet/auth-pana-tab-min-ret.png';
 import regImageDesktop from '../../images/desktop/auth-pana-des.png';
-import regImageDesktopRetina from '../../images/desktop/auth-pana-des-ret.png';
+// import regImageDesktopRetina from '../../images/desktop/auth-pana-des-ret.png';
 
 export const RegisterMain = styled.main`
   position: relative;

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { Box } from 'components/Box';
 
 import { Button } from 'components/Button/Button';
 import {

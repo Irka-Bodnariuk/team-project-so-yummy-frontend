@@ -55,9 +55,9 @@ export const App = () => {
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
         <RegisterPage />
-        {/* {!isRefreshing && (
+        {!isRefreshing && (
           <Routes>
-            {!isLoggedIn && <Route index element={<WellcomePage/>} />}
+            {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
             {isLoggedIn && (
               <Route
@@ -85,7 +85,7 @@ export const App = () => {
               element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
             />
           </Routes>
-        )} */}
+        )}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
