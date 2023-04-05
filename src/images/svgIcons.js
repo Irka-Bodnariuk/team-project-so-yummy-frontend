@@ -419,3 +419,153 @@ export const OrangeIcon = ({ size }) => {
     </svg>
   );
 };
+
+export const MainIcon = ({ mobile }) => {
+  const iconSize = mobile ? 40 : 44;
+  const makePath = iconSize => {
+    switch (iconSize) {
+      case 40:
+        return (
+          <>
+            <rect width="40" height="40" rx="12" fill="#8BAA36" />
+            <path
+              d="M8.79883 8.89569V13.9857V14.0884V13.9857C8.79883 15.4391 9.43295 16.7258 10.4161 17.5586C10.8969 17.9658 11.2145 18.5157 11.2145 19.126V27.6223C11.2145 28.5669 12.0262 29.3334 13.0263 29.3334C14.0264 29.3334 14.838 28.5669 14.838 27.6223V19.126C14.838 18.5157 15.1557 17.9658 15.6364 17.5586C16.6196 16.7258 17.2537 15.4391 17.2537 13.9857V8.89569V13.9857"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M13.0254 14.5038V8.79999"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M29.3322 9.99976C29.3322 9.37007 28.7911 8.85901 28.1243 8.85901H26.9165C24.9151 8.85901 23.293 10.391 23.293 12.2813V19.1258C23.293 20.6133 24.3039 21.867 25.7087 22.3382V27.6221C25.7087 28.5667 26.5203 29.3333 27.5204 29.3333C28.5205 29.3333 29.3322 28.5667 29.3322 27.6221V22.5481V9.99976Z"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        );
+      case 44:
+        return (
+          <>
+            <rect width="44" height="44" rx="12" fill="#8BAA36" />
+            <path
+              d="M10 10.1025V15.5561V15.6661V15.5561C10 17.1132 10.6794 18.4919 11.7328 19.3841C12.2479 19.8205 12.5882 20.4096 12.5882 21.0635V30.1667C12.5882 31.1787 13.4579 32.0001 14.5294 32.0001C15.6009 32.0001 16.4706 31.1787 16.4706 30.1667V21.0635C16.4706 20.4096 16.8109 19.8205 17.326 19.3841C18.3794 18.4919 19.0588 17.1132 19.0588 15.5561V10.1025V15.5561"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M14.5293 16.1112V10"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M31.9999 11.2854C31.9999 10.6107 31.4201 10.0632 30.7058 10.0632H29.4116C27.2673 10.0632 25.5293 11.7046 25.5293 13.7299V21.0633C25.5293 22.6571 26.6125 24.0003 28.1175 24.5051V30.1665C28.1175 31.1785 28.9872 31.9999 30.0587 31.9999C31.1302 31.9999 31.9999 31.1785 31.9999 30.1665V24.73V11.2854Z"
+              stroke="#FAFAFA"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        );
+      default:
+        break;
+    }
+  };
+  return (
+    <svg
+      width={iconSize}
+      height={iconSize}
+      viewBox={`0 0 ${iconSize} ${iconSize}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {makePath(iconSize)}
+    </svg>
+  );
+};
+
+export const FooterIcon = ({ mobile }) => {
+  const iconSize = mobile ? 40 : 44;
+  const makePath = iconSize => {
+    switch (iconSize) {
+      case 40:
+        return (
+          <>
+            <rect width="32" height="32" rx="6" fill="#EBF3D4" />
+            <path
+              d="M7 7.08398V11.546V11.636V11.546C7 12.8201 7.55588 13.9481 8.41776 14.6781C8.83918 15.0351 9.11765 15.5171 9.11765 16.0521V23.5002C9.11765 24.3282 9.82918 25.0002 10.7059 25.0002C11.5826 25.0002 12.2941 24.3282 12.2941 23.5002V16.0521C12.2941 15.5171 12.5726 15.0351 12.994 14.6781C13.8559 13.9481 14.4118 12.8201 14.4118 11.546V7.08398V11.546"
+              stroke="#8BAA36"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M10.7051 12.0001V7"
+              stroke="#8BAA36"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M24.9992 8.05177C24.9992 7.49976 24.5248 7.05176 23.9404 7.05176H22.8815C21.1271 7.05176 19.7051 8.39477 19.7051 10.0518V16.0519C19.7051 17.3559 20.5913 18.4549 21.8227 18.8679V23.5C21.8227 24.328 22.5343 25 23.411 25C24.2877 25 24.9992 24.328 24.9992 23.5V19.0519V8.05177Z"
+              stroke="#8BAA36"
+              strokeWidth="1.8"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        );
+      case 44:
+        return (
+          <>
+            <rect width="44" height="44" rx="12" fill="#EBF3D4" />
+            <path
+              d="M10 10.1025V15.5562V15.6662V15.5562C10 17.1133 10.6794 18.492 11.7328 19.3842C12.2479 19.8205 12.5882 20.4097 12.5882 21.0636V30.1668C12.5882 31.1788 13.4579 32.0001 14.5294 32.0001C15.6009 32.0001 16.4706 31.1788 16.4706 30.1668V21.0636C16.4706 20.4097 16.8109 19.8205 17.326 19.3842C18.3794 18.492 19.0588 17.1133 19.0588 15.5562V10.1025V15.5562"
+              stroke="#8BAA36"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M14.5293 16.1112V10"
+              stroke="#8BAA36"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M31.9999 11.2857C31.9999 10.611 31.4201 10.0635 30.7058 10.0635H29.4116C27.2673 10.0635 25.5293 11.7049 25.5293 13.7302V21.0636C25.5293 22.6574 26.6125 24.0006 28.1175 24.5054V30.1668C28.1175 31.1788 28.9872 32.0002 30.0587 32.0002C31.1302 32.0002 31.9999 31.1788 31.9999 30.1668V24.7303V11.2857Z"
+              stroke="#8BAA36"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </>
+        );
+      default:
+        break;
+    }
+  };
+  return (
+    <svg
+      width={iconSize}
+      height={iconSize}
+      viewBox={`0 0 ${iconSize} ${iconSize}`}
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      {makePath(iconSize)}
+    </svg>
+  );
+};

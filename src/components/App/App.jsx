@@ -8,7 +8,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'store/auth/authOperations';
 import { WellcomePage, LoginPage, SingUpPage, MainPage } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
-
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
@@ -58,7 +57,7 @@ export const App = () => {
         <RegisterPage />
         {/* {!isRefreshing && (
           <Routes>
-            {!isLoggedIn && <Route index element={<WellcomePage />} />}
+            {!isLoggedIn && <Route index element={<WellcomePage/>} />}
 
             {isLoggedIn && (
               <Route
