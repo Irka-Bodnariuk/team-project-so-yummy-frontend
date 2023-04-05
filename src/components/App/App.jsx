@@ -11,6 +11,7 @@ import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
 
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -54,7 +55,8 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
-        {!isRefreshing && (
+        <RegisterPage />
+        {/* {!isRefreshing && (
           <Routes>
             {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
@@ -84,7 +86,7 @@ export const App = () => {
               element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
             />
           </Routes>
-        )}
+        )} */}
       </ThemeProvider>
     </ColorModeContext.Provider>
   );
