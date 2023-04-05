@@ -88,6 +88,31 @@ export const ButtonStyled = styled.button`
       }
     }};
   }
+
+  @media screen and (min-width: 1440px) {
+    padding: ${({ look, sizeDesktop }) => {
+      if (sizeDesktop) {
+        return sizeDesktop;
+      }
+
+      switch (look) {
+        case 'subscribe':
+          return '21px 138px';
+        case 'subscribe_dark':
+          return '21px 138px';
+        case 'rounded':
+          return '50px 42px';
+        case 'rounded_dark':
+          return '50px 42px';
+        case 'logout':
+          return '21px 39px';
+        case 'cancel':
+          return '21px 39px';
+        default:
+          return '#22252a';
+      }
+    }};
+  }
   :hover,
   :focus {
     background-color: ${({ look }) => {
