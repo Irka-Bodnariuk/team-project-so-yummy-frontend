@@ -10,6 +10,7 @@ import { WellcomePage, LoginPage, SingUpPage, MainPage } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
 import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -53,9 +54,10 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
+        <RegisterPage />
         {!isRefreshing && (
           <Routes>
-            {!isLoggedIn && <Route index element={<WellcomePage/>} />}
+            {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
             {isLoggedIn && (
               <Route

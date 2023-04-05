@@ -1,15 +1,17 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
-import { Box } from 'components/Box';
 
 import { Button } from 'components/Button/Button';
 import {
   FormWrapper,
   FormTitle,
-  FormInput,
   FormInputWrapper,
+  FormInput,
+  FormLabel,
   FormLink,
   IconName,
+  IconEmail,
+  IconPassword,
 } from './AuthForm.styled';
 
 export const AuthForm = () => {
@@ -31,18 +33,31 @@ export const AuthForm = () => {
       <FormWrapper>
         <FormTitle>Registration</FormTitle>
         <Form>
-          <Box display="flex" flexDirection="column" gridGap="12px" mb="28px">
-            <FormInputWrapper>
+          <FormInputWrapper>
+            <FormLabel>
               <IconName />
               <FormInput type="text" name="name" placeholder="Name" />
-            </FormInputWrapper>
-            <FormInput type="email" name="email" placeholder="Email" />
-            <FormInput type="password" name="password" placeholder="Password" />
-          </Box>
+            </FormLabel>
+
+            <FormLabel>
+              <IconEmail />
+              <FormInput type="email" name="email" placeholder="Email" />
+            </FormLabel>
+
+            <FormLabel>
+              <IconPassword />
+              <FormInput
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </FormLabel>
+          </FormInputWrapper>
           <Button
             type="submit"
             look="subscribe"
             size="14px 108px"
+            sizeTablet="21px 168px;"
             fontSize="16px"
           >
             Sign up
