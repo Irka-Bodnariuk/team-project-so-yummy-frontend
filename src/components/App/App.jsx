@@ -12,6 +12,18 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
 
+import { lazy } from 'react';
+
+const Favorite = lazy(() => import('../../pages/FavoritePage/Favorite'));
+const MyRecipes = lazy(() => import('../../pages/MyRecipesPage/MyRecipes'));
+
+const tempStyles = {
+  paddingTop: 100,
+  paddingBottom: 100,
+  fontSize: 50,
+  textAlign: 'center',
+};
+
 const getTheme = mode =>
   merge({}, baseTheme, {
     colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
@@ -84,6 +96,25 @@ export const App = () => {
               path="/signin"
               element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
             />
+            <Route
+            path="my"
+            element={<PrivateRoute component={<MyRecipes />} />}
+          />
+
+          <Route
+            path="favorite"
+            element={<PrivateRoute component={<Favorite />} />}
+          />
+          <Route
+            path="recipe/:recipeId"
+            element={
+              <PrivateRoute
+                component={<div style={tempStyles}>RecipiesPage</div>}
+              />
+            }
+          />
+
+
           </Routes>
         )}
       </ThemeProvider>
