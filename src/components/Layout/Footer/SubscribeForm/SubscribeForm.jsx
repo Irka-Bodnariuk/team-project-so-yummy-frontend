@@ -1,8 +1,8 @@
-import { Button } from "components/Button/Button";
+import { Button } from 'components/Button/Button';
+import { Formik } from 'formik';
+import { Input, EmailIcon, NameInput, WrapperForm, FormSubscribe, Title, Text } from './SubscribeForm.styled';
 import { useMedia } from "hooks";
-import { Formik, Form } from "formik";
-import { Box } from "components/Box";
-import { Input, EmailIcon, NameInput } from "./SubscribeForm.styled";
+
 
 const SubscribeForm = () => {
   const { screenType } = useMedia();
@@ -13,20 +13,20 @@ const SubscribeForm = () => {
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      marginLeft="auto"
-      marginRight="auto"
-      marginBottom="44px"
-    >
-      <Formik initialValues={{ subscribe: "" }} onSubmit={handleSubmit}>
-        <Form>
+    <WrapperForm>
+      {screenType === "desktop" ? (
+        <>
+        <Title>Subscribe to our Newsletter</Title>
+        <Text>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</Text>
+        </>
+      ) : null}
+    <Formik
+      initialValues={{ subscribe: '' }}
+      onSubmit={handleSubmit}
+    > 
+        <FormSubscribe>
           <NameInput>
             <EmailIcon
-              width="18"
-              height="14"
               viewBox="0 0 18 14"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -52,12 +52,21 @@ const SubscribeForm = () => {
               placeholder="Enter your email address"
             />
           </NameInput>
-          <Button type="submit" look="subscribe" screenType={screenType}>
+          <Button
+            type="submit"
+            look="subscribe"
+            size="11px 72px"
+            sizeTablet="16px 50px"
+            sizeDesktop="21px 134px"
+            fontSize="14px"
+            fontSizeTablet="16px"
+          >
             Subcribe
           </Button>
-        </Form>
+        </FormSubscribe>
       </Formik>
-    </Box>
+      </WrapperForm>
+    
   );
 };
 

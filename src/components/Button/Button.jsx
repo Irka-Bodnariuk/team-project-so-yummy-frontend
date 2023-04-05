@@ -6,8 +6,10 @@ export const Button = ({
   look,
   size,
   sizeTablet,
+  sizeDesktop,
   fontSize,
   fontSizeTablet,
+  fontSizeDesktop,
   lineHeight,
   lineHeightTablet,
 }) => {
@@ -17,8 +19,10 @@ export const Button = ({
       look={look}
       size={size}
       sizeTablet={sizeTablet}
+      sizeDesktop={sizeDesktop}
       fontSize={fontSize}
       fontSizeTablet={fontSizeTablet}
+      fontSizeDesktop={fontSizeDesktop}
     >
       {children}
     </ButtonStyled>
