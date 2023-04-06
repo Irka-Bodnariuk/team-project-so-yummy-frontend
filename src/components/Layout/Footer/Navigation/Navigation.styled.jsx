@@ -34,16 +34,6 @@ export const Logo = styled(NavLink)`
   }
 `;
 
-export const IconLogo = styled.svg`
-  width: 32px;
-  height: 32px;
-
-  @media screen and (min-width: 768px) {
-    width: 44px;
-    height: 44px;
-  }
-`;
-
 export const WrapperForDescription = styled.div`
   @media screen and (min-width: 768px) and (max-width: 1439px) {
     margin-right: 173px;
