@@ -6,3 +6,11 @@ export const RestrictedRoute = ({ component: Component, redirectTo = '/' }) => {
 
   return isLoggedIn ? <Navigate to={redirectTo} /> : <Component />;
 };
+
+export const PrivateRoute = ({ component: Component, redirectTo = '/' }) => {
+  const { isLoggedIn, isRefreshing } = useSelector(state => state.auth);
+
+  const shouldRedirect = !isLoggedIn && !isRefreshing;
+
+  return shouldRedirect ? <Navigate to={redirectTo} /> : <Component />;
+};
