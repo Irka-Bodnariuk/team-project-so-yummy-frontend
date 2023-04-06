@@ -19,7 +19,7 @@ const SearchStyled = styled.div`
     background-color: black;
     border: none;
     position: absolute;
-    left: 190px;
+    left: 183px;
     top: 0;
     font-family: 'Poppins';
     font-style: normal;
@@ -39,8 +39,14 @@ const SearchStyled = styled.div`
     border: 0;
     outline: none;
     border-radius: 0;
-    top: 20px;
-    left: 20px;
+    top: 17px;
+    left: 34px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: #bdbdbd;
   }
 `;
 
