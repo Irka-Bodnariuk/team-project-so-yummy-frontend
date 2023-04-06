@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.2d430999.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.57c93031.js",
     "static/js/873.44a98aa2.chunk.js": "/team-project-so-yummy-frontend/static/js/873.44a98aa2.chunk.js",
     "static/js/725.4bf1c0be.chunk.js": "/team-project-so-yummy-frontend/static/js/725.4bf1c0be.chunk.js",
     "static/js/863.b1da0ed9.chunk.js": "/team-project-so-yummy-frontend/static/js/863.b1da0ed9.chunk.js",
@@ -19,7 +19,7 @@
     "static/media/auth-pana-tab-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min.da31f1cc4a620623d530.png",
     "index.html": "/team-project-so-yummy-frontend/index.html",
     "main.997c6bfc.css.map": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css.map",
-    "main.2d430999.js.map": "/team-project-so-yummy-frontend/static/js/main.2d430999.js.map",
+    "main.57c93031.js.map": "/team-project-so-yummy-frontend/static/js/main.57c93031.js.map",
     "873.44a98aa2.chunk.js.map": "/team-project-so-yummy-frontend/static/js/873.44a98aa2.chunk.js.map",
     "725.4bf1c0be.chunk.js.map": "/team-project-so-yummy-frontend/static/js/725.4bf1c0be.chunk.js.map",
     "863.b1da0ed9.chunk.js.map": "/team-project-so-yummy-frontend/static/js/863.b1da0ed9.chunk.js.map",
@@ -27,6 +27,6 @@
   },
   "entrypoints": [
     "static/css/main.997c6bfc.css",
-    "static/js/main.2d430999.js"
+    "static/js/main.57c93031.js"
   ]
 }
