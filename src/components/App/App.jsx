@@ -5,10 +5,10 @@ import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'store/auth/authOperations';
+import { SigninPage } from 'pages/SigninPage/SigninPage';
 import {
   RegisterPage,
   WellcomePage,
-  LoginPage,
   MainPage,
   CategoriesPage,
   AddRecipePage,
@@ -73,9 +73,7 @@ export const App = () => {
             >
               <Route
                 path="main"
-                element={
-                  <PrivateRoute component={MainPage} redirectTo="/signin" />
-                }
+                element={<PrivateRoute component={MainPage} redirectTo="/" />}
               />
 
               <Route
@@ -124,7 +122,7 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                <RestrictedRoute component={LoginPage} redirectTo="/main" />
+                <RestrictedRoute component={SigninPage} redirectTo="/main" />
               }
             />
           </Routes>
