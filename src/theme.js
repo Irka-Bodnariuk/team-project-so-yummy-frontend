@@ -11,6 +11,7 @@ export const baseTheme = {
     xl: 24,
     authxl: 28,
     xxl: 32,
+    sectXl: 44,
     xxxl: 48,
   },
 
