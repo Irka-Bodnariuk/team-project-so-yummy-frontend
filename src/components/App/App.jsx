@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { merge, get } from 'lodash';
-import { ThemeProvider } from 'styled-components';
+// import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
@@ -12,16 +12,11 @@ import { RestrictedRoute } from 'components/RestrictedRoute';
 import { PrivateRoute } from 'components/PrivateRoute';
 
 import { lazy } from 'react';
+import styled, { ThemeProvider } from 'styled-components'
 
 const Favorite = lazy(() => import('../../pages/FavoritePage/Favorite'));
 const MyRecipes = lazy(() => import('../../pages/MyRecipesPage/MyRecipes'));
 
-const tempStyles = {
-  paddingTop: 100,
-  paddingBottom: 100,
-  fontSize: 50,
-  textAlign: 'center',
-};
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -37,6 +32,14 @@ export const App = () => {
   const darkMode = useSelector(state => state.theme.darkMode);
   const theme = getTheme(mode);
 
+
+  const StyledApp = styled.div`
+    min-height: 100vh;
+    padding-top: 10rem;
+    text-align: center;
+    transition: all 1s ease;
+    background-color: ${(props) => props.theme.accent};
+    `
   React.useMemo(() => {
     if (darkMode) {
       setMode('dark');
@@ -94,11 +97,10 @@ export const App = () => {
               path="/signin"
               element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
             />
-            <Route
+          <Route
             path="my"
             element={<PrivateRoute component={<MyRecipes />} />}
           />
-
           <Route
             path="favorite"
             element={<PrivateRoute component={<Favorite />} />}
@@ -107,7 +109,7 @@ export const App = () => {
             path="recipe/:recipeId"
             element={
               <PrivateRoute
-                component={<div style={tempStyles}>RecipiesPage</div>}
+                component={<StyledApp>RecipiesPage</StyledApp>}
               />
             }
           />
