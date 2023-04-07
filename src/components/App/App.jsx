@@ -18,6 +18,17 @@ const Favorite = lazy(() => import('../../pages/FavoritePage/Favorite'));
 const MyRecipes = lazy(() => import('../../pages/MyRecipesPage/MyRecipes'));
 
 
+// import { Favorite } from'../../pages/FavoritePage/Favorite';
+// import { MyRecipes } from'../../pages/MyRecipesPage/MyRecipes';
+
+
+const tempStyles = {
+  paddingTop: 100,
+  paddingBottom: 100,
+  fontSize: 50,
+  textAlign: 'center',
+};
+
 const getTheme = mode =>
   merge({}, baseTheme, {
     colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
@@ -72,7 +83,7 @@ export const App = () => {
           <Routes>
             {!isLoggedIn && <Route index element={<WellcomePage/>} />}
 
-            {isLoggedIn && (
+            {!isLoggedIn && (
               <Route
                 path="/"
                 element={<SharedLayout colorModeContext={ColorModeContext} />}
@@ -99,11 +110,11 @@ export const App = () => {
             />
           <Route
             path="my"
-            element={<PrivateRoute component={<MyRecipes />} />}
+            element={<PrivateRoute component={MyRecipes} />}
           />
           <Route
             path="favorite"
-            element={<PrivateRoute component={<Favorite />} />}
+            element={<PrivateRoute component={Favorite} />}
           />
           <Route
             path="recipe/:recipeId"
