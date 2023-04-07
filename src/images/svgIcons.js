@@ -496,10 +496,10 @@ export const MainIcon = ({ mobile }) => {
 };
 
 export const FooterIcon = ({ mobile }) => {
-  const iconSize = mobile ? 40 : 44;
+  const iconSize = mobile ? 32 : 44;
   const makePath = iconSize => {
     switch (iconSize) {
-      case 40:
+      case 32:
         return (
           <>
             <rect width="32" height="32" rx="6" fill="#EBF3D4" />

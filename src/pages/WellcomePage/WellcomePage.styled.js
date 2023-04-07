@@ -1,15 +1,19 @@
-import styled from "styled-components";
-import mainBgMobile from "../../images/mobile/main-mob-min.png";
-import mainBgMobileRetina from "../../images/mobile/main-mob-ret-min.png";
-import mainBgTablet from "../../images/tablet/main-tab-min.png";
-import mainBgTabletRetina from "../../images/tablet/main-tab-ret-min.png";
-import mainBgDesktop from "../../images/desktop/main-des.png";
-import mainBgDesktopRetina from "../../images/desktop/main-des-ret.png";
+import styled from 'styled-components';
+import mainBgMobile from '../../images/mobile/main-mob-min.png';
+import mainBgMobileRetina from '../../images/mobile/main-mob-ret-min.png';
+import mainBgTablet from '../../images/tablet/main-tab-min.png';
+import mainBgTabletRetina from '../../images/tablet/main-tab-ret-min.png';
+import mainBgDesktop from '../../images/desktop/main-des.png';
+import mainBgDesktopRetina from '../../images/desktop/main-des-ret.png';
 
 export const SvgWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: 44px;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 44px;
+  }
 
   svg {
     width: 54px;
@@ -116,7 +120,7 @@ export const Title = styled.h1`
 `;
 
 export const Subtitle = styled.p`
-  margin-bottom: 20px;
+  margin-bottom: 44px;
   max-width: 305px;
 
   font-family: 'Poppins';

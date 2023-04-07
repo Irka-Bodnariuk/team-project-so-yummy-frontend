@@ -2,22 +2,40 @@ import styled from 'styled-components';
 import { Field } from 'formik';
 import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
+import { HiOutlineMail } from 'react-icons/hi';
+import { FiLock } from 'react-icons/fi';
 
 export const FormWrapper = styled.div`
   position: absolute;
   top: 305px;
-  left: 50%;
+  right: 50%;
 
   width: 335px;
   height: auto;
-  margin: 0 auto;
   padding: 40px 28px;
 
   background-color: ${p => p.theme.colors.form.formBackground};
   border-radius: 30px;
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
 
-  transform: translateX(-50%);
+  transform: translateX(50%);
+
+  @media screen and (min-width: 768px) {
+    top: 443px;
+    width: 500px;
+    height: auto;
+    padding: 44px 50px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    top: 50%;
+    right: 180px;
+    width: 500px;
+    height: auto;
+    padding: 44px 50px;
+
+    transform: translateY(-50%);
+  }
 `;
 
 export const FormTitle = styled.h1`
@@ -29,16 +47,66 @@ export const FormTitle = styled.h1`
   letter-spacing: -0.02em;
 
   color: #fafafa;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 32px;
+
+    font-size: ${p => p.theme.fontSizes.authxl}px;
+  }
 `;
 
-export const FormInputWrapper = styled.div`
+export const FormInputWrapper = styled.label`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+
+  @media screen and (min-width: 768px) {
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+`;
+
+export const FormLabel = styled.label`
   position: relative;
 `;
 
 export const IconName = styled(FiUser)`
   position: absolute;
   top: 50%;
-  color: white;
+  color: ${p => p.theme.colors.form.formIcon};
+
+  transform: translate(13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const IconEmail = styled(HiOutlineMail)`
+  position: absolute;
+  top: 50%;
+  color: ${p => p.theme.colors.form.formIcon};
+
+  transform: translate(13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const IconPassword = styled(FiLock)`
+  position: absolute;
+  top: 50%;
+  color: ${p => p.theme.colors.form.formIcon};
+
+  transform: translate(13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const FormInput = styled(Field)`
@@ -71,12 +139,17 @@ export const FormInput = styled(Field)`
       opacity: 1;
     }
   }
+
+  @media screen and (min-width: 768px) {
+    height: 60px;
+    padding-left: 50px;
+  }
 `;
 
 export const FormLink = styled(Link)`
   position: absolute;
   left: 50%;
-  bottom: -28px;
+  bottom: -30px;
 
   font-size: ${p => p.theme.fontSizes.s}px;
   line-height: ${p => p.theme.lineHeights.body};
@@ -85,4 +158,9 @@ export const FormLink = styled(Link)`
   color: #fafafa;
 
   transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    font-size: ${p => p.theme.fontSizes.sm}px;
+    line-height: ${p => p.theme.lineHeights.body};
+  }
 `;

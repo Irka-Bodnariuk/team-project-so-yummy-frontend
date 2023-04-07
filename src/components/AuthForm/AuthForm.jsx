@@ -1,54 +1,84 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { registrationUser, loginUser } from 'store/auth/authOperations';
 import { Formik, Form } from 'formik';
-import { Box } from 'components/Box';
 
 import { Button } from 'components/Button/Button';
 import {
   FormWrapper,
   FormTitle,
-  FormInput,
   FormInputWrapper,
+  FormInput,
+  FormLabel,
   FormLink,
   IconName,
+  IconEmail,
+  IconPassword,
 } from './AuthForm.styled';
 
-export const AuthForm = () => {
-  const initialValues = {
+export const AuthForm = ({ login }) => {
+  const dispatch = useDispatch();
+
+  const initialValuesRegister = {
     name: '',
+    email: '',
+    password: '',
+  };
+  const initialValuesLogin = {
     email: '',
     password: '',
   };
 
   const handleSubmit = values => {
-    console.log(values);
+    !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={!login ? initialValuesRegister : initialValuesLogin}
       onSubmit={handleSubmit}
       // validationSchema={schema}
     >
       <FormWrapper>
-        <FormTitle>Registration</FormTitle>
+        <FormTitle>{!login ? 'Registration' : 'Sign In'}</FormTitle>
         <Form>
-          <Box display="flex" flexDirection="column" gridGap="12px" mb="28px">
-            <FormInputWrapper>
-              <IconName />
-              <FormInput type="text" name="name" placeholder="Name" />
-            </FormInputWrapper>
-            <FormInput type="email" name="email" placeholder="Email" />
-            <FormInput type="password" name="password" placeholder="Password" />
-          </Box>
+          <FormInputWrapper>
+            {!login && (
+              <FormLabel>
+                <IconName />
+                <FormInput type="text" name="name" placeholder="Name" />
+              </FormLabel>
+            )}
+
+            <FormLabel>
+              <IconEmail />
+              <FormInput type="email" name="email" placeholder="Email" />
+            </FormLabel>
+
+            <FormLabel>
+              <IconPassword />
+              <FormInput
+                type="password"
+                name="password"
+                placeholder="Password"
+              />
+            </FormLabel>
+          </FormInputWrapper>
           <Button
             type="submit"
             look="subscribe"
-            size="14px 108px"
+            width="100%"
+            heigth="45px"
+            heigthTablet="59px"
             fontSize="16px"
           >
-            Sign up
+            {!login ? 'Sign up' : 'Sign In'}
           </Button>
         </Form>
-        <FormLink to="/login">Sign In</FormLink>
+        {!login ? (
+          <FormLink to="/signin">Sign In</FormLink>
+        ) : (
+          <FormLink to="/register">Registration</FormLink>
+        )}
       </FormWrapper>
     </Formik>
   );

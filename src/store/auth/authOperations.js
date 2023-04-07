@@ -12,13 +12,11 @@ const clearAuthToken = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
-export const signupUser = createAsyncThunk(
-  'user/signup',
+export const registrationUser = createAsyncThunk(
+  'auth/registrationUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users/signup', credentials);
-      setAuthToken(res.data.token);
-
+      const res = await axios.post('/auth/register', credentials);
       return res.data;
     } catch (error) {
       return rejectWithValue(error);
@@ -27,10 +25,10 @@ export const signupUser = createAsyncThunk(
 );
 
 export const loginUser = createAsyncThunk(
-  'user/login',
+  'auth/loginUser',
   async (credentials, { rejectWithValue }) => {
     try {
-      const res = await axios.post('/users/login', credentials);
+      const res = await axios.post('/auth/login', credentials);
       setAuthToken(res.data.token);
 
       return res.data;
@@ -41,10 +39,10 @@ export const loginUser = createAsyncThunk(
 );
 
 export const logoutUser = createAsyncThunk(
-  'user/logout',
+  'auth/logout',
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post('/users/logout');
+      await axios.post('/auth/logout');
       clearAuthToken();
     } catch (error) {
       return rejectWithValue;
@@ -53,7 +51,7 @@ export const logoutUser = createAsyncThunk(
 );
 
 export const refreshUser = createAsyncThunk(
-  'user/refresh',
+  'auth/refresh',
   async (data, thunkApi) => {
     const state = thunkApi.getState();
 
@@ -64,7 +62,7 @@ export const refreshUser = createAsyncThunk(
     setAuthToken(state.auth.token);
 
     try {
-      const res = await axios.get('users/current');
+      const res = await axios.get('auth/current');
 
       return res.data;
     } catch (error) {

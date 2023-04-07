@@ -9,7 +9,9 @@ export const baseTheme = {
     m: 18,
     l: 20,
     xl: 24,
+    authxl: 28,
     xxl: 32,
+    sectXl: 44,
     xxxl: 48,
   },
 
@@ -39,6 +41,7 @@ export const baseTheme = {
       inputConfirm: '#3CBC81',
       inputWarning: '#F6C23E',
       formBackground: '#2a2c36',
+      formIcon: '#FAFAFA',
     },
 
     modes: {
