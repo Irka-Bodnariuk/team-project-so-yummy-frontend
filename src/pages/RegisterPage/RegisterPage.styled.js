@@ -9,7 +9,7 @@ import regImageTabletRetina from '../../images/tablet/auth-pana-tab-min-ret.png'
 import regImageDesktop from '../../images/desktop/auth-pana-des.png';
 // import regImageDesktopRetina from '../../images/desktop/auth-pana-des-ret.png';
 
-export const RegisterMain = styled.main`
+export const AuthMain = styled.main`
   position: relative;
 
   height: 100vh;
@@ -24,7 +24,7 @@ export const RegisterMain = styled.main`
   }
 `;
 
-export const RegisterImage = styled.div`
+export const AuthImage = styled.div`
   width: 285px;
   height: 250px;
   margin: 0 auto;
@@ -62,7 +62,7 @@ export const RegisterImage = styled.div`
   }
 `;
 
-export const RegisterBg = styled.div`
+export const AuthBackground = styled.div`
   width: 100%;
   height: 490px;
 
