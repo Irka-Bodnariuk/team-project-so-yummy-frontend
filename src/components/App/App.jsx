@@ -22,12 +22,12 @@ const MyRecipes = lazy(() => import('../../pages/MyRecipesPage/MyRecipes'));
 // import { MyRecipes } from'../../pages/MyRecipesPage/MyRecipes';
 
 
-const tempStyles = {
-  paddingTop: 100,
-  paddingBottom: 100,
-  fontSize: 50,
-  textAlign: 'center',
-};
+// const tempStyles = {
+//   paddingTop: 100,
+//   paddingBottom: 100,
+//   fontSize: 50,
+//   textAlign: 'center',
+// };
 
 const getTheme = mode =>
   merge({}, baseTheme, {
