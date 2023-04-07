@@ -24,6 +24,7 @@ export const baseTheme = {
 
   colors: {
     accentColor: '#8BAA36',
+    secondaryTextColor: '#FAFAFA',
 
     button: {
       mainTextColor: '#FAFAFA',
@@ -90,6 +91,7 @@ export const baseTheme = {
 
   radii: {
     none: '0',
+    nodrmal: '8px',
     round: '50%',
   },
 };
