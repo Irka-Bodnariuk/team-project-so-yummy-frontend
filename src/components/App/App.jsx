@@ -1,25 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'store/auth/authOperations';
-import {
-  RegisterPage,
-  WellcomePage,
-  LoginPage,
-  MainPage,
-  CategoriesPage,
-  AddRecipePage,
-  Favorite,
-  RecipePage,
-  MyRecipes,
-  SearchPage,
-  ShoppingPage,
-} from 'pages';
+import { WellcomePage, LoginPage, SingUpPage, MainPage } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
-import { PrivateRoute, RestrictedRoute } from 'components/Routes';
+import { RestrictedRoute } from 'components/RestrictedRoute';
+import { PrivateRoute } from 'components/PrivateRoute';
+import { RegisterPage } from 'pages/RegisterPage/RegisterPage';
+
+import { lazy } from 'react';
+
+const Favorite = lazy(() => import('../../pages/FavoritePage/Favorite'));
+const MyRecipes = lazy(() => import('../../pages/MyRecipesPage/MyRecipes'));
+
+const tempStyles = {
+  paddingTop: 100,
+  paddingBottom: 100,
+  fontSize: 50,
+  textAlign: 'center',
+};
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -63,68 +66,51 @@ export const App = () => {
   return (
     <ColorModeContext.Provider value={colorMode}>
       <ThemeProvider theme={theme}>
+        <RegisterPage />
         {!isRefreshing && (
           <Routes>
             {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
-            <Route
-              path="/"
-              element={<SharedLayout colorModeContext={ColorModeContext} />}
-            >
+            {isLoggedIn && (
               <Route
-                path="main"
-                element={
-                  <PrivateRoute component={MainPage} redirectTo="/signin" />
-                }
-              />
-
-              <Route
-                path="categories/:categoryName"
-                element={<PrivateRoute component={CategoriesPage} />}
-              />
-
-              <Route
-                path="add"
-                element={<PrivateRoute component={AddRecipePage} />}
-              />
-
-              <Route
-                path="favorite"
-                element={<PrivateRoute component={Favorite} />}
-              />
-
-              <Route
-                path="recipe/:recipeId"
-                element={<PrivateRoute component={RecipePage} />}
-              />
-
-              <Route
-                path="my"
-                element={<PrivateRoute component={MyRecipes} />}
-              />
-
-              <Route
-                path="search"
-                element={<PrivateRoute component={SearchPage} />}
-              />
-
-              <Route
-                path="shopping-list"
-                element={<PrivateRoute component={ShoppingPage} />}
-              />
-            </Route>
+                path="/"
+                element={<SharedLayout colorModeContext={ColorModeContext} />}
+              >
+                <Route
+                  path="/main"
+                  element={
+                    <PrivateRoute component={MainPage} redirectTo="/login" />
+                  }
+                />
+              </Route>
+            )}
 
             <Route
               index
               path="/register"
               element={
-                <RestrictedRoute component={RegisterPage} redirectTo="/main" />
+                <RestrictedRoute component={SingUpPage} redirectTo="/" />
               }
             />
             <Route
               path="/signin"
+              element={<RestrictedRoute component={LoginPage} redirectTo="/" />}
+            />
+            <Route
+              path="my"
+              element={<PrivateRoute component={<MyRecipes />} />}
+            />
+
+            <Route
+              path="favorite"
+              element={<PrivateRoute component={<Favorite />} />}
+            />
+            <Route
+              path="recipe/:recipeId"
               element={
-                <RestrictedRoute component={LoginPage} redirectTo="/main" />
+                <PrivateRoute
+                  component={<div style={tempStyles}>RecipiesPage</div>}
+                />
               }
             />
           </Routes>
