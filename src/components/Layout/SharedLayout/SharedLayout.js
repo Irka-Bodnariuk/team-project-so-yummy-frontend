@@ -7,11 +7,11 @@ import { LayoutContainer } from './SharedLayout.styled';
 export const SharedLayout = () => {
   return (
     <div>
+      <Header />
       <LayoutContainer>
         <Outlet />
       </LayoutContainer>
       <Footer />
-      <Header />
     </div>
   );
 };
