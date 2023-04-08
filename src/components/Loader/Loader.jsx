@@ -1,11 +1,11 @@
 import { CirclesWithBar } from 'react-loader-spinner';
 
-export const Loader = () => {
+export const Loader = ({ size = '100' }) => {
   return (
     <>
       <CirclesWithBar
-        height="100"
-        width="100"
+        height={size}
+        width={size}
         color="#4fa94d"
         wrapperStyle={{}}
         wrapperClass=""
