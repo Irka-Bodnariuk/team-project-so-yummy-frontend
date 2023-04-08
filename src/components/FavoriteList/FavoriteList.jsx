@@ -17,6 +17,7 @@ const FavoriteList = () => {
 useEffect(() => {
   //   const renderMovies = async () => {
    setLoading(false);
+   setTotalPage(5);
   //     try {
   //       const data = await getFavoriteRecipes(page);
   //       setAllRecipes(data);
@@ -45,7 +46,7 @@ useEffect(() => {
   };
 
   const handleChange = (event, value) => {
-    setPage(1);
+    setPage(value);
   };
 
   return (
