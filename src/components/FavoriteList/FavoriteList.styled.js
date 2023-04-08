@@ -17,6 +17,7 @@ export const ListText = styled.h3`
   font-size: 20px;
   @media ${props => props.theme.device.tablet} {
     font-size: 24px;
+    color: ${p => p.theme.colors.heroText};
   }
 `
 
