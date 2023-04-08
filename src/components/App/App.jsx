@@ -20,7 +20,7 @@ import {
 } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
 import { PrivateRoute, RestrictedRoute } from 'components/Routes';
-import Footer from 'components/Layout/Footer/Footer';
+
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -66,7 +66,7 @@ export const App = () => {
       <ThemeProvider theme={theme}>
         {!isRefreshing && (
           <Routes>
-            {!isLoggedIn && <Route index element={<Footer />} />}
+            {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
             <Route
               path="/"

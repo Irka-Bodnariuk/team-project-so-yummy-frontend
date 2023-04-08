@@ -23,6 +23,8 @@ export const Button = ({
       fontSize={fontSize}
       fontSizeTablet={fontSizeTablet}
       fontSizeDesktop={fontSizeDesktop}
+      lineHeight={lineHeight}
+      lineHeightTablet={lineHeightTablet}
     >
       {children}
     </ButtonStyled>

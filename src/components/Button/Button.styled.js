@@ -31,7 +31,7 @@ export const ButtonStyled = styled.button`
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
-  line-height: 21px;
+  line-height: ${({ lineHeight }) => lineHeight ? lineHeight : "21px"};
 
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   clip-path: ${({ look }) =>
@@ -63,8 +63,8 @@ export const ButtonStyled = styled.button`
   transition: color 250ms ease, background-color 250ms ease, border 250ms ease;
 
   @media screen and (min-width: 768px) {
-    font-size: ${({ fontSizeTablet }) =>
-      fontSizeTablet ? fontSizeTablet : '16px'};
+    font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : '16px'};
+    line-height: ${({ lineHeightTablet }) => lineHeightTablet ? lineHeightTablet : "21px"};
     padding: ${({ look, sizeTablet }) => {
       if (sizeTablet) {
         return sizeTablet;
