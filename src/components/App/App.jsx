@@ -20,7 +20,6 @@ import {
 } from "pages";
 import { SharedLayout } from "components/Layout/SharedLayout/SharedLayout";
 import { PrivateRoute, RestrictedRoute } from "components/Routes";
-import Footer from "components/Layout/Footer/Footer";
 
 const getTheme = (mode) =>
   merge({}, baseTheme, {
