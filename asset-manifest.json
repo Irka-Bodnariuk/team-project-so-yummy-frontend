@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.b0ae5925.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.4dd52c05.js",
     "static/media/main-des-ret.png": "/team-project-so-yummy-frontend/static/media/main-des-ret.01356c9aa850f3ecc498.png",
     "static/media/main-tab-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-tab-ret-min.439c0fe961a05c52829c.png",
     "static/media/main-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-ret-min.f117d415d58bd16a304a.png",
@@ -14,10 +14,10 @@
     "static/media/auth-pana-tab-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min.da31f1cc4a620623d530.png",
     "index.html": "/team-project-so-yummy-frontend/index.html",
     "main.997c6bfc.css.map": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css.map",
-    "main.b0ae5925.js.map": "/team-project-so-yummy-frontend/static/js/main.b0ae5925.js.map"
+    "main.4dd52c05.js.map": "/team-project-so-yummy-frontend/static/js/main.4dd52c05.js.map"
   },
   "entrypoints": [
     "static/css/main.997c6bfc.css",
-    "static/js/main.b0ae5925.js"
+    "static/js/main.4dd52c05.js"
   ]
 }
