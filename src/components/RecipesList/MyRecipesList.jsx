@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 // import { useLocation } from 'react-router';
 
 import { getMyRecipes, deleteMyRecipe } from 'api/index';
@@ -8,10 +8,10 @@ import { Loader } from '../Loader/Loader';
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
 const MyRecipesList = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, ] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(null);
+  const [totalPage, ] = useState(null);
   // const location = useLocation();
 
   //  useEffect(() => {
