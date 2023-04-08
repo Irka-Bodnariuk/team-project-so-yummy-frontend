@@ -1,14 +1,21 @@
 import { Button } from 'components/Button/Button';
-import { Formik } from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import { Input, EmailIcon, NameInput, WrapperForm, FormSubscribe, Title, Text } from './SubscribeForm.styled';
 import { useMedia } from "hooks";
+import { updateSubscribe } from 'api/serviseApi';
+import * as yup from "yup";
 
+const schema = yup.object().shape({
+  subscribe: yup.string().min(4).email().required(),
+})
 
 const SubscribeForm = () => {
   const { screenType } = useMedia();
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = async (values, { resetForm }) => {
+    const data = await updateSubscribe();
     console.log(values);
+    console.log(data);
     resetForm();
   };
 
@@ -22,6 +29,7 @@ const SubscribeForm = () => {
       ) : null}
     <Formik
       initialValues={{ subscribe: '' }}
+      validationSchema={schema}
       onSubmit={handleSubmit}
     > 
         <FormSubscribe>
@@ -52,6 +60,7 @@ const SubscribeForm = () => {
               placeholder="Enter your email address"
             />
           </NameInput>
+          <ErrorMessage name="subscribe"/>
           <Button
             type="submit"
             look="subscribe"

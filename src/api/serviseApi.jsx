@@ -38,3 +38,12 @@ export const deleteMyRecipe = async id => {
     console.log(error);
   }
 };
+
+export const updateSubscribe = async () => {
+  try {
+    const { data } = await axios.patch('/subscribe');
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+}
