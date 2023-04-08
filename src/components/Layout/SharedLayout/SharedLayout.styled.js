@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 export const LayoutContainer = styled.div`
   margin: 0 auto;
-  padding-left: ${p => p.theme.space[4]}px;
-  padding-right: ${p => p.theme.space[4]}px;
-  padding-top: ${p => p.theme.space[4] * 3}px;
+  /* padding-left: ${p => p.theme.space[4]}px;
+  padding-right: ${p => p.theme.space[4]}px; */
+  /* padding-top: ${p => p.theme.space[4] * 3}px; */
   padding-bottom: 100px;
   min-width: 375px;
   background-color: ${p => p.theme.colors.background};

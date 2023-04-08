@@ -5,10 +5,12 @@ const MainPageStyled = styled.div`
   background: url(${MainBackground});
   background-size: cover;
   background-repeat: no-repeat;
-  position: relative;
+  background-position: none;
+  background-position-y: 92%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 66px;
 
   & > h1 {
     display: block;
@@ -20,8 +22,8 @@ const MainPageStyled = styled.div`
     text-align: center;
     letter-spacing: -0.005em;
     color: #22252a;
-    padding-top: 132px;
     margin-bottom: 14px;
+    padding-top: 67px;
     & span {
       color: #8baa36;
     }

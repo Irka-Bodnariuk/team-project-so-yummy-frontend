@@ -2,7 +2,7 @@ import SearchStyled from './SearchStyled';
 import { useState } from 'react';
 
 const Search = () => {
-  const [search, setSearch] = useState('search');
+  const [search, setSearch] = useState('');
 
   const handleNameChange = event => setSearch(event.target.value);
 
