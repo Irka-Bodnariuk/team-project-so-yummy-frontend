@@ -35,7 +35,7 @@ export const App = () => {
   const darkMode = useSelector(state => state.theme.darkMode);
   const theme = getTheme(mode);
 
-  React.useMemo(() => {
+  useEffect(() => {
     if (darkMode) {
       setMode('dark');
     } else {
@@ -51,10 +51,6 @@ export const App = () => {
     }),
     []
   );
-
-  useEffect(() => {
-    setMode('light');
-  }, []);
 
   useEffect(() => {
     dispatch(refreshUser());
