@@ -4,55 +4,54 @@ import {
   Link,
   Item,
   SearchIcon,
-  MenuIcon,
+  Wrap,
 } from './Navigation.styled';
 
-import { useState, useEffect } from 'react';
+const pageList = [
+  {
+    to: '/categories',
+    text: 'Categories',
+  },
+  {
+    to: '/add',
+    text: 'Add recipes',
+  },
+  {
+    to: '/my',
+    text: 'My recipes',
+  },
+  {
+    to: '/favorite',
+    text: 'Favorites',
+  },
+  {
+    to: '/shopping-list',
+    text: 'Shopping list',
+  },
+  {
+    to: '/search',
+    text: null,
+  },
+];
 
 const Navigation = () => {
-  const [isMobile, setIsMobile] = useState(true);
-  useEffect(() => {
-    setIsMobile(true);
-  }, []);
   return (
     <Container>
-      {!isMobile ? (
-        <Container>
-          <Container>
-            <List>
-              <Item>
-                <Link to="/categories">Categories</Link>
-              </Item>
-              <Item>
-                <Link to="/add">Add recipes</Link>
-              </Item>
-              <Item>
-                <Link to="/my">My recipes</Link>
-              </Item>
-              <Item>
-                <Link to="/favorite">Favorites</Link>
-              </Item>
-              <Item>
-                <Link to="/shopping-list">Shopping list</Link>
-              </Item>
-              <Item>
-                <Link to="/search">
-                  <Container>
-                    <SearchIcon />
-                  </Container>
-                </Link>
-              </Item>
-            </List>
-          </Container>
-        </Container>
-      ) : (
-        <Container>
-          <Container>
-            <MenuIcon />
-            {/* <AddSvg name="icon-menu-03" width={28} height={28} /> */}
-          </Container>
-        </Container>
-      )}
+      <List>
+        {pageList.map(({ to, text }) => (
+          <Item key={to}>
+            <Link to={to}>
+              {text ? (
+                text
+              ) : (
+                <Wrap>
+                  <SearchIcon />
+                </Wrap>
+              )}
+            </Link>
+          </Item>
+        ))}
+      </List>
     </Container>
   );
 };

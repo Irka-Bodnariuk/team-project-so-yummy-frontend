@@ -1,26 +1,27 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import { HiSearch, HiMenuAlt2 } from 'react-icons/hi';
-// // HiMenuAlt2;
-// HiMenuAlt2;
-export const Container = styled.div`
+import { RiSearchLine } from 'react-icons/ri';
+
+export const Container = styled.nav`
   display: flex;
   align-items: center;
-  /* gap: 10px; */
+  margin: 0 auto;
 `;
-
-export const List = styled.ul`
+export const Wrap = styled.div`
   display: flex;
-  gap: 30px;
+  align-items: center;
+`;
+export const List = styled.ul`
+  display: none;
+
+  @media screen and (min-width: 1440px) {
+    display: flex;
+    gap: 30px;
+  }
 `;
 
 export const Item = styled.li`
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
-  color: #23262a;
+  /* color: ${p => p.theme.colors.headerText}; */
 `;
 
 export const Link = styled(NavLink)`
@@ -29,22 +30,23 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 22px;
+  font-weight: ${p => p.theme.fontWeights.subtitle};
+  font-size: ${p => p.theme.fontSizes.s}px;
+  line-height: 1.6;
 
-  color: #23262a;
+  color: ${p => p.theme.colors.headerText};
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.accentColor};
+  }
 `;
-export const SearchIcon = styled(HiSearch)`
+export const SearchIcon = styled(RiSearchLine)`
   width: 24px;
   height: 24px;
 
-  color: #000;
-`;
-
-export const MenuIcon = styled(HiMenuAlt2)`
-  width: 28px;
-  height: 28px;
-
-  color: #000;
+  color: ${p => p.theme.colors.heroText};
+  &:hover,
+  &:focus {
+    color: ${p => p.theme.colors.accentColor};
+  }
 `;
