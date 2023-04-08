@@ -1,20 +1,25 @@
 import { IoClose } from 'react-icons/io5';
-import { Descriptions, ShoppingItem } from './ShoppingList.styled';
-import { BlankIcon } from 'components/BlankIcon';
+import { Descriptions, ImageItem, ShoppingItem } from './ShoppingList.styled';
+import { useSelector } from 'react-redux';
 
-export const ShoppingListItem = () => {
+export const ShoppingListItem = ({ item }) => {
+  const darkMode = useSelector(state => state.theme);
+
   const handleDeleteItem = () => {};
 
   return (
     <ShoppingItem>
       <Descriptions>
-        <BlankIcon name={'banana'} size={'s'} />
-        <p>Avocado</p>
+        <ImageItem src={item.thb} alt={item.ttl} />
+        <p>{item.ttl}</p>
       </Descriptions>
       <div>
         <span>5</span>
         <button onClick={handleDeleteItem}>
-          <IoClose size={24} />
+          <IoClose
+            size={24}
+            color={darkMode.darkMode ? '#FAFAFA' : '#333333'}
+          />
         </button>
       </div>
     </ShoppingItem>

@@ -60,6 +60,7 @@ export const baseTheme = {
         profileAvatarBg: '#D9D9D9',
         recipieDescMain: '#23262A',
         recipieDescSecondary: '#7E7E7E',
+        shoppingItemImageBg: '#ebf3d4',
       },
       dark: {
         background: '#1E1F28',
@@ -75,6 +76,7 @@ export const baseTheme = {
         profileAvatarBg: '#D9D9D9',
         recipieDescMain: 'rgba(250, 250, 250, 0.6)',
         recipieDescSecondary: 'rgba(250, 250, 250, 0.6)',
+        shoppingItemImageBg: '#2A2C36',
       },
     },
   },

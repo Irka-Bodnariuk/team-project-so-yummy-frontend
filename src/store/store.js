@@ -13,6 +13,7 @@ import {
 
 import { authReducer } from './auth/authSlice';
 import { themeSlice } from './theme/ThemeSlice';
+import { shoppingsReducer } from './shoppingList/shoppingListSlice';
 
 const rootPersistConfig = {
   key: 'user',
@@ -28,6 +29,7 @@ const themePersistedConfig = {
 const rootReducer = combineReducers({
   auth: persistReducer(rootPersistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeSlice.reducer),
+  shoppings: shoppingsReducer,
 });
 
 export const store = configureStore({
