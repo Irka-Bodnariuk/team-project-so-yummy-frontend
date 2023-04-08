@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
@@ -35,7 +35,7 @@ export const App = () => {
   const darkMode = useSelector(state => state.theme.darkMode);
   const theme = getTheme(mode);
 
-  React.useMemo(() => {
+  useMemo(() => {
     if (darkMode) {
       setMode('dark');
     } else {
@@ -51,10 +51,6 @@ export const App = () => {
     }),
     []
   );
-
-  useEffect(() => {
-    setMode('light');
-  }, []);
 
   useEffect(() => {
     dispatch(refreshUser());
