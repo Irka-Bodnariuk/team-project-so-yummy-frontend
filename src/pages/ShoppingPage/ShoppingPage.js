@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import MainTitle from 'components/MainTitle/MainTitle';
-import { TableHeader, TableTitle } from './ShoppingPage.styled';
+import { EmptyMessage, TableHeader, TableTitle } from './ShoppingPage.styled';
 import { useMedia } from 'hooks';
 import { ShoppingList } from 'components/ShoppingList/ShoppingList';
 import { useDispatch, useSelector } from 'react-redux';
@@ -44,6 +44,12 @@ export const ShoppingPage = () => {
           </TableHeader>
           <ShoppingList />
         </>
+      )}
+
+      {!items.length && !isLoading && (
+        <EmptyMessage>
+          You haven't added any ingredients to your shopping list yet!
+        </EmptyMessage>
       )}
     </main>
   );
