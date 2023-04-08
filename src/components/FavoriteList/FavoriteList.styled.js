@@ -4,7 +4,6 @@ export const List = styled.div`
   position: relative;
   padding-top: 50px;
   padding-bottom: 40px;
-
   @media ${props => props.theme.device.tablet} {
     padding-top: 100px;
     padding-bottom: 50px;
@@ -16,9 +15,9 @@ export const List = styled.div`
 `;
 export const ListText = styled.h3`
   font-size: 20px;
-
   @media ${props => props.theme.device.tablet} {
     font-size: 24px;
+    color: ${p => p.theme.colors.heroText};
   }
 `
 
@@ -29,18 +28,16 @@ export const ButtonDelete = styled.button`
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: #8baa36;
-  color: #fafafa;
+  background: ${props => props.theme.colors.accent};
+  color: ${props => props.theme.colors.textWhite};
   font-size: 14px;
   text-align: center;
-
   :hover,
   :focus {
     background: #22252a;
-    color: #fafafa;
+    color: ${props => props.theme.colors.textWhite};
     scale: 1.1;
   }
-
   @media ${props => props.theme.device.tablet} {
     font-size: 22px;
     width: 38px;
@@ -60,14 +57,12 @@ export const LoaderBox = styled.div`
   height: 36px;
   left: 150px;
   top: -65px;
-
   @media ${props => props.theme.device.tablet} {
     width: 50px;
     height: 50px;
     left: 200px;
     top: -70px;
   }
-
   @media ${props => props.theme.device.desktop} {
     width: 80px;
     height: 80px;

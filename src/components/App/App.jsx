@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'store/auth/authOperations';
+import { SigninPage } from 'pages/SigninPage/SigninPage';
 import {
   RegisterPage,
   WellcomePage,
-  LoginPage,
   MainPage,
   CategoriesPage,
   AddRecipePage,
@@ -35,7 +35,7 @@ export const App = () => {
   const darkMode = useSelector(state => state.theme.darkMode);
   const theme = getTheme(mode);
 
-  React.useMemo(() => {
+  useMemo(() => {
     if (darkMode) {
       setMode('dark');
     } else {
@@ -51,10 +51,6 @@ export const App = () => {
     }),
     []
   );
-
-  useEffect(() => {
-    setMode('light');
-  }, []);
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -124,7 +120,7 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                <RestrictedRoute component={LoginPage} redirectTo="/main" />
+                <RestrictedRoute component={SigninPage} redirectTo="/main" />
               }
             />
           </Routes>

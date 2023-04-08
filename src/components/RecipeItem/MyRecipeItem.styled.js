@@ -5,15 +5,13 @@ export const CardItem = styled.li`
   display: flex;
   width: auto;
   height: 152px;
-  background: #FFFFFF;
+  background: ${props => props.theme.colors.white};
   border-radius: 8px;
   margin-bottom: 18px;
   padding: 14px;
-
-  :last-child{
+  :last-child {
     margin-bottom: 0;
   }
-
   @media ${props => props.theme.device.tablet} {
     height: 288px;
     margin-bottom: 40px;
@@ -24,16 +22,15 @@ export const CardItem = styled.li`
     margin-bottom: 50px;
     padding: 40px;
   }
-`
+`;
 
 export const ImgBox = styled.div`
   display: block;
   height: 100%;
   min-width: 152px;
-  background: #d9d9d9;
+  background: ${props => props.theme.colors.whiteMuted};
   border-radius: 8px;
   overflow: hidden;
-
   @media ${props => props.theme.device.tablet} {
     display: block;
     min-width: 288px;
@@ -52,9 +49,7 @@ export const Image = styled.img`
 export const Info = styled.div`
   position: relative;
   width: 100%;
-
   padding-left: 14px;
-
   @media ${props => props.theme.device.tablet} {
     padding-left: 24px;
   }
@@ -70,17 +65,15 @@ export const Title = styled.h3`
   font-size: 14px;
   line-height: 100%;
   letter-spacing: -0.24px;
-  color: #3e4462;
+  color: ${props => props.theme.colors.textDark};
   padding-right: 24px;
   margin-bottom: 14px;
-
   @media ${props => props.theme.device.tablet} {
     font-size: 24px;
     line-height: 24px;
     padding-right: 38px;
     margin-bottom: 28px;
   }
-
   @media ${props => props.theme.device.desktop} {
     padding-right: 44px;
     margin-bottom: 40px;
@@ -94,8 +87,7 @@ export const Description = styled.p`
   font-size: 8px;
   line-height: 125%;
   letter-spacing: -0.02em;
-  color: #23262A;
-
+  color: ${props => props.theme.colors.text};
   @media ${props => props.theme.device.tablet} {
     font-size: 14px;
     line-height: 129%;
@@ -104,7 +96,7 @@ export const Description = styled.p`
     font-size: 18px;
     line-height: 133%;
   }
-`
+`;
 
 export const Time = styled.div`
   position: absolute;
@@ -116,8 +108,7 @@ export const Time = styled.div`
   font-size: 10px;
   line-height: 140%;
   letter-spacing: -0.24px;
-  color: #3E4462;
-
+  color: ${props => props.theme.colors.textDark};
   @media ${props => props.theme.device.tablet} {
     left: 24px;
     font-size: 14px;
@@ -126,7 +117,7 @@ export const Time = styled.div`
   @media ${props => props.theme.device.desktop} {
     left: 54px;
   }
-`
+`;
 export const ButtonDelete = styled.div`
   position: absolute;
   top: 0;
@@ -136,12 +127,10 @@ export const ButtonDelete = styled.div`
   border-radius: 4px;
   font-size: 14px;
   text-align: center;
-
   :hover,
   :focus {
     scale: 1.1;
   }
-
   @media ${props => props.theme.device.tablet} {
     font-size: 22px;
     width: 38px;
@@ -157,7 +146,6 @@ export const ButtonRecipe = styled.button`
   position: absolute;
   bottom: -8px;
   right: 0;
-
   @media ${props => props.theme.device.tablet} {
     bottom: -20px;
   }
