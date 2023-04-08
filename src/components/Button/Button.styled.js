@@ -12,7 +12,7 @@ export const ButtonStyled = styled.button`
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
-  line-height: 21px;
+  line-height: ${({ lineHeight }) => lineHeight ? lineHeight : "21px"};
 
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   background-color: ${({ look }) => {
@@ -61,17 +61,16 @@ export const ButtonStyled = styled.button`
   @media screen and (min-width: 768px) {
     width: ${({ widthTablet }) => widthTablet && widthTablet};
     height: ${({ heigthTablet }) => heigthTablet && heigthTablet};
-
-    font-size: ${({ fontSizeTablet }) =>
-      fontSizeTablet ? fontSizeTablet : '16px'};
+    font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : '16px'};
+    line-height: ${({ lineHeightTablet }) => lineHeightTablet ? lineHeightTablet : "21px"};
   }
 
   @media screen and (min-width: 1440px) {
     width: ${({ widthDesktop }) => widthDesktop && widthDesktop};
     height: ${({ heigthDesktop }) => heigthDesktop && heigthDesktop};
-
     font-size: ${({ fontSizeDesktop }) =>
-      fontSizeDesktop ? fontSizeDesktop : '16px'};
+    fontSizeDesktop ? fontSizeDesktop : '16px'};
+    line-height: ${({ lineHeightDesktop }) => lineHeightDesktop ? lineHeightDesktop : "21px"};
   }
   :hover,
   :focus {

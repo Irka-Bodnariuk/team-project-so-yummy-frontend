@@ -14,6 +14,9 @@ export const Button = ({
   fontSize,
   fontSizeTablet,
   fontSizeDesktop,
+  lineHeight,
+  lineHeightTablet,
+  lineHeightDesktop
 }) => {
   if (to) {
     return (
@@ -48,6 +51,9 @@ export const Button = ({
       fontSize={fontSize}
       fontSizeTablet={fontSizeTablet}
       fontSizeDesktop={fontSizeDesktop}
+      lineHeight={lineHeight}
+      lineHeightTablet={lineHeightTablet}
+      lineHeightDesktop={lineHeightDesktop}
     >
       {children}
     </ButtonStyled>

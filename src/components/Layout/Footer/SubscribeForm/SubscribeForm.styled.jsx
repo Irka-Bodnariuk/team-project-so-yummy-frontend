@@ -3,38 +3,29 @@ import { Field, Form } from "formik";
 
 export const Input = styled(Field)`
   padding: 10px 42px;
-  margin-bottom: ${p => p.theme.space[3]}px;
+  width: 100%;
   font-size: ${p => p.theme.fontSizes.xxs}px;
   line-height: 15px;
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.button.mainTextColor};
   background-color: ${p => p.theme.colors.footerBg};
-  border: 1px solid ${p => p.theme.colors.footerText};
+  border: 1px solid rgba(255, 255, 255, 16%);
   border-radius: 6px;
-  opacity: 0.16;
   
-  &:hover {
-    opacity: 1;
-  }
-
   &::placeholder {
     color: ${p => p.theme.colors.footerText};
     opacity: 1;
   }
 
   @media screen and (min-width: 768px) and (max-width: 1439px) {
-    width: 259px;
-    padding: 15px 40px  15px 52px;
-    margin-bottom: ${p => p.theme.space[0]}px;
-    margin-right: ${p => p.theme.space[2] * 3}px;
+    
+    padding: 14px 40px  14px 52px;
     font-size: ${p => p.theme.fontSizes.s}px;
     line-height: 21px;
   }
 
   @media screen and (min-width: 1440px) {
-    padding: 17.5px 70.5px  17.5px 51.5px;
-    width: 339px;
-    margin-bottom: ${p => p.theme.space[4]}px;
+    padding: 15px 70.5px  15px 51.5px;
     font-size: ${p => p.theme.fontSizes.m}px;
     line-height: 27px;
   }
@@ -44,24 +35,38 @@ export const EmailIcon = styled.svg`
   position: absolute;
   width: 16px;
   height: 12px;
-  top: 10px;
+  top: 13px;
   left: 14px;
 
   @media screen and (min-width: 768px) {
    width: 20px;
    height: 16px;
-   top: 18px;
+   top: 17px;
    left: 15px;
   }
 
   @media screen and (min-width: 1440px) {
-    top: 4px;
-    left: 15px;
+    top: 20px;
+    left: 18px;
   }
 `;
 
 export const NameInput = styled.label`
   position: relative;
+  display: block;
+  width: 204px;
+  margin-bottom: ${p => p.theme.space[3]}px;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+   width: 259px;
+    margin-bottom: ${p => p.theme.space[0]}px;
+    margin-right: ${p => p.theme.space[2] * 3}px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 338px;
+    margin-bottom: ${p => p.theme.space[4]}px;
+  }
 `;
 
 export const FormSubscribe = styled(Form)`
