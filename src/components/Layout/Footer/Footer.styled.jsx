@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Conteiner = styled.div`
+export const Conteiner = styled.footer`
   margin: 0 auto;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;

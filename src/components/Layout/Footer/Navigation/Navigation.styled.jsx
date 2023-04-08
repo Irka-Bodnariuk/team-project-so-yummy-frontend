@@ -77,23 +77,24 @@ export const WrapperForNav = styled.div`
 
   @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin-bottom: ${p => p.theme.space[3] * 9}px;
   }
 
-  @media screen and (max-width: 1439px) {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   @media screen and (min-width: 1440px) {
     margin-bottom: ${p => p.theme.space[0]};
+    justify-content: space-between;
     align-items: flex-start;
   }
 `;
 
 export const Wrapper = styled.div`
+   @media screen and (min-width: 768px) and (max-width: 1439px) {
+    width: 704px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media screen and (min-width: 1440px) {
     display: flex;
     justify-content: space-between;
