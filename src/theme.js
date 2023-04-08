@@ -94,4 +94,13 @@ export const baseTheme = {
     nodrmal: '8px',
     round: '50%',
   },
+
+  device: {
+    mobile: `(min-width: 375px)`,
+    tablet: `(min-width: 768px)`,
+    desktop: `(min-width: 1440px)`,
+  },
+
+
 };
+

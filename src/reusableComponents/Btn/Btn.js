@@ -1,27 +1,27 @@
-import { Btn } from '../Btn/btn.style';
+// import { Btn } from '../Btn/btn.style';
 
-export const RoundedButton = ({ title, to, variant = 'normal' }) => {
-  return (
-    <>
-      <Btn variant={variant} to={to}>
-        {title}
-      </Btn>
-    </>
-  );
-};
+// export const RoundedButton = ({ title, to, variant = 'normal' }) => {
+//   return (
+//     <>
+//       <Btn variant={variant} to={to}>
+//         {title}
+//       </Btn>
+//     </>
+//   );
+// };
 
-/*
-Перевикористання компоненту.
-Вибираємо компонент додаємо Пропси які потрібно
+// /*
+// Перевикористання компоненту.
+// Вибираємо компонент додаємо Пропси які потрібно
 
-пропс variant - змінює стилі фону кнопки. 
-  normal - За замовчуванням стандартне оформлення. 
-  dark - темне оформлення сторінки. 
-  transparent - прозора кнопка.
+// пропс variant - змінює стилі фону кнопки. 
+//   normal - За замовчуванням стандартне оформлення. 
+//   dark - темне оформлення сторінки. 
+//   transparent - прозора кнопка.
 
-Пропс to - маршут.
+// Пропс to - маршут.
 
-Пропс title - текст в кнопці.
+// Пропс title - текст в кнопці.
 
-приклад використання = <RoundedButton variant={dark} to={"/signin" title={Search}} />
-*/
+// приклад використання = <RoundedButton variant={dark} to={"/signin" title={Search}} />
+// */
