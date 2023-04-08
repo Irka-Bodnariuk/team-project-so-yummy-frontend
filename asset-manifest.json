@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.650e9098.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.33ba69ba.js",
     "static/media/main-des-ret.png": "/team-project-so-yummy-frontend/static/media/main-des-ret.01356c9aa850f3ecc498.png",
     "static/media/main-tab-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-tab-ret-min.439c0fe961a05c52829c.png",
     "static/media/main-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-ret-min.f117d415d58bd16a304a.png",
@@ -10,14 +10,15 @@
     "static/media/main-mob-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-min.80644ea7b24a2a58d8eb.png",
     "static/media/auth-pana-tab-min-ret.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min-ret.88c83cbcec23bb3db03c.png",
     "static/media/auth-pana-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-mob-ret-min.14335bd09b581e799964.png",
+    "static/media/sprite.svg": "/team-project-so-yummy-frontend/static/media/sprite.6873ee9bdd2851c28cac43ff0d2add1d.svg",
     "static/media/auth-pana-des.png": "/team-project-so-yummy-frontend/static/media/auth-pana-des.9556d40c68d06e675366.png",
     "static/media/auth-pana-tab-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min.da31f1cc4a620623d530.png",
     "index.html": "/team-project-so-yummy-frontend/index.html",
     "main.997c6bfc.css.map": "/team-project-so-yummy-frontend/static/css/main.997c6bfc.css.map",
-    "main.650e9098.js.map": "/team-project-so-yummy-frontend/static/js/main.650e9098.js.map"
+    "main.33ba69ba.js.map": "/team-project-so-yummy-frontend/static/js/main.33ba69ba.js.map"
   },
   "entrypoints": [
     "static/css/main.997c6bfc.css",
-    "static/js/main.650e9098.js"
+    "static/js/main.33ba69ba.js"
   ]
 }
