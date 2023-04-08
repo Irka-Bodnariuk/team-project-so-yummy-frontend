@@ -53,7 +53,7 @@ export const ShoppingItem = styled.li`
     font-weight: 600;
     font-size: ${p => p.theme.fontSizes.xxs}px;
     line-height: 1.5;
-    color: ${p => p.theme.colors.background};
+    color: ${p => p.theme.colors.secondaryTextColor};
 
     @media screen and (min-width: 768px) {
       width: 68px;
@@ -78,5 +78,17 @@ export const Descriptions = styled.div`
       font-size: ${p => p.theme.fontSizes.sm}px;
       line-height: 1.5;
     }
+  }
+`;
+
+export const ImageItem = styled.img`
+  padding: 6px;
+  height: auto;
+  width: 60px;
+  background: ${p => p.theme.colors.shoppingItemImageBg};
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    width: 93px;
   }
 `;
