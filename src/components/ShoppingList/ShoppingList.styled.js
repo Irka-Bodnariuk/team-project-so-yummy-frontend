@@ -53,13 +53,12 @@ export const ImageItem = styled.img`
 `;
 
 export const Bage = styled.div`
-  padding-top: 4px;
-  padding-bottom: 4px;
+  padding: 4px;
   display: flex;
   gap: 4px;
   flex-direction: column;
   align-items: center;
-  width: 37px;
+  min-width: 37px;
   height: auto;
 
   background: ${p => p.theme.colors.accentColor};
@@ -71,7 +70,7 @@ export const Bage = styled.div`
   color: ${p => p.theme.colors.secondaryTextColor};
 
   @media screen and (min-width: 768px) {
-    width: 68px;
+    min-width: 68px;
     font-size: ${p => p.theme.fontSizes.m}px;
   }
 `;

@@ -4,6 +4,7 @@ import { deleteItem, getList } from './shoppingListOperations';
 const initialState = {
   items: [],
   isLoading: false,
+  isDeleting: false,
   error: null,
 };
 
@@ -15,6 +16,7 @@ export const shoppingsSlice = createSlice({
   extraReducers: builder =>
     builder
       .addCase(getList.pending, state => {
+        state.isLoading = true;
         state.items = [];
       })
       .addCase(getList.fulfilled, (state, action) => {
@@ -22,18 +24,19 @@ export const shoppingsSlice = createSlice({
         state.isLoading = false;
         state.error = null;
       })
+      .addCase(deleteItem.pending, state => {
+        state.isDeleting = true;
+      })
       .addCase(deleteItem.fulfilled, (state, action) => {
-        state.items = state.items.filter(
-          item => item.id !== action.payload.productId
-        );
-        state.isLoading = false;
+        state.items = action.payload.shoppingList;
+        state.isDeleting = false;
         state.error = null;
       })
       .addMatcher(isPendingAction, state => {
-        state.isLoading = true;
         state.error = null;
       })
       .addMatcher(isRejectedAction, (state, action) => {
+        state.isDeleting = false;
         state.isLoading = false;
         state.error = action.payload.message;
       }),
