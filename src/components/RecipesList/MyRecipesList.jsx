@@ -8,31 +8,31 @@ import { Loader } from '../Loader/Loader';
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
 const MyRecipesList = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, setTotalPage] = useState(null);
   // const location = useLocation();
 
- useEffect(() => {
-    const renderMovies = async () => {
-      setLoading(true);
-      try {
-        const data = await getMyRecipes(page);
-        setAllRecipes(data);
+  //  useEffect(() => {
+  //     const renderMovies = async () => {
+  //       setLoading(true);
+  //       try {
+  //         const data = await getMyRecipes(page);
+  //         setAllRecipes(data);
 
-        const totalCountPage = Math.ceil(data.total / 4);
-        if (totalCountPage > 1) {
-          setTotalPage(totalCountPage);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    renderMovies();
-  }, [page]);
+  //         const totalCountPage = Math.ceil(data.total / 4);
+  //         if (totalCountPage > 1) {
+  //           setTotalPage(totalCountPage);
+  //         }
+  //       } catch (error) {
+  //         console.log(error);
+  //       } finally {
+  //         setLoading(false);
+  //       }
+  //     };
+  //     renderMovies();
+  //   }, [page]);
 
   const handelDelete = async id => {
     try {
