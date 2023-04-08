@@ -14,9 +14,9 @@ const FavoriteList = () => {
   const [totalPage, setTotalPage] = useState(null);
   // const location = useLocation();
 
-  // useEffect(() => {
+useEffect(() => {
   //   const renderMovies = async () => {
-  //     setLoading(true);
+   setLoading(false);
   //     try {
   //       const data = await getFavoriteRecipes(page);
   //       setAllRecipes(data);
@@ -32,7 +32,7 @@ const FavoriteList = () => {
   //     }
   //   };
   //   renderMovies();
-  // }, [page]);
+}, []);
 
   const handelDelete = async id => {
     try {
