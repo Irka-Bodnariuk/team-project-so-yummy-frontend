@@ -45,7 +45,7 @@ useEffect(() => {
   };
 
   const handleChange = (event, value) => {
-    setPage(value);
+    setPage(1);
   };
 
   return (
