@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { merge, get } from 'lodash';
-import { ThemeProvider } from 'styled-components';
-import { baseTheme } from '../../theme';
-import { Routes, Route } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { refreshUser } from 'store/auth/authOperations';
-import { SigninPage } from 'pages/SigninPage/SigninPage';
+import React, { useState, useEffect, useMemo } from "react";
+import { merge, get } from "lodash";
+import { ThemeProvider } from "styled-components";
+import { baseTheme } from "../../theme";
+import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { refreshUser } from "store/auth/authOperations";
+import { SigninPage } from "pages/SigninPage/SigninPage";
 import {
   RegisterPage,
   WellcomePage,
@@ -17,12 +17,12 @@ import {
   MyRecipes,
   SearchPage,
   ShoppingPage,
-} from 'pages';
-import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
-import { PrivateRoute, RestrictedRoute } from 'components/Routes';
-import Footer from 'components/Layout/Footer/Footer';
+} from "pages";
+import { SharedLayout } from "components/Layout/SharedLayout/SharedLayout";
+import { PrivateRoute, RestrictedRoute } from "components/Routes";
+import Footer from "components/Layout/Footer/Footer";
 
-const getTheme = mode =>
+const getTheme = (mode) =>
   merge({}, baseTheme, {
     colors: get(baseTheme.colors.modes, mode, baseTheme.colors),
   });
@@ -31,23 +31,23 @@ const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 export const App = () => {
   const dispatch = useDispatch();
-  const { isRefreshing, isLoggedIn } = useSelector(state => state.auth);
-  const [mode, setMode] = useState('light');
-  const darkMode = useSelector(state => state.theme.darkMode);
+  const { isRefreshing, isLoggedIn } = useSelector((state) => state.auth);
+  const [mode, setMode] = useState("light");
+  const darkMode = useSelector((state) => state.theme.darkMode);
   const theme = getTheme(mode);
 
   useMemo(() => {
     if (darkMode) {
-      setMode('dark');
+      setMode("dark");
     } else {
-      setMode('light');
+      setMode("light");
     }
   }, [darkMode]);
 
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode(prevMode => (prevMode === 'light' ? 'dark' : 'light'));
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
     []
@@ -62,7 +62,7 @@ export const App = () => {
       <ThemeProvider theme={theme}>
         {!isRefreshing && (
           <Routes>
-            {!isLoggedIn && <Route index element={<Footer />} />}
+            {!isLoggedIn && <Route index element={<WellcomePage />} />}
 
             <Route
               path="/"
