@@ -11,8 +11,8 @@ export const ButtonStyled = styled.button`
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.body};
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
-  line-height: ${({ lineHeight }) => lineHeight ? lineHeight : "21px"};
+  font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
+  line-height: ${({ lineheight }) => (lineheight ? lineheight : '21px')};
 
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   background-color: ${({ look }) => {
@@ -59,18 +59,21 @@ export const ButtonStyled = styled.button`
   transition: color 250ms ease, background-color 250ms ease, border 250ms ease;
 
   @media screen and (min-width: 768px) {
-    width: ${({ widthTablet }) => widthTablet && widthTablet};
-    height: ${({ heigthTablet }) => heigthTablet && heigthTablet};
-    font-size: ${({ fontSizeTablet }) => fontSizeTablet ? fontSizeTablet : '16px'};
-    line-height: ${({ lineHeightTablet }) => lineHeightTablet ? lineHeightTablet : "21px"};
+    width: ${({ width_tablet }) => width_tablet && width_tablet};
+    height: ${({ heigth_tablet }) => heigth_tablet && heigth_tablet};
+    font-size: ${({ fontsize_tablet }) =>
+      fontsize_tablet ? fontsize_tablet : '16px'};
+    line-height: ${({ lineheight_tablet }) =>
+      lineheight_tablet ? lineheight_tablet : '21px'};
   }
 
   @media screen and (min-width: 1440px) {
-    width: ${({ widthDesktop }) => widthDesktop && widthDesktop};
-    height: ${({ heigthDesktop }) => heigthDesktop && heigthDesktop};
-    font-size: ${({ fontSizeDesktop }) =>
-    fontSizeDesktop ? fontSizeDesktop : '16px'};
-    line-height: ${({ lineHeightDesktop }) => lineHeightDesktop ? lineHeightDesktop : "21px"};
+    width: ${({ width_desktop }) => width_desktop && width_desktop};
+    height: ${({ heigth_desktop }) => heigth_desktop && heigth_desktop};
+    font-size: ${({ fsize_desktop }) =>
+      fsize_desktop ? fsize_desktop : '16px'};
+    line-height: ${({ lineheight_desktop }) =>
+      lineheight_desktop ? lineheight_desktop : '21px'};
   }
   :hover,
   :focus {
@@ -133,7 +136,7 @@ export const LinkStyled = styled(Link)`
   font-family: 'Poppins', sans-serif;
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.body};
-  font-size: ${({ fontSize }) => (fontSize ? fontSize : '16px')};
+  font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
   line-height: 21px;
   text-decoration: none;
 
@@ -182,19 +185,22 @@ export const LinkStyled = styled(Link)`
   transition: color 250ms ease, background-color 250ms ease, border 250ms ease;
 
   @media screen and (min-width: 768px) {
-    width: ${({ widthTablet }) => widthTablet && widthTablet};
-    height: ${({ heigthTablet }) => heigthTablet && heigthTablet};
+    width: ${({ width_tablet }) => width_tablet && width_tablet};
+    height: ${({ heigth_tablet }) => heigth_tablet && heigth_tablet};
 
-    font-size: ${({ fontSizeTablet }) =>
-      fontSizeTablet ? fontSizeTablet : '16px'};
+    font-size: ${({ fsize_tablet }) => (fsize_tablet ? fsize_tablet : '16px')};
+    line-height: ${({ lineheight_tablet }) =>
+      lineheight_tablet ? lineheight_tablet : '21px'};
   }
 
   @media screen and (min-width: 1440px) {
-    width: ${({ widthDesktop }) => widthDesktop && widthDesktop};
-    height: ${({ heigthDesktop }) => heigthDesktop && heigthDesktop};
+    width: ${({ width_desktop }) => width_desktop && width_desktop};
+    height: ${({ heigth_desktop }) => heigth_desktop && heigth_desktop};
 
-    font-size: ${({ fontSizeDesktop }) =>
-      fontSizeDesktop ? fontSizeDesktop : '16px'};
+    font-size: ${({ fsize_desktop }) =>
+      fsize_desktop ? fsize_desktop : '16px'};
+    line-height: ${({ lineheight_desktop }) =>
+      lineheight_desktop ? lineheight_desktop : '21px'};
   }
   :hover,
   :focus {

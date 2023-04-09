@@ -16,7 +16,7 @@ export const Button = ({
   fontSizeDesktop,
   lineHeight,
   lineHeightTablet,
-  lineHeightDesktop
+  lineHeightDesktop,
 }) => {
   if (to) {
     return (
@@ -24,15 +24,18 @@ export const Button = ({
         to={to}
         type={type}
         width={width}
-        widthTablet={widthTablet}
-        widthDesktop={widthDesktop}
+        width_tablet={widthTablet}
+        width_desktop={widthDesktop}
         height={heigth}
-        heigthTablet={heigthTablet}
-        heigthDesktop={heigthDesktop}
+        heigth_tablet={heigthTablet}
+        heigth_desktop={heigthDesktop}
         look={look}
-        fontSize={fontSize}
-        fontSizeTablet={fontSizeTablet}
-        fontSizeDesktop={fontSizeDesktop}
+        fsize={fontSize}
+        fsize_tablet={fontSizeTablet}
+        fsize_desktop={fontSizeDesktop}
+        lineheight={lineHeight}
+        lineheight_tablet={lineHeightTablet}
+        lineheight_desktop={lineHeightDesktop}
       >
         {children}
       </LinkStyled>
@@ -42,18 +45,18 @@ export const Button = ({
     <ButtonStyled
       type={type}
       width={width}
-      widthTablet={widthTablet}
-      widthDesktop={widthDesktop}
+      width-tablet={widthTablet}
+      width-desktop={widthDesktop}
       height={heigth}
-      heigthTablet={heigthTablet}
-      heigthDesktop={heigthDesktop}
+      heigth-tablet={heigthTablet}
+      heigth-desktop={heigthDesktop}
       look={look}
       fontSize={fontSize}
-      fontSizeTablet={fontSizeTablet}
-      fontSizeDesktop={fontSizeDesktop}
-      lineHeight={lineHeight}
-      lineHeightTablet={lineHeightTablet}
-      lineHeightDesktop={lineHeightDesktop}
+      fontsize-tablet={fontSizeTablet}
+      fontsize-desktop={fontSizeDesktop}
+      lineheight={lineHeight}
+      lineheight-tablet={lineHeightTablet}
+      lineheight-desktop={lineHeightDesktop}
     >
       {children}
     </ButtonStyled>
