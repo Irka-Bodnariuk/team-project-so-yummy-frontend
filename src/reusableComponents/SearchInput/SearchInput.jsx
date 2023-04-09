@@ -37,10 +37,18 @@ const SearchInput = ({ dark, name, searchQuery }) => {
       ></Input>
       <ButtonWrapper>
         <Button
-          look="Search"
           type="submit"
-          style={{ backgroundColor: '#22252a ' }}
-        />
+          look="rounded"
+          width="100%"
+          heigth="45px"
+          heigthTablet="59px"
+          fontSize="16px"
+          // look="search"
+          // type="submit"
+          // style={{ backgroundColor: '#8BAA36 ' }}
+        >
+          Search
+        </Button>
       </ButtonWrapper>
     </Wrapper>
   );

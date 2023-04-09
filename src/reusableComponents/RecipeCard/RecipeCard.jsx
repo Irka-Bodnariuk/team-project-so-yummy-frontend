@@ -12,7 +12,6 @@ import {
   Like,
   Favorite,
   TextContainer,
-  // Text,
   Popularity,
 } from './RecipeCard.styled';
 

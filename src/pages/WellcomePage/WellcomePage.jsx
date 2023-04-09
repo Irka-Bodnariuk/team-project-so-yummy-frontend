@@ -1,21 +1,21 @@
-import React from "react";
-import { Button } from "components/Button/Button";
+import React from 'react';
+import { Button } from 'components/Button/Button';
+import { MainIcon } from 'images/svgIcons';
 import {
   Main,
   Title,
   Subtitle,
-  SvgWrapper,
   ButtonsWrapper,
-} from "./WellcomePage.styled";
-import { Box } from "components/Box";
-import { AddSvg } from "components/AddSvg/AddSvg";
+  SvgWrapper,
+} from './WellcomePage.styled';
+import { Box } from 'components/Box';
 
 export const WellcomePage = () => {
   return (
     <Main>
       <Box>
         <SvgWrapper>
-          <AddSvg name="icon-logo_desc" />
+          <MainIcon />
         </SvgWrapper>
         <Title>Welcome to the app!</Title>
         <Subtitle>
@@ -26,19 +26,25 @@ export const WellcomePage = () => {
         <ButtonsWrapper>
           <Button
             look="rounded_dark"
+            to="/register"
             fontSize="14px"
             fontSizeTablet="16px"
-            size="40px 24px"
-            sizeTablet="50px 42px"
+            width="132px"
+            heigth="45px"
+            widthTablet="184px"
+            heigthTablet="67px"
           >
             Registration
           </Button>
           <Button
-            look="rounded"
+            look="rounded_transparent"
+            to="/signin"
             fontSize="14px"
             fontSizeTablet="16px"
-            size="40px 24px"
-            sizeTablet="50px 42px"
+            width="95px"
+            heigth="45px"
+            widthTablet="184px"
+            heigthTablet="67px"
           >
             Sign In
           </Button>

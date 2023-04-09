@@ -19,12 +19,12 @@ export const PaginationWrapper = styled.div`
 `;
 
 export const PaginBox = styled(Pagination)`
-  & button[aria-current] {
+  & .button[aria-current] {
     background-color: #ebf3d4;
     color: #22252a;
   }
-  & button[aria-current]:hover,
-  & button:hover {
+  & .button[aria-current]:hover,
+  & .button:hover {
     background-color: #cce681;
   }
 `;

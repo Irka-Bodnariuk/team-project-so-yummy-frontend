@@ -11,7 +11,7 @@ export const CardContainer = styled.div`
   text-align: center;
   transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  :hover {
+  &:hover {
     transform: scale(1.01);
     box-shadow: 4px 4px 16px 2px rgba(0, 0, 0, 0.32);
   }
@@ -54,10 +54,8 @@ export const Like = styled(LikeIco)`
   width: 40px;
   height: 40px;
 
-  @media screen and (min-width: 1440px) {
-    :hover :first-child {
-      fill: #8aa936;
-    }
+  &:hover {
+    fill: #8aa936;
   }
 `;
 
@@ -65,10 +63,8 @@ export const Favorite = styled(FavoriteIco)`
   width: 40px;
   height: 40px;
 
-  @media screen and (min-width: 1440px) {
-    :hover :first-child {
-      fill: #8aa936;
-    }
+  &:hover {
+    fill: #8aa936;
   }
 `;
 

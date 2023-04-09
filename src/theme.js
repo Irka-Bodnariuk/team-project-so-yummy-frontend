@@ -24,6 +24,7 @@ export const baseTheme = {
 
   colors: {
     accentColor: '#8BAA36',
+    secondaryTextColor: '#FAFAFA',
 
     button: {
       mainTextColor: '#FAFAFA',
@@ -59,6 +60,7 @@ export const baseTheme = {
         profileAvatarBg: '#D9D9D9',
         recipieDescMain: '#23262A',
         recipieDescSecondary: '#7E7E7E',
+        shoppingItemImageBg: '#ebf3d4',
       },
       dark: {
         background: '#1E1F28',
@@ -74,6 +76,7 @@ export const baseTheme = {
         profileAvatarBg: '#D9D9D9',
         recipieDescMain: 'rgba(250, 250, 250, 0.6)',
         recipieDescSecondary: 'rgba(250, 250, 250, 0.6)',
+        shoppingItemImageBg: '#2A2C36',
       },
     },
   },
@@ -90,6 +93,16 @@ export const baseTheme = {
 
   radii: {
     none: '0',
+    nodrmal: '8px',
     round: '50%',
   },
+
+  device: {
+    mobile: `(min-width: 375px)`,
+    tablet: `(min-width: 768px)`,
+    desktop: `(min-width: 1440px)`,
+  },
+
+
 };
+

@@ -158,4 +158,9 @@ export const FormLink = styled(Link)`
   color: #fafafa;
 
   transform: translateX(-50%);
+
+  @media screen and (min-width: 768px) {
+    font-size: ${p => p.theme.fontSizes.sm}px;
+    line-height: ${p => p.theme.lineHeights.body};
+  }
 `;

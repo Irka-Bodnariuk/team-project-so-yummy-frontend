@@ -1,4 +1,7 @@
 import styled from 'styled-components';
+import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
+import noRecipesImgtab from 'images/bg/bgSearch/bg_search_tablet@1x.png';
+import noRecipesImgdes from 'images/bg/bgSearch/bg_search_desktop@1x.png';
 
 export const Container = styled.div``;
 
@@ -37,14 +40,14 @@ export const SearchList = styled.ul`
 `;
 
 export const SearchItem = styled.li`
-  :not(:last-child) {
+  &:not(:last-child) {
     margin-bottom: 30px;
   }
 
   @media screen and (min-width: 768px) {
     margin: 15px;
 
-    :not(:last-child) {
+    &:not(:last-child) {
       margin-bottom: 15px;
     }
   }
@@ -52,7 +55,7 @@ export const SearchItem = styled.li`
   @media screen and (min-width: 1440px) {
     margin: 50px 7px;
 
-    :not(:last-child) {
+    &:not(:last-child) {
       margin-bottom: 50px;
     }
   }
@@ -62,14 +65,25 @@ export const NoRecipesImg = styled.img`
   width: 208px;
   height: 133px;
   margin: auto;
-  background-image: url('../../assets/images/SearchBackground/noRecipesImg.png');
-  background-size: contain;
+  /* background-image: url(${noRecipesImgmob}); */
+  /* background-size: contain;
+  background-repeat: no-repeat; */
   margin-bottom: 33px;
+  border: none;
+  outline: none;
 
   @media screen and (min-width: 768px) {
     width: 350px;
     height: 225px;
     margin-bottom: 33px;
+    /* background-image: url(${noRecipesImgtab}); */
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 350px;
+    height: 225px;
+    margin-bottom: 33px;
+    /* background-image: url(${noRecipesImgdes}); */
   }
 `;
 
@@ -87,7 +101,7 @@ export const NoRecipesText = styled.p`
     line-height: 1;
     letter-spacing: -0.02em;
     margin-bottom: 200px;
-    color: var(--secondaryTextColor);
+    color: #23262a;
   }
 `;
 

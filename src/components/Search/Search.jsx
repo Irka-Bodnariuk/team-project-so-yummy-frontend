@@ -14,7 +14,7 @@ import {
   updateSearchType,
 } from 'store/search/searchSlice';
 import BGDots from 'reusableComponents/BGDots/BGDots';
-import DishCard from 'reusableComponents/RecipeCard/RecipeCard';
+import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
 import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
@@ -32,6 +32,7 @@ import {
   PaginationWrapper,
 } from './Search.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
+import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
 
 const Search = () => {
   const location = useLocation();
@@ -71,7 +72,9 @@ const Search = () => {
             setIsSearchResult(true);
           })
           .catch(err => {
-            toast.warning('Bad query');
+            toast.warning('Bad query', {
+              position: toast.POSITION.TOP_RIGHT,
+            });
           });
       }
     } else {
@@ -120,13 +123,15 @@ const Search = () => {
         <SearchTypeSelector />
       </SearchForm>
       {searchResult.length === 0 && (
-        <>
-          <NoRecipesImg></NoRecipesImg>
-          {!isSearchResult && <NoRecipesText>Enter query</NoRecipesText>}
-          {isSearchResult && (
+        <div>
+          <NoRecipesImg src={noRecipesImgmob} alt="no recipe" />
+          {!isSearchResult && (
             <NoRecipesText>Try looking for something else..</NoRecipesText>
           )}
-        </>
+          {/* {isSearchResult && (
+            <NoRecipesText>Try looking for something else..</NoRecipesText>
+          )} */}
+        </div>
       )}
       {searchResult.length !== 0 && (
         <>
@@ -134,7 +139,7 @@ const Search = () => {
             {searchResult.map(
               ({ _id, preview, title, favorite, like, popularity }) => (
                 <SearchItem key={_id}>
-                  <DishCard
+                  <RecipeCard
                     image={preview}
                     altText={title}
                     text={title}
