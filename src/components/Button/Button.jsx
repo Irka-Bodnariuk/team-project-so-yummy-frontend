@@ -45,18 +45,18 @@ export const Button = ({
     <ButtonStyled
       type={type}
       width={width}
-      width-tablet={widthTablet}
-      width-desktop={widthDesktop}
+      width_tablet={widthTablet}
+      width_desktop={widthDesktop}
       height={heigth}
-      heigth-tablet={heigthTablet}
-      heigth-desktop={heigthDesktop}
+      heigth_tablet={heigthTablet}
+      heigth_desktop={heigthDesktop}
       look={look}
-      fontSize={fontSize}
-      fontsize-tablet={fontSizeTablet}
-      fontsize-desktop={fontSizeDesktop}
+      fsize={fontSize}
+      fsize_tablet={fontSizeTablet}
+      fsize_desktop={fontSizeDesktop}
       lineheight={lineHeight}
-      lineheight-tablet={lineHeightTablet}
-      lineheight-desktop={lineHeightDesktop}
+      lineheight_tablet={lineHeightTablet}
+      lineheight_desktop={lineHeightDesktop}
     >
       {children}
     </ButtonStyled>
