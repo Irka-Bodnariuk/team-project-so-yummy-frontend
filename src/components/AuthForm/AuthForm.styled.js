@@ -56,7 +56,7 @@ export const FormTitle = styled.h1`
   }
 `;
 
-export const FormInputWrapper = styled.label`
+export const FormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -271,4 +271,8 @@ export const FormLink = styled(Link)`
     font-size: ${p => p.theme.fontSizes.sm}px;
     line-height: ${p => p.theme.lineHeights.body};
   }
+`;
+
+export const Wrap = styled.div`
+  position: relative;
 `;
