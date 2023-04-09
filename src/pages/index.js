@@ -10,6 +10,7 @@ import { RecipePage } from './RecipePage/RecipePage';
 import { MyRecipes } from './MyRecipesPage/MyRecipes';
 import { SearchPage } from './SearchPage/SearchPage';
 import { ShoppingPage } from './ShoppingPage/ShoppingPage';
+import { NotFoundPage } from './NotFoundPage';
 
 export {
   RegisterPage,
@@ -24,4 +25,5 @@ export {
   MyRecipes,
   SearchPage,
   ShoppingPage,
+  NotFoundPage,
 };
