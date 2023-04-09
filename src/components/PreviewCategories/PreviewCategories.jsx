@@ -21,7 +21,7 @@ const PreviewCategories = () => {
     <PreviewCategoriesStyled>
       {popularCategories.length > 0 &&
         popularCategories.map(category => (
-          <CategoryCard key={category} category={category} />
+          <CategoryCard key={category + '_key'} category={category} />
         ))}
       <span>
         <button>Other categories</button>

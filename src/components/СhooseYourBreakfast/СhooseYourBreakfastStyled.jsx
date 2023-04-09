@@ -7,6 +7,23 @@ const СhooseYourBreakfastStyled = styled.div`
   padding: 8px;
   margin-left: 82px;
   margin-bottom: 115px;
+
+  @media ${props => props.theme.device.tablet} {
+    order: 3;
+    width: 260px;
+    padding: 12px;
+    margin-top: -12px;
+    margin-left: 71px;
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    margin-left: 407px;
+    width: 298px;
+    padding: 16px;
+    margin-top: 19px;
+    margin-right: 0px;
+  }
+
   & > p {
     font-family: 'Poppins';
     font-style: normal;
@@ -20,15 +37,29 @@ const СhooseYourBreakfastStyled = styled.div`
     & span {
       color: #8baa36;
     }
+    @media ${props => props.theme.device.tablet} {
+      font-size: 14px;
+    }
+    @media ${props => props.theme.device.desktop} {
+      font-size: 14px;
+      line-height: 20px;
+    }
   }
   & > button {
     border: none;
     background: none;
     margin-left: auto;
     display: flex;
-    /* align-items: center; */
     padding: 4px 0 4px 0;
     margin-bottom: -2px;
+
+    @media ${props => props.theme.device.tablet} {
+      margin-right: 3px;
+    }
+
+    @media ${props => props.theme.device.desktop} {
+      margin-right: 1px;
+    }
 
     & > img {
       display: block;

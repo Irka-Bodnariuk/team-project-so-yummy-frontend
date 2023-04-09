@@ -1,6 +1,6 @@
 const getCategoryList = async () => {
 
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhZGI1YjMzM2I1ZGFmZGJmYTI3NiIsImlhdCI6MTY4MDk3ODM1OCwiZXhwIjoxNjgxMDYxMTU4fQ.BW2QYlLESMHnLbp-ukU1MeB3Hcg3JRZ6DifBRMnpFEw';
+  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhZGI1YjMzM2I1ZGFmZGJmYTI3NiIsImlhdCI6MTY4MTA0ODY2MywiZXhwIjoxNjgxMTMxNDYzfQ.ICHmkU7cYhpJQbEWgPjQ7nglrXcxlJIONGHqpGdV7h0';
 
   const list = await fetch('https://team-project-so-yummy-backend.onrender.com/api/recipes/category-list', {
     method: 'GET',
@@ -10,6 +10,7 @@ const getCategoryList = async () => {
     }
   })
   const listToReturn = await list.json();
+
   return listToReturn;
 }
 

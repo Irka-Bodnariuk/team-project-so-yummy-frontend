@@ -11,6 +11,27 @@ const SearchStyled = styled.div`
   width: 295px;
   margin-right: 3px;
   margin-bottom: 83px;
+  margin-left: 4px;
+
+  @media ${props => props.theme.device.tablet} {
+    order: 2;
+    height: 59px;
+    width: 362px;
+    clip-path: path(
+      'M0.5 19.6667C0.5 9.08121 9.08121 0.5 19.6667 0.5H322.667C344.114 0.5 361.5 17.8863 361.5 39.3333C361.5 49.9188 352.919 58.5 342.333 58.5H39.3333C17.8863 58.5 0.5 41.1137 0.5 19.6667Z'
+    );
+    margin-top: 3px;
+    margin-left: 39px;
+  }
+  @media ${props => props.theme.device.desktop} {
+    clip-path: path(
+      'M0.5 23.3333C0.5 10.7228 10.7228 0.5 23.3333 0.5H463.333C488.83 0.5 509.5 21.1695 509.5 46.6667C509.5 59.2772 499.277 69.5 486.667 69.5H46.6667C21.1695 69.5 0.5 48.8305 0.5 23.3333Z'
+    );
+    height: 70px;
+    width: 510px;
+    margin-top: 20px;
+    margin-left: 100px;
+  }
 
   & > button {
     clip-path: path(
@@ -29,6 +50,22 @@ const SearchStyled = styled.div`
     color: #fafafa;
     width: 113px;
     height: 52px;
+    @media ${props => props.theme.device.tablet} {
+      height: 59px;
+      width: 161px;
+      left: 201px;
+      clip-path: path(
+        'M0 19.6667C0 8.80507 8.80507 0 19.6667 0H121.667C143.39 0 161 17.6101 161 39.3333C161 50.1949 152.195 59 141.333 59H39.3333C17.6101 59 0 41.3899 0 19.6667Z'
+      );
+    }
+    @media ${props => props.theme.device.desktop} {
+      clip-path: path(
+        'M0 23.3333C0 10.4467 10.4467 0 23.3333 0H114.333C140.107 0 161 20.8934 161 46.6667C161 59.5533 150.553 70 137.667 70H46.6667C20.8934 70 0 49.1066 0 23.3333Z'
+      );
+      width: 161px;
+      height: 70px;
+      left: 350px;
+    }
   }
 
   & > input {
@@ -47,6 +84,18 @@ const SearchStyled = styled.div`
     font-size: 12px;
     line-height: 18px;
     color: #bdbdbd;
+    @media ${props => props.theme.device.tablet} {
+      font-size: 16px;
+      line-height: 24px;
+      top: 19px;
+      left: 31px;
+    }
+    @media ${props => props.theme.device.desktop} {
+      font-size: 16px;
+      line-height: 24px;
+      top: 23px;
+      left: 48px;
+    }
   }
 `;
 

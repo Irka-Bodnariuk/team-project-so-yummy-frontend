@@ -5,21 +5,21 @@ export const LayoutContainer = styled.div`
   /* padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px; */
   /* padding-top: ${p => p.theme.space[4] * 3}px; */
-  padding-bottom: 100px;
+  /* padding-bottom: 100px; */
   min-width: 375px;
   background-color: ${p => p.theme.colors.background};
 
   @media screen and (min-width: 768px) {
     min-width: 768px;
-    padding-top: 73px;
-    padding-left: ${p => p.theme.space[5]}px;
-    padding-right: ${p => p.theme.space[5]}px;
-    padding-bottom: 200px;
+    /* padding-top: 73px; */
+    /* padding-left: ${p => p.theme.space[5]}px;
+    padding-right: ${p => p.theme.space[5]}px; */
+    /* padding-bottom: 200px; */
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-    padding-left: 100px;
-    padding-right: 100px;
+    /* padding-left: 100px;
+    padding-right: 100px; */
   }
 `;

@@ -3,6 +3,40 @@ import styled from 'styled-components';
 const CategoryCardStyled = styled.div`
   margin-bottom: 32px;
 
+  @media ${props => props.theme.device.tablet} {
+    margin-bottom: 50px;
+    &:last-of-type {
+      margin-bottom: 27px;
+    }
+  }
+  @media ${props => props.theme.device.desktop} {
+    &:last-of-type {
+      margin-bottom: 8px;
+    }
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    margin-bottom: 100px;
+  }
+
+  & > div:first-of-type {
+    display: flex;
+    flex-direction: row;
+    @media ${props => props.theme.device.tablet} {
+      gap: 32px;
+      & > div {
+        width: 336px;
+      }
+    }
+
+    @media ${props => props.theme.device.desktop} {
+      gap: 14px;
+      & > div {
+        width: 300px;
+      }
+    }
+  }
+
   & > h2 {
     font-family: 'Poppins';
     font-style: normal;
@@ -13,37 +47,13 @@ const CategoryCardStyled = styled.div`
     font-feature-settings: 'liga' off;
     color: #001833;
     margin-bottom: 32px;
-  }
-
-  & > div {
-    background: url(${props => props.imgUrl});
-    background-size: cover;
-    width: 343px;
-    height: 323px;
-    border-radius: 8px;
-    margin-bottom: 24px;
-    padding-top: 245px;
-
-    & > span {
-      display: block;
-
-      margin-left: 18px;
-      margin-right: 18px;
-      padding: 16px;
-
-      background-color: #fff;
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 500;
-      font-size: 16px;
-      line-height: 20px;
-      letter-spacing: -0.24px;
-      color: #3e4462;
-      border-radius: 8px;
-
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
+    @media ${props => props.theme.device.tablet} {
+      font-size: 44px;
+      line-height: 44px;
+      margin-bottom: 40px;
+    }
+    @media ${props => props.theme.device.desktop} {
+      margin-bottom: 50px;
     }
   }
 
@@ -62,6 +72,47 @@ const CategoryCardStyled = styled.div`
       line-height: 18px;
       color: #fafafa;
     }
+  }
+`;
+
+export const RecipeStyled = styled.div`
+  background: url(${props => props.imgUrl});
+  background-size: cover;
+
+  width: 343px;
+  height: 323px;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  padding-top: 245px;
+
+  @media ${props => props.theme.device.tablet} {
+    margin-bottom: 40px;
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    margin-bottom: 50px;
+  }
+
+  & > span {
+    display: block;
+
+    margin-left: 18px;
+    margin-right: 18px;
+    padding: 16px;
+
+    background-color: #fff;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    letter-spacing: -0.24px;
+    color: #3e4462;
+    border-radius: 8px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 `;
 
