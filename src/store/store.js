@@ -18,7 +18,6 @@ import { shoppingsReducer } from './shoppingList/shoppingListSlice';
 const rootPersistConfig = {
   key: 'user',
   storage: storage,
-  whitelist: ['token'],
 };
 
 const themePersistedConfig = {

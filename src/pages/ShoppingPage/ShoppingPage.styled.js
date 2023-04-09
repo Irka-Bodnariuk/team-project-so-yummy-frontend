@@ -60,3 +60,15 @@ export const TableTitle = styled.p`
     }};
   }
 `;
+
+export const EmptyMessage = styled.p`
+  margin: 50px auto;
+  text-align: center;
+  font-size: ${p => p.theme.fontSizes.m}px;
+  color: ${p => p.theme.colors.recipieDescSecondary};
+
+  @media screen and (min-width: 768px) {
+    margin-top: 60px;
+    font-size: ${p => p.theme.fontSizes.xl}px;
+  }
+`;

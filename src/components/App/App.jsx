@@ -17,6 +17,7 @@ import {
   MyRecipes,
   SearchPage,
   ShoppingPage,
+  NotFoundPage,
 } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
 import { PrivateRoute, RestrictedRoute } from 'components/Routes';
@@ -67,6 +68,7 @@ export const App = () => {
               path="/"
               element={<SharedLayout colorModeContext={ColorModeContext} />}
             >
+              <Route path="*" element={<NotFoundPage />} />
               <Route
                 path="main"
                 element={

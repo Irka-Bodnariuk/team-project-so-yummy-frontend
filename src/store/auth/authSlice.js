@@ -61,6 +61,8 @@ export const userSlice = createSlice({
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload.message;
+        state.isLoggedIn = false;
+        state.user = { name: null, email: null };
       }),
 });
 

@@ -8,12 +8,18 @@ import {
 } from './ShoppingList.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteItem } from 'store/shoppingList/shoppingListOperations';
+import { Loader } from 'components/Loader/Loader';
+import { useState } from 'react';
 
 export const ShoppingListItem = ({ item }) => {
-  const darkMode = useSelector(state => state.theme);
   const dispatch = useDispatch();
+  const darkMode = useSelector(state => state.theme);
+  const isDeleting = useSelector(state => state.shoppings.isDeleting);
+
+  const [deletingId, setDeletingId] = useState(null);
 
   const handleDeleteItem = id => {
+    setDeletingId(item.productId);
     dispatch(deleteItem(id));
   };
 
@@ -25,15 +31,20 @@ export const ShoppingListItem = ({ item }) => {
       </Descriptions>
       <div>
         <Bage>
-          {item.meassure.map(item => (
-            <span>{item}</span>
+          {item.measure.map(item => (
+            <span key={Math.random()}>{item}</span>
           ))}
         </Bage>
         <CloseButton
+          disabled={isDeleting}
           dark={darkMode.darkMode}
           onClick={() => handleDeleteItem(item.productId)}
         >
-          <IoClose size={24} />
+          {isDeleting && deletingId ? (
+            <Loader size="28" />
+          ) : (
+            <IoClose size={24} />
+          )}
         </CloseButton>
       </div>
     </ShoppingItem>
