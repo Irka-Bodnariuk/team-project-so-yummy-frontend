@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { HiMenuAlt2 } from 'react-icons/hi';
 
 export const Container = styled.header`
+  position: relative;
   display: flex;
 
   align-items: center;

@@ -5,10 +5,11 @@ import {
   loginUser,
   logoutUser,
   refreshUser,
+  updateUserProfile,
 } from './authOperations';
 
 const initialState = {
-  user: { name: null, email: null },
+  user: { name: null, email: null, avatar: null },
   token: null,
   isLoggedIn: false,
   isRefreshing: false,
@@ -58,11 +59,23 @@ export const userSlice = createSlice({
         state.isRefreshing = false;
         state.error = null;
       })
+
       .addCase(refreshUser.rejected, (state, action) => {
         state.isRefreshing = false;
         state.error = action.payload.message;
         state.isLoggedIn = false;
         state.user = { name: null, email: null };
+      })
+      .addCase(updateUserProfile.pending, state => state)
+      .addCase(updateUserProfile.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.user.avatar = action.payload.avatarURL;
+        state.user.name = action.payload.name;
+
+        state.error = null;
+      })
+      .addCase(updateUserProfile.rejected, (state, action) => {
+        state.error = action.payload.message;
       }),
 });
 
