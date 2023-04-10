@@ -43,6 +43,11 @@ export const baseTheme = {
       inputWarning: '#F6C23E',
       formBackground: '#2a2c36',
       formIcon: '#FAFAFA',
+      formBottomLine: '#E0E0E0',
+      labelText: '#000000',
+      formIngredientsBackground: '#F5F5F5',
+      formAddText: '#7b7b7b',
+      formAddIcon: '#333333',
     },
 
     modes: {
