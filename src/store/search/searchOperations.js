@@ -34,6 +34,7 @@ export const getSearchByTitle = async (
     const { data } = await axios.get(
       `/search/title/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`
     );
+
     return data;
   } catch (error) {
     console.log(error.message);

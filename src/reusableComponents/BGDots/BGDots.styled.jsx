@@ -7,7 +7,7 @@ import image1black from 'images/SearchBackground/image1black.png';
 import image2black from 'images/SearchBackground/image2black.png';
 
 export const Container = styled.div`
-  z-index: -1;
+  /* z-index: -1; */
   position: absolute;
   width: 345px;
   height: 192px;

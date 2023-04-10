@@ -61,9 +61,6 @@ const CustomSelect = () => {
         menu: () => ({
           border: 'none',
         }),
-        // menuPortal: () => ({
-        //   position: 'absolute',
-        // }),
         menuList: (provided, state) => ({
           display: 'flex',
           flexDirection: 'column',

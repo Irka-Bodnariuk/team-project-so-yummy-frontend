@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
-import noRecipesImgtab from 'images/bg/bgSearch/bg_search_tablet@1x.png';
-import noRecipesImgdes from 'images/bg/bgSearch/bg_search_desktop@1x.png';
 
 export const Container = styled.div``;
 
@@ -65,9 +62,6 @@ export const NoRecipesImg = styled.img`
   width: 208px;
   height: 133px;
   margin: auto;
-  /* background-image: url(${noRecipesImgmob}); */
-  /* background-size: contain;
-  background-repeat: no-repeat; */
   margin-bottom: 33px;
   border: none;
   outline: none;
@@ -76,14 +70,12 @@ export const NoRecipesImg = styled.img`
     width: 350px;
     height: 225px;
     margin-bottom: 33px;
-    /* background-image: url(${noRecipesImgtab}); */
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: 1140px) {
     width: 350px;
     height: 225px;
     margin-bottom: 33px;
-    /* background-image: url(${noRecipesImgdes}); */
   }
 `;
 

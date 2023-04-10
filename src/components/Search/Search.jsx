@@ -1,6 +1,8 @@
+import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { useMedia } from 'hooks';
 import { toast } from 'react-toastify';
 import {
   selectSearchQuery,
@@ -28,10 +30,12 @@ import {
   SearchItem,
   NoRecipesImg,
   NoRecipesText,
-  // PaginationWrapper,
+  PaginationWrapper,
 } from './Search.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
+import noRecipesImgtab from 'images/bg/bgSearch/bg_search_tablet@1x.png';
+import noRecipesImgdes from 'images/bg/bgSearch/bg_search_desktop@1x.png';
 
 const Search = () => {
   const location = useLocation();
@@ -39,13 +43,14 @@ const Search = () => {
   const searchQuery = useSelector(selectSearchQuery);
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
-  // const [count, setCount] = useState(1);
+  const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
+  const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
 
-  // const onPageChange = (e, page) => {
-  //   setPage(page);
-  // };
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
 
   useEffect(() => {
     return () => {
@@ -66,8 +71,8 @@ const Search = () => {
               toast.warning('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            // const totalPages = Math.ceil(res.total / res.limit);
-            // setCount(totalPages);
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
             setIsSearchResult(true);
           })
           .catch(err => {
@@ -84,8 +89,8 @@ const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            // const totalPages = Math.ceil(res.total / res.limit);
-            // setCount(totalPages);
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
             setIsSearchResult(true);
           })
           .catch(err => toast.warning('Bad query'));
@@ -123,7 +128,16 @@ const Search = () => {
       </SearchForm>
       {searchResult.length === 0 && (
         <div>
-          <NoRecipesImg src={noRecipesImgmob} alt="no recipe" />
+          {isMobileScreen && (
+            <NoRecipesImg src={noRecipesImgmob} alt="no recipe" />
+          )}
+          {isTabletScreen && (
+            <NoRecipesImg src={noRecipesImgtab} alt="no recipe" />
+          )}
+          {isDesktopScreen && (
+            <NoRecipesImg src={noRecipesImgdes} alt="no recipe" />
+          )}
+
           {!isSearchResult && (
             <NoRecipesText>Try looking for something else..</NoRecipesText>
           )}
@@ -151,15 +165,19 @@ const Search = () => {
               )
             )}
           </SearchList>
-          {/* <PaginationWrapper>
+          <PaginationWrapper>
             {count > 1 && (
-              <BasicPagination
-                count={count}
-                page={page}
-                isChange={onPageChange}
+              <ReactPaginate
+                breakLabel="..."
+                nextLabel="next >"
+                onPageChange={onPageChange}
+                pageRangeDisplayed={page}
+                pageCount={count}
+                previousLabel="< previous"
+                renderOnZeroPageCount={null}
               />
             )}
-          </PaginationWrapper> */}
+          </PaginationWrapper>
         </>
       )}
     </Container>
