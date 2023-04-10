@@ -23,9 +23,9 @@ import { useRef, useState } from 'react';
 const EditUser = ({ onClose }) => {
   const filePicker = useRef(null);
   const dispatch = useDispatch();
-  const avatarUrl = useSelector(state => state.auth.user.avatar);
+  const avatar = useSelector(state => state.auth.user.avatar);
   const userName = useSelector(state => state.auth.user.name);
-  const [selectedFile, setSelectedFile] = useState(avatarUrl);
+  const [selectedFile, setSelectedFile] = useState(avatar);
 
   const handleSubmit = values => {
     const formData = new FormData();
@@ -42,7 +42,7 @@ const EditUser = ({ onClose }) => {
   return (
     <Formik
       initialValues={{
-        avatarURL: avatarUrl,
+        avatarURL: avatar,
         name: userName,
       }}
       onSubmit={(values, actions) => {
