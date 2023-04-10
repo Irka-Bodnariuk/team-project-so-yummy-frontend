@@ -2,6 +2,8 @@ import { ButtonStyled, LinkStyled } from './Button.styled';
 
 export const Button = ({
   type,
+  onClick,
+  onChange,
   to,
   children,
   look,
@@ -22,6 +24,7 @@ export const Button = ({
     return (
       <LinkStyled
         to={to}
+        onChange={onChange}
         type={type}
         width={width}
         width_tablet={widthTablet}
@@ -44,6 +47,7 @@ export const Button = ({
   return (
     <ButtonStyled
       type={type}
+      onClick={onClick}
       width={width}
       width_tablet={widthTablet}
       width_desktop={widthDesktop}

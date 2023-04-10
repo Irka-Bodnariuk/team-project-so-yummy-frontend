@@ -1,12 +1,22 @@
+import { useState } from 'react';
+import UserLogoModal from '../UserModal/UserLogoModal';
+import { useSelector } from 'react-redux';
+
 import { Container, Photo, WrapPhoto, Name } from './UserLogo.styled';
 
 const UserLogo = () => {
+  const [modalIsOpen, setmodalIsOpen] = useState(false);
+  const avatarUrl = useSelector(state => state.auth.user.avatar);
+  const name = useSelector(state => state.auth.user.name);
+
+  const toggleModalEdit = () => setmodalIsOpen(state => !state);
   return (
     <Container>
-      <WrapPhoto>
-        <Photo />
-        <Name>Name</Name>
+      <WrapPhoto onClick={toggleModalEdit}>
+        <Photo src={avatarUrl} alt={name} />
+        <Name>{name}</Name>
       </WrapPhoto>
+      {modalIsOpen && <UserLogoModal openModalEdit={toggleModalEdit} />}
     </Container>
   );
 };
