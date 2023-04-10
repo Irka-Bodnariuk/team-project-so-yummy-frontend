@@ -7,11 +7,11 @@ import {
   Photo,
   PlusIcon,
   EditIcon,
-  FormSubscribe,
-  Wrap,
+  FormEdit,
+  LabelPhoto,
   Input,
   UserIcon,
-  WrapInput,
+  LabelInput,
 } from './EditUser.styled';
 
 import { Button } from 'components/Button/Button';
@@ -19,6 +19,12 @@ import { Button } from 'components/Button/Button';
 import { updateUserProfile } from 'store/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
+
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  userName: yup.string().min(4).required(),
+});
 
 const EditUser = ({ onClose }) => {
   const filePicker = useRef(null);
@@ -29,6 +35,19 @@ const EditUser = ({ onClose }) => {
 
   const handleSubmit = values => {
     const formData = new FormData();
+
+    if (values.avatarURL === '' && values.name === userName) {
+      alert('There are no changes!');
+      return;
+    }
+    if (values.avatarURL === '' && values.name !== userName) {
+      formData.append('name', values.name);
+      dispatch(updateUserProfile(formData));
+      onClose();
+
+      return;
+    }
+
     formData.append('avatar', values.avatarURL);
     formData.append('name', values.name);
     dispatch(updateUserProfile(formData));
@@ -42,7 +61,7 @@ const EditUser = ({ onClose }) => {
   return (
     <Formik
       initialValues={{
-        avatarURL: avatar,
+        avatarURL: '',
         name: userName,
       }}
       onSubmit={(values, actions) => {
@@ -52,12 +71,12 @@ const EditUser = ({ onClose }) => {
       }}
     >
       {props => (
-        <FormSubscribe onSubmit={props.handleSubmit}>
+        <FormEdit onSubmit={props.handleSubmit}>
           <ButtonClose type="button" onClick={onClose}>
             <CloseIcon />
           </ButtonClose>
           <Container>
-            <Wrap>
+            <LabelPhoto>
               <Photo src={selectedFile} alt={userName} />
               <input
                 className="hidden"
@@ -65,30 +84,44 @@ const EditUser = ({ onClose }) => {
                 ref={filePicker}
                 name="avatarURL"
                 accept="image/*,.png, .jpeg,.gif,.web"
+                onBlur={() => {
+                  props.setTouched({
+                    avatarURL: true,
+                  });
+                }}
                 onChange={event => {
-                  if (event.target.files[0]) {
-                    setSelectedFile(
-                      window.URL.createObjectURL(event.target.files[0])
-                    );
-                    props.setFieldValue('avatarURL', event.target.files[0]);
-                  } else {
+                  if (!event.target.files[0]) {
                     alert('Incorrect file format!');
                     return;
                   }
+                  setSelectedFile(
+                    window.URL.createObjectURL(event.target.files[0])
+                  );
+                  props.setFieldValue('avatarURL', event.target.files[0]);
+                  console.log(selectedFile);
                 }}
               />
 
               <ButtonAdd type="button" onClick={handelPick}>
                 <PlusIcon />
               </ButtonAdd>
-            </Wrap>
-            <WrapInput>
+            </LabelPhoto>
+            <LabelInput>
               <UserIcon />
 
               <EditIcon />
 
-              <Input type="text" name="name" placeholder="Your name" />
-            </WrapInput>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                onBlur={() => {
+                  props.setTouched({
+                    name: true,
+                  });
+                }}
+              />
+            </LabelInput>
 
             <Button
               type="submit"
@@ -101,7 +134,7 @@ const EditUser = ({ onClose }) => {
               Save changes
             </Button>
           </Container>
-        </FormSubscribe>
+        </FormEdit>
       )}
     </Formik>
   );

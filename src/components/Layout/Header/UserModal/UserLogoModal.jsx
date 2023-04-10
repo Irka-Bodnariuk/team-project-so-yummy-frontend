@@ -12,7 +12,7 @@ import {
   ButtonClose,
 } from './UserLogoModal.styled';
 
-const UserLogoModal = ({ openModalEdit, setAvatar }) => {
+const UserLogoModal = ({ openModalEdit }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [editModal, setEditModal] = useState(true);
 
@@ -64,13 +64,7 @@ const UserLogoModal = ({ openModalEdit, setAvatar }) => {
           <LogOutIcon />
         </Button>
       </Modal>
-      {modalOpen && (
-        <ModalWrap
-          openModal={toggleModal}
-          edit={editModal}
-          setAvatar={setAvatar}
-        />
-      )}
+      {modalOpen && <ModalWrap openModal={toggleModal} edit={editModal} />}
     </Overlay>
   );
 };

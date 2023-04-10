@@ -71,9 +71,10 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserProfile.pending, state => state)
       .addCase(updateUserProfile.fulfilled, (state, action) => {
-        state.user.avatar = action.payload.avatarURL;
+        if (action.payload.avatarURL) {
+          state.user.avatar = action.payload.avatarURL;
+        }
         state.user.name = action.payload.name;
-
         state.error = null;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {

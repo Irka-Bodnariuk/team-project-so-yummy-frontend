@@ -20,7 +20,7 @@ export const Modal = styled.div`
   position: absolute;
   padding: 24px;
   background: #fafafa;
-
+  background-color: ${p => p.theme.colors.background};
   border-radius: 24px;
 
   box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);

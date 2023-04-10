@@ -35,6 +35,7 @@ export const Link = styled(NavLink)`
   font-size: ${p => p.theme.fontSizes.s}px;
   line-height: 1.6;
   padding: 10px 0;
+  cursor: pointer;
 
   color: ${p => p.theme.colors.headerText};
   &:hover,
