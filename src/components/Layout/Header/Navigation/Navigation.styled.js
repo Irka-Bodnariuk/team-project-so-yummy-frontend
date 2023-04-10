@@ -21,6 +21,7 @@ export const List = styled.ul`
 `;
 
 export const Item = styled.li`
+  /* padding: 0 10; */
   /* color: ${p => p.theme.colors.headerText}; */
 `;
 
@@ -33,6 +34,7 @@ export const Link = styled(NavLink)`
   font-weight: ${p => p.theme.fontWeights.subtitle};
   font-size: ${p => p.theme.fontSizes.s}px;
   line-height: 1.6;
+  padding: 10px 0;
 
   color: ${p => p.theme.colors.headerText};
   &:hover,
