@@ -18,33 +18,50 @@ import {
   IconPassword,
   ErrorIcon,
   CheckIcon,
-  Wrap,
+  ErrMess,
 } from './AuthForm.styled';
 
 const loginSchema = Yup.object({
   email: Yup.string()
-    .matches(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)
-    .required(),
-  // password: Yup.string().matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-  // ),
+    .matches(
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+      'Enter a valid email'
+    )
+    .required('Email is a required field'),
+  password: Yup.string()
+    .min(6, 'Password must contain at least 6 characters')
+    .matches(
+      /^[a-zA-Z0-9!@#$%^&*()_+[\]{}|;':",./<>?]*$/,
+      'The password can contain only Latin letters, numbers and special characters'
+    )
+    .required('Password is a required field'),
 });
 
 const registerSchema = Yup.object({
   name: Yup.string()
-    .matches(/^[a-zA-Z]+$/)
-    .required(),
+    .min(4, 'Name must contain at least 4 characters')
+    .matches(
+      /^[a-zA-Z0-9]*$/,
+      'The Name must contain only Latin letters and numbers'
+    )
+    .required('Name is a required field'),
   email: Yup.string()
-    .matches(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/)
-    .required(),
-  // password: Yup.string().matches(
-  //   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/
-  // ),
+    .matches(
+      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+      'Enter a valid email'
+    )
+    .required('Email is a required field'),
+  password: Yup.string()
+    .min(6, 'Password must contain at least 6 characters')
+    .matches(
+      /^[a-zA-Z0-9!@#$%^&*()_+[\]{}|;':",./<>?]*$/,
+      'The password can contain only Latin letters, numbers and special characters'
+    )
+    .required('Password is a required field'),
 });
 
 export const AuthForm = ({ login }) => {
   const [secure, setSecure] = useState(null);
-  console.log(secure);
   const dispatch = useDispatch();
 
   const initialValuesRegister = {
@@ -72,38 +89,43 @@ export const AuthForm = ({ login }) => {
           <Form>
             <FormInputWrapper>
               {!login && (
-                <FormLabel>
-                  <Field name="name">
-                    {({ field }) => (
-                      <>
-                        <FormInput
-                          state={
-                            errors.name && touched.name
-                              ? 'error'
-                              : !errors.name && touched.name
-                              ? 'checked'
-                              : 'undefined'
-                          }
-                          type="text"
-                          placeholder="Name"
-                          autoComplete="off"
-                          {...field}
-                        />
-                        <IconName
-                          state={
-                            errors.name && touched.name
-                              ? 'error'
-                              : !errors.name && touched.name
-                              ? 'checked'
-                              : 'undefined'
-                          }
-                        />
-                        {errors.name && touched.name && <ErrorIcon />}
-                        {!errors.name && touched.name && <CheckIcon />}
-                      </>
-                    )}
-                  </Field>
-                </FormLabel>
+                <>
+                  <FormLabel>
+                    <Field name="name">
+                      {({ field }) => (
+                        <>
+                          <FormInput
+                            state={
+                              errors.name && touched.name
+                                ? 'error'
+                                : !errors.name && touched.name
+                                ? 'checked'
+                                : 'undefined'
+                            }
+                            type="text"
+                            placeholder="Name"
+                            autoComplete="off"
+                            {...field}
+                          />
+                          <IconName
+                            state={
+                              errors.name && touched.name
+                                ? 'error'
+                                : !errors.name && touched.name
+                                ? 'checked'
+                                : 'undefined'
+                            }
+                          />
+                          {errors.name && touched.name && <ErrorIcon />}
+                          {!errors.name && touched.name && <CheckIcon />}
+                        </>
+                      )}
+                    </Field>
+                  </FormLabel>
+                  {errors.name && touched.name && (
+                    <ErrMess>{errors.name}</ErrMess>
+                  )}
+                </>
               )}
               <FormLabel>
                 <Field name="email">
@@ -137,15 +159,18 @@ export const AuthForm = ({ login }) => {
                   )}
                 </Field>
               </FormLabel>
+              {errors.email && touched.email && (
+                <ErrMess>{errors.email}</ErrMess>
+              )}
               <FormLabel>
                 <Field name="password">
                   {({ field }) => (
-                    <Wrap>
+                    <>
                       <FormInput
                         state={
                           errors.password && touched.password
                             ? 'error'
-                            : !errors.email && touched.email
+                            : !errors.password && touched.password
                             ? 'checked'
                             : 'undefined'
                         }
@@ -155,7 +180,7 @@ export const AuthForm = ({ login }) => {
                         onChange={e => {
                           field.onChange(e);
                           setSecure(zxcvbn(e.target.value).score);
-                          console.log(zxcvbn(e.target.value).score);
+                          // console.log(zxcvbn(e.target.value).score);
                         }}
                       />
                       <IconPassword
@@ -167,8 +192,9 @@ export const AuthForm = ({ login }) => {
                             : 'undefined'
                         }
                       />
-                      {errors.email && touched.email && <ErrorIcon />}
-                      {!errors.email && touched.email && <CheckIcon />}
+                      {errors.password && touched.password && <ErrorIcon />}
+                      {!errors.password && touched.password && <CheckIcon />}
+
                       {/* {secure === 1 || secure === 2 ? (
                         <p>Password is little secure</p>
                       ) : null}
@@ -176,13 +202,13 @@ export const AuthForm = ({ login }) => {
                         <p>your password is medium secure</p>
                       ) : null}
                       {secure === 4 ? <p>your password is secure</p> : null} */}
-                      {secure === 1 || secure === 2 ? (
-                        <p>Password is little secure</p>
-                      ) : null}
-                    </Wrap>
+                    </>
                   )}
                 </Field>
               </FormLabel>
+              {errors.password && touched.password && (
+                <ErrMess>{errors.password}</ErrMess>
+              )}
             </FormInputWrapper>
             <Button
               type="submit"

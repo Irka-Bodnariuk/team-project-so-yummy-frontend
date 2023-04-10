@@ -5,6 +5,7 @@ import { FiUser } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock } from 'react-icons/fi';
 import { IoIosCloseCircle, IoIosCheckmarkCircle } from 'react-icons/io';
+import { RiErrorWarningFill } from 'react-icons/ri';
 
 export const FormWrapper = styled.div`
   position: absolute;
@@ -59,17 +60,21 @@ export const FormTitle = styled.h1`
 export const FormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
-    gap: 24px;
     margin-bottom: 50px;
   }
 `;
 
 export const FormLabel = styled.label`
   position: relative;
+
+  margin-bottom: 12px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+  }
 `;
 
 export const IconName = styled(FiUser)`
@@ -145,8 +150,26 @@ export const IconPassword = styled(FiLock)`
   top: 50%;
   left: 0;
 
-  color: ${p => p.theme.colors.form.formIcon};
-  opacity: 0.4;
+  color: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return '#3CBC81';
+      case 'error':
+        return '#E74A3B';
+      default:
+        return '#fafafa';
+    }
+  }};
+  opacity: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return 1;
+      case 'error':
+        return 1;
+      default:
+        return 0.4;
+    }
+  }};
 
   transform: translate(13px, -50%);
 
@@ -165,6 +188,23 @@ export const ErrorIcon = styled(IoIosCloseCircle)`
   height: 20px;
 
   color: ${p => p.theme.colors.form.inputError};
+
+  transform: translate(-13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const WarningIcon = styled(RiErrorWarningFill)`
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+
+  color: ${p => p.theme.colors.form.inputWarning};
 
   transform: translate(-13px, -50%);
 
@@ -196,7 +236,8 @@ export const FormInput = styled(Field)`
   width: 100%;
   height: 45px;
   padding-left: 40px;
-  padding-right: ${({ error }) => (error ? '40px' : '10px')};
+  padding-right: ${({ state }) =>
+    state === 'error' || state === 'checked' ? '40px' : '10px'};
 
   color: ${p => p.theme.colors.form.inputBorder};
   background-color: transparent;
@@ -250,8 +291,16 @@ export const FormInput = styled(Field)`
   @media screen and (min-width: 768px) {
     height: 60px;
     padding-left: 50px;
-    padding-right: 50px;
+    padding-right: ${({ state }) =>
+      state === 'error' || state === 'checked' ? '50px' : '10px'};
   }
+`;
+
+export const ErrMess = styled.p`
+  margin-bottom: 5px;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #e74a3b;
 `;
 
 export const FormLink = styled(Link)`
@@ -271,8 +320,4 @@ export const FormLink = styled(Link)`
     font-size: ${p => p.theme.fontSizes.sm}px;
     line-height: ${p => p.theme.lineHeights.body};
   }
-`;
-
-export const Wrap = styled.div`
-  position: relative;
 `;
