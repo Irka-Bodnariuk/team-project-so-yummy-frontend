@@ -1,18 +1,18 @@
-import { useState, useEffect } from 'react';
-import { Button } from 'components/Button/Button';
-import { Overlay, Modal } from './ModalWrap.styled';
-import EditUser from '../EditUser/EditUser';
-import LogOut from '../LogOut/LogOut';
+import { useEffect } from "react";
+
+import { Overlay, Modal } from "./ModalWrap.styled";
+import EditUser from "../EditUser/EditUser";
+import LogOut from "../LogOut/LogOut";
 
 const ModalWrap = ({ openModal, edit, setAvatar }) => {
   useEffect(() => {
-    window.addEventListener('keydown', clickCloseModal);
+    window.addEventListener("keydown", clickCloseModal);
     return () => {
-      window.removeEventListener('keydown', clickCloseModal);
+      window.removeEventListener("keydown", clickCloseModal);
     };
   });
-  const clickCloseModal = event => {
-    if (event.code === 'Escape' || event.target === event.currentTarget) {
+  const clickCloseModal = (event) => {
+    if (event.code === "Escape" || event.target === event.currentTarget) {
       return openModal();
     }
   };
