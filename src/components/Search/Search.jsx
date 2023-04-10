@@ -15,7 +15,6 @@ import {
 } from 'store/search/searchSlice';
 import BGDots from 'reusableComponents/BGDots/BGDots';
 import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
-import BasicPagination from 'reusableComponents/Pagination/Pagination';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
 import {
@@ -29,7 +28,7 @@ import {
   SearchItem,
   NoRecipesImg,
   NoRecipesText,
-  PaginationWrapper,
+  // PaginationWrapper,
 } from './Search.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
@@ -40,13 +39,13 @@ const Search = () => {
   const searchQuery = useSelector(selectSearchQuery);
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
 
-  const onPageChange = (e, page) => {
-    setPage(page);
-  };
+  // const onPageChange = (e, page) => {
+  //   setPage(page);
+  // };
 
   useEffect(() => {
     return () => {
@@ -67,8 +66,8 @@ const Search = () => {
               toast.warning('Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            // const totalPages = Math.ceil(res.total / res.limit);
+            // setCount(totalPages);
             setIsSearchResult(true);
           })
           .catch(err => {
@@ -85,8 +84,8 @@ const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            // const totalPages = Math.ceil(res.total / res.limit);
+            // setCount(totalPages);
             setIsSearchResult(true);
           })
           .catch(err => toast.warning('Bad query'));
@@ -152,7 +151,7 @@ const Search = () => {
               )
             )}
           </SearchList>
-          <PaginationWrapper>
+          {/* <PaginationWrapper>
             {count > 1 && (
               <BasicPagination
                 count={count}
@@ -160,7 +159,7 @@ const Search = () => {
                 isChange={onPageChange}
               />
             )}
-          </PaginationWrapper>
+          </PaginationWrapper> */}
         </>
       )}
     </Container>

@@ -120,7 +120,7 @@ export const App = () => {
             <Route
               path="/signin"
               element={
-                <RestrictedRoute component={SigninPage} redirectTo="/search" />
+                <RestrictedRoute component={SigninPage} redirectTo="/main" />
               }
             />
           </Routes>
