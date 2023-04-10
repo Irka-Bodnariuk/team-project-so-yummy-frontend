@@ -1,3 +1,4 @@
+import { useMedia } from 'hooks';
 import {
   Container,
   List,
@@ -30,18 +31,20 @@ const pageList = [
   },
   {
     to: '/search',
-    text: null,
+    text: 'Search',
   },
 ];
 
 const Navigation = () => {
+  const { isDesktopScreen } = useMedia();
+
   return (
     <Container>
       <List>
         {pageList.map(({ to, text }) => (
           <Item key={to}>
             <Link to={to}>
-              {text ? (
+              {text !== 'Search' || !isDesktopScreen ? (
                 text
               ) : (
                 <Wrap>
