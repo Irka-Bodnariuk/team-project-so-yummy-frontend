@@ -17,8 +17,12 @@ import {
   IconEmail,
   IconPassword,
   ErrorIcon,
+  WarningIcon,
   CheckIcon,
   ErrMess,
+  WarMess,
+  SuccMess,
+
 } from './AuthForm.styled';
 
 const loginSchema = Yup.object({
@@ -62,6 +66,8 @@ const registerSchema = Yup.object({
 
 export const AuthForm = ({ login }) => {
   const [secure, setSecure] = useState(null);
+  const littleSecure = secure === 0 || secure === 1;
+  const mediumSecure = secure === 2 || secure === 3;
   const dispatch = useDispatch();
 
   const initialValuesRegister = {
@@ -118,13 +124,13 @@ export const AuthForm = ({ login }) => {
                           />
                           {errors.name && touched.name && <ErrorIcon />}
                           {!errors.name && touched.name && <CheckIcon />}
+                          {errors.name && touched.name && (
+                            <ErrMess>{errors.name}</ErrMess>
+                          )}
                         </>
                       )}
                     </Field>
                   </FormLabel>
-                  {errors.name && touched.name && (
-                    <ErrMess>{errors.name}</ErrMess>
-                  )}
                 </>
               )}
               <FormLabel>
@@ -155,13 +161,14 @@ export const AuthForm = ({ login }) => {
                       />
                       {errors.email && touched.email && <ErrorIcon />}
                       {!errors.email && touched.email && <CheckIcon />}
+                      {errors.email && touched.email && (
+                        <ErrMess>{errors.email}</ErrMess>
+                      )}
                     </>
                   )}
                 </Field>
               </FormLabel>
-              {errors.email && touched.email && (
-                <ErrMess>{errors.email}</ErrMess>
-              )}
+
               <FormLabel>
                 <Field name="password">
                   {({ field }) => (
@@ -170,8 +177,16 @@ export const AuthForm = ({ login }) => {
                         state={
                           errors.password && touched.password
                             ? 'error'
-                            : !errors.password && touched.password
+                            : !errors.password && secure === 4
                             ? 'checked'
+                            : !errors.password && secure === 0
+                            ? 'warning'
+                            : !errors.password && secure === 1
+                            ? 'warning'
+                            : !errors.password && secure === 2
+                            ? 'warning'
+                            : !errors.password && secure === 3
+                            ? 'warning'
                             : 'undefined'
                         }
                         type="password"
@@ -180,35 +195,51 @@ export const AuthForm = ({ login }) => {
                         onChange={e => {
                           field.onChange(e);
                           setSecure(zxcvbn(e.target.value).score);
-                          // console.log(zxcvbn(e.target.value).score);
                         }}
                       />
                       <IconPassword
                         state={
                           errors.password && touched.password
                             ? 'error'
-                            : !errors.password && touched.password
+                            : !errors.password && secure === 4
                             ? 'checked'
+                            : !errors.password && secure === 0
+                            ? 'warning'
+                            : !errors.password && secure === 1
+                            ? 'warning'
+                            : !errors.password && secure === 2
+                            ? 'warning'
+                            : !errors.password && secure === 3
+                            ? 'warning'
                             : 'undefined'
                         }
                       />
                       {errors.password && touched.password && <ErrorIcon />}
-                      {!errors.password && touched.password && <CheckIcon />}
-
-                      {secure === 1 || secure === 2 ? (
-                        <p>Password is little secure</p>
-                      ) : null}
-                      {secure === 3 ? (
-                        <p>your password is medium secure</p>
-                      ) : null}
-                      {secure === 4 ? <p>your password is secure</p> : null}
+                      {errors.password && touched.password && (
+                        <ErrMess>{errors.password}</ErrMess>
+                      )}
+                      {!errors.password && littleSecure && (
+                        <>
+                          <WarMess>Your password is little secure</WarMess>
+                          <WarningIcon />
+                        </>
+                      )}
+                      {!errors.password && mediumSecure && (
+                        <>
+                          <WarMess>Your password is medium secure</WarMess>
+                          <WarningIcon />
+                        </>
+                      )}
+                      {!errors.password && secure === 4 && (
+                        <>
+                          <SuccMess>Your password is secure</SuccMess>
+                          <CheckIcon />
+                        </>
+                      )}
                     </>
                   )}
                 </Field>
               </FormLabel>
-              {errors.password && touched.password && (
-                <ErrMess>{errors.password}</ErrMess>
-              )}
             </FormInputWrapper>
             <Button
               type="submit"
