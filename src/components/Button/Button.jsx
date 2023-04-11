@@ -24,7 +24,6 @@ export const Button = ({
     return (
       <LinkStyled
         to={to}
-        onChange={onChange}
         type={type}
         width={width}
         width_tablet={widthTablet}
@@ -47,6 +46,7 @@ export const Button = ({
   return (
     <ButtonStyled
       type={type}
+      onChange={onChange}
       onClick={onClick}
       width={width}
       width_tablet={widthTablet}

@@ -4,30 +4,28 @@ import { FiEdit2, FiArrowRight } from 'react-icons/fi';
 
 export const Overlay = styled.div`
   z-index: 1;
-  position: fixed;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   height: 100vh;
   top: 0;
   right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background-color: ${p => p.theme.colors.backdropColor};
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  padding: 24px;
-  background: #fafafa;
-
-  border-radius: 24px;
-
-  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
+  padding: 18px;
+  background-color: ${p => p.theme.colors.background};
+  border: 1px solid #8baa36;
+  border-radius: 8px;
+  top: 72px;
+  right: 60px;
 
   @media screen and (min-width: 768px) {
+    top: 78px;
+    right: 128px;
   }
   @media screen and (min-width: 1440px) {
+    right: 211px;
   }
 `;
 
@@ -43,25 +41,23 @@ export const Wrap = styled.div`
 export const Text = styled.p`
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
+  font-weight: ${p => p.theme.fontWeights.body};
+  font-size: ${p => p.theme.fontSizes.s}px;
   line-height: 1.6;
-  color: #23262a;
-  /* margin-right: 37px;
-  @media screen and (min-width: 768px) {
-    margin-right: 53px;
-  } */
+  color: ${p => p.theme.colors.headerText};
 `;
 
-export const ButtonClose = styled.button`
+export const ButtonEdit = styled.button`
   background-color: transparent;
   border: none;
   margin: 0;
   padding: 0;
   display: flex;
   align-items: center;
+  color: ${p => p.theme.colors.headerText};
+  cursor: pointer;
   &:hover {
-    color: #8baa36;
+    color: ${p => p.theme.colors.accentColor};
   }
 `;
 
@@ -73,5 +69,5 @@ export const EditIcon = styled(FiEdit2)`
 export const LogOutIcon = styled(FiArrowRight)`
   width: 18px;
   height: 18px;
-  margin-left: 4px;
+  margin-left: ${p => p.theme.space[2]}px;
 `;

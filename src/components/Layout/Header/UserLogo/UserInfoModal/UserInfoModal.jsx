@@ -7,12 +7,12 @@ import {
   Photo,
   PlusIcon,
   EditIcon,
-  FormSubscribe,
-  Wrap,
+  FormEdit,
+  LabelPhoto,
   Input,
   UserIcon,
-  WrapInput,
-} from './EditUser.styled';
+  LabelInput,
+} from './UserInfoModal.styled';
 
 import { Button } from 'components/Button/Button';
 
@@ -20,15 +20,35 @@ import { updateUserProfile } from 'store/auth/authOperations';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef, useState } from 'react';
 
-const EditUser = ({ onClose }) => {
+import * as yup from 'yup';
+
+const schema = yup.object().shape({
+  userName: yup.string().min(4).required(),
+});
+
+const UserInfoModal = ({ onClose }) => {
   const filePicker = useRef(null);
   const dispatch = useDispatch();
+  const darkMode = useSelector(state => state.theme);
   const avatar = useSelector(state => state.auth.user.avatar);
   const userName = useSelector(state => state.auth.user.name);
   const [selectedFile, setSelectedFile] = useState(avatar);
 
   const handleSubmit = values => {
     const formData = new FormData();
+
+    if (values.avatarURL === '' && values.name === userName) {
+      alert('There are no changes!');
+      return;
+    }
+    if (values.avatarURL === '' && values.name !== userName) {
+      formData.append('name', values.name);
+      dispatch(updateUserProfile(formData));
+      onClose();
+
+      return;
+    }
+
     formData.append('avatar', values.avatarURL);
     formData.append('name', values.name);
     dispatch(updateUserProfile(formData));
@@ -42,7 +62,7 @@ const EditUser = ({ onClose }) => {
   return (
     <Formik
       initialValues={{
-        avatarURL: avatar,
+        avatarURL: '',
         name: userName,
       }}
       onSubmit={(values, actions) => {
@@ -52,12 +72,12 @@ const EditUser = ({ onClose }) => {
       }}
     >
       {props => (
-        <FormSubscribe onSubmit={props.handleSubmit}>
-          <ButtonClose type="button" onClick={onClose}>
+        <FormEdit onSubmit={props.handleSubmit}>
+          <ButtonClose type="button" onClick={onClose} dark={darkMode.darkMode}>
             <CloseIcon />
           </ButtonClose>
           <Container>
-            <Wrap>
+            <LabelPhoto>
               <Photo src={selectedFile} alt={userName} />
               <input
                 className="hidden"
@@ -65,46 +85,65 @@ const EditUser = ({ onClose }) => {
                 ref={filePicker}
                 name="avatarURL"
                 accept="image/*,.png, .jpeg,.gif,.web"
+                onBlur={() => {
+                  props.setTouched({
+                    avatarURL: true,
+                  });
+                }}
                 onChange={event => {
-                  if (event.target.files[0]) {
-                    setSelectedFile(
-                      window.URL.createObjectURL(event.target.files[0])
-                    );
-                    props.setFieldValue('avatarURL', event.target.files[0]);
-                  } else {
+                  if (!event.target.files[0]) {
                     alert('Incorrect file format!');
                     return;
                   }
+                  setSelectedFile(
+                    window.URL.createObjectURL(event.target.files[0])
+                  );
+                  props.setFieldValue('avatarURL', event.target.files[0]);
                 }}
               />
 
-              <ButtonAdd type="button" onClick={handelPick}>
+              <ButtonAdd
+                type="button"
+                onClick={handelPick}
+                dark={darkMode.darkMode}
+              >
                 <PlusIcon />
               </ButtonAdd>
-            </Wrap>
-            <WrapInput>
+            </LabelPhoto>
+            <LabelInput>
               <UserIcon />
 
               <EditIcon />
 
-              <Input type="text" name="name" placeholder="Your name" />
-            </WrapInput>
+              <Input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                onBlur={() => {
+                  props.setTouched({
+                    name: true,
+                  });
+                }}
+              />
+            </LabelInput>
 
             <Button
               type="submit"
-              look="subscribe"
+              look="logout"
               width="100%"
-              heigth="59px"
+              heigth="49px"
               heigthTablet="59px"
-              fontSize="16px"
+              fontSize="14px"
+              fontSizeTablet="16px"
+              lineHeight="18px"
             >
               Save changes
             </Button>
           </Container>
-        </FormSubscribe>
+        </FormEdit>
       )}
     </Formik>
   );
 };
 
-export default EditUser;
+export default UserInfoModal;

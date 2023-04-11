@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import UserLogoModal from '../UserModal/UserLogoModal';
+import UserLogoModal from './UserLogoModal/UserLogoModal';
 import { useSelector } from 'react-redux';
 
 import { Container, Photo, WrapPhoto, Name } from './UserLogo.styled';
