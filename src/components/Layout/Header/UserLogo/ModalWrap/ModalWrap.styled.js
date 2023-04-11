@@ -4,30 +4,32 @@ import { FiEdit2, FiArrowRight } from 'react-icons/fi';
 
 export const Overlay = styled.div`
   z-index: 1;
-  position: absolute;
-  width: 100vw;
+  position: fixed;
+  width: 100%;
   height: 100vh;
   top: 0;
   right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  /* background-color: rgba(0, 0, 0, 0.5); */
+  background-color: ${p => p.theme.colors.backdropColor};
 `;
 
 export const Modal = styled.div`
   position: absolute;
-  padding: 18px;
+  padding: 24px;
   background: #fafafa;
-  border: 1px solid #8baa36;
-  border-radius: 8px;
-  top: 72px;
-  right: 60px;
+  background-color: ${p => p.theme.colors.background};
+  border-radius: 24px;
+
+  box-shadow: 0px 4px 48px rgba(0, 0, 0, 0.1);
 
   @media screen and (min-width: 768px) {
-    top: 78px;
-    right: 128px;
+    padding: 40px;
   }
   @media screen and (min-width: 1440px) {
-    right: 211px;
+    padding: 50px;
   }
 `;
 
