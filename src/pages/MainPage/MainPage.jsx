@@ -3,24 +3,10 @@ import MainPageStyled from './MainPageStyled';
 import СhooseYourBreakfast from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
 import MainPageSearch from 'components/MainPageSearch/MainPageSearch';
 
-import { Button } from 'components/Button/Button';
-
 const MainPage = () => {
   return (
     <>
       <MainPageStyled>
-        <Button
-          look="rounded"
-          to="/register"
-          fontSize="14px"
-          fontSizeTablet="16px"
-          width="113px"
-          heigth="52px"
-          widthTablet="184px"
-          heigthTablet="67px"
-        >
-          Search
-        </Button>
         <h1>
           <span>So</span>Yummy
         </h1>

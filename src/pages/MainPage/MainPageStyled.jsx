@@ -28,7 +28,7 @@ const MainPageStyled = styled.div`
     padding-bottom: 125px;
     margin-bottom: 0px;
 
-    margin-top: -100px;
+    margin-top: -148px;
     margin-left: ${p => -p.theme.space[5]}px;
     margin-right: ${p => -p.theme.space[5]}px;
 
@@ -42,7 +42,7 @@ const MainPageStyled = styled.div`
     background: url(${DesktopBackground1x});
     padding-bottom: 210px;
     background-position-y: 0%;
-    margin-top: -70px;
+    margin-top: -145px;
     padding-bottom: 100px;
     margin-bottom: 110px;
 
@@ -61,7 +61,7 @@ const MainPageStyled = styled.div`
     letter-spacing: -0.005em;
     color: #22252a;
     margin-bottom: 14px;
-    padding-top: 70px;
+    padding-top: 69px;
     & span {
       color: #8baa36;
     }
@@ -77,6 +77,7 @@ const MainPageStyled = styled.div`
       padding-bottom: 0px;
       padding-top: 230px;
       margin-left: 100px;
+      margin-bottom: 10px;
     }
   }
 

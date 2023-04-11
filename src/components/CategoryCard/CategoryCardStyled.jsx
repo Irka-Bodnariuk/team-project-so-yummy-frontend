@@ -28,12 +28,21 @@ const CategoryCardStyled = styled.div`
         width: 336px;
       }
     }
-
     @media ${props => props.theme.device.desktop} {
       gap: 14px;
       & > div {
         width: 300px;
       }
+    }
+  }
+
+  &:last-of-type {
+    margin-bottom: 40px;
+    @media ${props => props.theme.device.tablet} {
+      margin-bottom: 32px;
+    }
+    @media ${props => props.theme.device.desktop} {
+      margin-bottom: 16px;
     }
   }
 
@@ -91,6 +100,7 @@ export const RecipeStyled = styled.div`
 
   @media ${props => props.theme.device.desktop} {
     margin-bottom: 50px;
+    padding-top: 248px;
   }
 
   & > span {

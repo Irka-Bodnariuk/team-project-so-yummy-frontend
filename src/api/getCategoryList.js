@@ -1,7 +1,8 @@
-const getCategoryList = async () => {
+const getCategoryList = async (token) => {
 
   const optimizationObject = (obj) => {
     return {
+      id: obj._id,
       title: obj.title,
       preview: obj.preview
     }
@@ -16,7 +17,6 @@ const getCategoryList = async () => {
     return newObj
   }
 
-  const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MzFhZGI1YjMzM2I1ZGFmZGJmYTI3NiIsImlhdCI6MTY4MTE1NTE1OCwiZXhwIjoxNjgxMjM3OTU4fQ.oq1TsFK7KWzdzlbuXsLhy0EkPqyB8gXGb8zrs1Ei4L0';
   const list = await fetch('https://team-project-so-yummy-backend.onrender.com/api/recipes/main-page', {
     method: 'GET',
     headers: {

@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+// ${p => p.theme.colors.form.inputError}
+
 const СhooseYourBreakfastStyled = styled.div`
   width: 225px;
   background: #fafafa;
@@ -13,7 +15,7 @@ const СhooseYourBreakfastStyled = styled.div`
     width: 260px;
     padding: 12px;
     margin-top: -12px;
-    margin-left: 71px;
+    margin-left: 78px;
   }
 
   @media ${props => props.theme.device.desktop} {
@@ -45,11 +47,15 @@ const СhooseYourBreakfastStyled = styled.div`
       line-height: 20px;
     }
   }
-  & > button {
+  & > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    text-decoration: none;
     border: none;
     background: none;
     margin-left: auto;
-    display: flex;
+    margin-right: auto;
     padding: 4px 0 4px 0;
     margin-bottom: -2px;
 
@@ -62,12 +68,14 @@ const СhooseYourBreakfastStyled = styled.div`
     }
 
     & > img {
-      display: block;
+      /* display: inline-block; */
       width: 16px;
       height: 10px;
       margin-left: 5px;
     }
     & > span {
+      /* display: inline-block; */
+
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
