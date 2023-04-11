@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.feee2890.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.26c62ef7.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.0d730767.js",
     "static/media/main-des-ret.png": "/team-project-so-yummy-frontend/static/media/main-des-ret.01356c9aa850f3ecc498.png",
     "static/media/main-tab-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-tab-ret-min.439c0fe961a05c52829c.png",
     "static/media/main-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-ret-min.f117d415d58bd16a304a.png",
@@ -22,8 +22,10 @@
     "static/media/bg_error_desktop@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_desktop@1x.0fce8791c1b5e9b8cbf9.png",
     "static/media/bg_error_tablet@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_tablet@1x.a4d4ef93bde63ef4e6fc.png",
     "static/media/auth-pana-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-mob-ret-min.14335bd09b581e799964.png",
+    "static/media/mobile-menu-bg-tab-1x-min.png": "/team-project-so-yummy-frontend/static/media/mobile-menu-bg-tab-1x-min.94ab13c1f302b6f94cb9.png",
     "static/media/bg_error_mob@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_mob@1x.830623caea782215ca94.png",
     "static/media/sprite.svg": "/team-project-so-yummy-frontend/static/media/sprite.6873ee9bdd2851c28cac43ff0d2add1d.svg",
+    "static/media/mobile-menu-bg-mob-1x-min.png": "/team-project-so-yummy-frontend/static/media/mobile-menu-bg-mob-1x-min.b236250f3373e3cd26b8.png",
     "static/media/auth-pana-des.png": "/team-project-so-yummy-frontend/static/media/auth-pana-des.9556d40c68d06e675366.png",
     "static/media/auth-pana-tab-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min.da31f1cc4a620623d530.png",
     "static/media/m_blur.png": "/team-project-so-yummy-frontend/static/media/m_blur.a5f73509be36e7667cd2.png",
@@ -31,10 +33,10 @@
     "index.html": "/team-project-so-yummy-frontend/index.html",
     "static/media/fav.svg": "/team-project-so-yummy-frontend/static/media/fav.639dd89a2d779a7e0504d8b9a1737e24.svg",
     "main.feee2890.css.map": "/team-project-so-yummy-frontend/static/css/main.feee2890.css.map",
-    "main.26c62ef7.js.map": "/team-project-so-yummy-frontend/static/js/main.26c62ef7.js.map"
+    "main.0d730767.js.map": "/team-project-so-yummy-frontend/static/js/main.0d730767.js.map"
   },
   "entrypoints": [
     "static/css/main.feee2890.css",
-    "static/js/main.26c62ef7.js"
+    "static/js/main.0d730767.js"
   ]
 }
