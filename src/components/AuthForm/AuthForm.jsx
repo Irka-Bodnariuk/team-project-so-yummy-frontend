@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { registrationUser, loginUser } from 'store/auth/authOperations';
-import { Formik, Form, Field } from 'formik';
-import * as Yup from 'yup';
-import zxcvbn from 'zxcvbn';
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registrationUser, loginUser } from "store/auth/authOperations";
+import { Formik, Form, Field } from "formik";
+import * as Yup from "yup";
+import zxcvbn from "zxcvbn";
 
-import { Button } from 'components/Button/Button';
+import { Button } from "components/Button/Button";
 import {
   FormWrapper,
   FormTitle,
@@ -19,45 +19,45 @@ import {
   ErrorIcon,
   CheckIcon,
   ErrMess,
-} from './AuthForm.styled';
+} from "./AuthForm.styled";
 
 const loginSchema = Yup.object({
   email: Yup.string()
     .matches(
       /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-      'Enter a valid email'
+      "Enter a valid email"
     )
-    .required('Email is a required field'),
+    .required("Email is a required field"),
   password: Yup.string()
-    .min(6, 'Password must contain at least 6 characters')
+    .min(6, "Password must contain at least 6 characters")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+[\]{}|;':",./<>?]*$/,
-      'The password can contain only Latin letters, numbers and special characters'
+      "The password can contain only Latin letters, numbers and special characters"
     )
-    .required('Password is a required field'),
+    .required("Password is a required field"),
 });
 
 const registerSchema = Yup.object({
   name: Yup.string()
-    .min(4, 'Name must contain at least 4 characters')
+    .min(4, "Name must contain at least 4 characters")
     .matches(
       /^[a-zA-Z0-9]*$/,
-      'The Name must contain only Latin letters and numbers'
+      "The Name must contain only Latin letters and numbers"
     )
-    .required('Name is a required field'),
+    .required("Name is a required field"),
   email: Yup.string()
     .matches(
       /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
-      'Enter a valid email'
+      "Enter a valid email"
     )
-    .required('Email is a required field'),
+    .required("Email is a required field"),
   password: Yup.string()
-    .min(6, 'Password must contain at least 6 characters')
+    .min(6, "Password must contain at least 6 characters")
     .matches(
       /^[a-zA-Z0-9!@#$%^&*()_+[\]{}|;':",./<>?]*$/,
-      'The password can contain only Latin letters, numbers and special characters'
+      "The password can contain only Latin letters, numbers and special characters"
     )
-    .required('Password is a required field'),
+    .required("Password is a required field"),
 });
 
 export const AuthForm = ({ login }) => {
@@ -65,16 +65,16 @@ export const AuthForm = ({ login }) => {
   const dispatch = useDispatch();
 
   const initialValuesRegister = {
-    name: '',
-    email: '',
-    password: '',
+    name: "",
+    email: "",
+    password: "",
   };
   const initialValuesLogin = {
-    email: '',
-    password: '',
+    email: "",
+    password: "",
   };
 
-  const handleSubmit = values => {
+  const handleSubmit = (values) => {
     !login ? dispatch(registrationUser(values)) : dispatch(loginUser(values));
   };
   return (
@@ -85,7 +85,7 @@ export const AuthForm = ({ login }) => {
     >
       {({ errors, touched }) => (
         <FormWrapper>
-          <FormTitle>{!login ? 'Registration' : 'Sign In'}</FormTitle>
+          <FormTitle>{!login ? "Registration" : "Sign In"}</FormTitle>
           <Form>
             <FormInputWrapper>
               {!login && (
@@ -97,10 +97,10 @@ export const AuthForm = ({ login }) => {
                           <FormInput
                             state={
                               errors.name && touched.name
-                                ? 'error'
+                                ? "error"
                                 : !errors.name && touched.name
-                                ? 'checked'
-                                : 'undefined'
+                                ? "checked"
+                                : "undefined"
                             }
                             type="text"
                             placeholder="Name"
@@ -110,10 +110,10 @@ export const AuthForm = ({ login }) => {
                           <IconName
                             state={
                               errors.name && touched.name
-                                ? 'error'
+                                ? "error"
                                 : !errors.name && touched.name
-                                ? 'checked'
-                                : 'undefined'
+                                ? "checked"
+                                : "undefined"
                             }
                           />
                           {errors.name && touched.name && <ErrorIcon />}
@@ -134,10 +134,10 @@ export const AuthForm = ({ login }) => {
                       <FormInput
                         state={
                           errors.email && touched.email
-                            ? 'error'
+                            ? "error"
                             : !errors.email && touched.email
-                            ? 'checked'
-                            : 'undefined'
+                            ? "checked"
+                            : "undefined"
                         }
                         type="Email"
                         placeholder="Email"
@@ -147,10 +147,10 @@ export const AuthForm = ({ login }) => {
                       <IconEmail
                         state={
                           errors.email && touched.email
-                            ? 'error'
+                            ? "error"
                             : !errors.email && touched.email
-                            ? 'checked'
-                            : 'undefined'
+                            ? "checked"
+                            : "undefined"
                         }
                       />
                       {errors.email && touched.email && <ErrorIcon />}
@@ -169,15 +169,15 @@ export const AuthForm = ({ login }) => {
                       <FormInput
                         state={
                           errors.password && touched.password
-                            ? 'error'
+                            ? "error"
                             : !errors.password && touched.password
-                            ? 'checked'
-                            : 'undefined'
+                            ? "checked"
+                            : "undefined"
                         }
                         type="password"
                         placeholder="Password"
                         {...field}
-                        onChange={e => {
+                        onChange={(e) => {
                           field.onChange(e);
                           setSecure(zxcvbn(e.target.value).score);
                           // console.log(zxcvbn(e.target.value).score);
@@ -186,22 +186,22 @@ export const AuthForm = ({ login }) => {
                       <IconPassword
                         state={
                           errors.password && touched.password
-                            ? 'error'
+                            ? "error"
                             : !errors.password && touched.password
-                            ? 'checked'
-                            : 'undefined'
+                            ? "checked"
+                            : "undefined"
                         }
                       />
                       {errors.password && touched.password && <ErrorIcon />}
                       {!errors.password && touched.password && <CheckIcon />}
 
-                      {/* {secure === 1 || secure === 2 ? (
+                      {secure === 1 || secure === 2 ? (
                         <p>Password is little secure</p>
                       ) : null}
                       {secure === 3 ? (
                         <p>your password is medium secure</p>
                       ) : null}
-                      {secure === 4 ? <p>your password is secure</p> : null} */}
+                      {secure === 4 ? <p>your password is secure</p> : null}
                     </>
                   )}
                 </Field>
@@ -218,7 +218,7 @@ export const AuthForm = ({ login }) => {
               heigthTablet="59px"
               fontSize="16px"
             >
-              {!login ? 'Sign up' : 'Sign In'}
+              {!login ? "Sign up" : "Sign In"}
             </Button>
           </Form>
           {!login ? (
