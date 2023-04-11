@@ -33,9 +33,13 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  @media screen and (min-width: 1440px) {
+    margin-left: 0;
+  }
 `;
 
-export const ButtunMenu = styled.button`
+export const ButtonMenu = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
