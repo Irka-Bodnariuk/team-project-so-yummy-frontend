@@ -60,21 +60,18 @@ export const FormTitle = styled.h1`
 export const FormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 16px;
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
+    gap: 24px;
+
     margin-bottom: 50px;
   }
 `;
 
 export const FormLabel = styled.label`
   position: relative;
-
-  margin-bottom: 12px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 24px;
-  }
 `;
 
 export const IconName = styled(FiUser)`
@@ -156,6 +153,8 @@ export const IconPassword = styled(FiLock)`
         return '#3CBC81';
       case 'error':
         return '#E74A3B';
+      case 'warning':
+        return '#F6C23E';
       default:
         return '#fafafa';
     }
@@ -165,6 +164,8 @@ export const IconPassword = styled(FiLock)`
       case 'checked':
         return 1;
       case 'error':
+        return 1;
+      case 'warning':
         return 1;
       default:
         return 0.4;
@@ -247,6 +248,8 @@ export const FormInput = styled(Field)`
         return '1px solid #3CBC81';
       case 'error':
         return '1px solid #E74A3B';
+      case 'warning':
+        return '1px solid #F6C23E';
       default:
         return '1px solid #fafafa';
     }
@@ -266,16 +269,6 @@ export const FormInput = styled(Field)`
 
   :focus + svg {
     opacity: 1;
-    color: ${({ state }) => {
-      switch (state) {
-        case 'checked':
-          return '1px solid #3CBC81';
-        case 'error':
-          return '1px solid #E74A3B';
-        default:
-          return '1px solid #fafafa';
-      }
-    }};
   }
 
   :focus {
@@ -297,10 +290,39 @@ export const FormInput = styled(Field)`
 `;
 
 export const ErrMess = styled.p`
-  margin-bottom: 5px;
-  font-size: 12px;
+  position: absolute;
+
+  font-size: 10px;
   line-height: 1.2;
   color: #e74a3b;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+export const WarMess = styled.p`
+  position: absolute;
+
+  font-size: 10px;
+  line-height: 1.2;
+  color: #f6c23e;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+export const SuccMess = styled.p`
+  position: absolute;
+
+  font-size: 10px;
+  line-height: 1.2;
+  color: #3cbc81;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
 `;
 
 export const FormLink = styled(Link)`
