@@ -1,4 +1,4 @@
-import { Formik } from 'formik';
+import { Formik } from "formik";
 import {
   Container,
   ButtonClose,
@@ -12,45 +12,45 @@ import {
   Input,
   UserIcon,
   LabelInput,
-} from './UserInfoModal.styled';
+} from "./UserInfoModal.styled";
 
-import { Button } from 'components/Button/Button';
+import { Button } from "components/Button/Button";
 
-import { updateUserProfile } from 'store/auth/authOperations';
-import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
+import { updateUserProfile } from "store/auth/authOperations";
+import { useDispatch, useSelector } from "react-redux";
+import { useRef, useState } from "react";
 
-import * as yup from 'yup';
+import * as yup from "yup";
 
 const schema = yup.object().shape({
-  userName: yup.string().min(4).required(),
+  name: yup.string().min(2).required(),
 });
 
 const UserInfoModal = ({ onClose }) => {
   const filePicker = useRef(null);
   const dispatch = useDispatch();
-  const darkMode = useSelector(state => state.theme);
-  const avatar = useSelector(state => state.auth.user.avatar);
-  const userName = useSelector(state => state.auth.user.name);
+  const darkMode = useSelector((state) => state.theme);
+  const avatar = useSelector((state) => state.auth.user.avatar);
+  const userName = useSelector((state) => state.auth.user.name);
   const [selectedFile, setSelectedFile] = useState(avatar);
 
-  const handleSubmit = values => {
+  const handleSubmit = (values) => {
     const formData = new FormData();
 
-    if (values.avatarURL === '' && values.name === userName) {
-      alert('There are no changes!');
+    if (values.avatarURL === "" && values.name === userName) {
+      alert("There are no changes!");
       return;
     }
-    if (values.avatarURL === '' && values.name !== userName) {
-      formData.append('name', values.name);
+    if (values.avatarURL === "" && values.name !== userName) {
+      formData.append("name", values.name);
       dispatch(updateUserProfile(formData));
       onClose();
 
       return;
     }
 
-    formData.append('avatar', values.avatarURL);
-    formData.append('name', values.name);
+    formData.append("avatar", values.avatarURL);
+    formData.append("name", values.name);
     dispatch(updateUserProfile(formData));
     onClose();
   };
@@ -62,16 +62,17 @@ const UserInfoModal = ({ onClose }) => {
   return (
     <Formik
       initialValues={{
-        avatarURL: '',
+        avatarURL: "",
         name: userName,
       }}
+      validationSchema={schema}
       onSubmit={(values, actions) => {
         handleSubmit(values);
         actions.setSubmitting(false);
         actions.resetForm();
       }}
     >
-      {props => (
+      {(props) => (
         <FormEdit onSubmit={props.handleSubmit}>
           <ButtonClose type="button" onClick={onClose} dark={darkMode.darkMode}>
             <CloseIcon />
@@ -90,15 +91,15 @@ const UserInfoModal = ({ onClose }) => {
                     avatarURL: true,
                   });
                 }}
-                onChange={event => {
+                onChange={(event) => {
                   if (!event.target.files[0]) {
-                    alert('Incorrect file format!');
+                    alert("Incorrect file format!");
                     return;
                   }
                   setSelectedFile(
                     window.URL.createObjectURL(event.target.files[0])
                   );
-                  props.setFieldValue('avatarURL', event.target.files[0]);
+                  props.setFieldValue("avatarURL", event.target.files[0]);
                 }}
               />
 
