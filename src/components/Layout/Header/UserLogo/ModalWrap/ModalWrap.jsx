@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 
 import { Overlay, Modal } from './ModalWrap.styled';
-import EditUser from '../EditUser/EditUser';
-import LogOut from '../LogOut/LogOut';
+import EditUser from '../UserInfoModal/UserInfoModal';
+import LogOut from '../LogoutBtn/LogoutBtn';
 
 const ModalWrap = ({ openModal, edit }) => {
   useEffect(() => {

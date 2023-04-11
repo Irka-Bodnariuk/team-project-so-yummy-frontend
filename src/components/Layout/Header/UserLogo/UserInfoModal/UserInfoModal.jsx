@@ -12,7 +12,7 @@ import {
   Input,
   UserIcon,
   LabelInput,
-} from './EditUser.styled';
+} from './UserInfoModal.styled';
 
 import { Button } from 'components/Button/Button';
 
@@ -26,9 +26,10 @@ const schema = yup.object().shape({
   userName: yup.string().min(4).required(),
 });
 
-const EditUser = ({ onClose }) => {
+const UserInfoModal = ({ onClose }) => {
   const filePicker = useRef(null);
   const dispatch = useDispatch();
+  const darkMode = useSelector(state => state.theme);
   const avatar = useSelector(state => state.auth.user.avatar);
   const userName = useSelector(state => state.auth.user.name);
   const [selectedFile, setSelectedFile] = useState(avatar);
@@ -72,7 +73,7 @@ const EditUser = ({ onClose }) => {
     >
       {props => (
         <FormEdit onSubmit={props.handleSubmit}>
-          <ButtonClose type="button" onClick={onClose}>
+          <ButtonClose type="button" onClick={onClose} dark={darkMode.darkMode}>
             <CloseIcon />
           </ButtonClose>
           <Container>
@@ -98,11 +99,14 @@ const EditUser = ({ onClose }) => {
                     window.URL.createObjectURL(event.target.files[0])
                   );
                   props.setFieldValue('avatarURL', event.target.files[0]);
-                  console.log(selectedFile);
                 }}
               />
 
-              <ButtonAdd type="button" onClick={handelPick}>
+              <ButtonAdd
+                type="button"
+                onClick={handelPick}
+                dark={darkMode.darkMode}
+              >
                 <PlusIcon />
               </ButtonAdd>
             </LabelPhoto>
@@ -125,11 +129,13 @@ const EditUser = ({ onClose }) => {
 
             <Button
               type="submit"
-              look="subscribe"
+              look="logout"
               width="100%"
-              heigth="59px"
+              heigth="49px"
               heigthTablet="59px"
-              fontSize="16px"
+              fontSize="14px"
+              fontSizeTablet="16px"
+              lineHeight="18px"
             >
               Save changes
             </Button>
@@ -140,4 +146,4 @@ const EditUser = ({ onClose }) => {
   );
 };
 
-export default EditUser;
+export default UserInfoModal;

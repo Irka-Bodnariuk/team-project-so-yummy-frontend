@@ -13,7 +13,7 @@ export const ButtonStyled = styled.button`
   font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
   line-height: ${({ lineheight }) => (lineheight ? lineheight : '21px')};
-
+  cursor: pointer;
   color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
   background-color: ${({ look }) => {
     switch (look) {

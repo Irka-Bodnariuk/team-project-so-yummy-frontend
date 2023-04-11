@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from 'components/Button/Button';
-import ModalWrap from './ModalWrap/ModalWrap';
+import ModalWrap from '../ModalWrap/ModalWrap';
 
 import {
   LogOutIcon,
@@ -9,7 +9,7 @@ import {
   Text,
   Wrap,
   Overlay,
-  ButtonClose,
+  ButtonEdit,
 } from './UserLogoModal.styled';
 
 const UserLogoModal = ({ openModalEdit }) => {
@@ -37,14 +37,14 @@ const UserLogoModal = ({ openModalEdit }) => {
       <Modal>
         <Wrap>
           <Text>Edit profile</Text>
-          <ButtonClose
+          <ButtonEdit
             onClick={() => {
               toggleModal();
               setEditModal(true);
             }}
           >
             <EditIcon />
-          </ButtonClose>
+          </ButtonEdit>
         </Wrap>
         <Button
           onClick={() => {
@@ -53,12 +53,11 @@ const UserLogoModal = ({ openModalEdit }) => {
           }}
           look="rounded_dark"
           type="button"
-          fontSize="14px"
-          fontSizeTablet="16px"
           width="125px"
-          heigth="43px"
           widthTablet="141px"
-          heigthTablet="43px"
+          heigth="43px"
+          fontSize="14px"
+          lineHeight="21px"
         >
           Log out
           <LogOutIcon />
