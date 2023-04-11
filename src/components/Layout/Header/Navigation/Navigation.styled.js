@@ -20,10 +20,7 @@ export const List = styled.ul`
   }
 `;
 
-export const Item = styled.li`
-  /* padding: 0 10; */
-  /* color: ${p => p.theme.colors.headerText}; */
-`;
+export const Item = styled.li``;
 
 export const Link = styled(NavLink)`
   display: flex;
@@ -38,6 +35,10 @@ export const Link = styled(NavLink)`
   cursor: pointer;
 
   color: ${p => p.theme.colors.headerText};
+
+  &.active {
+    color: ${p => p.theme.colors.accentColor};
+  }
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.accentColor};
@@ -46,10 +47,4 @@ export const Link = styled(NavLink)`
 export const SearchIcon = styled(RiSearchLine)`
   width: 24px;
   height: 24px;
-
-  color: ${p => p.theme.colors.heroText};
-  &:hover,
-  &:focus {
-    color: ${p => p.theme.colors.accentColor};
-  }
 `;

@@ -7,6 +7,7 @@ import {
   SearchIcon,
   Wrap,
 } from './Navigation.styled';
+import { useLocation } from 'react-router';
 
 const pageList = [
   {
@@ -37,21 +38,34 @@ const pageList = [
 
 const Navigation = () => {
   const { isDesktopScreen } = useMedia();
+  const { pathname } = useLocation();
 
   return (
     <Container>
       <List>
         {pageList.map(({ to, text }) => (
           <Item key={to}>
-            <Link to={to}>
-              {text !== 'Search' || !isDesktopScreen ? (
-                text
-              ) : (
-                <Wrap>
-                  <SearchIcon />
-                </Wrap>
-              )}
-            </Link>
+            {pathname === to ? (
+              <Link to={to} className="active">
+                {text !== 'Search' || !isDesktopScreen ? (
+                  text
+                ) : (
+                  <Wrap>
+                    <SearchIcon />
+                  </Wrap>
+                )}
+              </Link>
+            ) : (
+              <Link to={to}>
+                {text !== 'Search' || !isDesktopScreen ? (
+                  text
+                ) : (
+                  <Wrap>
+                    <SearchIcon />
+                  </Wrap>
+                )}
+              </Link>
+            )}
           </Item>
         ))}
       </List>
