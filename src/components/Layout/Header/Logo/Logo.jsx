@@ -2,6 +2,7 @@ import { useMedia } from 'hooks';
 import { MainIcon, FooterIcon } from 'images/svgIcons';
 
 import { NavLink, useLocation } from 'react-router-dom';
+import { WrapLogo } from './Logo.styled';
 
 const Logo = ({ handleClick }) => {
   const { pathname } = useLocation();
@@ -16,7 +17,9 @@ const Logo = ({ handleClick }) => {
       {isMobileScreen ? (
         <>
           {pathname === '/main' ? (
-            <FooterIcon mobile={isMobileScreen} />
+            <WrapLogo>
+              <FooterIcon mobile={isMobileScreen} />
+            </WrapLogo>
           ) : (
             <MainIcon mobile={isMobileScreen} />
           )}

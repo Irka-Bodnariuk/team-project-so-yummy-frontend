@@ -73,6 +73,8 @@ export const LabelPhoto = styled.label`
 export const Photo = styled.img`
   margin: 0 auto;
   padding: 0;
+  width: 100%;
+  height: 100%;
 
   border-radius: 88px;
   @media screen and (min-width: 768px) {
