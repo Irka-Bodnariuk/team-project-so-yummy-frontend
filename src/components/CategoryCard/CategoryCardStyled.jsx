@@ -82,6 +82,9 @@ const CategoryCardStyled = styled.div`
       line-height: 18px;
       color: #fafafa;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;
 
