@@ -1,3 +1,4 @@
+import { useParams } from 'react-router-dom';
 import {
   Container,
   List,
@@ -7,9 +8,15 @@ import {
   Wrap,
 } from './Navigation.styled';
 
-const pageList = [
+
+
+const Navigation = () => {
+
+  const {category = 'beef'} = useParams()
+
+  const pageList = [
   {
-    to: '/categories',
+    to: `/categories/${category}`,
     text: 'Categories',
   },
   {
@@ -34,7 +41,7 @@ const pageList = [
   },
 ];
 
-const Navigation = () => {
+
   return (
     <Container>
       <List>
