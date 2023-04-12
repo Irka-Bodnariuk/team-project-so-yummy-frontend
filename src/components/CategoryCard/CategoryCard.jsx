@@ -40,7 +40,7 @@ const CategoryCard = ({ name, popular }) => {
           <RecipeStyled
             imgUrl={recipe.preview}
             key={recipe.id}
-            onClick={() => alert('recipe page to be included here')}
+            onClick={() => navigate(`recipe/${recipe.id}`)}
           >
             <span>{recipe.title}</span>
           </RecipeStyled>
