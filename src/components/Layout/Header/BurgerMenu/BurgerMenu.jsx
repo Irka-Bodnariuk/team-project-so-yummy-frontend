@@ -30,7 +30,7 @@ const BurgerMenu = ({ handleClick }) => {
     <Overlay onClick={clickCloseModal}>
       <Wrapper>
         <LogoWrapper>
-          <Logo />
+          <Logo handleClick={handleClick} />
           <ButtonClose onClick={handleClick} dark={darkMode.darkMode}>
             <CloseIcon />
           </ButtonClose>

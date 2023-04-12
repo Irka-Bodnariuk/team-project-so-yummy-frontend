@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
 
   height: 100%;
   top: 0;
-  left: 0;
+  right: 0;
   padding: 18px 16px;
   background-image: url(${BgMobile});
   background-repeat: no-repeat;
