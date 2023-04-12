@@ -35,7 +35,7 @@ export const Container = styled.header`
   padding-bottom: ${p => p.theme.space[0]}px;
 
   @media screen and (min-width: 768px) {
-    max-width: 768px;
+    /* min-width: 768px; */
 
     padding-left: ${p => p.theme.space[5]}px;
     padding-right: ${p => p.theme.space[5]}px;

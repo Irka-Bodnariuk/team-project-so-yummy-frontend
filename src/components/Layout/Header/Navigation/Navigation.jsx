@@ -11,7 +11,6 @@ import {
   Wrap,
   Text,
 } from './Navigation.styled';
-import { useLocation } from 'react-router-dom';
 
 const Navigation = ({ handleClick }) => {
   const { category = 'beef' } = useParams();
@@ -29,6 +28,7 @@ const Navigation = ({ handleClick }) => {
       to: '/my',
       text: 'My recipes',
     },
+
     {
       to: '/favorite',
       text: 'Favorites',
@@ -43,7 +43,8 @@ const Navigation = ({ handleClick }) => {
     },
   ];
 
-  const { pathname } = useLocation();
+  const pathname = useParams();
+  console.log(pathname);
   const { isDesktopScreen } = useMedia();
 
   const onDesktop = () => {
