@@ -20,6 +20,7 @@ import { addRecipeReducer } from './addRecipe/addRecipeSlice';
 const rootPersistConfig = {
   key: 'user',
   storage: storage,
+  blacklist: ['isLoading', 'isSent'],
 };
 
 const themePersistedConfig = {

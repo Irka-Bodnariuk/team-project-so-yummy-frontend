@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  /* position: relative; */
   display: flex;
   align-items: center;
-  margin-left: auto;
+
   margin-right: 24px;
   @media screen and (min-width: 768px) {
     margin-right: 50px;
@@ -41,10 +40,15 @@ export const Name = styled.p`
   font-weight: ${p => p.theme.fontWeights.title};
   font-size: ${p => p.theme.fontSizes.xs}px;
   line-height: 170%;
-
-  color: ${p => p.theme.colors.heroText};
+  color: ${p => (p.pathname === '/my' ? '#23262A' : p.theme.colors.headerText)};
 
   @media screen and (min-width: 768px) {
     font-size: ${p => p.theme.fontSizes.s}px;
+  }
+  @media screen and (min-width: 1440px) {
+    color: ${p =>
+      p.pathname === '/main' || p.pathname === '/my'
+        ? '#23262A'
+        : p.theme.colors.headerText};
   }
 `;

@@ -126,6 +126,13 @@ export const App = () => {
                 <RestrictedRoute component={SigninPage} redirectTo="/main" />
               }
             />
+
+            <Route
+              path="/signin/:verificationToken"
+              element={
+                <RestrictedRoute component={SigninPage} redirectTo="/main" />
+              }
+            />
           </Routes>
         )}
         <ToastContainer

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { FiUser } from 'react-icons/fi';
 import { HiOutlineMail } from 'react-icons/hi';
 import { FiLock } from 'react-icons/fi';
+import { IoIosCloseCircle, IoIosCheckmarkCircle } from 'react-icons/io';
+import { RiErrorWarningFill } from 'react-icons/ri';
 
 export const FormWrapper = styled.div`
   position: absolute;
@@ -55,14 +57,15 @@ export const FormTitle = styled.h1`
   }
 `;
 
-export const FormInputWrapper = styled.label`
+export const FormInputWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   margin-bottom: 28px;
 
   @media screen and (min-width: 768px) {
     gap: 24px;
+
     margin-bottom: 50px;
   }
 `;
@@ -74,7 +77,28 @@ export const FormLabel = styled.label`
 export const IconName = styled(FiUser)`
   position: absolute;
   top: 50%;
-  color: ${p => p.theme.colors.form.formIcon};
+  left: 0;
+
+  color: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return '#3CBC81';
+      case 'error':
+        return '#E74A3B';
+      default:
+        return '#fafafa';
+    }
+  }};
+  opacity: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return 1;
+      case 'error':
+        return 1;
+      default:
+        return 0.4;
+    }
+  }};
 
   transform: translate(13px, -50%);
 
@@ -87,7 +111,28 @@ export const IconName = styled(FiUser)`
 export const IconEmail = styled(HiOutlineMail)`
   position: absolute;
   top: 50%;
-  color: ${p => p.theme.colors.form.formIcon};
+  left: 0;
+
+  color: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return '#3CBC81';
+      case 'error':
+        return '#E74A3B';
+      default:
+        return '#fafafa';
+    }
+  }};
+  opacity: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return 1;
+      case 'error':
+        return 1;
+      default:
+        return 0.4;
+    }
+  }};
 
   transform: translate(13px, -50%);
 
@@ -96,12 +141,91 @@ export const IconEmail = styled(HiOutlineMail)`
     height: 24px;
   }
 `;
+
 export const IconPassword = styled(FiLock)`
   position: absolute;
   top: 50%;
-  color: ${p => p.theme.colors.form.formIcon};
+  left: 0;
+
+  color: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return '#3CBC81';
+      case 'error':
+        return '#E74A3B';
+      case 'warning':
+        return '#F6C23E';
+      default:
+        return '#fafafa';
+    }
+  }};
+  opacity: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return 1;
+      case 'error':
+        return 1;
+      case 'warning':
+        return 1;
+      default:
+        return 0.4;
+    }
+  }};
 
   transform: translate(13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const ErrorIcon = styled(IoIosCloseCircle)`
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+
+  color: ${p => p.theme.colors.form.inputError};
+
+  transform: translate(-13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+export const WarningIcon = styled(RiErrorWarningFill)`
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+
+  color: ${p => p.theme.colors.form.inputWarning};
+
+  transform: translate(-13px, -50%);
+
+  @media screen and (min-width: 768px) {
+    width: 24px;
+    height: 24px;
+  }
+`;
+
+export const CheckIcon = styled(IoIosCheckmarkCircle)`
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 20px;
+  height: 20px;
+
+  color: ${p => p.theme.colors.form.inputConfirm};
+
+  transform: translate(-13px, -50%);
 
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -113,10 +237,23 @@ export const FormInput = styled(Field)`
   width: 100%;
   height: 45px;
   padding-left: 40px;
+  padding-right: ${({ state }) =>
+    state === 'error' || state === 'checked' ? '40px' : '10px'};
 
   color: ${p => p.theme.colors.form.inputBorder};
   background-color: transparent;
-  border: 1px solid #fafafa;
+  border: ${({ state }) => {
+    switch (state) {
+      case 'checked':
+        return '1px solid #3CBC81';
+      case 'error':
+        return '1px solid #E74A3B';
+      case 'warning':
+        return '1px solid #F6C23E';
+      default:
+        return '1px solid #fafafa';
+    }
+  }};
   border-radius: 6px;
 
   opacity: 0.8;
@@ -128,6 +265,10 @@ export const FormInput = styled(Field)`
     letter-spacing: -0.02em;
 
     color: #fafafa;
+  }
+
+  :focus + svg {
+    opacity: 1;
   }
 
   :focus {
@@ -143,6 +284,44 @@ export const FormInput = styled(Field)`
   @media screen and (min-width: 768px) {
     height: 60px;
     padding-left: 50px;
+    padding-right: ${({ state }) =>
+      state === 'error' || state === 'checked' ? '50px' : '10px'};
+  }
+`;
+
+export const ErrMess = styled.p`
+  position: absolute;
+
+  font-size: 10px;
+  line-height: 1.2;
+  color: #e74a3b;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+export const WarMess = styled.p`
+  position: absolute;
+
+  font-size: 10px;
+  line-height: 1.2;
+  color: #f6c23e;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+`;
+
+export const SuccMess = styled.p`
+  position: absolute;
+
+  font-size: 10px;
+  line-height: 1.2;
+  color: #3cbc81;
+
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
   }
 `;
 

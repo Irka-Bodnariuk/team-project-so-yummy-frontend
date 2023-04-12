@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export const getFavoriteRecipes = async (page = 1, limit = 4) => {
+export const getFavoriteRecipes = async page => {
   try {
-    const { data } = await axios.get(`/favorites?page=${page}&limit=${limit}`);
+    const { data } = await axios.get(`/favorites?page=${page}`); //&limit=${limit}
     return data.data.result;
   } catch (error) {
     console.log(error);
@@ -18,9 +18,9 @@ export const deleteFavoriteRecipe = async id => {
   }
 };
 
-export const getMyRecipes = async (page = 1, limit = 4) => {
+export const getMyRecipes = async page => {
   try {
-    const { data } = await axios.get(`/recipes/own-recipes?page=${page}&limit=${limit}`);
+    const { data } = await axios.get(`/recipes/own-recipes?page=${page}`); //&limit=${limit}  
     return data.data.result;
   } catch (error) {
     console.log(error);
@@ -44,3 +44,17 @@ export const updateSubscribe = async () => {
     console.log(error);
   }
 }
+
+
+// axios.defaults.baseURL = ' ';
+
+
+export const getPopularRecipes = async () => {
+  try {
+    const { data } = await axios.get(`/recipes/popular-recipe`);
+    return data.data.result;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
