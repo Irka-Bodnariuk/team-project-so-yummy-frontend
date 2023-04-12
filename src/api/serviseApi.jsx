@@ -38,7 +38,11 @@ export const deleteMyRecipe = async id => {
 
 export const updateSubscribe = async () => {
   try {
-    const { data } = await axios.patch('/subscribe');
+    const { data } = await axios.patch('/subscribe',
+      {
+       subscribe: true
+      }
+      );
     return data;
   } catch (error) {
     console.log(error);
