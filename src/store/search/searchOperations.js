@@ -6,7 +6,7 @@ axios.defaults.baseURL =
 
 export const patchRecipeFavoriteById = async id => {
   try {
-    const { data } = await axios.patch(`/recipes/favorite/${id}`);
+    const { data } = await axios.patch(`recipes/favorite/${id}`);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -17,6 +17,7 @@ export const patchRecipeFavoriteById = async id => {
 export const patchRecipeLikeById = async id => {
   try {
     const { data } = await axios.patch(`/recipes/like/${id}`);
+    console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);

@@ -1,4 +1,5 @@
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import ReactPaginate from 'react-paginate';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -46,13 +47,14 @@ const Search = () => {
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
   const [loading, setLoading] = useState(false);
+  const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
   const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
 
-  // const onPageChange = (e, page) => {
-  //   setPage(page);
-  // };
+  const onPageChange = (e, page) => {
+    setPage(page);
+  };
 
   useEffect(() => {
     return () => {
@@ -75,8 +77,8 @@ const Search = () => {
               setLoading(false);
             }
             dispatch(updateSearchResult(res.recipes));
-            // const totalPages = Math.ceil(res.total / res.limit);
-            // setCount(totalPages);
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
             setIsSearchResult(true);
             setLoading(false);
           })
@@ -96,8 +98,8 @@ const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            // const totalPages = Math.ceil(res.total / res.limit);
-            // setCount(totalPages);
+            const totalPages = Math.ceil(res.total / res.limit);
+            setCount(totalPages);
             setIsSearchResult(true);
             setLoading(false);
           })
@@ -176,23 +178,23 @@ const Search = () => {
                   )
                 )}
               </SearchList>
-              <PaginationWrapper></PaginationWrapper>
+              <PaginationWrapper>
+                {count > 1 && (
+                  <ReactPaginate
+                    breakLabel="..."
+                    nextLabel="next >"
+                    onPageChange={onPageChange}
+                    pageRangeDisplayed={page}
+                    pageCount={count}
+                    previousLabel="< previous"
+                    renderOnZeroPageCount={null}
+                  />
+                )}
+              </PaginationWrapper>
             </>
           )}
         </>
       )}
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </Container>
   );
 };
