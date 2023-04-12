@@ -45,6 +45,7 @@ export const BtnFav = styled.button`
   position: absolute;
   border: 0;
   background: transparent;
+  fill: #f3a406;
 
   top: 20px;
   left: 20px;
@@ -55,7 +56,7 @@ export const Like = styled(LikeIco)`
   height: 40px;
 
   &:hover {
-    fill: #8aa936;
+    fill: #f3a406;
   }
 `;
 
@@ -64,7 +65,7 @@ export const Favorite = styled(FavoriteIco)`
   height: 40px;
 
   &:hover {
-    fill: #8aa936;
+    fill: #f3a406;
   }
 `;
 

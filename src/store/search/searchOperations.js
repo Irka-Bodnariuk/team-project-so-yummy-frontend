@@ -1,6 +1,9 @@
 // import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
+axios.defaults.baseURL =
+  'https://team-project-so-yummy-backend.onrender.com/api';
+
 export const patchRecipeFavoriteById = async id => {
   try {
     const { data } = await axios.patch(`/recipes/favorite/${id}`);
@@ -29,8 +32,9 @@ export const getSearchByTitle = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `/search/title/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`
+      `recipes/search/title/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`
     );
+
     return data;
   } catch (error) {
     console.log(error.message);
@@ -46,8 +50,18 @@ export const getSearchByIngredients = async (
 ) => {
   try {
     const { data } = await axios.get(
-      `/recipes/ingredient/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`
+      `/recipes/search/ingredient/${query.trim()}?page=${page}&limit=${limit}&sort=${sort}`
     );
+    return data;
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+};
+
+export const getRecipeById = async id => {
+  try {
+    const { data } = await axios.get(`/recipes/id/${id}`);
     return data;
   } catch (error) {
     console.log(error.message);

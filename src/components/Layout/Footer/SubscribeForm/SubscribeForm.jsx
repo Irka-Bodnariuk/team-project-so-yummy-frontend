@@ -1,3 +1,4 @@
+
 import { Button } from 'components/Button/Button';
 import { Formik } from 'formik';
 import {
@@ -12,6 +13,7 @@ import {
 import { AddSvg } from 'components/AddSvg/AddSvg';
 import { useMedia } from 'hooks';
 import { updateSubscribe } from 'api/serviseApi';
+import { useSelector } from 'react-redux';
 import FormError from 'components/FormError/FormError';
 import * as yup from 'yup';
 
@@ -22,10 +24,16 @@ const schema = yup.object().shape({
 const SubscribeForm = () => {
   const { screenType } = useMedia();
 
+  const userEmail = useSelector(state => state.auth.user.email);
+
   const handleSubmit = async (values, { resetForm }) => {
+    const { subscribe } = values;
+    if (userEmail !== subscribe) {
+      console.log("Error");
+      return;
+    }
     const data = await updateSubscribe();
-    console.log(values);
-    console.log(data);
+    console.log(data)
     resetForm();
   };
 
@@ -45,7 +53,11 @@ const SubscribeForm = () => {
         validationSchema={schema}
         onSubmit={handleSubmit}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched }) => {
+          console.log(errors.name);
+         
+         return (
+          
           <FormSubscribe>
             <NameInput>
               <EmailIcon>
@@ -59,11 +71,17 @@ const SubscribeForm = () => {
                   heightDesktop="16px"
                 />
               </EmailIcon>
-              <Input
+              
+                <Input
+                 state={
+                   errors.subscribe ? "error" : 'undefined'
+                 }
+                  
                 type="email"
                 name="subscribe"
-                placeholder="Enter your email address"
+                placeholder="Enter your current email"
               />
+             
               <FormError name="subscribe" />
             </NameInput>
             <Button
@@ -85,7 +103,8 @@ const SubscribeForm = () => {
               Subcribe
             </Button>
           </FormSubscribe>
-        )}
+        )
+        }}
       </Formik>
     </WrapperForm>
   );

@@ -9,7 +9,18 @@ export const Input = styled(Field)`
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.button.mainTextColor};
   background-color: ${p => p.theme.colors.footerBg};
-  border: 1px solid rgba(255, 255, 255, 16%);
+
+  border: ${({ state }) => {
+  switch (state) {
+    case "error":
+      return "1px solid #E74A3B";
+    case "undefined":
+      return "1px solid rgba(255, 255, 255, 16%)"
+    default:
+     return "1px solid rgba(255, 255, 255, 16%)"
+  }
+  }};
+   
   border-radius: 6px;
   
   &::placeholder {
