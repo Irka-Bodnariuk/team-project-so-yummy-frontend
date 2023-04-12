@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.1b435e39.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.190e0d49.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.1d09ccdc.js",
     "static/media/main-des-ret.png": "/team-project-so-yummy-frontend/static/media/main-des-ret.01356c9aa850f3ecc498.png",
     "static/media/main-tab-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-tab-ret-min.439c0fe961a05c52829c.png",
     "static/media/main-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-ret-min.f117d415d58bd16a304a.png",
@@ -19,32 +19,41 @@
     "static/media/mainpage1x_tab_second.png": "/team-project-so-yummy-frontend/static/media/mainpage1x_tab_second.e8770a4ad1a9870b405b.png",
     "static/media/bg_search_desktop@1x.png": "/team-project-so-yummy-frontend/static/media/bg_search_desktop@1x.bc91271998b75900e48e.png",
     "static/media/bg_search_tablet@1x.png": "/team-project-so-yummy-frontend/static/media/bg_search_tablet@1x.bc91271998b75900e48e.png",
+    "static/media/recipepage-bg-desk-2x-min.webp": "/team-project-so-yummy-frontend/static/media/recipepage-bg-desk-2x-min.ddac7f0e4cbc1a8a6c69.webp",
     "static/media/auth-pana-tab-min-ret.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min-ret.88c83cbcec23bb3db03c.png",
     "static/media/bg_error_desktop@2x.png": "/team-project-so-yummy-frontend/static/media/bg_error_desktop@2x.3cfaecf1beea8a207660.png",
     "static/media/bg_error_tablet@2x.png": "/team-project-so-yummy-frontend/static/media/bg_error_tablet@2x.276a273fa011a4e83403.png",
     "static/media/mainpage1x_mob_second.png": "/team-project-so-yummy-frontend/static/media/mainpage1x_mob_second.21428ae5fc7c0ddbb842.png",
     "static/media/bg_search_mob@1x.png": "/team-project-so-yummy-frontend/static/media/bg_search_mob@1x.63c33e63d51609222126.png",
+    "static/media/placeholders.svg": "/team-project-so-yummy-frontend/static/media/placeholders.b0733459e8c38d2a645941ebe069f8a9.svg",
     "static/media/bg_error_mob@2x.png": "/team-project-so-yummy-frontend/static/media/bg_error_mob@2x.b3175fd4a71fd9a8c792.png",
     "static/media/bg_error_desktop@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_desktop@1x.0fce8791c1b5e9b8cbf9.png",
+    "static/media/recipepage-bg-tablet-2x-min.webp": "/team-project-so-yummy-frontend/static/media/recipepage-bg-tablet-2x-min.20cc2817922c68d488ad.webp",
     "static/media/bg_error_tablet@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_tablet@1x.a4d4ef93bde63ef4e6fc.png",
     "static/media/auth-pana-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-mob-ret-min.14335bd09b581e799964.png",
+    "static/media/recipepage-bg-desk-1x-min.webp": "/team-project-so-yummy-frontend/static/media/recipepage-bg-desk-1x-min.ef64e8f18e5d1b2013a0.webp",
     "static/media/mobile-menu-bg-tab-1x-min.png": "/team-project-so-yummy-frontend/static/media/mobile-menu-bg-tab-1x-min.94ab13c1f302b6f94cb9.png",
+    "static/media/recipepage-bg-mb-2x-min.webp": "/team-project-so-yummy-frontend/static/media/recipepage-bg-mb-2x-min.cc22a83aca9cbac9643d.webp",
     "static/media/bg_error_mob@1x.png": "/team-project-so-yummy-frontend/static/media/bg_error_mob@1x.830623caea782215ca94.png",
     "static/media/sprite.svg": "/team-project-so-yummy-frontend/static/media/sprite.6873ee9bdd2851c28cac43ff0d2add1d.svg",
     "static/media/mobile-menu-bg-mob-1x-min.png": "/team-project-so-yummy-frontend/static/media/mobile-menu-bg-mob-1x-min.b236250f3373e3cd26b8.png",
     "static/media/auth-pana-des.png": "/team-project-so-yummy-frontend/static/media/auth-pana-des.9556d40c68d06e675366.png",
     "static/media/auth-pana-tab-min.png": "/team-project-so-yummy-frontend/static/media/auth-pana-tab-min.da31f1cc4a620623d530.png",
     "static/media/m_blur.png": "/team-project-so-yummy-frontend/static/media/m_blur.a5f73509be36e7667cd2.png",
+    "static/media/recipepage-bg-tablet-1x-min.webp": "/team-project-so-yummy-frontend/static/media/recipepage-bg-tablet-1x-min.d6815bc14357b902417e.webp",
+    "static/media/recipepageMb1.webp": "/team-project-so-yummy-frontend/static/media/recipepageMb1.e81c9066eaa3498e803e.webp",
     "static/media/like.svg": "/team-project-so-yummy-frontend/static/media/like.534165f851131bda1ba356160a9c6f4c.svg",
     "static/media/photo-icon.svg": "/team-project-so-yummy-frontend/static/media/photo-icon.d5abba0d2a5cd1f9bb1aa90c017384f8.svg",
+    "static/media/clocks.svg": "/team-project-so-yummy-frontend/static/media/clocks.3d6865f001d2082cf71fed10aa253928.svg",
     "index.html": "/team-project-so-yummy-frontend/index.html",
+    "static/media/checkbox.svg": "/team-project-so-yummy-frontend/static/media/checkbox.304d1ef8933f2cc0dc05f7954c1cc73f.svg",
     "static/media/fav.svg": "/team-project-so-yummy-frontend/static/media/fav.639dd89a2d779a7e0504d8b9a1737e24.svg",
     "static/media/icon.svg": "/team-project-so-yummy-frontend/static/media/icon.d8f36538fc8a48b59b0d3f1dab97e922.svg",
     "main.1b435e39.css.map": "/team-project-so-yummy-frontend/static/css/main.1b435e39.css.map",
-    "main.190e0d49.js.map": "/team-project-so-yummy-frontend/static/js/main.190e0d49.js.map"
+    "main.1d09ccdc.js.map": "/team-project-so-yummy-frontend/static/js/main.1d09ccdc.js.map"
   },
   "entrypoints": [
     "static/css/main.1b435e39.css",
-    "static/js/main.190e0d49.js"
+    "static/js/main.1d09ccdc.js"
   ]
 }
