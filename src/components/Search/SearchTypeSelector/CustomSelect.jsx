@@ -27,9 +27,17 @@ const CustomSelect = () => {
       menuPortalTarget={portal}
       // Custom styling for the Select component
       styles={{
+        dropdownIndicator: () => ({
+          color: '#8BAA36',
+          marginRight: '15px',
+        }),
+        ValueContainer: () => ({
+          color: '#8BAA36',
+        }),
         control: (provided, state) => ({
           ...provided,
-          border: 'none',
+          color: '#rgba(0, 0, 0, 0.5)',
+          border: theme ? '1px solid #FAFAFA ' : '#D9D9D9',
           borderRadius: '6px',
           backgroundColor: theme ? 'transparent' : '#D9D9D9',
           opacity: '0.5',
@@ -37,7 +45,6 @@ const CustomSelect = () => {
           outline: 'none',
           borderColor: state.isFocused ? 'none' : provided.borderColor,
           boxShadow: state.isFocused ? 'none' : provided.boxShadow,
-          color: '#rgba(0, 0, 0, 0.5)',
           width: '146px',
           height: '34px',
           '@media (min-width: 768px)': {
@@ -72,9 +79,9 @@ const CustomSelect = () => {
           font: '12px',
           lineHeight: '18px',
           color: '#rgba(0, 0, 0, 0.5)',
-          backgroundColor: '#ffffff',
+          backgroundColor: theme ? '#8BAA36' : '#FAFAFA',
           borderRadius: '6px',
-          border: 'none', // add this property to remove border
+          border: state.isFocused ? 'none' : provided.borderColor, // add this property to remove border
           outline: 'none',
           borderStyle: 'none',
           borderColor: 'none',
