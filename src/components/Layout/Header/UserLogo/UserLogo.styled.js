@@ -1,9 +1,18 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  /* position: relative; */
   display: flex;
   align-items: center;
-  margin-left: auto;
+  /* margin-left: auto; */
+  margin-right: 24px;
+  @media screen and (min-width: 768px) {
+    margin-right: 50px;
+    /* margin-left: 0; */
+  }
+  @media screen and (min-width: 1440px) {
+    margin-right: 50px;
+  }
 `;
 
 export const WrapPhoto = styled.button`
@@ -12,15 +21,11 @@ export const WrapPhoto = styled.button`
   border: ${p => p.theme.borders.none};
   background-color: transparent;
   cursor: pointer;
-  padding: 0;
+  padding: 6px 0;
   margin: 0;
-  margin-right: 24px;
-  @media screen and (min-width: 768px) {
-    margin-right: 50px;
-  }
 `;
 
-export const Photo = styled.div`
+export const Photo = styled.img`
   width: 34px;
   height: 34px;
   background-color: grey;

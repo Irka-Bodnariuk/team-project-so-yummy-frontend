@@ -1,11 +1,10 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { Container, Switch } from './ThemeToggler.styled';
-import { toggleTheme } from 'store/theme/ThemeSlice';
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Switch } from "./ThemeToggler.styled";
+import { toggleTheme } from "store/theme/ThemeSlice";
 
 const ThemeToggler = () => {
+  const theme = useSelector((state) => state.theme.darkMode);
   const dispatch = useDispatch();
-  const theme = useSelector(state => state.theme.darkMode);
-
   return (
     <Container>
       <Switch

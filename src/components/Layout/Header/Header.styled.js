@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { HiMenuAlt2 } from 'react-icons/hi';
 
 export const Container = styled.header`
+  position: relative;
   display: flex;
 
   align-items: center;
@@ -32,9 +33,13 @@ export const Wrap = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-left: auto;
+  @media screen and (min-width: 1440px) {
+    margin-left: 0;
+  }
 `;
 
-export const ButtunMenu = styled.button`
+export const ButtonMenu = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,6 +49,7 @@ export const ButtunMenu = styled.button`
   padding: 0;
   margin: 0;
 `;
+
 export const MenuIcon = styled(HiMenuAlt2)`
   width: 28px;
   height: 28px;

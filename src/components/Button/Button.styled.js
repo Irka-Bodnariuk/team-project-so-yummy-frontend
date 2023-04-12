@@ -13,8 +13,9 @@ export const ButtonStyled = styled.button`
   font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
   line-height: ${({ lineheight }) => (lineheight ? lineheight : '21px')};
-
-  color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
+  cursor: pointer;
+  color: ${({ look }) =>
+    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
   background-color: ${({ look }) => {
     switch (look) {
       case 'subscribe':
@@ -26,6 +27,8 @@ export const ButtonStyled = styled.button`
       case 'rounded_dark':
         return '#8baa36';
       case 'rounded_transparent':
+        return 'transparent';
+      case 'rounded_other':
         return 'transparent';
       case 'logout':
         return '#8baa36';
@@ -39,6 +42,8 @@ export const ButtonStyled = styled.button`
     switch (look) {
       case 'rounded_transparent':
         return '2px solid #FAFAFA';
+      case 'rounded_other':
+        return '2px solid #8BAA36';
       default:
         return 'none';
     }
@@ -50,6 +55,8 @@ export const ButtonStyled = styled.button`
       case 'rounded_dark':
         return '24px 44px';
       case 'rounded_transparent':
+        return '24px 44px';
+      case 'rounded_other':
         return '24px 44px';
       default:
         return '6px';
@@ -89,6 +96,8 @@ export const ButtonStyled = styled.button`
           return '#22252a';
         case 'rounded_transparent':
           return 'transparent';
+        case 'rounded_other':
+          return '#8baa36';
         case 'logout':
           return '#22252a';
         case 'cancel':
@@ -105,6 +114,8 @@ export const ButtonStyled = styled.button`
           return '#fafafa';
         case 'rounded_transparent':
           return '#8baa36';
+        case 'rounded_other':
+          return '#fafafa';
         case 'logout':
           return '#fafafa';
         case 'subscribe_dark':
@@ -113,6 +124,7 @@ export const ButtonStyled = styled.button`
           return '#22252a';
       }
     }};
+
     border: ${({ look }) => {
       switch (look) {
         case 'cancel':
@@ -140,7 +152,8 @@ export const LinkStyled = styled(Link)`
   line-height: 21px;
   text-decoration: none;
 
-  color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
+  color: ${({ look }) =>
+    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
   background-color: ${({ look }) => {
     switch (look) {
       case 'subscribe':
@@ -152,6 +165,8 @@ export const LinkStyled = styled(Link)`
       case 'rounded_dark':
         return '#8baa36';
       case 'rounded_transparent':
+        return 'transparent';
+      case 'rounded_other':
         return 'transparent';
       case 'logout':
         return '#8baa36';
@@ -165,6 +180,8 @@ export const LinkStyled = styled(Link)`
     switch (look) {
       case 'rounded_transparent':
         return '2px solid #FAFAFA';
+      case 'rounded_other':
+        return '2px solid #8BAA36';
       default:
         return 'none';
     }
@@ -176,6 +193,8 @@ export const LinkStyled = styled(Link)`
       case 'rounded_dark':
         return '24px 44px';
       case 'rounded_transparent':
+        return '24px 44px';
+      case 'rounded_other':
         return '24px 44px';
       default:
         return '6px';
@@ -216,6 +235,8 @@ export const LinkStyled = styled(Link)`
           return '#22252a';
         case 'rounded_transparent':
           return 'transparent';
+        case 'rounded_other':
+          return '#8baa36';
         case 'logout':
           return '#22252a';
         case 'cancel':
@@ -232,6 +253,8 @@ export const LinkStyled = styled(Link)`
           return '#fafafa';
         case 'rounded_transparent':
           return '#8baa36';
+        case 'rounded_other':
+          return '#fafafa';
         case 'logout':
           return '#fafafa';
         case 'subscribe_dark':
@@ -240,6 +263,7 @@ export const LinkStyled = styled(Link)`
           return '#22252a';
       }
     }};
+
     border: ${({ look }) => {
       switch (look) {
         case 'cancel':
