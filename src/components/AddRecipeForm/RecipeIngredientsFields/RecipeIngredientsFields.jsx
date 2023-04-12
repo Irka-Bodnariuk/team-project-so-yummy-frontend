@@ -17,9 +17,6 @@ import {
 } from './RecipeIngredientsFields.styled';
 import { Legend } from '../Legend/Legend.styled';
 
-// toast.error('Ooops.. Add one ingredient');
-//import { toast } from 'react-toastify';
-
 export const RecipeIngredientsFields = ({
   optionsIngredients,
   optionMesure,

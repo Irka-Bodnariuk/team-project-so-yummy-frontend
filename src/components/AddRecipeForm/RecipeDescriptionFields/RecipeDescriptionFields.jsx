@@ -103,7 +103,6 @@ export const RecipeDescriptionFields = ({
                 {({ field }) => (
                   <StyledSelect
                     options={optionsCategory}
-                    // defaultValue={optionsCategory.find(({ value }) => value === values.category.toLowerCase())}
                     defaultValue={{ value: 'breakfast', label: 'Breakfast' }}
                     isSearchable={false}
                     className="сustom-select-container"

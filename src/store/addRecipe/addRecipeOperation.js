@@ -24,3 +24,15 @@ export const getIngredientsList = createAsyncThunk(
     }
   }
 );
+
+export const addRecipe = createAsyncThunk(
+  'add/addRecipe',
+  async (recipe, thunkAPI) => {
+    try {
+      const response = await axios.post('/own-recipes', { ...recipe });
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

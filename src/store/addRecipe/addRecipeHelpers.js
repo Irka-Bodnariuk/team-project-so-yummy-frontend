@@ -22,3 +22,7 @@ export const getCategoryFulfilledReducer = (state, action) => {
 export const getIngredientsFulfilledReducer = (state, action) => {
   state.ingredients = action.payload;
 };
+
+export const addRecipeFulfilledReducer = (state, action) => {
+  state.recipe = action.payload;
+};
