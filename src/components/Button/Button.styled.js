@@ -14,18 +14,20 @@ export const ButtonStyled = styled.button`
   font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
   line-height: ${({ lineheight }) => (lineheight ? lineheight : '21px')};
   cursor: pointer;
-  color: ${({ look }) =>
-    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
+  color: ${({ look, theme }) =>
+    look === 'cancel' || look === 'rounded_other'
+      ? `${theme.colors.roundedOtherBtnColor}`
+      : '#fafafa'};
   background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
-        return `${theme.colors.footerBgButton}`;
+        return `${theme.colors.subscribeBgColor}`;
       case 'subscribe_dark':
         return '#1E1F28';
       case 'rounded':
-        return '#22252a';
+        return `${theme.colors.roundedBgColor}`;
       case 'rounded_dark':
-        return '#8baa36';
+        return `${theme.colors.roundedDarkBgColor}`;
       case 'rounded_transparent':
         return 'transparent';
       case 'rounded_other':
@@ -68,8 +70,7 @@ export const ButtonStyled = styled.button`
   @media screen and (min-width: 768px) {
     width: ${({ width_tablet }) => width_tablet && width_tablet};
     height: ${({ heigth_tablet }) => heigth_tablet && heigth_tablet};
-    font-size: ${({ fsize_tablet }) =>
-      fsize_tablet ? fsize_tablet : '16px'};
+    font-size: ${({ fsize_tablet }) => (fsize_tablet ? fsize_tablet : '16px')};
     line-height: ${({ lineheight_tablet }) =>
       lineheight_tablet ? lineheight_tablet : '21px'};
   }
@@ -87,11 +88,11 @@ export const ButtonStyled = styled.button`
     background-color: ${({ look, theme }) => {
       switch (look) {
         case 'subscribe':
-          return `${theme.colors.footerBgButton}`;
+          return `${theme.colors.subscribeBgColor}`;
         case 'subscribe_dark':
           return '#1E1F28';
         case 'rounded':
-          return '#8baa36';
+          return `${theme.colors.roundedBgHoverColor}`;
         case 'rounded_dark':
           return '#22252a';
         case 'rounded_transparent':
@@ -106,8 +107,10 @@ export const ButtonStyled = styled.button`
           return '#22252a';
       }
     }};
-    color: ${({ look }) => {
+    color: ${({ look, theme }) => {
       switch (look) {
+        case 'subscribe':
+          return `${theme.colors.subscribeBtnColor}`;
         case 'rounded':
           return '#fafafa';
         case 'rounded_dark':
@@ -152,18 +155,20 @@ export const LinkStyled = styled(Link)`
   line-height: 21px;
   text-decoration: none;
 
-  color: ${({ look }) =>
-    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
-  background-color: ${({ look }) => {
+  color: ${({ look, theme }) =>
+    look === 'cancel' || look === 'rounded_other'
+      ? `${theme.colors.roundedOtherBtnColor}`
+      : '#fafafa'};
+  background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
-        return '#8baa36';
+        return `${theme.colors.subscribeBgColor}`;
       case 'subscribe_dark':
         return '#1E1F28';
       case 'rounded':
-        return '#22252a';
+        return `${theme.colors.roundedBgColor}`;
       case 'rounded_dark':
-        return '#8baa36';
+        return `${theme.colors.roundedDarkBgColor}`;
       case 'rounded_transparent':
         return 'transparent';
       case 'rounded_other':
@@ -223,14 +228,14 @@ export const LinkStyled = styled(Link)`
   }
   :hover,
   :focus {
-    background-color: ${({ look }) => {
+    background-color: ${({ look, theme }) => {
       switch (look) {
         case 'subscribe':
-          return '#8baa36';
+          return `${theme.colors.subscribeBgColor}`;
         case 'subscribe_dark':
           return '#1E1F28';
         case 'rounded':
-          return '#8baa36';
+          return `${theme.colors.roundedBgHoverColor}`;
         case 'rounded_dark':
           return '#22252a';
         case 'rounded_transparent':
@@ -245,8 +250,10 @@ export const LinkStyled = styled(Link)`
           return '#22252a';
       }
     }};
-    color: ${({ look }) => {
+    color: ${({ look, theme }) => {
       switch (look) {
+        case 'subscribe':
+          return `${theme.colors.subscribeBtnColor}`;
         case 'rounded':
           return '#fafafa';
         case 'rounded_dark':
