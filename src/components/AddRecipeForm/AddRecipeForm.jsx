@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { toast } from 'react-toastify';
 import {
   selectCategory,
-  selectIsLoading,
   selectError,
   selectIngredients,
 } from 'store/addRecipe/addRecipeSelectors';
@@ -12,7 +11,6 @@ import {
   getIngredientsList,
   addRecipe,
 } from 'store/addRecipe/addRecipeOperation';
-// import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import {
   createOptionCategory,
@@ -20,7 +18,7 @@ import {
   createOptionMeasure,
   createOptionIngredients,
 } from 'helpers/createOptionsSelectAddRecipeForm';
-// import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
+import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreapationFields } from './RecipePreapationFields/RecipePreapationFields';
@@ -41,7 +39,6 @@ export const AddRecipeForm = props => {
   const dispatch = useDispatch();
   const categoryList = useSelector(selectCategory);
   const ingredientsList = useSelector(selectIngredients);
-  // const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
@@ -55,29 +52,28 @@ export const AddRecipeForm = props => {
   const optionMesure = createOptionMeasure();
 
   const handleSubmit = (values, actions) => {
-    // const formData = new FormData();
-    // formData.append('image', values.image);
-    // const { file, title, about, category, time, ingredients, preparation } =
-    //   values;
-    // const instructions = preparation.join('\n');
-    // const ingredientsList = ingredients.map(item => ({
-    //   id: item.id,
-    //   measure: `${item.quantity} ${item.measure}`,
-    // }));
-    // console.log(ingredientsList);
+    const { file, title, about, category, time, ingredients, preparation } =
+      values;
+    const instructions = preparation.join('\n');
+    const ingredientsList = ingredients.map(item => ({
+      id: item.id,
+      measure: `${item.quantity} ${item.measure}`,
+    }));
+    console.log(ingredientsList);
     console.log(values);
 
-    // const data = {
-    //   title,
-    //   category,
-    //   description: about,
-    //   instructions,
-    //   preview: file,
-    //   time,
-    //   ingredients: ingredientsList,
-    // };
-    // dispatch(addRecipe(data));
-    // actions.resetForm();
+    const data = {
+      title,
+      category,
+      description: about,
+      instructions,
+      thumb: file,
+      preview: file,
+      time,
+      ingredients: ingredientsList,
+    };
+    dispatch(addRecipe(data));
+    actions.resetForm();
   };
 
   return (
@@ -87,7 +83,7 @@ export const AddRecipeForm = props => {
         onSubmit={(values, actions) => {
           handleSubmit(values, actions);
         }}
-        // validationSchema={validationSchema}
+        validationSchema={validationSchema}
       >
         {({ setFieldValue, values }) => (
           <RecipeForm>
