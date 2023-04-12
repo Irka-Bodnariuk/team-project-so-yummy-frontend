@@ -6,8 +6,9 @@ import {
   Item,
   SearchIcon,
   Wrap,
+  Text,
 } from './Navigation.styled';
-import { useLocation } from 'react-router';
+import { useLocation } from 'react-router-dom';
 
 const pageList = [
   {
@@ -37,8 +38,9 @@ const pageList = [
 ];
 
 const Navigation = ({ handleClick }) => {
-  const { isDesktopScreen } = useMedia();
   const { pathname } = useLocation();
+  const { isDesktopScreen } = useMedia();
+
   const onDesktop = () => {
     if (!isDesktopScreen) {
       handleClick();
@@ -50,27 +52,22 @@ const Navigation = ({ handleClick }) => {
       <List>
         {pageList.map(({ to, text }) => (
           <Item onClick={() => onDesktop()} key={to}>
-            {pathname === to ? (
-              <Link to={to} className="active">
-                {text !== 'Search' || !isDesktopScreen ? (
-                  text
-                ) : (
-                  <Wrap>
+            <Link to={to} pathname={pathname}>
+              {text !== 'Search' || isDesktopScreen ? (
+                <>{text !== 'Search' ? <Text>{text}</Text> : <SearchIcon />}</>
+              ) : (
+                <>
+                  {isDesktopScreen ? (
                     <SearchIcon />
-                  </Wrap>
-                )}
-              </Link>
-            ) : (
-              <Link to={to}>
-                {text !== 'Search' || !isDesktopScreen ? (
-                  text
-                ) : (
-                  <Wrap>
-                    <SearchIcon />
-                  </Wrap>
-                )}
-              </Link>
-            )}
+                  ) : (
+                    <Wrap>
+                      <SearchIcon />
+                      <Text>{text}</Text>
+                    </Wrap>
+                  )}
+                </>
+              )}
+            </Link>
           </Item>
         ))}
       </List>

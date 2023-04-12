@@ -13,6 +13,7 @@ export const Container = styled.nav`
 export const Wrap = styled.div`
   display: flex;
   align-items: center;
+  gap: 8px;
 `;
 export const List = styled.ul`
   display: flex;
@@ -38,13 +39,12 @@ export const Link = styled(NavLink)`
   font-family: 'Poppins';
   font-style: normal;
   font-weight: ${p => p.theme.fontWeights.subtitle};
-  font-size: ${p => p.theme.fontSizes.s}px;
-  line-height: 1.6;
+  font-size: ${p => p.theme.fontSizes.m}px;
+  line-height: 1;
 
   cursor: pointer;
 
   color: ${p => p.theme.colors.headerText};
-
   &.active {
     color: ${p => p.theme.colors.accentColor};
   }
@@ -52,8 +52,14 @@ export const Link = styled(NavLink)`
   &:focus {
     color: ${p => p.theme.colors.accentColor};
   }
-
+  @media screen and (min-width: 768px) {
+    font-size: ${p => p.theme.fontSizes.xl}px;
+  }
   @media screen and (min-width: 1440px) {
+    color: ${p =>
+      p.pathname === '/my' ? '#23262A' : p.theme.colors.headerText};
+    font-size: ${p => p.theme.fontSizes.s}px;
+    line-height: 1.5;
     padding: 10px 0;
   }
 `;
@@ -61,3 +67,5 @@ export const SearchIcon = styled(RiSearchLine)`
   width: 24px;
   height: 24px;
 `;
+
+export const Text = styled.p``;

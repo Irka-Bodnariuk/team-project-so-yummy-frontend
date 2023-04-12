@@ -45,15 +45,9 @@ export const CloseIcon = styled(IoClose)`
     width: 24px;
     height: 24px;
   }
-
-  /* @media screen and (min-width: 1440px) {
-    display: none;
-  } */
 `;
 
 export const Title = styled.p`
-  /* font-family: 'Poppins'; */
-  /* font-style: normal; */
   font-weight: ${p => p.theme.fontWeights.body};
   font-size: ${p => p.theme.fontSizes.s}px;
   line-height: 1.3;
