@@ -1,7 +1,7 @@
 import MainTitle from 'components/MainTitle/MainTitle';
 import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 
-export const AddRecipePage = () => {
+const AddRecipePage = () => {
   return (
     <div>
       <MainTitle text="Add recipe" />
@@ -9,3 +9,5 @@ export const AddRecipePage = () => {
     </div>
   );
 };
+
+export default AddRecipePage;
