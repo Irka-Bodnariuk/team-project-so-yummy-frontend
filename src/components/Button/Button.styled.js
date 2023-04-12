@@ -14,7 +14,8 @@ export const ButtonStyled = styled.button`
   font-size: ${({ fsize }) => (fsize ? fsize : '16px')};
   line-height: ${({ lineheight }) => (lineheight ? lineheight : '21px')};
   cursor: pointer;
-  color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
+  color: ${({ look }) =>
+    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
   background-color: ${({ look }) => {
     switch (look) {
       case 'subscribe':
@@ -26,6 +27,8 @@ export const ButtonStyled = styled.button`
       case 'rounded_dark':
         return '#8baa36';
       case 'rounded_transparent':
+        return 'transparent';
+      case 'rounded_other':
         return 'transparent';
       case 'logout':
         return '#8baa36';
@@ -39,6 +42,8 @@ export const ButtonStyled = styled.button`
     switch (look) {
       case 'rounded_transparent':
         return '2px solid #FAFAFA';
+      case 'rounded_other':
+        return '2px solid #8BAA36';
       default:
         return 'none';
     }
@@ -51,6 +56,8 @@ export const ButtonStyled = styled.button`
         return '24px 44px';
       case 'rounded_transparent':
         return '24px 44px';
+      case 'rounded_other':
+        return '24px 44px';
       default:
         return '6px';
     }
@@ -62,67 +69,72 @@ export const ButtonStyled = styled.button`
     width: ${({ width_tablet }) => width_tablet && width_tablet};
     height: ${({ heigth_tablet }) => heigth_tablet && heigth_tablet};
     font-size: ${({ fontsize_tablet }) =>
-    fontsize_tablet ? fontsize_tablet : '16px'};
+      fontsize_tablet ? fontsize_tablet : '16px'};
     line-height: ${({ lineheight_tablet }) =>
-    lineheight_tablet ? lineheight_tablet : '21px'};
+      lineheight_tablet ? lineheight_tablet : '21px'};
   }
 
   @media screen and (min-width: 1440px) {
     width: ${({ width_desktop }) => width_desktop && width_desktop};
     height: ${({ heigth_desktop }) => heigth_desktop && heigth_desktop};
     font-size: ${({ fsize_desktop }) =>
-    fsize_desktop ? fsize_desktop : '16px'};
+      fsize_desktop ? fsize_desktop : '16px'};
     line-height: ${({ lineheight_desktop }) =>
-    lineheight_desktop ? lineheight_desktop : '21px'};
+      lineheight_desktop ? lineheight_desktop : '21px'};
   }
   :hover,
   :focus {
     background-color: ${({ look }) => {
-    switch (look) {
-      case 'subscribe':
-        return '#8baa36';
-      case 'subscribe_dark':
-        return '#1E1F28';
-      case 'rounded':
-        return '#8baa36';
-      case 'rounded_dark':
-        return '#22252a';
-      case 'rounded_transparent':
-        return 'transparent';
-      case 'logout':
-        return '#22252a';
-      case 'cancel':
-        return '#ffffff';
-      default:
-        return '#22252a';
-    }
-  }};
+      switch (look) {
+        case 'subscribe':
+          return '#8baa36';
+        case 'subscribe_dark':
+          return '#1E1F28';
+        case 'rounded':
+          return '#8baa36';
+        case 'rounded_dark':
+          return '#22252a';
+        case 'rounded_transparent':
+          return 'transparent';
+        case 'rounded_other':
+          return '#8baa36';
+        case 'logout':
+          return '#22252a';
+        case 'cancel':
+          return '#ffffff';
+        default:
+          return '#22252a';
+      }
+    }};
     color: ${({ look }) => {
-    switch (look) {
-      case 'rounded':
-        return '#fafafa';
-      case 'rounded_dark':
-        return '#fafafa';
-      case 'rounded_transparent':
-        return '#8baa36';
-      case 'logout':
-        return '#fafafa';
-      case 'subscribe_dark':
-        return '#8baa36';
-      default:
-        return '#22252a';
-    }
-  }};
+      switch (look) {
+        case 'rounded':
+          return '#fafafa';
+        case 'rounded_dark':
+          return '#fafafa';
+        case 'rounded_transparent':
+          return '#8baa36';
+        case 'rounded_other':
+          return '#fafafa';
+        case 'logout':
+          return '#fafafa';
+        case 'subscribe_dark':
+          return '#8baa36';
+        default:
+          return '#22252a';
+      }
+    }};
+
     border: ${({ look }) => {
-    switch (look) {
-      case 'cancel':
-        return '1px solid #23262a';
-      case 'rounded_transparent':
-        return '2px solid #8baa36';
-      default:
-        return 'none';
-    }
-  }};
+      switch (look) {
+        case 'cancel':
+          return '1px solid #23262a';
+        case 'rounded_transparent':
+          return '2px solid #8baa36';
+        default:
+          return 'none';
+      }
+    }};
   }
 `;
 
@@ -140,7 +152,8 @@ export const LinkStyled = styled(Link)`
   line-height: 21px;
   text-decoration: none;
 
-  color: ${({ look }) => (look === 'cancel' ? '#23262A' : '#fafafa')};
+  color: ${({ look }) =>
+    look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
   background-color: ${({ look }) => {
     switch (look) {
       case 'subscribe':
@@ -152,6 +165,8 @@ export const LinkStyled = styled(Link)`
       case 'rounded_dark':
         return '#8baa36';
       case 'rounded_transparent':
+        return 'transparent';
+      case 'rounded_other':
         return 'transparent';
       case 'logout':
         return '#8baa36';
@@ -165,6 +180,8 @@ export const LinkStyled = styled(Link)`
     switch (look) {
       case 'rounded_transparent':
         return '2px solid #FAFAFA';
+      case 'rounded_other':
+        return '2px solid #8BAA36';
       default:
         return 'none';
     }
@@ -176,6 +193,8 @@ export const LinkStyled = styled(Link)`
       case 'rounded_dark':
         return '24px 44px';
       case 'rounded_transparent':
+        return '24px 44px';
+      case 'rounded_other':
         return '24px 44px';
       default:
         return '6px';
@@ -190,7 +209,7 @@ export const LinkStyled = styled(Link)`
 
     font-size: ${({ fsize_tablet }) => (fsize_tablet ? fsize_tablet : '16px')};
     line-height: ${({ lineheight_tablet }) =>
-    lineheight_tablet ? lineheight_tablet : '21px'};
+      lineheight_tablet ? lineheight_tablet : '21px'};
   }
 
   @media screen and (min-width: 1440px) {
@@ -198,57 +217,62 @@ export const LinkStyled = styled(Link)`
     height: ${({ heigth_desktop }) => heigth_desktop && heigth_desktop};
 
     font-size: ${({ fsize_desktop }) =>
-    fsize_desktop ? fsize_desktop : '16px'};
+      fsize_desktop ? fsize_desktop : '16px'};
     line-height: ${({ lineheight_desktop }) =>
-    lineheight_desktop ? lineheight_desktop : '21px'};
+      lineheight_desktop ? lineheight_desktop : '21px'};
   }
   :hover,
   :focus {
     background-color: ${({ look }) => {
-    switch (look) {
-      case 'subscribe':
-        return '#8baa36';
-      case 'subscribe_dark':
-        return '#1E1F28';
-      case 'rounded':
-        return '#8baa36';
-      case 'rounded_dark':
-        return '#22252a';
-      case 'rounded_transparent':
-        return 'transparent';
-      case 'logout':
-        return '#22252a';
-      case 'cancel':
-        return '#ffffff';
-      default:
-        return '#22252a';
-    }
-  }};
+      switch (look) {
+        case 'subscribe':
+          return '#8baa36';
+        case 'subscribe_dark':
+          return '#1E1F28';
+        case 'rounded':
+          return '#8baa36';
+        case 'rounded_dark':
+          return '#22252a';
+        case 'rounded_transparent':
+          return 'transparent';
+        case 'rounded_other':
+          return '#8baa36';
+        case 'logout':
+          return '#22252a';
+        case 'cancel':
+          return '#ffffff';
+        default:
+          return '#22252a';
+      }
+    }};
     color: ${({ look }) => {
-    switch (look) {
-      case 'rounded':
-        return '#fafafa';
-      case 'rounded_dark':
-        return '#fafafa';
-      case 'rounded_transparent':
-        return '#8baa36';
-      case 'logout':
-        return '#fafafa';
-      case 'subscribe_dark':
-        return '#8baa36';
-      default:
-        return '#22252a';
-    }
-  }};
+      switch (look) {
+        case 'rounded':
+          return '#fafafa';
+        case 'rounded_dark':
+          return '#fafafa';
+        case 'rounded_transparent':
+          return '#8baa36';
+        case 'rounded_other':
+          return '#fafafa';
+        case 'logout':
+          return '#fafafa';
+        case 'subscribe_dark':
+          return '#8baa36';
+        default:
+          return '#22252a';
+      }
+    }};
+
     border: ${({ look }) => {
-    switch (look) {
-      case 'cancel':
-        return '1px solid #23262a';
-      case 'rounded_transparent':
-        return '2px solid #8baa36';
-      default:
-        return 'none';
-    }
-  }};
+      switch (look) {
+        case 'cancel':
+          return '1px solid #23262a';
+        case 'rounded_transparent':
+          return '2px solid #8baa36';
+        default:
+          return 'none';
+      }
+    }};
   }
 `;

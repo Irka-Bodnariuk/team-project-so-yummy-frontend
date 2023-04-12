@@ -1,24 +1,44 @@
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Logo from '../Logo/Logo';
-// import ThemeToggler from '../ThemeToggler/ThemeToggler';
-import { Nav, Link, Wrapper, LogoWrapper } from './BurgerMenu.styled';
+import Navigation from '../Navigation/Navigation';
+import ThemeToggler from '../ThemeToggler/ThemeToggler';
+
+import {
+  Wrapper,
+  LogoWrapper,
+  ButtonClose,
+  CloseIcon,
+} from './BurgerMenu.styled';
+import { Overlay } from '../UserLogo/ModalWrap/ModalWrap.styled';
 
 const BurgerMenu = ({ handleClick }) => {
+  const darkMode = useSelector(state => state.theme);
+
+  useEffect(() => {
+    window.addEventListener('keydown', clickCloseModal);
+    return () => {
+      window.removeEventListener('keydown', clickCloseModal);
+    };
+  });
+  const clickCloseModal = event => {
+    if (event.code === 'Escape' || event.target === event.currentTarget) {
+      return handleClick();
+    }
+  };
   return (
-    <Wrapper>
-    {/* <ThemeToggler /> */}
-    <LogoWrapper>
-      <Logo />
-      <span width="32" height="32" onClick={() => handleClick()}>&#10006;</span>
-    </LogoWrapper>  
-      <Nav>
-        <Link to="/categories">Categories</Link>
-        <Link to="/add-recipes">Add recipes</Link>
-        <Link to="/my-recipes">My recipes</Link>
-        <Link to="/favorites">Favorites</Link>
-        <Link to="/shoping-list">Shoping list</Link>
-        <Link to="/search">Search</Link>
-      </Nav>
-    </Wrapper>
+    <Overlay onClick={clickCloseModal}>
+      <Wrapper>
+        <LogoWrapper>
+          <Logo handleClick={handleClick} />
+          <ButtonClose onClick={handleClick} dark={darkMode.darkMode}>
+            <CloseIcon />
+          </ButtonClose>
+        </LogoWrapper>
+        <Navigation handleClick={handleClick} />
+        <ThemeToggler />
+      </Wrapper>
+    </Overlay>
   );
 };
 

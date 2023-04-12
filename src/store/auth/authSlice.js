@@ -14,6 +14,8 @@ const initialState = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
+  isLoading: false,
+  isSent: false,
 };
 
 export const userSlice = createSlice({
@@ -22,16 +24,26 @@ export const userSlice = createSlice({
 
   extraReducers: builder =>
     builder
-      .addCase(registrationUser.pending, state => state)
+      .addCase(registrationUser.pending, state => {
+        state.isLoading = true;
+        state.isSent = false;
+      })
       .addCase(registrationUser.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.error = null;
+        state.isLoading = false;
+        state.isSent = true;
       })
       .addCase(registrationUser.rejected, (state, action) => {
         state.error = action.payload.message;
+        state.isLoading = false;
+        state.isSent = false;
       })
-      .addCase(loginUser.pending, state => state)
+      .addCase(loginUser.pending, state => {
+        state.isLoading = true;
+      })
       .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.user.avatar = action.payload.user.avatarURL;
         state.user.name = action.payload.user.name;
         state.user.email = action.payload.user.email;
@@ -40,6 +52,7 @@ export const userSlice = createSlice({
         state.error = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload.message;
       })
       .addCase(logoutUser.pending, state => state)
