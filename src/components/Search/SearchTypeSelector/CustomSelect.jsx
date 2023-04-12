@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Select from 'react-select';
 import { updateSearchType } from 'store/search/searchSlice';
 const options = [
@@ -10,6 +10,7 @@ const portal = document.querySelector('#modalPortal');
 const CustomSelect = () => {
   const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState(options[0]);
+  const theme = useSelector(state => state.theme.darkMode);
 
   const handleChange = selectedOption => {
     setSelectedOption(selectedOption);
@@ -30,7 +31,7 @@ const CustomSelect = () => {
           ...provided,
           border: 'none',
           borderRadius: '6px',
-          backgroundColor: '#f2ecec',
+          backgroundColor: theme ? 'transparent' : '#D9D9D9',
           opacity: '0.5',
           borderStyle: 'none',
           outline: 'none',
@@ -61,9 +62,6 @@ const CustomSelect = () => {
         menu: () => ({
           border: 'none',
         }),
-        // menuPortal: () => ({
-        //   position: 'absolute',
-        // }),
         menuList: (provided, state) => ({
           display: 'flex',
           flexDirection: 'column',
