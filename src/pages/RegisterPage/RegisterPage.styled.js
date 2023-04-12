@@ -9,6 +9,8 @@ import regImageTabletRetina from '../../images/tablet/auth-pana-tab-min-ret.png'
 import regImageDesktop from '../../images/desktop/auth-pana-des.png';
 // import regImageDesktopRetina from '../../images/desktop/auth-pana-des-ret.png';
 
+import { ToastContainer } from 'react-toastify';
+
 export const AuthMain = styled.main`
   position: relative;
 
@@ -83,5 +85,11 @@ export const AuthBackground = styled.div`
     height: 325px;
 
     background-image: url(${regBgDesktop});
+  }
+`;
+
+export const StyledToastContainer = styled(ToastContainer)`
+  .Toastify__toast {
+    font-size: 12px;
   }
 `;

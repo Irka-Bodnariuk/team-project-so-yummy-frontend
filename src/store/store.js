@@ -14,10 +14,12 @@ import {
 import { authReducer } from './auth/authSlice';
 import { themeSlice } from './theme/ThemeSlice';
 import { shoppingsReducer } from './shoppingList/shoppingListSlice';
+import { searchReducer } from './search/searchSlice';
 
 const rootPersistConfig = {
   key: 'user',
   storage: storage,
+  blacklist: ['isLoading', 'isSent'],
 };
 
 const themePersistedConfig = {
@@ -29,6 +31,7 @@ const rootReducer = combineReducers({
   auth: persistReducer(rootPersistConfig, authReducer),
   theme: persistReducer(themePersistedConfig, themeSlice.reducer),
   shoppings: shoppingsReducer,
+  search: searchReducer,
 });
 
 export const store = configureStore({
