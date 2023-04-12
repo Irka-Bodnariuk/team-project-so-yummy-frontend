@@ -1,9 +1,9 @@
 import { useState } from 'react';
-// import { useLocation } from 'react-router';
 
 import { getMyRecipes, deleteMyRecipe } from 'api/index';
 import MyRecipeItem from 'components/RecipeItem/MyRecipeItem';
 import { Loader } from '../Loader/Loader';
+import Pagination from '../Pagination/Pagination';
 
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
@@ -38,14 +38,14 @@ const MyRecipesList = () => {
     try {
       await deleteMyRecipe(id);
       const data = await getMyRecipes(page);
-      setAllRecipes(data);
+      setAllRecipes(data.result);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleChange = (event, value) => {
-    setPage(value);
+  const handleChange = e => {
+    setPage(e.selected + 1);
   };
 
   return (
@@ -65,7 +65,7 @@ const MyRecipesList = () => {
             title={title}
             id={_id}
             handelDelete={handelDelete}
-            styleDel="white"
+            styleDel="green"
             styleBtn="dark"
           />
         ))
@@ -73,11 +73,7 @@ const MyRecipesList = () => {
         <ListText>You don't have your recipes</ListText>
       )}
       {totalPage && (
-        <div change={handleChange}>Paginator</div>
-        //   <Paginator
-        //     count={totalPage}
-        //     page={page}
-        //     change={handleChange} />
+        <Pagination pageCount={totalPage} page={page} change={handleChange} />
       )}
     </List>
   );
