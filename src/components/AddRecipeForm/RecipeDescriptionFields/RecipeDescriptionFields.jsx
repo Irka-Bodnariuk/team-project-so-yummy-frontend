@@ -68,7 +68,12 @@ export const RecipeDescriptionFields = ({
             )}
 
             {!preview && (
-              <InputFile type="file" name="file" onChange={handleFileUpload} />
+              <InputFile
+                type="file"
+                accept="image/*,.png, .jpeg,.gif,.web"
+                name="file"
+                onChange={handleFileUpload}
+              />
             )}
           </LabelFile>
           <FormErrorMsg name="file" position="center" />

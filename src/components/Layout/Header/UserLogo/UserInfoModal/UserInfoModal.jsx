@@ -1,7 +1,3 @@
-import { useDispatch, useSelector } from 'react-redux';
-import { useRef, useState } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { Formik } from 'formik';
 import {
   Container,
@@ -21,6 +17,8 @@ import {
 import { Button } from 'components/Button/Button';
 
 import { updateUserProfile } from 'store/auth/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
 
 import * as yup from 'yup';
 
@@ -40,7 +38,7 @@ const UserInfoModal = ({ onClose }) => {
     const formData = new FormData();
 
     if (values.avatarURL === '' && values.name === userName) {
-      toast.warning('There are no changes!');
+      alert('There are no changes!');
       return;
     }
     if (values.avatarURL === '' && values.name !== userName) {
@@ -62,97 +60,90 @@ const UserInfoModal = ({ onClose }) => {
   };
 
   return (
-    <>
-      <ToastContainer />
-      <Formik
-        initialValues={{
-          avatarURL: '',
-          name: userName,
-        }}
-        validationSchema={schema}
-        onSubmit={(values, actions) => {
-          handleSubmit(values);
-          actions.setSubmitting(false);
-          actions.resetForm();
-        }}
-      >
-        {props => (
-          <FormEdit onSubmit={props.handleSubmit}>
-            <ButtonClose
-              type="button"
-              onClick={onClose}
-              dark={darkMode.darkMode}
-            >
-              <CloseIcon />
-            </ButtonClose>
-            <Container>
-              <LabelPhoto>
-                <Photo src={selectedFile} alt={userName} />
-                <input
-                  className="hidden"
-                  type="file"
-                  ref={filePicker}
-                  name="avatarURL"
-                  accept="image/*,.png, .jpeg,.gif,.web"
-                  onBlur={() => {
-                    props.setTouched({
-                      avatarURL: true,
-                    });
-                  }}
-                  onChange={event => {
-                    if (!event.target.files[0]) {
-                      toast.warning('Incorrect file format!');
-                      return;
-                    }
-                    setSelectedFile(
-                      window.URL.createObjectURL(event.target.files[0])
-                    );
-                    props.setFieldValue('avatarURL', event.target.files[0]);
-                  }}
-                />
+    <Formik
+      initialValues={{
+        avatarURL: '',
+        name: userName,
+      }}
+      validationSchema={schema}
+      onSubmit={(values, actions) => {
+        handleSubmit(values);
+        actions.setSubmitting(false);
+        actions.resetForm();
+      }}
+    >
+      {props => (
+        <FormEdit onSubmit={props.handleSubmit}>
+          <ButtonClose type="button" onClick={onClose} dark={darkMode.darkMode}>
+            <CloseIcon />
+          </ButtonClose>
+          <Container>
+            <LabelPhoto>
+              <Photo src={selectedFile} alt={userName} />
+              <input
+                className="hidden"
+                type="file"
+                ref={filePicker}
+                name="avatarURL"
+                accept="image/*,.png, .jpeg,.gif,.web"
+                onBlur={() => {
+                  props.setTouched({
+                    avatarURL: true,
+                  });
+                }}
+                onChange={event => {
+                  if (!event.target.files[0]) {
+                    alert('Incorrect file format!');
+                    return;
+                  }
+                  setSelectedFile(
+                    window.URL.createObjectURL(event.target.files[0])
+                  );
+                  props.setFieldValue('avatarURL', event.target.files[0]);
+                }}
+              />
 
-                <ButtonAdd
-                  type="button"
-                  onClick={handelPick}
-                  dark={darkMode.darkMode}
-                >
-                  <PlusIcon />
-                </ButtonAdd>
-              </LabelPhoto>
-              <LabelInput>
-                <UserIcon />
-
-                <EditIcon />
-
-                <Input
-                  type="text"
-                  name="name"
-                  placeholder="Your name"
-                  onBlur={() => {
-                    props.setTouched({
-                      name: true,
-                    });
-                  }}
-                />
-              </LabelInput>
-
-              <Button
-                type="submit"
-                look="logout"
-                width="100%"
-                heigth="49px"
-                heigthTablet="59px"
-                fontSize="14px"
-                fontSizeTablet="16px"
-                lineHeight="18px"
+              <ButtonAdd
+                type="button"
+                onClick={handelPick}
+                dark={darkMode.darkMode}
               >
-                Save changes
-              </Button>
-            </Container>
-          </FormEdit>
-        )}
-      </Formik>
-    </>
+                <PlusIcon />
+              </ButtonAdd>
+            </LabelPhoto>
+            <LabelInput>
+              <UserIcon />
+
+              <EditIcon />
+
+              <Input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                onBlur={() => {
+                  props.setTouched({
+                    name: true,
+                  });
+                }}
+              />
+            </LabelInput>
+
+            <Button
+              type="submit"
+              look="logout"
+              width="100%"
+              heigth="49px"
+              heigthTablet="59px"
+              fontSize="14px"
+              fontSizeTablet="16px"
+              lineHeight="18px"
+            >
+              Save changes
+            </Button>
+          </Container>
+        </FormEdit>
+      )}
+    </Formik>
   );
 };
 
