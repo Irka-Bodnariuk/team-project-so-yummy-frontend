@@ -4,6 +4,23 @@ import DesktopBackground1x from '../../images/desktop/mainpage1x_desk.png';
 
 import styled from 'styled-components';
 
+export const MainPageContainerStyled = styled.div`
+  @media ${props => props.theme.device.tablet} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: ${p => -p.theme.space[5]}px;
+    margin-right: ${p => -p.theme.space[5]}px;
+  }
+  @media ${props => props.theme.device.desktop} {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -100px;
+    margin-right: -100px;
+  }
+`;
+
 const MainPageStyled = styled.div`
   background: url(${MobileBackground1x});
   background-size: cover;
@@ -27,13 +44,14 @@ const MainPageStyled = styled.div`
     align-items: flex-start;
     padding-bottom: 125px;
     margin-bottom: 0px;
-
     margin-top: -148px;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: 768px;
+    width: 100%;
+
     /* margin-left: ${p => -p.theme.space[5]}px;
     margin-right: ${p => -p.theme.space[5]}px; */
-    max-width: 768px;
-    margin-left: auto;
-    margin-right: auto;
 
     & > div:first-of-type {
       display: flex;
@@ -48,9 +66,10 @@ const MainPageStyled = styled.div`
     margin-top: -145px;
     padding-bottom: 100px;
     margin-bottom: 110px;
-
     margin-left: -100px;
     margin-right: -100px;
+    max-width: 1440px;
+    width: 100%;
   }
 
   & > h1 {
