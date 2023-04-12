@@ -1,16 +1,15 @@
 import styled from 'styled-components';
 import photo from '../../images/icons/photo-icon.svg';
 
-
 export const CardItem = styled.li`
   list-style-type: none;
   display: flex;
   width: auto;
   height: 152px;
-  background: ${props => props.theme.colors.white};
+  background-color: ${props => props.theme.colors.cardBackground};
   border-radius: 8px;
   margin-bottom: 18px;
-  padding: 14px;
+  padding: 14px 9px;
 
   :last-child {
     margin-bottom: 0;
@@ -19,12 +18,14 @@ export const CardItem = styled.li`
   @media ${props => props.theme.device.tablet} {
     height: 288px;
     margin-bottom: 40px;
-    padding: 28px;
+    padding: 28px 24px;
+    background-color: ${props => props.theme.colors.cardBackground};
   }
   @media ${props => props.theme.device.desktop} {
     height: 404px;
     margin-bottom: 50px;
-    padding: 40px;
+    padding: 40px 40px;
+    background-color: ${props => props.theme.colors.cardBackground};
   }
 `;
 
@@ -52,12 +53,14 @@ export const Image = styled.img`
   height: 100%;
   width: 100%;
   object-fit: cover;
-`
+`;
 
 export const Info = styled.div`
   position: relative;
   width: 100%;
-
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding-left: 14px;
 
   @media ${props => props.theme.device.tablet} {
@@ -99,22 +102,21 @@ export const Description = styled.p`
   font-size: 8px;
   line-height: 125%;
   letter-spacing: -0.02em;
-  color: ${props => props.theme.colors.text};
+  color: ${p => p.theme.colors.heroText};
 
   @media ${props => props.theme.device.tablet} {
     font-size: 14px;
     line-height: 129%;
+    color: ${p => p.theme.colors.heroText};
   }
   @media ${props => props.theme.device.desktop} {
     font-size: 18px;
     line-height: 133%;
+    color: ${p => p.theme.colors.heroText};
   }
 `;
 
 export const Time = styled.div`
-  position: absolute;
-  left: 14px;
-  bottom: 0;
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -141,6 +143,7 @@ export const ButtonDelete = styled.div`
   border-radius: 4px;
   font-size: 14px;
   text-align: center;
+  background-color: ${props => props.theme.colors.whiteMuted};
 
   :hover,
   :focus {
@@ -157,16 +160,10 @@ export const ButtonDelete = styled.div`
     width: 44px;
     height: 44px;
   }
-`
-export const ButtonRecipe = styled.button`
-  position: absolute;
-  bottom: -8px;
-  right: 0;
+`;
 
-  @media ${props => props.theme.device.tablet} {
-    bottom: -20px;
-  }
-  @media ${props => props.theme.device.desktop} {
-    bottom: -30px;
-  }
+export const ButtonWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 `;

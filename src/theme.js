@@ -54,6 +54,8 @@ export const baseTheme = {
       light: {
         background: '#FAFAFA',
         secondaryBg: '#EBF3D4',
+        cardBackground: '#FFFFFF',
+        deleteButton: '#EBF3D4',
         headerText: '#23262A',
         heroText: '#22252A',
         primaryText: '#3E4462',
@@ -74,6 +76,8 @@ export const baseTheme = {
       dark: {
         background: '#1E1F28',
         secondaryBg: '#2A2C36',
+        cardBackground: '#2A2C36',
+        deleteButton: '#1E1F28',
         headerText: '#FAFAFA',
         heroText: '#FAFAFA',
         primaryText: '#FAFAFA',

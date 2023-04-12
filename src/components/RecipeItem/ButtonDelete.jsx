@@ -1,11 +1,10 @@
-import { BtnDel } from './ButtonDelete.styled';
-import { RiDeleteBinLine } from 'react-icons/ri';
+import { BtnDel, DeleteIcon } from './ButtonDelete.styled';
 
-export const ButtonDel = ({ battonDel }) => {
+export const ButtonDel = () => {
   return (
     <>
-      <BtnDel battonDel={battonDel}>
-        <RiDeleteBinLine />
+      <BtnDel>
+        <DeleteIcon />
       </BtnDel>
     </>
   );
