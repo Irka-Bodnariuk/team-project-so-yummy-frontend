@@ -7,7 +7,7 @@ export const Loader = ({ size = '100' }) => {
         height={size}
         width={size}
         color="#4fa94d"
-        wrapperStyle={{}}
+        wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
         wrapperClass=""
         visible={true}
         outerCircleColor="#8BAA36"

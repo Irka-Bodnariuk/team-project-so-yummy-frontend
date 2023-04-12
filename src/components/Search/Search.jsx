@@ -1,9 +1,11 @@
 import ReactPaginate from 'react-paginate';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
 import { useMedia } from 'hooks';
-import { toast } from 'react-toastify';
+
 import {
   selectSearchQuery,
   selectSearchResult,
@@ -19,6 +21,7 @@ import BGDots from 'reusableComponents/BGDots/BGDots';
 import RecipeCard from 'reusableComponents/RecipeCard/RecipeCard';
 import SearchInput from 'reusableComponents/SearchInput/SearchInput';
 import Title from 'reusableComponents/Title/Title';
+import { Loader } from 'components/Loader/Loader';
 import {
   getSearchByIngredients,
   getSearchByTitle,
@@ -43,14 +46,15 @@ const Search = () => {
   const searchQuery = useSelector(selectSearchQuery);
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
+  const [loading, setLoading] = useState(false);
   const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
   const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
 
-  const onPageChange = (e, page) => {
-    setPage(page);
-  };
+  // const onPageChange = (e, page) => {
+  //   setPage(page);
+  // };
 
   useEffect(() => {
     return () => {
@@ -65,15 +69,18 @@ const Search = () => {
     }
     if (searchType === 'title') {
       if (searchQuery) {
+        setLoading(true);
         getSearchByTitle(searchQuery, page)
           .then(res => {
             if (res.recipes.length === 0) {
               toast.warning('Nothing... Try another search query');
+              setLoading(false);
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
             setIsSearchResult(true);
+            setLoading(false);
           })
           .catch(err => {
             toast.warning('Bad query', {
@@ -83,17 +90,23 @@ const Search = () => {
       }
     } else {
       if (searchQuery) {
+        setLoading(true);
         getSearchByIngredients(searchQuery, page)
           .then(res => {
             if (res.recipes.length === 0) {
+              setLoading(false);
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
             const totalPages = Math.ceil(res.total / res.limit);
             setCount(totalPages);
             setIsSearchResult(true);
+            setLoading(false);
           })
-          .catch(err => toast.warning('Bad query'));
+          .catch(err => {
+            toast.warning('Bad query');
+            setLoading(false);
+          });
       }
     }
   }, [
@@ -120,66 +133,81 @@ const Search = () => {
   };
   return (
     <Container>
-      <BGDots />
-      <Title text={'Search'} />
-      <SearchForm onSubmit={onFormSubmit}>
-        <SearchInput name="search" searchQuery={searchQuery} />
-        <SearchTypeSelector />
-      </SearchForm>
-      {searchResult.length === 0 && (
-        <div>
-          {isMobileScreen && (
-            <NoRecipesImg src={noRecipesImgmob} alt="no recipe" />
-          )}
-          {isTabletScreen && (
-            <NoRecipesImg src={noRecipesImgtab} alt="no recipe" />
-          )}
-          {isDesktopScreen && (
-            <NoRecipesImg src={noRecipesImgdes} alt="no recipe" />
-          )}
-
-          {!isSearchResult && (
-            <NoRecipesText>Try looking for something else..</NoRecipesText>
-          )}
-          {/* {isSearchResult && (
-            <NoRecipesText>Try looking for something else..</NoRecipesText>
-          )} */}
-        </div>
-      )}
-      {searchResult.length !== 0 && (
+      {loading && <Loader />}
+      {!loading && (
         <>
-          <SearchList>
-            {searchResult.map(
-              ({ _id, preview, title, favorite, like, popularity }) => (
-                <SearchItem key={_id}>
-                  <RecipeCard
-                    image={preview}
-                    altText={title}
-                    text={title}
-                    id={_id}
-                    favorite={favorite}
-                    like={like}
-                    popularity={popularity}
-                  />
-                </SearchItem>
-              )
-            )}
-          </SearchList>
-          <PaginationWrapper>
-            {count > 1 && (
-              <ReactPaginate
-                breakLabel="..."
-                nextLabel="next >"
-                onPageChange={onPageChange}
-                pageRangeDisplayed={page}
-                pageCount={count}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-              />
-            )}
-          </PaginationWrapper>
+          <BGDots />
+          <Title text={'Search'} />
+          <SearchForm onSubmit={onFormSubmit}>
+            <SearchInput name="search" searchQuery={searchQuery} />
+            <SearchTypeSelector />
+          </SearchForm>
+          {searchResult.length === 0 && (
+            <div>
+              {isMobileScreen && (
+                <NoRecipesImg src={noRecipesImgmob} alt="no recipe" />
+              )}
+              {isTabletScreen && (
+                <NoRecipesImg src={noRecipesImgtab} alt="no recipe" />
+              )}
+              {isDesktopScreen && (
+                <NoRecipesImg src={noRecipesImgdes} alt="no recipe" />
+              )}
+
+              {!isSearchResult && (
+                <NoRecipesText>Try looking for something else..</NoRecipesText>
+              )}
+            </div>
+          )}
+          {searchResult.length !== 0 && (
+            <>
+              <SearchList>
+                {searchResult.map(
+                  ({ _id, preview, title, favorite, like, popularity }) => (
+                    <SearchItem key={_id}>
+                      <RecipeCard
+                        image={preview}
+                        altText={title}
+                        text={title}
+                        id={_id}
+                        favorite={favorite}
+                        like={like}
+                        popularity={popularity}
+                      />
+                    </SearchItem>
+                  )
+                )}
+              </SearchList>
+              <PaginationWrapper>
+                {count > 1 && (
+                  <></>
+                  // <ReactPaginate
+                  //   breakLabel="..."
+                  //   nextLabel="next >"
+                  //   onPageChange={onPageChange}
+                  //   pageRangeDisplayed={page}
+                  //   pageCount={count}
+                  //   previousLabel="< previous"
+                  //   renderOnZeroPageCount={null}
+                  // />
+                )}
+              </PaginationWrapper>
+            </>
+          )}
         </>
       )}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </Container>
   );
 };

@@ -21,6 +21,7 @@ const MotivatingModal = ({ option }) => {
   const handleClose = () => {
     setIsVisible(false);
     document.removeEventListener('keydown', handleKeyDown);
+    document.removeEventListener('click', handleOverlayClick);
   };
 
   const handleKeyDown = event => {

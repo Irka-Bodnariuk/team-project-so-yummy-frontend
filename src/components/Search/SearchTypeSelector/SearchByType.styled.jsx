@@ -20,7 +20,7 @@ export const Text = styled.label`
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: #001833;
+  color: ${p => p.theme.colors.sectionTitle};
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

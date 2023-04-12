@@ -6,7 +6,7 @@ export const Text = styled.h1`
   font-size: 28px;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: var(--titleColor);
+  color: ${p => p.theme.colors.sectionTitle};
 
   @media screen and (min-width: 768px) {
     font-size: 32px;

@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
 export const SearchForm = styled.form`
   display: flex;
@@ -20,6 +23,9 @@ export const SearchForm = styled.form`
 `;
 
 export const SearchList = styled.ul`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
@@ -87,13 +93,13 @@ export const NoRecipesText = styled.p`
   letter-spacing: -0.02em;
   margin-bottom: 101px;
   opacity: 0.5;
+  color: ${p => p.theme.colors.notFoundPageText};
 
   @media screen and (min-width: 768px) {
     font-size: 24px;
     line-height: 1;
     letter-spacing: -0.02em;
     margin-bottom: 200px;
-    color: #23262a;
   }
 `;
 

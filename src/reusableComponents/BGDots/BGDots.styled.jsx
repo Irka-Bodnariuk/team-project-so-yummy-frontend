@@ -1,16 +1,19 @@
 import styled from 'styled-components';
+
 import image1green from 'images/SearchBackground/image1green.png';
 import image2green from 'images/SearchBackground/image2green.png';
 import image3green from 'images/SearchBackground/image3green.png';
 import image4green from 'images/SearchBackground/image4green.png';
 import image1black from 'images/SearchBackground/image1black.png';
 import image2black from 'images/SearchBackground/image2black.png';
+// import whiteMob_min from 'images/SearchBackground/whiteMob-min.png';
+// import white2 from 'images/SearchBackground/white2-min.png';
 
 export const Container = styled.div`
-  /* z-index: -1; */
   position: absolute;
   width: 345px;
   height: 192px;
+
   background-image: url(${image1green}), url(${image1black}),
     url(${image2green});
   background-repeat: no-repeat;
