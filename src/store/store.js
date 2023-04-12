@@ -15,6 +15,7 @@ import { authReducer } from './auth/authSlice';
 import { themeSlice } from './theme/ThemeSlice';
 import { shoppingsReducer } from './shoppingList/shoppingListSlice';
 import { searchReducer } from './search/searchSlice';
+import { addRecipeReducer } from './addRecipe/addRecipeSlice';
 
 const rootPersistConfig = {
   key: 'user',
@@ -32,6 +33,7 @@ const rootReducer = combineReducers({
   theme: persistReducer(themePersistedConfig, themeSlice.reducer),
   shoppings: shoppingsReducer,
   search: searchReducer,
+  add: addRecipeReducer,
 });
 
 export const store = configureStore({
