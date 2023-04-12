@@ -63,7 +63,7 @@ export const HeroTitle = styled.h1`
   line-height: 1;
   letter-spacing: -0.02em;
   text-align: center;
-  color: ${props => props.theme.colors.accent};
+  color: ${props => props.theme.colors.accentColor};
 
   @media ${props => props.theme.device.tablet} {
     margin-bottom: 24px;
@@ -96,7 +96,7 @@ export const FavoriteBtn = styled.button`
   background-color: transparent;
   color: #22252a;
   border-radius: 24px 44px;
-  border: 1px solid ${props => props.theme.colors.accent};
+  border: 1px solid ${props => props.theme.colors.accentColor};
   transition: all 250ms linear;
 
   font-size: 10px;
@@ -109,8 +109,8 @@ export const FavoriteBtn = styled.button`
 
   &:hover,
   &:focus {
-    background-color: ${props => props.theme.colors.accent};
-    border: 1px solid ${props => props.theme.colors.accent};
+    background-color: ${props => props.theme.colors.accentColor};
+    border: 1px solid ${props => props.theme.colors.accentColor};
   }
 `;
 
