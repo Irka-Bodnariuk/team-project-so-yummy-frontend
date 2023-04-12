@@ -29,8 +29,11 @@ const MainPageStyled = styled.div`
     margin-bottom: 0px;
 
     margin-top: -148px;
-    margin-left: ${p => -p.theme.space[5]}px;
-    margin-right: ${p => -p.theme.space[5]}px;
+    /* margin-left: ${p => -p.theme.space[5]}px;
+    margin-right: ${p => -p.theme.space[5]}px; */
+    max-width: 768px;
+    margin-left: auto;
+    margin-right: auto;
 
     & > div:first-of-type {
       display: flex;
@@ -59,7 +62,9 @@ const MainPageStyled = styled.div`
     line-height: 60px;
     text-align: center;
     letter-spacing: -0.005em;
-    color: #22252a;
+    color: ${p => p.theme.colors.heroText};
+
+    /* color: #22252a; */
     margin-bottom: 14px;
     padding-top: 69px;
     & span {
@@ -90,7 +95,8 @@ const MainPageStyled = styled.div`
     line-height: 18px;
     text-align: center;
     letter-spacing: -0.02em;
-    color: #23262a;
+    /* color: #23262a; */
+    color: ${p => p.theme.colors.headerText};
     width: 248px;
     margin-bottom: 157px;
     @media ${props => props.theme.device.tablet} {

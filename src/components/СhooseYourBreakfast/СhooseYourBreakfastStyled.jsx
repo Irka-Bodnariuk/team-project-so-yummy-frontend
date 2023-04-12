@@ -4,7 +4,8 @@ import styled from 'styled-components';
 
 const СhooseYourBreakfastStyled = styled.div`
   width: 225px;
-  background: #fafafa;
+  background: ${p => p.theme.colors.background};
+  /* background: #fafafa; */
   border-radius: 8px;
   padding: 8px;
   margin-left: 82px;
@@ -33,7 +34,8 @@ const СhooseYourBreakfastStyled = styled.div`
     font-size: 12px;
     line-height: 18px;
     letter-spacing: -0.24px;
-    color: #3e4462;
+    /* color: #3e4462; */
+    color: ${p => p.theme.colors.primaryText};
     margin-bottom: 4px;
     display: block;
     & span {
@@ -73,6 +75,7 @@ const СhooseYourBreakfastStyled = styled.div`
       height: 10px;
       margin-left: 5px;
     }
+
     & > span {
       /* display: inline-block; */
 
@@ -82,7 +85,8 @@ const СhooseYourBreakfastStyled = styled.div`
       font-size: 10px;
       line-height: 12px;
       letter-spacing: 0.2px;
-      color: #3e4462;
+      /* color: #3e4462; */
+      color: ${p => p.theme.colors.primaryText};
     }
   }
 `;
