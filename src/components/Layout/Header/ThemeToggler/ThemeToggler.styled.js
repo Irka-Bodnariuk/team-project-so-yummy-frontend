@@ -13,7 +13,6 @@ export const Switch = styled.input`
   -webkit-appearance: none;
   outline: none;
   background-color: #efefef;
-
   border-radius: 50px;
   transition: 0.5s;
   box-shadow: inset 0px 6px 8px 3px rgba(0, 0, 0, 0.1);
