@@ -2,14 +2,12 @@ import styled from 'styled-components';
 import { HiMenuAlt2 } from 'react-icons/hi';
 export const ContainerHeader = styled.div`
   position: relative;
-  /* transform: translatex(50%); */
-  /* min-width: 375px; */
+
   display: flex;
   justify-content: center;
   min-width: 375px;
   margin: 0 auto;
   @media screen and (min-width: 768px) {
-    /* min-width: 768px; */
     max-width: 768px;
   }
 
@@ -19,20 +17,17 @@ export const ContainerHeader = styled.div`
 `;
 
 export const Container = styled.header`
-  /* position: relative; */
   position: absolute;
   width: 100vw;
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  /* transform: translatex(-50%); */
 
   display: flex;
 
   align-items: center;
   margin: 0 auto;
   min-width: 375px;
-  /* background-color: ${p => p.theme.colors.background}; */
 
   padding-top: ${p => p.theme.space[4] + 2}px;
   padding-left: ${p => p.theme.space[4]}px;
@@ -40,7 +35,6 @@ export const Container = styled.header`
   padding-bottom: ${p => p.theme.space[0]}px;
 
   @media screen and (min-width: 768px) {
-    /* min-width: 768px; */
     max-width: 768px;
 
     padding-left: ${p => p.theme.space[5]}px;

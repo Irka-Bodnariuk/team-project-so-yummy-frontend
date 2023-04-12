@@ -49,10 +49,6 @@ export const Text = styled.p`
   font-size: 14px;
   line-height: 1.6;
   color: #23262a;
-  /* margin-right: 37px;
-  @media screen and (min-width: 768px) {
-    margin-right: 53px;
-  } */
 `;
 
 export const ButtonClose = styled.button`

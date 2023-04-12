@@ -6,7 +6,6 @@ export const Container = styled.div`
 `;
 
 export const Switch = styled.input`
-  /* display: none; */
   position: relative;
   width: 61px;
   height: 27px;

@@ -40,7 +40,6 @@ const pageList = [
 const Navigation = ({ handleClick }) => {
   const { pathname } = useLocation();
   const { isDesktopScreen } = useMedia();
-  // const darkMode = useSelector(state => state.theme);
 
   const onDesktop = () => {
     if (!isDesktopScreen) {
