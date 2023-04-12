@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { selectIsLoading } from 'store/auth/authSelectors';
 import { registrationUser, loginUser } from 'store/auth/authOperations';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
@@ -67,7 +68,7 @@ const registerSchema = Yup.object({
 export const AuthForm = ({ login }) => {
   const [secure, setSecure] = useState(null);
 
-  const isLoading = useSelector(state => state.auth.isLoading);
+  const isLoading = useSelector(selectIsLoading);
   const dispatch = useDispatch();
 
   const littleSecure = secure === 0 || secure === 1;

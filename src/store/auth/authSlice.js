@@ -29,10 +29,10 @@ export const userSlice = createSlice({
         state.isSent = false;
       })
       .addCase(registrationUser.fulfilled, (state, action) => {
+        state.isSent = true;
         state.user = action.payload.user;
         state.error = null;
         state.isLoading = false;
-        state.isSent = true;
       })
       .addCase(registrationUser.rejected, (state, action) => {
         state.error = action.payload.message;
