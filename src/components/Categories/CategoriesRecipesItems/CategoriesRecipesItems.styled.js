@@ -15,6 +15,8 @@ export const RecipeItem = styled.li`
     
     @media screen and (min-width: 768px) {
         flex-basis: calc((100% - 32px) / 2);
+        border-radius: 8px;
+
     }
     @media screen and (min-width: 1440px) {
         flex-basis: calc((100% - 3 * 14px) / 4);
@@ -27,12 +29,18 @@ export const Wrapper = styled.div`
     position: relative;
     display: flex;
     justify-content: center;
-    /* width: 100%; */
-    /* height: 94.4%; */
-    /* img{
-        width: 100%;
-        min-height: 95%;
-    } */
+    img{
+        width: 343px;
+        height: 323px;
+        @media screen and (min-width: 768px) {
+            width: 336px;
+            height: 323px;
+        }
+        @media screen and (min-width: 1440px) {
+            width: 300px;
+            height: 323px;
+        }
+    }
 `
 
 export const TitleBox = styled.div`
@@ -47,6 +55,8 @@ export const TitleBox = styled.div`
     }
     @media screen and (min-width: 1440px) {
         width: 268px;
+        bottom: 24px;
+
     }
     p {
         font-weight: 500px;
