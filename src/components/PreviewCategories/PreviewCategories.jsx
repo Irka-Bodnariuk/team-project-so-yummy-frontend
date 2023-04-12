@@ -3,7 +3,6 @@ import getCategoryList from 'api/getCategoryList';
 import CategoryCard from 'components/CategoryCard/CategoryCard';
 import PreviewCategoriesStyled from './PreviewCategoriesStyled';
 import { Button } from 'components/Button/Button';
-
 import { useSelector } from 'react-redux';
 
 const PreviewCategories = () => {
@@ -31,7 +30,7 @@ const PreviewCategories = () => {
         ))}
       <Button
         to="/categories"
-        look="rounded"
+        look="rounded_other"
         width="195px"
         heigth="47px"
         widthTablet="239px"

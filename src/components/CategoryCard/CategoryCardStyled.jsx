@@ -54,7 +54,8 @@ const CategoryCardStyled = styled.div`
     line-height: 28px;
     letter-spacing: -0.02em;
     font-feature-settings: 'liga' off;
-    color: #001833;
+    /* color: #001833; */
+    color: ${p => p.theme.colors.heroText};
     margin-bottom: 32px;
     @media ${props => props.theme.device.tablet} {
       font-size: 44px;
@@ -110,14 +111,16 @@ export const RecipeStyled = styled.div`
     margin-right: 18px;
     padding: 16px;
 
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-color: ${p => p.theme.colors.background};
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
     letter-spacing: -0.24px;
-    color: #3e4462;
+    /* color: #3e4462; */
+    color: ${p => p.theme.colors.primaryText};
     border-radius: 8px;
 
     overflow: hidden;
