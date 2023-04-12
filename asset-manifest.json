@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.1b435e39.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.650391c0.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.dceff7b9.js",
     "static/media/main-des-ret.png": "/team-project-so-yummy-frontend/static/media/main-des-ret.01356c9aa850f3ecc498.png",
     "static/media/main-tab-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-tab-ret-min.439c0fe961a05c52829c.png",
     "static/media/main-mob-ret-min.png": "/team-project-so-yummy-frontend/static/media/main-mob-ret-min.f117d415d58bd16a304a.png",
@@ -50,10 +50,10 @@
     "static/media/fav.svg": "/team-project-so-yummy-frontend/static/media/fav.639dd89a2d779a7e0504d8b9a1737e24.svg",
     "static/media/icon.svg": "/team-project-so-yummy-frontend/static/media/icon.d8f36538fc8a48b59b0d3f1dab97e922.svg",
     "main.1b435e39.css.map": "/team-project-so-yummy-frontend/static/css/main.1b435e39.css.map",
-    "main.650391c0.js.map": "/team-project-so-yummy-frontend/static/js/main.650391c0.js.map"
+    "main.dceff7b9.js.map": "/team-project-so-yummy-frontend/static/js/main.dceff7b9.js.map"
   },
   "entrypoints": [
     "static/css/main.1b435e39.css",
-    "static/js/main.650391c0.js"
+    "static/js/main.dceff7b9.js"
   ]
 }
