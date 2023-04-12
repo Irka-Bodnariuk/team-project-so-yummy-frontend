@@ -45,13 +45,9 @@ const MainPageStyled = styled.div`
     padding-bottom: 125px;
     margin-bottom: 0px;
     margin-top: -148px;
-    margin-left: 0;
-    margin-right: 0;
-    max-width: 768px;
-    width: 100%;
-
-    /* margin-left: ${p => -p.theme.space[5]}px;
-    margin-right: ${p => -p.theme.space[5]}px; */
+    background-size: cover;
+    margin-left: ${p => -p.theme.space[5]}px;
+    margin-right: ${p => -p.theme.space[5]}px;
 
     & > div:first-of-type {
       display: flex;
@@ -63,13 +59,13 @@ const MainPageStyled = styled.div`
     background: url(${DesktopBackground1x});
     padding-bottom: 210px;
     background-position-y: 0%;
-    margin-top: -145px;
+    margin-top: -164px;
     padding-bottom: 100px;
     margin-bottom: 110px;
     margin-left: -100px;
     margin-right: -100px;
-    max-width: 1440px;
-    width: 100%;
+    /* max-width: 1440px; */
+    background-size: cover;
   }
 
   & > h1 {

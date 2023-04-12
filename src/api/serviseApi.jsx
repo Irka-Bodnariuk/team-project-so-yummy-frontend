@@ -1,29 +1,29 @@
 import axios from 'axios';
 
-export const getFavoriteRecipes = async page => {
+export const getFavoriteRecipes = async () => {
   try {
-    const { data } = await axios.get(`/favorites?page=${page}`); //&limit=${limit}
-    return data.data.result;
+    const { data } = await axios.get(`/favorite`);
+    return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
 export const deleteFavoriteRecipe = async id => {
   try {
-    const { data } = await axios.put(`/favorites/${id}`);
+    const { data } = await axios.delete(`favorite/${id}`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
 export const getMyRecipes = async page => {
   try {
-    const { data } = await axios.get(`/recipes/own-recipes?page=${page}`); //&limit=${limit}  
+    const { data } = await axios.get(`/recipes/own-recipes?page=${page}`); //&limit=${limit}
     return data.data.result;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -32,7 +32,7 @@ export const deleteMyRecipe = async id => {
     const { data } = await axios.delete(`/recipes/own-recipes/${id}`);
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -45,20 +45,15 @@ export const updateSubscribe = async () => {
       );
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
-}
-
-
-// axios.defaults.baseURL = ' ';
-
+};
 
 export const getPopularRecipes = async () => {
   try {
     const { data } = await axios.get(`/recipes/popular-recipe`);
     return data.data.result;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
-

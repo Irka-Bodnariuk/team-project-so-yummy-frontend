@@ -24,7 +24,7 @@ const MainPageSearch = () => {
     <MainPageSearchStyled onSubmit={onSubmit}>
       <input
         type="search"
-        placeholder="Beef"
+        placeholder=""
         value={search}
         onChange={handleNameChange}
       />
