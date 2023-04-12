@@ -59,7 +59,7 @@ const MainPageStyled = styled.div`
     background: url(${DesktopBackground1x});
     padding-bottom: 210px;
     background-position-y: 0%;
-    margin-top: -145px;
+    margin-top: -164px;
     padding-bottom: 100px;
     margin-bottom: 110px;
     margin-left: -100px;
