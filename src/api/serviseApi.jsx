@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-export const getFavoriteRecipes = async (page = 1, limit = 4) => {
+export const getFavoriteRecipes = async () => {
   try {
-    const { data } = await axios.get(`/favorites?page=${page}&limit=${limit}`);
-    return data.data.result;
+    const { data } = await axios.get(`/favorite`);
+    return data;
   } catch (error) {
     console.log(error);
   }
@@ -11,7 +11,7 @@ export const getFavoriteRecipes = async (page = 1, limit = 4) => {
 
 export const deleteFavoriteRecipe = async id => {
   try {
-    const { data } = await axios.put(`/favorites/${id}`);
+    const { data } = await axios.put(`favorite/${id}`);
     return data;
   } catch (error) {
     console.log(error);
@@ -20,7 +20,9 @@ export const deleteFavoriteRecipe = async id => {
 
 export const getMyRecipes = async (page = 1, limit = 4) => {
   try {
-    const { data } = await axios.get(`/recipes/own-recipes?page=${page}&limit=${limit}`);
+    const { data } = await axios.get(
+      `/recipes/own-recipes?page=${page}&limit=${limit}`
+    );
     return data.data.result;
   } catch (error) {
     console.log(error);
@@ -43,4 +45,4 @@ export const updateSubscribe = async () => {
   } catch (error) {
     console.log(error);
   }
-}
+};

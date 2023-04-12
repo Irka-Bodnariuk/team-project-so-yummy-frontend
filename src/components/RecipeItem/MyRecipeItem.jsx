@@ -34,7 +34,11 @@ const MyRecipeItem = ({
       </ImgBox>
       <Info>
         <Title>{title}</Title>
-        <ButtonDelete onClick={ e => { handelDelete(id, e) }}>
+        <ButtonDelete
+          onClick={e => {
+            handelDelete(id, e);
+          }}
+        >
           <ButtonDel battonDel={styleDel} onClick={handelDelete} />
         </ButtonDelete>
         <Description>{description}</Description>
