@@ -1,10 +1,14 @@
-import { Conteiner } from './Footer.styled';
+import { Conteiner, Wrapper } from './Footer.styled';
 import Navigation from './Navigation/Navigation';
+import Copyright from './Copyright/Copyright';
 
 const Footer = () => {
   return (
     <Conteiner>
-      <Navigation />
+      <Wrapper>
+        <Navigation />
+      </Wrapper>
+      <Copyright/>
     </Conteiner>
   );
 };

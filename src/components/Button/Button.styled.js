@@ -16,10 +16,10 @@ export const ButtonStyled = styled.button`
   cursor: pointer;
   color: ${({ look }) =>
     look === 'cancel' || look === 'rounded_other' ? '#23262A' : '#fafafa'};
-  background-color: ${({ look }) => {
+  background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
-        return '#8baa36';
+        return `${theme.colors.footerBgButton}`;
       case 'subscribe_dark':
         return '#1E1F28';
       case 'rounded':
@@ -68,8 +68,8 @@ export const ButtonStyled = styled.button`
   @media screen and (min-width: 768px) {
     width: ${({ width_tablet }) => width_tablet && width_tablet};
     height: ${({ heigth_tablet }) => heigth_tablet && heigth_tablet};
-    font-size: ${({ fontsize_tablet }) =>
-      fontsize_tablet ? fontsize_tablet : '16px'};
+    font-size: ${({ fsize_tablet }) =>
+      fsize_tablet ? fsize_tablet : '16px'};
     line-height: ${({ lineheight_tablet }) =>
       lineheight_tablet ? lineheight_tablet : '21px'};
   }
@@ -84,10 +84,10 @@ export const ButtonStyled = styled.button`
   }
   :hover,
   :focus {
-    background-color: ${({ look }) => {
+    background-color: ${({ look, theme }) => {
       switch (look) {
         case 'subscribe':
-          return '#8baa36';
+          return `${theme.colors.footerBgButton}`;
         case 'subscribe_dark':
           return '#1E1F28';
         case 'rounded':
