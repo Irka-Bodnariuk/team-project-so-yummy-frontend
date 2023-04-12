@@ -23,7 +23,7 @@ export const TitlePopularRecipe = styled.h3`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.colors.modes.white.textDark};
+  color: ${props => props.theme.colors.primaryText};
 `;
 
 export const ItemList = styled.ul`
@@ -78,7 +78,7 @@ export const TitleRecipe = styled.p`
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.colors.modes.white.textDark};
+  color: ${props => props.theme.colors.primaryText};
 `;
 
 export const Description = styled.p`

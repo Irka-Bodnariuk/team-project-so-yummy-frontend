@@ -75,7 +75,7 @@ export const Title = styled.h3`
   font-size: 14px;
   line-height: 100%;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.colors.textDark};
+  color: ${props => props.theme.colors.primaryText};
   padding-right: 24px;
   margin-bottom: 14px;
 
@@ -121,7 +121,7 @@ export const Time = styled.div`
   font-size: 10px;
   line-height: 140%;
   letter-spacing: -0.24px;
-  color: ${props => props.theme.colors.textDark};
+  color: ${props => props.theme.colors.primaryText};
 
   @media ${props => props.theme.device.tablet} {
     left: 24px;

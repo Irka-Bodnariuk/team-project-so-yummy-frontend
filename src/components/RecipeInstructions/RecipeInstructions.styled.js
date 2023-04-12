@@ -32,7 +32,7 @@ export const InstructionsTitle = styled.h2`
 
   letter-spacing: -0.02em;
   font-feature-settings: 'liga' off;
-  color: ${props => props.theme.colors.modes.white.textDark};
+  color: ${props => props.theme.colors.primaryText};
 
   @media ${props => props.theme.device.tablet} {
     margin-bottom: 32px;
