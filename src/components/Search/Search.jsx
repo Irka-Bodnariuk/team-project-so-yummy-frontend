@@ -1,4 +1,3 @@
-import ReactPaginate from 'react-paginate';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
@@ -178,20 +177,7 @@ const Search = () => {
                   )
                 )}
               </SearchList>
-              <PaginationWrapper>
-                {count > 1 && (
-                  <></>
-                  // <ReactPaginate
-                  //   breakLabel="..."
-                  //   nextLabel="next >"
-                  //   onPageChange={onPageChange}
-                  //   pageRangeDisplayed={page}
-                  //   pageCount={count}
-                  //   previousLabel="< previous"
-                  //   renderOnZeroPageCount={null}
-                  // />
-                )}
-              </PaginationWrapper>
+              <PaginationWrapper></PaginationWrapper>
             </>
           )}
         </>
