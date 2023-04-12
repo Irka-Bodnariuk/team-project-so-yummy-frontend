@@ -1,12 +1,32 @@
 import { useMedia } from 'hooks';
-import { MainIcon } from 'images/svgIcons';
-import { NavLink } from 'react-router-dom';
+import { MainIcon, FooterIcon } from 'images/svgIcons';
 
-const Logo = () => {
-  const { isMobileScreen } = useMedia();
+import { NavLink, useLocation } from 'react-router-dom';
+import { WrapLogo } from './Logo.styled';
+
+const Logo = ({ handleClick }) => {
+  const { pathname } = useLocation();
+  const { isMobileScreen, isDesktopScreen } = useMedia();
+  const onDesktop = () => {
+    if (!isDesktopScreen) {
+      handleClick();
+    }
+  };
   return (
-    <NavLink t0="/">
-      <MainIcon mobile={isMobileScreen} />
+    <NavLink onClick={() => onDesktop()} to="/main">
+      {isMobileScreen ? (
+        <>
+          {pathname === '/main' ? (
+            <WrapLogo>
+              <FooterIcon mobile={isMobileScreen} />
+            </WrapLogo>
+          ) : (
+            <MainIcon mobile={isMobileScreen} />
+          )}
+        </>
+      ) : (
+        <MainIcon mobile={isMobileScreen} />
+      )}
     </NavLink>
   );
 };

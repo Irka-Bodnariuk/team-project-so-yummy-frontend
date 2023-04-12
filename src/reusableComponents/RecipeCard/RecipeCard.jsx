@@ -82,8 +82,8 @@ const RecipeCard = ({
       .catch(() => setIsLoadLike(false));
   };
 
-  const favFeel = favorite || isFavorite ? '#8aa936' : 'none';
-  const likeFeel = like || isLike ? '#8aa936' : 'none';
+  const favFeel = favorite || isFavorite ? 'none' : 'none';
+  const likeFeel = like || isLike ? 'none' : 'none';
   const shortText =
     text.length < maxTextLength
       ? text

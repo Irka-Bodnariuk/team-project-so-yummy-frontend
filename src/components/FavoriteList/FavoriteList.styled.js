@@ -51,7 +51,12 @@ export const ButtonDelete = styled.button`
 `;
 
 export const LoaderBox = styled.div`
-  position: absolute;
+  width: 100%;
+  padding-top: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* position: absolute;
   margin:20 auto;
   width: 36px;
   height: 36px;
@@ -68,5 +73,5 @@ export const LoaderBox = styled.div`
     height: 80px;
     left: 280px;
     top: -75px;
-  }
+  } */
 `;

@@ -6,10 +6,11 @@ export const Wrapper = styled.div`
   border: 1px solid #f0f0f0;
   width: 295px;
   height: 53px;
-  border-top-left-radius: 18px 18px;
+  border-top-left-radius: 24px 24px;
   border-bottom-left-radius: 44px 44px;
-  border-bottom-right-radius: 18px 18px;
+  border-bottom-right-radius: 24px 24px;
   border-top-right-radius: 44px 44px;
+
   background-color: #ffffff;
 
   @media screen and (min-width: 768px) {

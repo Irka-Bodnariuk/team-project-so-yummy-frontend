@@ -7,7 +7,7 @@ import { Loader } from '../Loader/Loader';
 import { List, ListText, LoaderBox } from './FavoriteList.styled.js';
 
 const FavoriteList = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [allRecipes, setAllRecipes] = useState([]);
 
   const getFavorites = async () => {

@@ -19,6 +19,7 @@ import { searchReducer } from './search/searchSlice';
 const rootPersistConfig = {
   key: 'user',
   storage: storage,
+  blacklist: ['isLoading', 'isSent'],
 };
 
 const themePersistedConfig = {

@@ -1,3 +1,7 @@
+import { useParams } from 'react-router-dom';
+
+import { useMedia } from 'hooks';
+
 import {
   Container,
   List,
@@ -5,48 +9,68 @@ import {
   Item,
   SearchIcon,
   Wrap,
+  Text,
 } from './Navigation.styled';
+import { useLocation } from 'react-router-dom';
 
-const pageList = [
-  {
-    to: '/categories',
-    text: 'Categories',
-  },
-  {
-    to: '/add',
-    text: 'Add recipes',
-  },
-  {
-    to: '/my',
-    text: 'My recipes',
-  },
-  {
-    to: '/favorite',
-    text: 'Favorites',
-  },
-  {
-    to: '/shopping-list',
-    text: 'Shopping list',
-  },
-  {
-    to: '/search',
-    text: null,
-  },
-];
+const Navigation = ({ handleClick }) => {
+  const { category = 'beef' } = useParams();
 
-const Navigation = () => {
+  const pageList = [
+    {
+      to: `/categories/${category}`,
+      text: 'Categories',
+    },
+    {
+      to: '/add',
+      text: 'Add recipes',
+    },
+    {
+      to: '/my',
+      text: 'My recipes',
+    },
+    {
+      to: '/favorite',
+      text: 'Favorites',
+    },
+    {
+      to: '/shopping-list',
+      text: 'Shopping list',
+    },
+    {
+      to: '/search',
+      text: 'Search',
+    },
+  ];
+
+  const { pathname } = useLocation();
+  const { isDesktopScreen } = useMedia();
+
+  const onDesktop = () => {
+    if (!isDesktopScreen) {
+      handleClick();
+    }
+  };
+
   return (
     <Container>
       <List>
         {pageList.map(({ to, text }) => (
-          <Item key={to}>
-            <Link to={to}>
-              {text ? (
-                text
+          <Item onClick={() => onDesktop()} key={to}>
+            <Link to={to} pathname={pathname}>
+              {text !== 'Search' || isDesktopScreen ? (
+                <>{text !== 'Search' ? <Text>{text}</Text> : <SearchIcon />}</>
               ) : (
-                <Wrap>
-                  <SearchIcon />
-                </Wrap>
+                <>
+                  {isDesktopScreen ? (
+                    <SearchIcon />
+                  ) : (
+                    <Wrap>
+                      <SearchIcon />
+                      <Text>{text}</Text>
+                    </Wrap>
+                  )}
+                </>
               )}
             </Link>
           </Item>

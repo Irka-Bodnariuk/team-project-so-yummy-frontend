@@ -70,3 +70,20 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const updateUserProfile = createAsyncThunk(
+  'auth/profile',
+  async (user, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.patch(`auth/profile`, user, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      return data;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
