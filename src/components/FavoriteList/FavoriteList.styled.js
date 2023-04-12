@@ -28,7 +28,7 @@ export const ButtonDelete = styled.button`
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: ${props => props.theme.colors.accent};
+  background: ${props => props.theme.colors.accentColor};
   color: ${props => props.theme.colors.textWhite};
   font-size: 14px;
   text-align: center;

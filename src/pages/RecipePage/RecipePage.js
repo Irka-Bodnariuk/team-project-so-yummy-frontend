@@ -5,12 +5,11 @@ import RecipeIngredients from 'components/RecipeIngredients/RecipeIngredients';
 import RecipeInstructions from 'components/RecipeInstructions/RecipeInstructions';
 import { getRecipeById } from 'api/services/axios/axiosService';
 
-export const RecipePage = () => {
+const RecipePage = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState('');
   const [instructions, setInstructions] = useState([]);
   const [ingredients, setIngredients] = useState([]);
-  // const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
     getRecipeById(recipeId)
@@ -22,17 +21,6 @@ export const RecipePage = () => {
         setIngredients(result[0].ingredients);
       })
       .catch(error => console.error(error));
-
-    // getFavorites().then(res => {
-    //   const { result: favorites } = res.data.data;
-    //   const isFavorite = favorites.reduce((acc, favorite) => {
-    //     if (favorite._id === recipeId) {
-    //       acc = true;
-    //     }
-    //     return acc;
-    //   }, false);
-    //   isFavorite && setIsFavorite(isFavorite);
-    // });
   }, [recipeId]);
   return (
     <div>
@@ -40,7 +28,6 @@ export const RecipePage = () => {
         title={recipe.title}
         description={recipe.description}
         time={recipe.time}
-        // isFavoriteProp={isFavorite}
         recipeId={recipeId}
       ></RecipeHero>
       <RecipeIngredients ingredients={ingredients}></RecipeIngredients>
@@ -52,3 +39,5 @@ export const RecipePage = () => {
     </div>
   );
 };
+
+export default RecipePage;

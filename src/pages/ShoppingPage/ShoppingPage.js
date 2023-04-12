@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getList } from 'store/shoppingList/shoppingListOperations';
 import { Loader } from 'components/Loader/Loader';
 
-export const ShoppingPage = () => {
+const ShoppingPage = () => {
   const { screenType } = useMedia();
   const { items, isLoading } = useSelector(state => state.shoppings);
 
@@ -54,3 +54,5 @@ export const ShoppingPage = () => {
     </main>
   );
 };
+
+export default ShoppingPage;

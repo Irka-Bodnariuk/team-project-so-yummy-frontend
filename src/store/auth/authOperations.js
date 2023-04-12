@@ -66,7 +66,7 @@ export const refreshUser = createAsyncThunk(
 
       return res.data;
     } catch (error) {
-      return thunkApi.rejectWithValue;
+      return thunkApi.rejectWithValue(error);
     }
   }
 );

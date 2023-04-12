@@ -1,20 +1,15 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
-import { getRecipesByCategory } from "api/categories";
+import { getRecipesByCategory } from 'api/categories';
 
-import { CategoriesList } from "components/Categories/CategoriesList/CategoriesList";
-import { RecipesList } from "components/Categories/CategoriesRecipesList/CategoriesRecipesList";
-import MainTitle from "components/MainTitle/MainTitle";
-import { EmptyMessage } from "pages/ShoppingPage/ShoppingPage.styled";
-import { Loader } from "components/Loader/Loader";
+import { CategoriesList } from 'components/Categories/CategoriesList/CategoriesList';
+import { RecipesList } from 'components/Categories/CategoriesRecipesList/CategoriesRecipesList';
+import MainTitle from 'components/MainTitle/MainTitle';
+import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
+import { Loader } from 'components/Loader/Loader';
 
-
-
-
-
-export const CategoriesPage = () => {
-
+const CategoriesPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -27,31 +22,33 @@ export const CategoriesPage = () => {
       try {
         const data = await getRecipesByCategory(categoryName);
         setRecipes(data.recipes);
-        setLoading(false)
+        setLoading(false);
       } catch (error) {
-        setError(error.massege)
+        setError(error.massege);
       }
-    }
-    getRecipes()
+    };
+    getRecipes();
   }, [categoryName]);
-  
 
   return (
     <main>
-      <MainTitle text={"Categories"} />  
+      <MainTitle text={'Categories'} />
       <CategoriesList />
       {loading && (
         <div
-            style={{
+          style={{
             margin: '30px 0px',
             display: 'flex',
             justifyContent: 'center',
-          }}>
+          }}
+        >
           <Loader />
-        </div>)} 
+        </div>
+      )}
       {recipes.length > 0 && !loading && <RecipesList items={recipes} />}
-      {error && <EmptyMessage>Something went wrong...</EmptyMessage> }
-
+      {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
     </main>
-  ) 
+  );
 };
+
+export default CategoriesPage;
