@@ -18,7 +18,7 @@ export const IngredientsHeader = styled.div`
   padding: 12px 14px;
   margin-bottom: 24px;
 
-  background: ${props => props.theme.colors.accent};
+  background: ${props => props.theme.colors.accentColor};
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
@@ -155,7 +155,7 @@ export const IngredientNumber = styled.p`
 
   color: ${props => props.theme.colors.textWhite};
 
-  background-color: ${props => props.theme.colors.accent};
+  background-color: ${props => props.theme.colors.accentColor};
   border-radius: 4px;
   @media ${props => props.theme.device.tablet} {
     font-size: 18px;
