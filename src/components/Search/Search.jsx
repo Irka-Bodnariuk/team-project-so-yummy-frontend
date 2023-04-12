@@ -46,7 +46,6 @@ const Search = () => {
   const searchType = useSelector(selectSearchType);
   const searchResult = useSelector(selectSearchResult);
   const [loading, setLoading] = useState(false);
-  const [count, setCount] = useState(1);
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
   const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
@@ -76,8 +75,8 @@ const Search = () => {
               setLoading(false);
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            // const totalPages = Math.ceil(res.total / res.limit);
+            // setCount(totalPages);
             setIsSearchResult(true);
             setLoading(false);
           })
@@ -97,8 +96,8 @@ const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            // const totalPages = Math.ceil(res.total / res.limit);
+            // setCount(totalPages);
             setIsSearchResult(true);
             setLoading(false);
           })
