@@ -5,7 +5,7 @@ import RecipeIngredients from 'components/RecipeIngredients/RecipeIngredients';
 import RecipeInstructions from 'components/RecipeInstructions/RecipeInstructions';
 import { getRecipeById } from 'api/services/axios/axiosService';
 
-export const RecipePage = () => {
+const RecipePage = () => {
   const { recipeId } = useParams();
   const [recipe, setRecipe] = useState('');
   const [instructions, setInstructions] = useState([]);
@@ -52,3 +52,5 @@ export const RecipePage = () => {
     </div>
   );
 };
+
+export default RecipePage;
