@@ -2,7 +2,7 @@ import Search from 'components/Search/Search';
 import React from 'react';
 import GoToTop from 'helpers/scrollToTop';
 
-export const SearchPage = () => {
+const SearchPage = () => {
   return (
     <>
       <Search />
@@ -10,3 +10,5 @@ export const SearchPage = () => {
     </>
   );
 };
+
+export default SearchPage;
