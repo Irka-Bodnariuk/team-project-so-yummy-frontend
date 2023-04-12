@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
 import { ToastContainer } from 'react-toastify';
@@ -7,21 +7,21 @@ import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { refreshUser } from 'store/auth/authOperations';
 import { SigninPage } from 'pages/SigninPage/SigninPage';
-import {
-  RegisterPage,
-  WellcomePage,
-  MainPage,
-  CategoriesPage,
-  AddRecipePage,
-  Favorite,
-  RecipePage,
-  MyRecipes,
-  SearchPage,
-  ShoppingPage,
-  NotFoundPage,
-} from 'pages';
+import { RegisterPage, WellcomePage, NotFoundPage } from 'pages';
 import { SharedLayout } from 'components/Layout/SharedLayout/SharedLayout';
 import { PrivateRoute, RestrictedRoute } from 'components/Routes';
+import { Loader } from 'components/Loader/Loader';
+
+const ShoppingPage = lazy(() => import('pages/ShoppingPage/ShoppingPage'));
+const SearchPage = lazy(() => import('pages/SearchPage/SearchPage'));
+const MyRecipes = lazy(() => import('pages/MyRecipesPage/MyRecipes'));
+const RecipePage = lazy(() => import('pages/RecipePage/RecipePage'));
+const Favorite = lazy(() => import('pages/FavoritePage/Favorite'));
+const AddRecipePage = lazy(() => import('pages/AddRecipePage/AddRecipePage'));
+const CategoriesPage = lazy(() =>
+  import('pages/CategoriesPage/CategoriesPage')
+);
+const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 
 const getTheme = mode =>
   merge({}, baseTheme, {
@@ -67,49 +67,81 @@ export const App = () => {
 
             <Route
               path="/"
-              element={<SharedLayout colorModeContext={ColorModeContext} />}
+              element={
+                <PrivateRoute component={SharedLayout} redirectTo="/signin" />
+              }
             >
               <Route path="*" element={<NotFoundPage />} />
               <Route
                 path="main"
                 element={
-                  <PrivateRoute component={MainPage} redirectTo="/signin" />
+                  <Suspense fallback={<Loader />}>
+                    <MainPage />
+                  </Suspense>
                 }
               />
 
               <Route
                 path="categories/:categoryName"
-                element={<PrivateRoute component={CategoriesPage} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <CategoriesPage />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="add"
-                element={<PrivateRoute component={AddRecipePage} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <AddRecipePage />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="favorite"
-                element={<PrivateRoute component={Favorite} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <Favorite />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="recipe/:recipeId"
-                element={<PrivateRoute component={RecipePage} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <RecipePage />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="my"
-                element={<PrivateRoute component={MyRecipes} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <MyRecipes />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="search"
-                element={<PrivateRoute component={SearchPage} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <SearchPage />
+                  </Suspense>
+                }
               />
 
               <Route
                 path="shopping-list"
-                element={<PrivateRoute component={ShoppingPage} />}
+                element={
+                  <Suspense fallback={<Loader />}>
+                    <ShoppingPage />
+                  </Suspense>
+                }
               />
             </Route>
 
