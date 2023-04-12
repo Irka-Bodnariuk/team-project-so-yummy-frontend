@@ -1,9 +1,9 @@
-import { WrapperCopytight, Text } from "./Copyright.styled";
+import { WrapperCopytight, TextCopyright, Text } from "./Copyright.styled";
 
 const Copyright = () => {
     return (
         <WrapperCopytight>
-            <Text>© 2023 All Rights Reserved. <span>Terms of Service</span></Text>
+            <TextCopyright>© 2023 All Rights Reserved. <Text>Terms of Service</Text></TextCopyright>
         </WrapperCopytight>
     )
 }

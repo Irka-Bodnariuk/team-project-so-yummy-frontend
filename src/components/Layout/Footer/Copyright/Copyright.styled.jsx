@@ -12,17 +12,18 @@ export const WrapperCopytight = styled.div`
    height: 78px;
   }
 
-   @media screen and (min-width: 768px) {
+   @media screen and (min-width: 1440px) {
    height: 114px;
   }
 `;
 
-export const Text = styled.p`
+export const TextCopyright = styled.p`
   font-weight: 500;
   font-size: 10px;
   line-height: 10px;
   letter-spacing: -0.01em;
   color: ${p => p.theme.colors.heroText};
+  opacity: 0.5;
 
   @media screen and (min-width: 768px) {
    font-size: 14px;
@@ -30,6 +31,15 @@ export const Text = styled.p`
   }
 `;
 
-export const Background = styled.div`
-  
+export const Text = styled.span`
+  margin-left: 14px;
+
+  @media screen and (min-width: 768px) {
+   margin-left: 28px;
+  }
+
+  @media screen and (min-width: 1440px) {
+   margin-left: 40px;
+  }
+
 `;
