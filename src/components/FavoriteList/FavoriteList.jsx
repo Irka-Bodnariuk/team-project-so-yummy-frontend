@@ -1,4 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useState } from 'react';
+
+import { toast } from 'react-toastify';
 
 import { getFavoriteRecipes, deleteFavoriteRecipe } from 'api/index';
 import MyRecipeItem from '../RecipeItem/MyRecipeItem';
@@ -7,32 +9,32 @@ import { Loader } from '../Loader/Loader';
 import { List, ListText, LoaderBox } from './FavoriteList.styled.js';
 
 const FavoriteList = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
 
   const getFavorites = async () => {
     try {
-      setLoading(false);
+      setLoading(true);
       const data = await getFavoriteRecipes();
       setAllRecipes(data);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong by getting recipes');
     } finally {
       setLoading(false);
     }
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     getFavorites();
   }, []);
 
-  const handelDelete = async id => {
+  const handleDelete = async id => {
     try {
       await deleteFavoriteRecipe(id);
       const data = await getFavoriteRecipes();
       setAllRecipes(data);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong by removing recipe');
     }
   };
 
@@ -53,9 +55,7 @@ const FavoriteList = () => {
             time={time}
             title={title}
             id={_id}
-            handelDelete={handelDelete}
-            styleDel="black"
-            styleBtn="normal"
+            handleDelete={handleDelete}
           />
         ))}
       {allRecipes.length === 0 && !loading && (

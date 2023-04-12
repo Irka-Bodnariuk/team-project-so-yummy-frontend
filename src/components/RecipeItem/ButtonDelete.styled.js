@@ -1,21 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import { RiDeleteBinLine } from 'react-icons/ri';
 
 export const BtnDel = styled.button`
-  background-color: ${props =>
-    ({
-      black: props.theme.colors.modes.white.accentGrey,
-      green: props.theme.colors.accentCurrent,
-    }[props.battonDel])};
-
-  color: ${props =>
-    ({
-      black: props.theme.colors.buttonDelAccent,
-      green: props.theme.colors.defLight,
-    }[props.battonDel])};
-
+  background-color: ${props => props.theme.colors.deleteButton};
+  color: ${props => props.theme.colors.heroText};
   width: 24px;
   height: 24px;
   border-radius: 4px;
+  border-color: transparent;
   font-size: 14px;
   text-align: center;
 
@@ -36,7 +28,7 @@ export const BtnDel = styled.button`
     background-color: ${props =>
       ({
         black: props.theme.colors.accent,
-        green: props.theme.colors.modes.white.backgroundAccent,
+        green: props.theme.colors.green,
       }[props.battonDel])};
 
     color: ${props =>
@@ -45,4 +37,8 @@ export const BtnDel = styled.button`
         green: props.theme.colors.whiteMuted,
       }[props.battonDel])};
   }
+`;
+
+export const DeleteIcon = styled(RiDeleteBinLine)`
+  color: ${props => props.theme.colors.heroText};
 `;
