@@ -124,6 +124,7 @@ export const ButtonStyled = styled.button`
           return '#22252a';
       }
     }};
+
     border: ${({ look }) => {
       switch (look) {
         case 'cancel':
@@ -262,6 +263,7 @@ export const LinkStyled = styled(Link)`
           return '#22252a';
       }
     }};
+
     border: ${({ look }) => {
       switch (look) {
         case 'cancel':
