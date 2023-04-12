@@ -136,7 +136,7 @@ export const IngredientName = styled.p`
   line-height: 1.17;
   letter-spacing: -0.24px;
 
-  color: ${props => props.theme.light.primaryText};
+  color: ${props => props.theme.primaryText};
 
   @media ${props => props.theme.device.tablet} {
     font-size: 24px;
