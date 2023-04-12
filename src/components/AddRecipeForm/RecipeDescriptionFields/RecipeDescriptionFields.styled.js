@@ -16,7 +16,6 @@ export const LabelFile = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 30px;
   width: 280px;
   height: 270px;
   border-radius: 8px;
@@ -130,6 +129,7 @@ export const StyledSelect = styled(Select)`
     position: absolute;
     right: 0;
     top: -8px;
+    z-index: ${p => p.zIndex};
   }
   .сustom-select__control {
     border: none;

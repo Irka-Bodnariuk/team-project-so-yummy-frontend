@@ -25,7 +25,7 @@ export const Button = styled.button`
 
   svg {
     fill: ${p =>
-      p.value <= 1
+      p.value <= 0
         ? p.theme.colors.button.primaryCancelBg
         : p.theme.colors.accentColor};
     width: 14px;

@@ -1,5 +1,24 @@
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  selectCategory,
+  selectIsLoading,
+  selectError,
+  selectIngredients,
+} from 'store/addRecipe/addRecipeSelectors';
+import {
+  getCategoryList,
+  getIngredientsList,
+} from 'store/addRecipe/addRecipeOperation';
 // import PropTypes from 'prop-types';
 import { Formik } from 'formik';
+import {
+  createOptionCategory,
+  createOptionTimes,
+  createOptionMeasure,
+  createOptionIngredients,
+} from 'helpers/createOptionsSelectAddRecipeForm';
+import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreapationFields } from './RecipePreapationFields/RecipePreapationFields';
@@ -11,65 +30,42 @@ const initialValues = {
   title: '',
   about: '',
   category: 'breakfast',
-  time: '40 min',
+  time: '40',
   ingredients: [{ quantity: '', measure: 'tbs', id: '' }],
-  preparation: '',
+  preparation: [],
 };
 
-const category = [
-  'Beef',
-  'Breakfast',
-  'Chiken',
-  'Dessert',
-  'Goat',
-  'Lamb',
-  'Miscellaneous',
-  'Pasta',
-  'Pork',
-  'Seafood',
-  'Side',
-  'Starter',
-];
-
-const ingredients = [
-  { id: 1, ingr: 'Avocado' },
-  { id: 2, ingr: 'Rice' },
-  { id: 3, ingr: 'Cocumber' },
-  { id: 4, ingr: 'Chicken' },
-  { id: 5, ingr: 'Cherry' },
-  { id: 6, ingr: 'Cheese' },
-  { id: 7, ingr: 'Salad' },
-  { id: 8, ingr: 'Pordge' },
-  { id: 9, ingr: 'Pork' },
-  { id: 10, ingr: 'Water' },
-];
-
-const mesure = ['tbs', 'tsp', 'kg', 'g'];
-
 export const AddRecipeForm = props => {
-  const optionsCategory = category.map(item => ({
-    value: item.toLowerCase(),
-    label: item,
-  }));
-  const optionsTimes = createArrTimesPrepare(5, 120, 5).map(num => ({
-    value: `${num} min`,
-    label: `${num} min`,
-  }));
-  const optionsIngredients = ingredients.map(item => ({
-    value: item.id,
-    label: item.ingr,
-  }));
-  const optionMesure = mesure.map(item => ({
-    value: item,
-    label: item,
-  }));
+  const dispatch = useDispatch();
+  const categoryList = useSelector(selectCategory);
+  const ingredientsList = useSelector(selectIngredients);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+
+  useEffect(() => {
+    dispatch(getCategoryList());
+    dispatch(getIngredientsList());
+  }, [dispatch]);
+
+  console.log(ingredientsList);
+
+  const optionsCategory = createOptionCategory(categoryList);
+  const optionsTimes = createOptionTimes(createArrTimesPrepare(5, 120, 5));
+  const optionsIngredients = createOptionIngredients(ingredientsList);
+  const optionMesure = createOptionMeasure();
+
+  const handleSubmit = (values, actions) => {
+    console.log(values);
+    actions.resetForm();
+  };
 
   return (
     <Formik
       initialValues={initialValues}
-      onSubmit={values => {
-        console.log(values);
+      onSubmit={(values, actions) => {
+        handleSubmit(values, actions);
       }}
+      validationSchema={validationSchema}
     >
       {({ setFieldValue, values }) => (
         <RecipeForm>
@@ -84,7 +80,7 @@ export const AddRecipeForm = props => {
             optionMesure={optionMesure}
             values={values}
           />
-          <RecipePreapationFields />
+          <RecipePreapationFields setFieldValue={setFieldValue} />
           <button type="submit">add</button>
         </RecipeForm>
       )}

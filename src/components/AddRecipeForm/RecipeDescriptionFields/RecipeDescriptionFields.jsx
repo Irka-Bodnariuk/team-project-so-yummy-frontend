@@ -5,6 +5,7 @@ import placeholder from 'images/mobile/form-add-placeholder.png';
 import { Loader } from 'components/Loader/Loader';
 import { Box } from 'components/Box';
 import { IoMdRemoveCircle } from 'react-icons/io';
+import { FormErrorMsg } from '../FormErrorMsg/FormErrorMsg';
 import {
   FieldsetDesc,
   LabelFile,
@@ -27,7 +28,7 @@ export const RecipeDescriptionFields = ({
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleFileUpload = e => {
+  const handleFileUpload = async e => {
     const selectedFile = e.target.files[0];
     setLoading(true);
 
@@ -48,7 +49,7 @@ export const RecipeDescriptionFields = ({
   return (
     <>
       <FieldsetDesc>
-        <Box>
+        <Box mb={30}>
           <LabelFile isLoading={loading}>
             {loading ? (
               <Loader />
@@ -70,6 +71,7 @@ export const RecipeDescriptionFields = ({
               <InputFile type="file" name="file" onChange={handleFileUpload} />
             )}
           </LabelFile>
+          <FormErrorMsg name="file" position="center" />
         </Box>
         <Box
           display="flex"
@@ -84,6 +86,7 @@ export const RecipeDescriptionFields = ({
               name="title"
               placeholder="Enter item title"
             />
+            <FormErrorMsg name="title" position="left" />
           </Label>
           <Label>
             <InputText
@@ -91,6 +94,7 @@ export const RecipeDescriptionFields = ({
               name="about"
               placeholder="Enter about recipe"
             />
+            <FormErrorMsg name="about" position="left" />
           </Label>
           <Label>
             <DisabledInput>
@@ -99,13 +103,13 @@ export const RecipeDescriptionFields = ({
                 {({ field }) => (
                   <StyledSelect
                     options={optionsCategory}
-                    defaultValue={optionsCategory.find(
-                      ({ value }) => value === values.category
-                    )}
+                    // defaultValue={optionsCategory.find(({ value }) => value === values.category.toLowerCase())}
+                    defaultValue={{ value: 'breakfast', label: 'Breakfast' }}
                     isSearchable={false}
                     className="сustom-select-container"
                     classNamePrefix="сustom-select"
                     onChange={option => setFieldValue(field.name, option.value)}
+                    zIndex={110}
                   />
                 )}
               </Field>
@@ -125,6 +129,7 @@ export const RecipeDescriptionFields = ({
                     className="сustom-select-container"
                     classNamePrefix="сustom-select"
                     onChange={option => setFieldValue(field.name, option.value)}
+                    zIndex={105}
                   />
                 )}
               </Field>

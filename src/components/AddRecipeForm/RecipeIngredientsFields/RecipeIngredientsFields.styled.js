@@ -22,7 +22,19 @@ export const Container = styled.div`
   }
 `;
 
+export const ContainerError = styled.div`
+  position: absolute;
+  top: 70%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  height: 55px;
+`;
+
 export const Label = styled.label`
+  position: relative;
   flex-grow: 1;
 `;
 

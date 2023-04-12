@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
+import { ToastContainer } from 'react-toastify';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -127,6 +128,18 @@ export const App = () => {
             />
           </Routes>
         )}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </ThemeProvider>
     </ColorModeContext.Provider>
   );

@@ -2,6 +2,7 @@ import { useState } from 'react';
 // import PropTypes from 'prop-types';
 import { FieldArray } from 'formik';
 import { Counter } from './Counter/Counter';
+import { FormErrorMsg } from '../FormErrorMsg/FormErrorMsg';
 import { RxCross2 } from 'react-icons/rx';
 import {
   FieldsetIngredients,
@@ -11,9 +12,13 @@ import {
   InputText,
   LabelMeasure,
   Container,
+  ContainerError,
   RemoveFieldsButton,
 } from './RecipeIngredientsFields.styled';
 import { Legend } from '../Legend/Legend.styled';
+
+// toast.error('Ooops.. Add one ingredient');
+//import { toast } from 'react-toastify';
 
 export const RecipeIngredientsFields = ({
   optionsIngredients,
@@ -27,14 +32,11 @@ export const RecipeIngredientsFields = ({
     push({ quantity: '', measure: 'tbs', id: '' });
   };
   const handleDecrement = pop => {
-    if (fieldsValue <= 1) {
-      return;
-    }
+    if (fieldsValue <= 0) return;
     setFieldsValue(pS => pS - 1);
     pop({ quantity: '', measure: 'tbs', id: '' });
   };
   const removeFieldsBtn = (remove, idx) => {
-    if (idx === 0) return;
     remove(idx);
     setFieldsValue(pS => pS - 1);
   };
@@ -63,6 +65,16 @@ export const RecipeIngredientsFields = ({
                     placeholder="Choose an ingredient..."
                     noOptionsMessage={() => 'No ingredient'}
                   />
+                  <ContainerError>
+                    <FormErrorMsg
+                      name={`ingredients.${idx}.id`}
+                      position="left"
+                    />
+                    <FormErrorMsg
+                      name={`ingredients.${idx}.quantity`}
+                      position="left"
+                    />
+                  </ContainerError>
                 </Label>
                 <LabelMeasure>
                   <SelectMeasure
