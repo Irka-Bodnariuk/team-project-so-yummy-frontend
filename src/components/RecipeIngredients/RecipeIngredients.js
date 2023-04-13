@@ -14,7 +14,7 @@ import {
 import placeholders from 'images/icons/placeholders.svg';
 import Checkbox from 'components/Checkbox/Checkbox';
 import { useEffect, useState } from 'react';
-import { getShopList } from 'api/services/axios/axiosService';
+import { getShoppingList } from 'api/shoppingList';
 import { useParams } from 'react-router-dom';
 
 const RecipeIngredients = ({ ingredients }) => {
@@ -52,7 +52,7 @@ const RecipeIngredients = ({ ingredients }) => {
     getFilteredShopList();
 
     async function getFilteredShopList() {
-      getShopList()
+      getShoppingList()
         .then(res => {
           const { result } = res.data.data;
           const filteredShopList = result.filter(
