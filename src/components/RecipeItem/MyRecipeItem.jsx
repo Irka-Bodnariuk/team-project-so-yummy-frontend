@@ -39,7 +39,7 @@ const MyRecipeItem = ({
           <ButtonWrapper>
             <Time>{time} min</Time>
             <Button
-              to="/my"
+              to=`/recipe/:${id}`
               look="rounded"
               width="87px"
               heigth="27px"
