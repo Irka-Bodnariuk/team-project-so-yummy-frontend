@@ -41,4 +41,5 @@ export const BtnDel = styled.button`
 
 export const DeleteIcon = styled(RiDeleteBinLine)`
   color: ${props => props.theme.colors.heroText};
+  cursor: pointer;
 `;
