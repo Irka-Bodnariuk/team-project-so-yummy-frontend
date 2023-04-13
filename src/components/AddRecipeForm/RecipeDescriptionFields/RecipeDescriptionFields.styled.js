@@ -9,6 +9,16 @@ export const FieldsetDesc = styled.fieldset`
   flex-direction: column;
   align-items: center;
   border: none;
+
+  @media ${props => props.theme.device.tablet} {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    gap: 50px;
+  }
 `;
 
 export const LabelFile = styled.div`
@@ -22,6 +32,11 @@ export const LabelFile = styled.div`
   outline: ${p =>
     p.isLoading ? `5px solid ${p.theme.colors.accentColor}` : 'none'};
   overflow: hidden;
+
+  @media ${props => props.theme.device.desktop} {
+    width: 357px;
+    height: 344px;
+  }
 `;
 
 export const ThumbImg = styled.img`
@@ -71,6 +86,12 @@ export const Label = styled.label`
   &:not(:last-child) {
     margin-bottom: 24px;
   }
+
+  @media ${props => props.theme.device.tablet} {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
 `;
 
 export const InputText = styled(Field)`
@@ -96,6 +117,13 @@ export const InputText = styled(Field)`
   :focus::placeholder {
     opacity: 0;
   }
+
+  @media ${props => props.theme.device.tablet} {
+    height: 43px;
+    &::placeholder {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
+  }
 `;
 
 export const DisabledInput = styled.div`
@@ -104,6 +132,10 @@ export const DisabledInput = styled.div`
   height: 40px;
   border: none;
   border-bottom: 1px solid ${p => p.theme.colors.form.formBottomLine};
+
+  @media ${props => props.theme.device.tablet} {
+    height: 43px;
+  }
 `;
 
 export const Placeholder = styled.span`
@@ -114,6 +146,10 @@ export const Placeholder = styled.span`
   font-size: ${p => `${p.theme.fontSizes.s}px`};
   line-height: 1.5;
   color: ${p => p.theme.colors.form.labelText};
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.sm}px`};
+  }
 `;
 
 export const StyledSelect = styled(Select)`
@@ -145,7 +181,10 @@ export const StyledSelect = styled(Select)`
     display: none;
   }
   .сustom-select__value-container {
-    padding: 2px 0 2px 25px;
+    padding: 2px 0px 2px 14px;
+  }
+  .сustom-select__single-value {
+    text-align: right;
   }
   .сustom-select__menu-list {
     max-height: 210px;
@@ -179,5 +218,13 @@ export const StyledSelect = styled(Select)`
   .сustom-select__option--is-selected {
     background-color: ${p => p.theme.colors.accentColor};
     opacity: 1;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.s}px`};
+
+    .сustom-select__option {
+      font-size: ${p => `${p.theme.fontSizes.s}px`};
+    }
   }
 `;

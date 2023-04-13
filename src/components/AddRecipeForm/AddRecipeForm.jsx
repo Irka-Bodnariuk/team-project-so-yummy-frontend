@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { toast } from 'react-toastify';
 import {
   selectCategory,
   selectError,
@@ -22,6 +21,8 @@ import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreapationFields } from './RecipePreapationFields/RecipePreapationFields';
+import { Button } from 'components/Button/Button';
+import { ShowToastError } from 'helpers/showToastError';
 import { createArrTimesPrepare } from 'helpers/createArrTimesPrepare';
 import { RecipeForm } from './AddRecipeForm.styled';
 
@@ -59,20 +60,24 @@ export const AddRecipeForm = props => {
       id: item.id,
       measure: `${item.quantity} ${item.measure}`,
     }));
-    console.log(ingredientsList);
-    console.log(values);
+    const formData = new FormData();
 
-    const data = {
-      title,
-      category,
-      description: about,
-      instructions,
-      thumb: file,
-      preview: file,
-      time,
-      ingredients: ingredientsList,
-    };
-    dispatch(addRecipe(data));
+    formData.append('title', title);
+    formData.append('category', category);
+    formData.append('description', about);
+    formData.append('instructions', instructions);
+    formData.append('preview', file);
+    formData.append('thumb', file);
+    formData.append('time', time);
+    formData.append('ingredients', JSON.stringify(ingredientsList));
+
+    const dataFile = Object.fromEntries(formData.entries());
+    console.log(dataFile);
+
+    dispatch(addRecipe(formData));
+    // .unwrap()
+    // .then(res => res)
+    // .catch(() => <ShowToastError msg="Ooops.. It try again" />);
     actions.resetForm();
   };
 
@@ -99,11 +104,22 @@ export const AddRecipeForm = props => {
               values={values}
             />
             <RecipePreapationFields setFieldValue={setFieldValue} />
-            <button type="submit">add</button>
+            <Button
+              type="submit"
+              look="rounded"
+              width="129px"
+              widthTablet="161px"
+              heigthTablet="52px"
+              heigth="46px"
+              fontSize="16px"
+              lineHeight="24px"
+            >
+              Add
+            </Button>
           </RecipeForm>
         )}
       </Formik>
-      {error && toast.error('Ooops.. Something went wrong')}
+      {error && <ShowToastError msg="Ooops.. Something went wrong" />}
     </>
   );
 };

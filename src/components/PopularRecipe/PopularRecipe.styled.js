@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const LoaderDiv = styled.div`
   width: 100%;
@@ -9,17 +10,17 @@ export const LoaderDiv = styled.div`
 `;
 
 export const ContainerPopularRecipe = styled.div`
-  padding-top: 72px;
+  /* padding-top: 72px;
   @media ${props => props.theme.device.tablet} {
     padding-top: 100px;
   }
   @media ${props => props.theme.device.desktop} {
     width: 320px;
-  }
+  } */
 `;
 
 export const TitlePopularRecipe = styled.h3`
-  font-weight: ${props => props.theme.fontWeights.bold};
+  font-weight: ${props => props.theme.fontWeights.title};
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
@@ -59,6 +60,12 @@ export const ItemBox = styled.li`
   }
 `;
 
+export const StyledLink = styled(Link)`
+  display: flex;
+  gap: 12px;
+  text-decoration: none;
+`;
+
 export const TextBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -66,7 +73,7 @@ export const TextBox = styled.div`
 
 export const Preview = styled.img`
   height: 85px;
-  width: 104px;
+  min-width: 104px;
   border-radius: 8px;
   @media ${props => props.theme.device.tablet} {
     width: 102px;
@@ -74,7 +81,7 @@ export const Preview = styled.img`
 `;
 
 export const TitleRecipe = styled.p`
-  font-weight: ${props => props.theme.fontWeights.medium};
+  font-weight: ${props => props.theme.fontWeights.subtitle};
   font-size: 16px;
   line-height: 1.25;
   letter-spacing: -0.24px;

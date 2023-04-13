@@ -10,6 +10,10 @@ export const FieldsetIngredients = styled.fieldset`
   flex-direction: column;
   align-items: center;
   border: none;
+
+  @media ${props => props.theme.device.desktop} {
+    width: 609px;
+  }
 `;
 
 export const Container = styled.div`
@@ -19,6 +23,14 @@ export const Container = styled.div`
 
   &:not(:last-child) {
     margin-bottom: 18px;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    gap: 0;
+
+    &:not(:last-child) {
+      margin-bottom: 24px;
+    }
   }
 `;
 
@@ -36,6 +48,12 @@ export const ContainerError = styled.div`
 export const Label = styled.label`
   position: relative;
   flex-grow: 1;
+
+  @media ${props => props.theme.device.tablet} {
+    flex-grow: 0;
+    margin-right: 32px;
+    width: 400px;
+  }
 `;
 
 export const LabelMeasure = styled.div`
@@ -100,7 +118,7 @@ export const SelectIngredients = styled(Select)`
     }
   }
   .сustom-select__option {
-    font-size: 12px;
+    font-size: ${p => `${p.theme.fontSizes.xs}px`};
     line-height: 1.5;
     opacity: 0.5;
 
@@ -113,6 +131,18 @@ export const SelectIngredients = styled(Select)`
   .сustom-select__option--is-selected {
     background-color: ${p => p.theme.colors.accentColor};
     opacity: 1;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    .сustom-select__single-value {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
+    .сustom-select__option {
+      font-size: ${p => `${p.theme.fontSizes.s}px`};
+    }
+    .сustom-select__placeholder {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
   }
 `;
 
@@ -201,6 +231,15 @@ export const SelectMeasure = styled(Select)`
     background-color: ${p => p.theme.colors.accentColor};
     opacity: 1;
   }
+
+  @media ${props => props.theme.device.tablet} {
+    .сustom-select__single-value {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
+    .сustom-select__option {
+      font-size: ${p => `${p.theme.fontSizes.s}px`};
+    }
+  }
 `;
 
 export const InputText = styled(Field)`
@@ -210,6 +249,10 @@ export const InputText = styled(Field)`
   border: none;
   border-radius: 6px;
   outline-color: ${p => p.theme.colors.form.formBottomLine};
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.sm}px`};
+  }
 `;
 
 export const RemoveFieldsButton = styled.button`
@@ -225,5 +268,9 @@ export const RemoveFieldsButton = styled.button`
     fill: ${p => p.theme.colors.form.formAddIcon};
     width: 18px;
     height: 18px;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    margin-left: auto;
   }
 `;

@@ -5,6 +5,10 @@ export const FieldsetPreparation = styled.fieldset`
   margin-bottom: 18px;
   padding: 0;
   border: none;
+
+  @media ${props => props.theme.device.tablet} {
+    margin-bottom: 32px;
+  }
 `;
 
 export const Textarea = styled(Field)`
@@ -21,4 +25,18 @@ export const Textarea = styled(Field)`
   border: none;
   border-radius: 6px;
   resize: none;
+
+  &::placeholder {
+    font-size: ${p => `${p.theme.fontSizes.s}px`};
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    padding: 16px 22px;
+    width: 550px;
+    height: 224px;
+
+    &::placeholder {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
+  }
 `;

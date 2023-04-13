@@ -10,6 +10,10 @@ export const Container = styled.div`
   border: 1px solid rgba(51, 51, 51, 0.3);
   border-radius: 18px;
   overflow: hidden;
+
+  @media ${props => props.theme.device.tablet} {
+    top: -58px;
+  }
 `;
 
 export const Button = styled.button`
@@ -34,6 +38,10 @@ export const Button = styled.button`
 `;
 
 export const Value = styled.span`
-  font-size: 14px;
-  line-height: 1.29;
+  font-size: ${p => `${p.theme.fontSizes.s}px`};
+  line-height: 1.2;
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.sm}px`};
+  }
 `;
