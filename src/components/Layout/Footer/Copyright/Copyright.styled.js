@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bg_small_mob_1x from "../../../../images/bg/bg_small_mob_1x.png"
+// import bg_small_mob_1x from "../../../../images/bg/bg_small_mob_1x.png"
 
 export const WrapperCopytight = styled.div`
   position: relative;
@@ -8,7 +8,7 @@ export const WrapperCopytight = styled.div`
   align-items: center;
   width: 100%;
   height: 66px;
-  background-color: ${p => p.theme.colors.background};
+  background-color: ${(p) => p.theme.colors.background};
 
   @media screen and (min-width: 768px) {
    height: 78px;
@@ -24,7 +24,7 @@ export const TextCopyright = styled.p`
   font-size: 10px;
   line-height: 10px;
   letter-spacing: -0.01em;
-  color: ${p => p.theme.colors.heroText};
+  color: ${(p) => p.theme.colors.heroText};
   opacity: 0.5;
 
   @media screen and (min-width: 768px) {
