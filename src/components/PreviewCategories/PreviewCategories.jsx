@@ -29,7 +29,7 @@ const PreviewCategories = () => {
           />
         ))}
       <Button
-        to="/categories"
+        to="/categories/beef"
         look="rounded_other"
         width="195px"
         heigth="47px"
