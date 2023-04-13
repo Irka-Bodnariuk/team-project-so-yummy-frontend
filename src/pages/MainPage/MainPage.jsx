@@ -2,6 +2,7 @@ import PreviewCategories from 'components/PreviewCategories/PreviewCategories';
 import MainPageStyled from './MainPageStyled';
 import СhooseYourBreakfast from '../../components/СhooseYourBreakfast/СhooseYourBreakfast';
 import MainPageSearch from 'components/MainPageSearch/MainPageSearch';
+// import { MainPageContainerStyled } from './MainPageStyled';
 
 const MainPage = () => {
   return (

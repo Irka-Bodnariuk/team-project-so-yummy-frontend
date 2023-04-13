@@ -32,8 +32,7 @@ const SubscribeForm = () => {
       console.log("Error");
       return;
     }
-    const data = await updateSubscribe();
-    console.log(data)
+    await updateSubscribe();
     resetForm();
   };
 

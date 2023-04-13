@@ -1,53 +1,41 @@
-import { useEffect, useState } from 'react';
-// import { useLocation } from 'react-router';
+import { useLayoutEffect, useState } from 'react';
+
+import { toast } from 'react-toastify';
 
 import { getFavoriteRecipes, deleteFavoriteRecipe } from 'api/index';
-import MyRecipeItem from 'components/RecipeItem/MyRecipeItem';
+import MyRecipeItem from '../RecipeItem/MyRecipeItem';
 import { Loader } from '../Loader/Loader';
-import Pagination from '../Pagination/Pagination';
 
 import { List, ListText, LoaderBox } from './FavoriteList.styled.js';
 
-
 const FavoriteList = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(null);
-    // const location = useLocation();
 
-  useEffect(() => {
-    const renderMovies = async () => {
-      setLoading(true);
-      try {
-        const data = await getFavoriteRecipes(page);
-        setAllRecipes(data.result);
-
-        const totalCountPage = Math.ceil(data.total / 4);
-        if (totalCountPage > 1) {
-          setTotalPage(totalCountPage);
-        }
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    renderMovies();
-  }, [page]);
-
-  const handelDelete = async id => {
+  const getFavorites = async () => {
     try {
-      await deleteFavoriteRecipe(id);
-      const data = await getFavoriteRecipes(page);
-      setAllRecipes(data.result);
+      setLoading(true);
+      const data = await getFavoriteRecipes();
+      setAllRecipes(data);
     } catch (error) {
-      console.log(error);
+      toast.error('Something went wrong by getting recipes');
+    } finally {
+      setLoading(false);
     }
   };
 
-  const handleChange = e => {
-    setPage(e.selected + 1);
+  useLayoutEffect(() => {
+    getFavorites();
+  }, []);
+
+  const handleDelete = async id => {
+    try {
+      await deleteFavoriteRecipe(id);
+      const data = await getFavoriteRecipes();
+      setAllRecipes(data);
+    } catch (error) {
+      toast.error('Something went wrong by removing recipe');
+    }
   };
 
   return (
@@ -57,7 +45,8 @@ const FavoriteList = () => {
           <Loader />
         </LoaderBox>
       )}
-      {allRecipes.length !== 0 && !loading ? (
+      {allRecipes.length !== 0 &&
+        !loading &&
         allRecipes.map(({ description, preview, time, title, _id }) => (
           <MyRecipeItem
             key={_id}
@@ -66,16 +55,11 @@ const FavoriteList = () => {
             time={time}
             title={title}
             id={_id}
-            handelDelete={handelDelete}
-            styleDel="black"
-            styleBtn="normal"
+            handleDelete={handleDelete}
           />
-        ))
-      ) : (
+        ))}
+      {allRecipes.length === 0 && !loading && (
         <ListText>You don't have your recipes</ListText>
-      )}
-      {totalPage && (
-        <Pagination pageCount={totalPage} page={page} change={handleChange} />
       )}
     </List>
   );

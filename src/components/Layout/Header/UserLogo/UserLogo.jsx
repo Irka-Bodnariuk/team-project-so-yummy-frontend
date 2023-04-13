@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import UserLogoModal from './UserLogoModal/UserLogoModal';
 import { useSelector } from 'react-redux';
+import { useLocation, useParams } from 'react-router-dom';
+import UserLogoModal from './UserLogoModal/UserLogoModal';
 
 import { Container, Photo, WrapPhoto, Name } from './UserLogo.styled';
-import { useLocation } from 'react-router-dom';
 
 const UserLogo = () => {
   const { pathname } = useLocation();
+  const recipe = useParams();
   const [modalIsOpen, setmodalIsOpen] = useState(false);
   const avatar = useSelector(state => state.auth.user.avatar);
   const name = useSelector(state => state.auth.user.name);
@@ -16,7 +17,9 @@ const UserLogo = () => {
     <Container>
       <WrapPhoto onClick={toggleModalEdit}>
         <Photo src={avatar} alt={name} />
-        <Name pathname={pathname}>{name}</Name>
+        <Name pathname={pathname} recipe={recipe}>
+          {name}
+        </Name>
       </WrapPhoto>
       {modalIsOpen && <UserLogoModal openModalEdit={toggleModalEdit} />}
     </Container>

@@ -15,11 +15,12 @@ export const List = styled.div`
 `;
 export const ListText = styled.h3`
   font-size: 20px;
+  color: ${p => p.theme.colors.heroText};
   @media ${props => props.theme.device.tablet} {
     font-size: 24px;
     color: ${p => p.theme.colors.heroText};
   }
-`
+`;
 
 export const ButtonDelete = styled.button`
   position: absolute;
@@ -28,7 +29,7 @@ export const ButtonDelete = styled.button`
   width: 24px;
   height: 24px;
   border-radius: 4px;
-  background: ${props => props.theme.colors.accent};
+  background: ${props => props.theme.colors.accentColor};
   color: ${props => props.theme.colors.textWhite};
   font-size: 14px;
   text-align: center;
