@@ -59,8 +59,6 @@ export const AddRecipeForm = props => {
       id: item.id,
       measure: `${item.quantity} ${item.measure}`,
     }));
-    console.log(ingredientsList);
-    console.log(values);
 
     const data = {
       title,
