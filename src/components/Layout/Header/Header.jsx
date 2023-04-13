@@ -1,8 +1,12 @@
+import { useState } from 'react';
+import { useMedia } from 'hooks';
+import { useLocation, useParams } from 'react-router-dom';
+
 import Logo from './Logo/Logo';
 import Navigation from './Navigation/Navigation';
 import UserLogo from './UserLogo/UserLogo';
 import ThemeToggler from './ThemeToggler/ThemeToggler';
-import { useState } from 'react';
+import BurgerMenu from './BurgerMenu';
 
 import {
   ButtonMenu,
@@ -11,12 +15,10 @@ import {
   MenuIcon,
   ContainerHeader,
 } from './Header.styled';
-import BurgerMenu from './BurgerMenu';
-import { useMedia } from 'hooks';
-import { useLocation } from 'react-router-dom';
 
 const Header = () => {
   const { pathname } = useLocation();
+  const recipe = useParams();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { isDesktopScreen } = useMedia();
 
@@ -33,7 +35,7 @@ const Header = () => {
         <Wrap>
           <UserLogo />
           <ButtonMenu onClick={handleMenuClick}>
-            <MenuIcon pathname={pathname} />
+            <MenuIcon pathname={pathname} recipe={recipe} />
           </ButtonMenu>
           {isDesktopScreen && <ThemeToggler />}
         </Wrap>

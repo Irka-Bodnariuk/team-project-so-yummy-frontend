@@ -73,18 +73,22 @@ export const ButtonMenu = styled.button`
 export const MenuIcon = styled(HiMenuAlt2)`
   width: 28px;
   height: 28px;
-  color: ${p => (p.pathname === '/my' ? '#23262A' : p.theme.colors.headerText)};
+  color: ${p => (p.recipe?.recipeId ? '#23262A' : p.theme.colors.headerText)};
 
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.accentColor};
-    color: #8baa36;
+    /* color: #8baa36; */
   }
   @media screen and (min-width: 768px) {
     width: 32px;
     height: 32px;
+  }
+  @media screen and (min-width: 800px) {
+    width: 32px;
+    height: 32px;
     color: ${p =>
-      p.pathname === '/main' || p.pathname === '/my'
+      p.pathname === '/main' || p.recipe?.recipeId
         ? '#23262A'
         : p.theme.colors.headerText};
   }

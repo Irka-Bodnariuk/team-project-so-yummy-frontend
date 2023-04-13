@@ -1,5 +1,4 @@
 import { useParams } from 'react-router-dom';
-
 import { useMedia } from 'hooks';
 
 import {
@@ -14,6 +13,8 @@ import {
 
 const Navigation = ({ handleClick }) => {
   const { category = 'beef' } = useParams();
+  const recipe = useParams();
+  const { isDesktopScreen } = useMedia();
 
   const pageList = [
     {
@@ -43,10 +44,6 @@ const Navigation = ({ handleClick }) => {
     },
   ];
 
-  const pathname = useParams();
-  console.log(pathname);
-  const { isDesktopScreen } = useMedia();
-
   const onDesktop = () => {
     if (!isDesktopScreen) {
       handleClick();
@@ -58,7 +55,7 @@ const Navigation = ({ handleClick }) => {
       <List>
         {pageList.map(({ to, text }) => (
           <Item onClick={() => onDesktop()} key={to}>
-            <Link to={to} pathname={pathname}>
+            <Link to={to} recipe={recipe}>
               {text !== 'Search' || isDesktopScreen ? (
                 <>{text !== 'Search' ? <Text>{text}</Text> : <SearchIcon />}</>
               ) : (
