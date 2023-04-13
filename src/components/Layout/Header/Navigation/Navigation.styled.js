@@ -45,6 +45,7 @@ export const Link = styled(NavLink)`
   cursor: pointer;
 
   color: ${p => p.theme.colors.headerText};
+
   &.active {
     color: ${p => p.theme.colors.accentColor};
   }
@@ -56,8 +57,7 @@ export const Link = styled(NavLink)`
     font-size: ${p => p.theme.fontSizes.xl}px;
   }
   @media screen and (min-width: 1440px) {
-    color: ${p =>
-      p.pathname?.recipeId ? '#23262A' : p.theme.colors.headerText};
+    color: ${p => (p.recipe?.recipeId ? '#23262A' : p.theme.colors.headerText)};
     font-size: ${p => p.theme.fontSizes.s}px;
     line-height: 1.5;
     padding: 10px 0;
