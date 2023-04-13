@@ -28,9 +28,6 @@ const Checkbox = props => {
   //   }, false);
   // };
 
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
 
   return (
     <CheckboxContainer>
