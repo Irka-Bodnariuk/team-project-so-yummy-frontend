@@ -1,4 +1,4 @@
-import clocks from "images/icons/clocks.svg";
+import clocks from 'images/icons/clocks.svg';
 import {
   ButtonWrap,
   FavoriteBtn,
@@ -9,36 +9,37 @@ import {
   RecipeTime,
   RecipeTimeWrapper,
   TextWrap,
-} from "./RecipeHero.styled";
-import { Container } from "reusableComponents/Container/Container.styled";
+} from './RecipeHero.styled';
+import { Container } from 'reusableComponents/Container/Container.styled';
 import {
-  getFavorites,
-  getOwnRecipes,
-  removeFromFavorites,
-} from "api/services/axios/axiosService";
-import { addToFavorites } from "api/serviseApi";
-import { useEffect, useState } from "react";
+  addToFavorites,
+  getFavoriteRecipes,
+  getMyRecipes,
+  deleteFavoriteRecipe,
+} from 'api/serviseApi';
+
+import { useEffect, useState } from 'react';
 
 const RecipeHero = ({ title, description, time, recipeId }) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleFavoriteAdd = (id) => {
+  const handleFavoriteAdd = id => {
     addToFavorites(id)
-      .then((res) => {
+      .then(res => {
         setIsFavorite(true);
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
-  const handleFavoriteRemove = (id) => {
-    removeFromFavorites(id)
-      .then((res) => {
+  const handleFavoriteRemove = id => {
+    deleteFavoriteRecipe(id)
+      .then(res => {
         setIsFavorite(false);
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   useEffect(() => {
-    getFavorites().then((res) => {
+    getFavoriteRecipes().then(res => {
       const { result: favorites } = res.data.data;
       const isFavorite = favorites.reduce((acc, favorite) => {
         if (favorite._id === recipeId) {
@@ -49,7 +50,7 @@ const RecipeHero = ({ title, description, time, recipeId }) => {
       isFavorite && setIsFavorite(isFavorite);
     });
 
-    getOwnRecipes();
+    getMyRecipes();
   }, [recipeId]);
   return (
     <HeroSection>
@@ -72,7 +73,7 @@ const RecipeHero = ({ title, description, time, recipeId }) => {
 
         <RecipeTimeWrapper>
           <IconClocks>
-            <use href={clocks + "#clocks-desk"}></use>
+            <use href={clocks + '#clocks-desk'}></use>
           </IconClocks>
           {time && <RecipeTime>{`${time} min`}</RecipeTime>}
         </RecipeTimeWrapper>
