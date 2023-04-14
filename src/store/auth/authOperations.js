@@ -1,4 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 import axios from 'axios';
 
 axios.defaults.baseURL =
@@ -19,6 +20,9 @@ export const registrationUser = createAsyncThunk(
       const res = await axios.post('/auth/register', credentials);
       return res.data;
     } catch (error) {
+      toast.error(error.response.data.message, {
+        position: 'top-right',
+      });
       return rejectWithValue(error);
     }
   }
@@ -33,6 +37,9 @@ export const loginUser = createAsyncThunk(
 
       return res.data;
     } catch (error) {
+      toast.error(error.response.data.message, {
+        position: 'top-right',
+      });
       return rejectWithValue(error);
     }
   }
@@ -45,6 +52,9 @@ export const logoutUser = createAsyncThunk(
       await axios.post('/auth/logout');
       clearAuthToken();
     } catch (error) {
+      toast.error(error.response.data.message, {
+        position: 'top-right',
+      });
       return rejectWithValue;
     }
   }
