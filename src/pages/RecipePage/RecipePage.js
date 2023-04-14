@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import RecipeHero from 'components/RecipeHero/RecipeHero';
 import RecipeIngredients from 'components/RecipeIngredients/RecipeIngredients';
 import RecipeInstructions from 'components/RecipeInstructions/RecipeInstructions';
-import { getRecipeById } from 'api/services/axios/axiosService';
+import { getRecipeById } from 'api/serviseApi';
 
 const RecipePage = () => {
   const { recipeId } = useParams();

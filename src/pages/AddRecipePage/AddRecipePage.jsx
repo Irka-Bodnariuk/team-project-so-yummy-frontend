@@ -13,7 +13,6 @@ import {
 
 const AddRecipePage = () => {
   const { isDesktopScreen } = useMedia();
-
   return (
     <>
       <MainTitle text="Add recipe" />

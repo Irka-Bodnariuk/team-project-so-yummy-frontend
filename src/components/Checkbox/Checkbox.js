@@ -6,7 +6,7 @@ import {
 } from './Checkbox.styled';
 import checkbox from 'images/icons/checkbox.svg';
 
-const { useState, useEffect } = require('react');
+const { useState } = require('react');
 
 const Checkbox = props => {
   const [checked, setChecked] = useState(false);
@@ -28,9 +28,6 @@ const Checkbox = props => {
   //   }, false);
   // };
 
-  useEffect(() => {
-    console.log(props);
-  }, [props]);
 
   return (
     <CheckboxContainer>

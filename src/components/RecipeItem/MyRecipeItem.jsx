@@ -1,5 +1,5 @@
-import { ButtonDel } from './ButtonDelete';
-import { Button } from '../Button/Button';
+import { ButtonDel } from "./ButtonDelete";
+import { Button } from "../Button/Button";
 
 import {
   CardItem,
@@ -11,7 +11,7 @@ import {
   Time,
   ButtonDelete,
   ButtonWrapper,
-} from './MyRecipeItem.styled';
+} from "./MyRecipeItem.styled";
 
 const MyRecipeItem = ({
   description,
@@ -39,7 +39,7 @@ const MyRecipeItem = ({
           <ButtonWrapper>
             <Time>{time} min</Time>
             <Button
-              to="/my"
+              to={`/recipe/:${id}`}
               look="rounded"
               width="87px"
               heigth="27px"

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const getFavoriteRecipes = async () => {
   try {
@@ -8,17 +8,20 @@ export const getFavoriteRecipes = async () => {
     console.error(error);
   }
 };
+export const addToFavorites = async (id) => {
+  return await axios.post(`/favorite/${id}`);
+};
 
-export const deleteFavoriteRecipe = async id => {
+export const deleteFavoriteRecipe = async (id) => {
   try {
-    const { data } = await axios.delete(`favorite/${id}`);
+    const { data } = await axios.delete(`/favorite/${id}`);
     return data;
   } catch (error) {
     console.error(error);
   }
 };
 
-export const getMyRecipes = async page => {
+export const getMyRecipes = async (page) => {
   try {
     const { data } = await axios.get(`/recipes/own-recipes?page=${page}`); //&limit=${limit}
     return data.data.result;
@@ -27,7 +30,7 @@ export const getMyRecipes = async page => {
   }
 };
 
-export const deleteMyRecipe = async id => {
+export const deleteMyRecipe = async (id) => {
   try {
     const { data } = await axios.delete(`/recipes/own-recipes/${id}`);
     return data;
@@ -38,11 +41,9 @@ export const deleteMyRecipe = async id => {
 
 export const updateSubscribe = async () => {
   try {
-    const { data } = await axios.patch('/subscribe',
-      {
-       subscribe: true
-      }
-      );
+    const { data } = await axios.patch("/subscribe", {
+      subscribe: true,
+    });
     return data;
   } catch (error) {
     console.error(error);
@@ -56,4 +57,7 @@ export const getPopularRecipes = async () => {
   } catch (error) {
     console.error(error);
   }
+};
+export const getRecipeById = async (id) => {
+  return await axios.get(`/recipes/${id}`);
 };

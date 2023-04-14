@@ -1,4 +1,3 @@
-
 import { Button } from 'components/Button/Button';
 import { Formik } from 'formik';
 import {
@@ -18,7 +17,7 @@ import FormError from 'components/FormError/FormError';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  subscribe: yup.string().min(4).email().required(),
+  subscribe: yup.string().min(4).email(),
 });
 
 const SubscribeForm = () => {
@@ -29,7 +28,6 @@ const SubscribeForm = () => {
   const handleSubmit = async (values, { resetForm }) => {
     const { subscribe } = values;
     if (userEmail !== subscribe) {
-      console.log("Error");
       return;
     }
     await updateSubscribe();
@@ -53,56 +51,49 @@ const SubscribeForm = () => {
         onSubmit={handleSubmit}
       >
         {({ errors, touched }) => {
-          console.log(errors.name);
-         
-         return (
-          
-          <FormSubscribe>
-            <NameInput>
-              <EmailIcon>
-                <AddSvg
-                  name="email"
-                  width="16px"
-                  height="12px"
-                  widthTable="20px"
-                  heightTablet="16px"
-                  widthDesktop="20px"
-                  heightDesktop="16px"
-                />
-              </EmailIcon>
-              
+          return (
+            <FormSubscribe>
+              <NameInput>
+                <EmailIcon>
+                  <AddSvg
+                    name="email"
+                    width="16px"
+                    height="12px"
+                    widthTable="20px"
+                    heightTablet="16px"
+                    widthDesktop="20px"
+                    heightDesktop="16px"
+                  />
+                </EmailIcon>
+
                 <Input
-                 state={
-                   errors.subscribe ? "error" : 'undefined'
-                 }
-                  
-                type="email"
-                name="subscribe"
-                placeholder="Enter your current email"
-              />
-             
-              <FormError name="subscribe" />
-            </NameInput>
-            <Button
-              type="submit"
-              look="subscribe"
-              width="204px"
-              heigth="38px"
-              widthTablet="171px"
-              heigthTablet="50px"
-              widthDesktop="339px"
-              heigthDesktop="60px"
-              fontSize="14px"
-              fontSizeTablet="16px"
-              fontSizeDesktop="16px"
-              lineHeight="16px"
-              lineHeightTablet="18px"
-              lineHeightDesktop="18px"
-            >
-              Subcribe
-            </Button>
-          </FormSubscribe>
-        )
+                  state={errors.subscribe ? 'error' : 'undefined'}
+                  type="email"
+                  name="subscribe"
+                  placeholder="Enter your current email"
+                />
+                <FormError name="subscribe" />
+              </NameInput>
+              <Button
+                type="submit"
+                look="subscribe"
+                width="204px"
+                heigth="38px"
+                widthTablet="171px"
+                heigthTablet="50px"
+                widthDesktop="339px"
+                heigthDesktop="60px"
+                fontSize="14px"
+                fontSizeTablet="16px"
+                fontSizeDesktop="16px"
+                lineHeight="16px"
+                lineHeightTablet="18px"
+                lineHeightDesktop="18px"
+              >
+                Subcribe
+              </Button>
+            </FormSubscribe>
+          );
         }}
       </Formik>
     </WrapperForm>

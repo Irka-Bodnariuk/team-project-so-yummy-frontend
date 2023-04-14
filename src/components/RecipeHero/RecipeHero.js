@@ -13,10 +13,11 @@ import {
 import { Container } from 'reusableComponents/Container/Container.styled';
 import {
   addToFavorites,
-  getFavorites,
-  getOwnRecipes,
-  removeFromFavorites,
-} from 'api/services/axios/axiosService';
+  getFavoriteRecipes,
+  getMyRecipes,
+  deleteFavoriteRecipe,
+} from 'api/serviseApi';
+
 import { useEffect, useState } from 'react';
 
 const RecipeHero = ({ title, description, time, recipeId }) => {
@@ -30,7 +31,7 @@ const RecipeHero = ({ title, description, time, recipeId }) => {
       .catch(err => console.log(err.message));
   };
   const handleFavoriteRemove = id => {
-    removeFromFavorites(id)
+    deleteFavoriteRecipe(id)
       .then(res => {
         setIsFavorite(false);
       })
@@ -38,7 +39,7 @@ const RecipeHero = ({ title, description, time, recipeId }) => {
   };
 
   useEffect(() => {
-    getFavorites().then(res => {
+    getFavoriteRecipes().then(res => {
       const { result: favorites } = res.data.data;
       const isFavorite = favorites.reduce((acc, favorite) => {
         if (favorite._id === recipeId) {
@@ -49,7 +50,7 @@ const RecipeHero = ({ title, description, time, recipeId }) => {
       isFavorite && setIsFavorite(isFavorite);
     });
 
-    getOwnRecipes();
+    getMyRecipes();
   }, [recipeId]);
   return (
     <HeroSection>

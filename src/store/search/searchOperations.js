@@ -1,12 +1,12 @@
 // import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+import axios from "axios";
 
 axios.defaults.baseURL =
-  'https://team-project-so-yummy-backend.onrender.com/api';
+  "https://team-project-so-yummy-backend.onrender.com/api";
 
-export const patchRecipeFavoriteById = async id => {
+export const patchRecipeFavoriteById = async (id) => {
   try {
-    const { data } = await axios.patch(`recipes/favorite/${id}`);
+    const { data } = await axios.post(`/favorite/${id}`);
     return data;
   } catch (error) {
     console.log(error.message);
@@ -14,7 +14,7 @@ export const patchRecipeFavoriteById = async id => {
   }
 };
 
-export const patchRecipeLikeById = async id => {
+export const patchRecipeLikeById = async (id) => {
   try {
     const { data } = await axios.patch(`/recipes/like/${id}`);
     console.log(data);
@@ -29,7 +29,7 @@ export const getSearchByTitle = async (
   query,
   page = 1,
   limit = 12,
-  sort = 'popular'
+  sort = "popular"
 ) => {
   try {
     const { data } = await axios.get(
@@ -47,7 +47,7 @@ export const getSearchByIngredients = async (
   query,
   page = 1,
   limit = 12,
-  sort = 'popular'
+  sort = "popular"
 ) => {
   try {
     const { data } = await axios.get(
@@ -60,7 +60,7 @@ export const getSearchByIngredients = async (
   }
 };
 
-export const getRecipeById = async id => {
+export const getRecipeById = async (id) => {
   try {
     const { data } = await axios.get(`/recipes/id/${id}`);
     return data;
