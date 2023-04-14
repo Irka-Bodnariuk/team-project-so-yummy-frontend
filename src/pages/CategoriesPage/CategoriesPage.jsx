@@ -1,26 +1,36 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-
 import { getRecipesByCategory } from 'api/categories';
-
 import { CategoriesList } from 'components/Categories/CategoriesList/CategoriesList';
 import { RecipesList } from 'components/Categories/CategoriesRecipesList/CategoriesRecipesList';
 import MainTitle from 'components/MainTitle/MainTitle';
 import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
 import { Loader } from 'components/Loader/Loader';
+import { Paginator } from 'components/Paginator/Paginator';
 
 const CategoriesPage = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [totalRecipies, setTotalRecipies] = useState(0);
+  const [page, setPage] = useState(1);
+  console.log(
+    '🚀 ~ file: CategoriesPage.jsx:17 ~ CategoriesPage ~ page:',
+    page
+  );
 
   const { categoryName } = useParams();
+
+  useEffect(() => {
+    setPage(1);
+  }, []);
 
   useEffect(() => {
     setLoading(true);
     const getRecipes = async () => {
       try {
         const data = await getRecipesByCategory(categoryName);
+        setTotalRecipies(data.total);
         setRecipes(data.recipes);
         setLoading(false);
       } catch (error) {
@@ -47,6 +57,8 @@ const CategoriesPage = () => {
       )}
       {recipes.length > 0 && !loading && <RecipesList items={recipes} />}
       {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
+
+      <Paginator totalItems={totalRecipies} setPage={setPage} page={page} />
     </main>
   );
 };
