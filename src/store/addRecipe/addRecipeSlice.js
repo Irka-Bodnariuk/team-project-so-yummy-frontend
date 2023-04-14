@@ -6,13 +6,15 @@ import {
 } from './addRecipeOperation';
 import {
   getActions,
-  handlePending,
-  handleFulfilled,
-  handleRejected,
   getCategoryFulfilledReducer,
   getIngredientsFulfilledReducer,
   addRecipeFulfilledReducer,
 } from './addRecipeHelpers';
+import {
+  handlePending,
+  handleFulfilled,
+  handleRejected,
+} from '../helpers/sharedReducerHelpers';
 
 const initialState = {
   category: [],

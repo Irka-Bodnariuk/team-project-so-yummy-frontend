@@ -1,9 +1,12 @@
-import { useState, useEffect } from 'react';
-
-import { Link } from 'react-router-dom';
-import { getPopularRecipes } from '../../api/serviseApi';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getPopularList } from 'store/popular/popularOperation';
+import {
+  selectPopular,
+  selectIsLoading,
+  selectError,
+} from 'store/popular/popularSelectors';
 import { Loader } from 'components/Loader/Loader';
-
 import {
   LoaderDiv,
   Preview,
@@ -15,25 +18,19 @@ import {
   TitleRecipe,
   Description,
   ErrorText,
+  StyledLink,
 } from './PopularRecipe.styled';
+import { ShowToastError } from 'helpers/showToastError';
 
-const PopularRecipe = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [recipeList, setRecipeList] = useState([]);
+export const PopularRecipe = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
+  const recipeList = useSelector(selectPopular);
 
   useEffect(() => {
-    const fetchRecipeList = async () => {
-      setIsLoading(true);
-      try {
-        setRecipeList(await getPopularRecipes());
-      } catch (error) {
-        console.log(error);
-      } finally {
-        setIsLoading(false);
-      }
-    };
-    fetchRecipeList();
-  }, []);
+    dispatch(getPopularList());
+  }, [dispatch]);
 
   return (
     <ContainerPopularRecipe>
@@ -45,17 +42,17 @@ const PopularRecipe = () => {
         <>
           <TitlePopularRecipe>Popular recipe</TitlePopularRecipe>
 
-          {recipeList ? (
+          {recipeList.length > 0 ? (
             <ItemList>
               {recipeList.map(({ _id, title, preview, description }) => (
                 <ItemBox key={_id}>
-                  <Link to={`/recipe/${_id}`}>
+                  <StyledLink to={`/recipe/${_id}`}>
                     <Preview src={preview} alt="Ingredient" />
                     <TextBox>
                       <TitleRecipe>{title}</TitleRecipe>
                       <Description>{description}</Description>
                     </TextBox>
-                  </Link>
+                  </StyledLink>
                 </ItemBox>
               ))}
             </ItemList>
@@ -64,10 +61,11 @@ const PopularRecipe = () => {
               Unfortunately, there are currently no popular recipes 🙁
             </ErrorText>
           )}
+          {error && (
+            <ShowToastError msg="Ooops.. Something went wrong with Popular recipe" />
+          )}
         </>
       )}
     </ContainerPopularRecipe>
   );
 };
-
-export default PopularRecipe;

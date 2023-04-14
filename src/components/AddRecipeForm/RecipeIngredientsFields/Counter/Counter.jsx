@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import { Container, Button, Value } from './Counter.styled';
@@ -29,4 +28,6 @@ export const Counter = ({ value, handleDecrement, handleIncrement }) => {
 
 Counter.propTypes = {
   value: PropTypes.number.isRequired,
+  handleDecrement: PropTypes.func.isRequired,
+  handleIncrement: PropTypes.func.isRequired,
 };

@@ -9,6 +9,16 @@ export const FieldsetDesc = styled.fieldset`
   flex-direction: column;
   align-items: center;
   border: none;
+
+  @media ${props => props.theme.device.tablet} {
+    flex-direction: row;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    gap: 50px;
+  }
 `;
 
 export const LabelFile = styled.div`
@@ -22,6 +32,11 @@ export const LabelFile = styled.div`
   outline: ${p =>
     p.isLoading ? `5px solid ${p.theme.colors.accentColor}` : 'none'};
   overflow: hidden;
+
+  @media ${props => props.theme.device.desktop} {
+    width: 357px;
+    height: 344px;
+  }
 `;
 
 export const ThumbImg = styled.img`
@@ -71,6 +86,12 @@ export const Label = styled.label`
   &:not(:last-child) {
     margin-bottom: 24px;
   }
+
+  @media ${props => props.theme.device.tablet} {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
 `;
 
 export const InputText = styled(Field)`
@@ -80,21 +101,29 @@ export const InputText = styled(Field)`
   font-family: 'Poppins', sans-serif;
   font-size: ${p => `${p.theme.fontSizes.s}px`};
   line-height: 1.5;
-  color: ${p => p.theme.colors.form.labelText};
+  color: ${p => p.theme.colors.formAddInputText};
   background-color: transparent;
   border: none;
-  border-bottom: 1px solid ${p => p.theme.colors.form.formBottomLine};
-  /* ${p => p.theme.colors.form.formBottomLine}; */
+  border-bottom: 1px solid ${p => p.theme.colors.formAddBorder};
   outline-color: ${p => p.theme.colors.form.formBottomLine};
 
   &::placeholder {
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 0.5;
+    font-weight: ${p => p.theme.fontWeights.body};
+    color: ${p => p.theme.colors.formAddPlaceholder};
+    opacity: 0.9;
   }
   :focus::placeholder {
     opacity: 0;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    height: 43px;
+    &::placeholder {
+      font-size: ${p => `${p.theme.fontSizes.sm}px`};
+    }
   }
 `;
 
@@ -103,17 +132,24 @@ export const DisabledInput = styled.div`
   width: 100%;
   height: 40px;
   border: none;
-  border-bottom: 1px solid ${p => p.theme.colors.form.formBottomLine};
+  border-bottom: 1px solid ${p => p.theme.colors.formAddBorder};
+
+  @media ${props => props.theme.device.tablet} {
+    height: 43px;
+  }
 `;
 
 export const Placeholder = styled.span`
   position: absolute;
   top: 0;
   left: 0;
-  opacity: 0.5;
   font-size: ${p => `${p.theme.fontSizes.s}px`};
   line-height: 1.5;
-  color: ${p => p.theme.colors.form.labelText};
+  color: ${p => p.theme.colors.formAddPlaceholder};
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.sm}px`};
+  }
 `;
 
 export const StyledSelect = styled(Select)`
@@ -136,16 +172,23 @@ export const StyledSelect = styled(Select)`
     background-color: transparent;
   }
   .сustom-select__control--menu-is-open {
-    box-shadow: 0 0 0 1px ${p => p.theme.colors.form.formBottomLine};
+    box-shadow: 0 0 0 3px ${p => p.theme.colors.form.formBottomLine};
   }
   .сustom-select__control--is-focused {
-    box-shadow: 0 0 0 1px ${p => p.theme.colors.form.formBottomLine};
+    box-shadow: 0 0 0 3px ${p => p.theme.colors.form.formBottomLine};
   }
   .сustom-select__indicator-separator {
     display: none;
   }
   .сustom-select__value-container {
-    padding: 2px 0 2px 25px;
+    padding: 2px 0px 2px 14px;
+  }
+  .сustom-select__single-value {
+    color: ${p => p.theme.colors.formAddInputText};
+    text-align: right;
+  }
+  .сustom-select__menu {
+    background-color: ${p => p.theme.colors.formAddSelectMenu};
   }
   .сustom-select__menu-list {
     max-height: 210px;
@@ -157,27 +200,38 @@ export const StyledSelect = styled(Select)`
       width: 4px;
     }
     ::-webkit-scrollbar-thumb {
-      background-color: ${p => p.theme.colors.form.formBottomLine};
+      background-color: ${p => p.theme.colors.formAddScrollThumb};
       border-radius: 5px;
     }
     ::-webkit-scrollbar-track {
-      background-color: ${p => p.theme.colors.form.inputBorder};
+      background-color: ${p => p.theme.colors.fromAddScrollTrack};
       border-radius: 5px;
     }
   }
   .сustom-select__option {
     font-size: ${p => `${p.theme.fontSizes.xs}px`};
     line-height: 1.5;
+    color: ${p => p.theme.colors.fromAddSelectOption};
     opacity: 0.5;
 
     &:hover,
     &:focus {
       background-color: ${p => p.theme.colors.accentColor};
+      color: ${p => p.theme.colors.form.formIcon};
       opacity: 1;
     }
   }
   .сustom-select__option--is-selected {
     background-color: ${p => p.theme.colors.accentColor};
+    color: ${p => p.theme.colors.form.formIcon};
     opacity: 1;
+  }
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: ${p => `${p.theme.fontSizes.s}px`};
+
+    .сustom-select__option {
+      font-size: ${p => `${p.theme.fontSizes.s}px`};
+    }
   }
 `;
