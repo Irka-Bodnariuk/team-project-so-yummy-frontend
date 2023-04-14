@@ -1,6 +1,8 @@
 import arrow from '../../components/СhooseYourBreakfast/icon.svg';
-import СhooseYourBreakfastStyled from './СhooseYourBreakfastStyled';
-import { Link } from 'react-router-dom';
+import {
+  SeeRecipeLink,
+  СhooseYourBreakfastStyled,
+} from './СhooseYourBreakfastStyled';
 
 const СhooseYourBreakfast = () => {
   // categories/:categoryName
@@ -11,10 +13,10 @@ const СhooseYourBreakfast = () => {
         <span>Delicious and healthy</span> way to enjoy a variety of fresh
         ingredients in one satisfying meal
       </p>
-      <Link to="/categories/breakfast">
+      <SeeRecipeLink to="/categories/breakfast">
         <span>See recipes</span>
         <img src={arrow} alt="" />
-      </Link>
+      </SeeRecipeLink>
     </СhooseYourBreakfastStyled>
   );
 };

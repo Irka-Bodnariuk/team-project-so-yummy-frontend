@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // ${p => p.theme.colors.form.inputError}
 
-const СhooseYourBreakfastStyled = styled.div`
+export const СhooseYourBreakfastStyled = styled.div`
   width: 225px;
   background: ${p => p.theme.colors.background};
   /* background: #fafafa; */
@@ -87,8 +88,15 @@ const СhooseYourBreakfastStyled = styled.div`
       letter-spacing: 0.2px;
       /* color: #3e4462; */
       color: ${p => p.theme.colors.primaryText};
+      :hover {
+        color: ${p => p.theme.colors.accentColor};
+      }
     }
   }
 `;
 
-export default СhooseYourBreakfastStyled;
+export const SeeRecipeLink = styled(Link)`
+  :hover {
+    color: ${p => p.theme.colors.accentColor};
+  }
+`;

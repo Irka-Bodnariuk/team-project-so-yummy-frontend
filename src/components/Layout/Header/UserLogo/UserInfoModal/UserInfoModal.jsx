@@ -1,12 +1,11 @@
-import { updateUserProfile } from "store/auth/authOperations";
-import { useDispatch, useSelector } from "react-redux";
-import { useRef, useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { updateUserProfile } from 'store/auth/authOperations';
+import { useDispatch, useSelector } from 'react-redux';
+import { useRef, useState } from 'react';
+import { toast } from 'react-toastify';
 
-import * as yup from "yup";
-import { Button } from "components/Button/Button";
-import { Formik } from "formik";
+import * as yup from 'yup';
+import { Button } from 'components/Button/Button';
+import { Formik } from 'formik';
 import {
   Container,
   ButtonClose,
@@ -20,7 +19,7 @@ import {
   Input,
   UserIcon,
   LabelInput,
-} from "./UserInfoModal.styled";
+} from './UserInfoModal.styled';
 
 const schema = yup.object().shape({
   name: yup.string().min(2).required(),
@@ -29,28 +28,28 @@ const schema = yup.object().shape({
 const UserInfoModal = ({ onClose }) => {
   const filePicker = useRef(null);
   const dispatch = useDispatch();
-  const darkMode = useSelector((state) => state.theme);
-  const avatar = useSelector((state) => state.auth.user.avatar);
-  const userName = useSelector((state) => state.auth.user.name);
+  const darkMode = useSelector(state => state.theme);
+  const avatar = useSelector(state => state.auth.user.avatar);
+  const userName = useSelector(state => state.auth.user.name);
   const [selectedFile, setSelectedFile] = useState(avatar);
 
-  const handleSubmit = (values) => {
+  const handleSubmit = values => {
     const formData = new FormData();
 
-    if (values.avatarURL === "" && values.name === userName) {
-      toast.warning("There are no changes!");
+    if (values.avatarURL === '' && values.name === userName) {
+      toast.warning('There are no changes!');
       return;
     }
-    if (values.avatarURL === "" && values.name !== userName) {
-      formData.append("name", values.name);
+    if (values.avatarURL === '' && values.name !== userName) {
+      formData.append('name', values.name);
       dispatch(updateUserProfile(formData));
       onClose();
 
       return;
     }
 
-    formData.append("avatar", values.avatarURL);
-    formData.append("name", values.name);
+    formData.append('avatar', values.avatarURL);
+    formData.append('name', values.name);
     dispatch(updateUserProfile(formData));
     onClose();
   };
@@ -63,7 +62,7 @@ const UserInfoModal = ({ onClose }) => {
     <>
       <Formik
         initialValues={{
-          avatarURL: "",
+          avatarURL: '',
           name: userName,
         }}
         validationSchema={schema}
@@ -73,7 +72,7 @@ const UserInfoModal = ({ onClose }) => {
           actions.resetForm();
         }}
       >
-        {(props) => (
+        {props => (
           <FormEdit onSubmit={props.handleSubmit}>
             <ButtonClose
               type="button"
@@ -96,15 +95,15 @@ const UserInfoModal = ({ onClose }) => {
                       avatarURL: true,
                     });
                   }}
-                  onChange={(event) => {
+                  onChange={event => {
                     if (!event.target.files[0]) {
-                      toast.warning("Incorrect file format!");
+                      toast.warning('Incorrect file format!');
                       return;
                     }
                     setSelectedFile(
                       window.URL.createObjectURL(event.target.files[0])
                     );
-                    props.setFieldValue("avatarURL", event.target.files[0]);
+                    props.setFieldValue('avatarURL', event.target.files[0]);
                   }}
                 />
 
