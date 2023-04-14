@@ -91,6 +91,7 @@ export const baseTheme = {
         formAddSelectIngrBg: '#F5F5F5',
         formAddIngrBtn: '#333333',
         formAddTextarea: '#F5F5F5',
+        pageRecipeItemIngBg: '#ebf3d4',
       },
       dark: {
         background: '#1E1F28',
@@ -132,6 +133,7 @@ export const baseTheme = {
         formAddSelectIngrBg: '#1E1F28',
         formAddIngrBtn: '#fafafa',
         formAddTextarea: '#1E1F28',
+        pageRecipeItemIngBg: '#2a2c36',
       },
     },
   },

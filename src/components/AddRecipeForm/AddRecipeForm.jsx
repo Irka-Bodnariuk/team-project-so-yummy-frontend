@@ -66,18 +66,15 @@ export const AddRecipeForm = props => {
     formData.append('category', category);
     formData.append('description', about);
     formData.append('instructions', instructions);
+    formData.append('favorite', false);
     formData.append('preview', file);
-    formData.append('thumb', file);
     formData.append('time', time);
     formData.append('ingredients', JSON.stringify(ingredientsList));
 
-    // const dataFile = Object.fromEntries(formData.entries());
-    // console.log(dataFile);
-
-    dispatch(addRecipe(formData));
-    // .unwrap()
-    // .then(res => res)
-    // .catch(() => <ShowToastError msg="Ooops.. It try again" />);
+    dispatch(addRecipe(formData))
+      .unwrap()
+      .then(res => console.log(res, 'res'))
+      .catch(() => <ShowToastError msg="Ooops.. It try again" />);
     actions.resetForm();
   };
 
