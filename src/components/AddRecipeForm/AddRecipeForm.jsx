@@ -62,6 +62,7 @@ export const AddRecipeForm = props => {
     }));
     const formData = new FormData();
 
+
     formData.append('title', title);
     formData.append('category', category);
     formData.append('description', about);
@@ -78,6 +79,7 @@ export const AddRecipeForm = props => {
     // .unwrap()
     // .then(res => res)
     // .catch(() => <ShowToastError msg="Ooops.. It try again" />);
+
     actions.resetForm();
   };
 

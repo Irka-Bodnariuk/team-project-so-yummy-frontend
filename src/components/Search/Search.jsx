@@ -67,6 +67,7 @@ const Search = () => {
       location.state.ingredient = false;
     }
     if (searchType === 'title') {
+      console.log(location);
       if (searchQuery) {
         setLoading(true);
         getSearchByTitle(searchQuery, page)

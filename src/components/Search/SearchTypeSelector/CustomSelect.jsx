@@ -22,28 +22,33 @@ const CustomSelect = () => {
       value={selectedOption}
       onChange={handleChange}
       options={options}
+      label="Label"
       placeholder="Select options"
       menuPosition="absolute"
       menuPortalTarget={portal}
       // Custom styling for the Select component
       styles={{
+        singleValue: () => ({
+          color: theme ? ' #FAFAFA ' : '#rgba(0, 0, 0, 0.5)',
+          position: 'absolute',
+          marginLeft: '14px',
+        }),
         dropdownIndicator: () => ({
           color: '#8BAA36',
           marginRight: '15px',
+          '&:hover': {
+            color: theme ? ' #FAFAFA ' : '#547202',
+          },
         }),
-        ValueContainer: () => ({
-          color: '#8BAA36',
-        }),
+
         control: (provided, state) => ({
           ...provided,
-          color: '#rgba(0, 0, 0, 0.5)',
-          border: theme ? '1px solid #FAFAFA ' : '#D9D9D9',
+          border: theme ? '1px solid #bebebe ' : '1px solid #D9D9D9',
           borderRadius: '6px',
           backgroundColor: theme ? 'transparent' : '#D9D9D9',
           opacity: '0.5',
-          borderStyle: 'none',
           outline: 'none',
-          borderColor: state.isFocused ? 'none' : provided.borderColor,
+          borderColor: state.isFocused ? 'none' : 'red',
           boxShadow: state.isFocused ? 'none' : provided.boxShadow,
           width: '146px',
           height: '34px',
@@ -55,7 +60,11 @@ const CustomSelect = () => {
             width: '198px',
             height: '49px',
           },
+          '&:hover': {
+            border: theme ? '1px solid #ffffff ' : '1px solid #8BAA36',
+          },
         }),
+
         indicatorSeparator: () => ({
           display: 'none',
         }),
@@ -87,7 +96,7 @@ const CustomSelect = () => {
           borderColor: 'none',
           boxShadow: 'none',
           '&:hover': {
-            backgroundColor: '#ffffff', // remove the hover background color
+            backgroundColor: theme ? '#8BAA36' : 'transparent', // remove the hover background color
             borderStyle: 'none',
             borderColor: 'none',
             boxShadow: 'none',
@@ -124,9 +133,9 @@ const CustomSelect = () => {
           cursor: 'pointer',
 
           '&:hover': {
-            color: '#8baa36',
+            color: theme ? '#ffffff' : '#8baa36',
             opacity: '0.75',
-            backgroundColor: '#f2ecec', // remove the hover background color
+            backgroundColor: theme ? 'transparent' : 'transparent', // remove the hover background color
           },
           '&:focus': {
             backgroundColor: 'transparent', // remove the focus background color
