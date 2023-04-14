@@ -104,9 +104,13 @@ export const NoRecipesText = styled.p`
 `;
 
 export const PaginationWrapper = styled.div`
-  padding-bottom: 100px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;
 
   @media screen and (min-width: 768px) {
-    padding-bottom: 200px;
+    padding-bottom: 100px;
   }
 `;

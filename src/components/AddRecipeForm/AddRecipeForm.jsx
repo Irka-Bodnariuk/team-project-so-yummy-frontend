@@ -65,7 +65,7 @@ export const AddRecipeForm = props => {
       category,
       description: about,
       instructions,
-      thumb: file,
+      // thumb: file,
       preview: file,
       time,
       ingredients: ingredientsList,
