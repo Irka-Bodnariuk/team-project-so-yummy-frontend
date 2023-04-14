@@ -1,19 +1,27 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const List = styled.ul`
   display: flex;
-  justify-content: center;
+  justify-content: ${p =>
+    p.place === 'recipe-page' ? 'flex-start' : 'center'};
   align-items: center;
+  gap: 9px;
+
+  @media ${props => props.theme.device.tablet} {
+    gap: 13px;
+  }
 `;
 
-export const Item = styled.li`
-  margin-left: ${p => p.theme.space[1] * 7}px;
-  
-  &:first-child {
-    margin-left: ${p => p.theme.space[0]}px;
-  }
+export const Item = styled.li``;
 
-  @media screen and (min-width: 768px) {
-    margin-left: ${p => p.theme.space[1] * 9}px;
+export const Link = styled.a`
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    color: ${p => p.theme.colors.footerSocialIcons};
+    fill: ${p => p.theme.colors.footerSocialIcons};
   }
 `;
