@@ -3,12 +3,14 @@ import { Search, SearchForm, Text } from './SearchByType.styled';
 
 const SearchByType = () => {
   return (
-    <Search>
-      <SearchForm>
-        <Text>Search by:</Text>
-        <CustomSelect />
-      </SearchForm>
-    </Search>
+    <div style={{ display: 'flex' }}>
+      <Text>Search by:</Text>
+      <Search>
+        <SearchForm>
+          <CustomSelect />
+        </SearchForm>
+      </Search>
+    </div>
   );
 };
 

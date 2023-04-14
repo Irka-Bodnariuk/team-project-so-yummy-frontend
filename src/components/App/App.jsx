@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, lazy, Suspense } from 'react';
 import { merge, get } from 'lodash';
 import { ThemeProvider } from 'styled-components';
-import { ToastContainer } from 'react-toastify';
+import { StyledToastContainer } from 'pages/RegisterPage/RegisterPage.styled';
 import { baseTheme } from '../../theme';
 import { Routes, Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -167,7 +167,7 @@ export const App = () => {
             />
           </Routes>
         )}
-        <ToastContainer
+        <StyledToastContainer
           position="top-center"
           autoClose={3000}
           hideProgressBar={false}

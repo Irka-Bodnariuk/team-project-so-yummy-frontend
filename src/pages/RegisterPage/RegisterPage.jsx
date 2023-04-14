@@ -3,15 +3,9 @@ import { useSelector } from 'react-redux';
 import { selectIsSend, selectEmail } from 'store/auth/authSelectors';
 
 import { AuthForm } from 'components/AuthForm/AuthForm';
-import {
-  AuthMain,
-  AuthImage,
-  AuthBackground,
-  StyledToastContainer,
-} from './RegisterPage.styled';
+import { AuthMain, AuthImage, AuthBackground } from './RegisterPage.styled';
 
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 export const RegisterPage = () => {
   const isSent = useSelector(selectIsSend);
@@ -19,12 +13,13 @@ export const RegisterPage = () => {
 
   useEffect(() => {
     isSent &&
-      toast.success(`A verification email has been sent to ${currentEmail}`);
+      toast.success(`A verification email has been sent to ${currentEmail}`, {
+        position: 'top-right',
+      });
   }, [isSent, currentEmail]);
 
   return (
     <>
-      <StyledToastContainer />
       <AuthMain>
         <AuthImage></AuthImage>
         <AuthForm />
