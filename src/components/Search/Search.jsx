@@ -1,6 +1,5 @@
 import { toast } from 'react-toastify';
 import ReactPaginate from 'react-paginate';
-import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';

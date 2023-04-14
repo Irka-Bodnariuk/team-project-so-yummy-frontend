@@ -28,8 +28,14 @@ export const getIngredientsList = createAsyncThunk(
 export const addRecipe = createAsyncThunk(
   'add/addRecipe',
   async (recipe, thunkAPI) => {
+    console.log(recipe);
+    console.log(Object.fromEntries(recipe.entries()));
     try {
-      const response = await axios.post('/own-recipes', { ...recipe });
+      const response = await axios.post('/own-recipes', recipe, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
