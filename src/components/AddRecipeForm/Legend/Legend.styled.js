@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Legend = styled.legend`
   margin-bottom: 24px;
-  color: ${p => p.theme.colors.modes.light.primaryText};
+  color: ${p => p.theme.colors.primaryText};
   font-weight: ${p => p.theme.fontWeights.title};
   font-size: ${p => `${p.theme.fontSizes.xl}px`};
   line-height: 1;

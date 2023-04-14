@@ -1,3 +1,4 @@
+import { useMedia } from 'hooks';
 import MainTitle from 'components/MainTitle/MainTitle';
 import { Box } from 'components/Box';
 import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
@@ -7,27 +8,30 @@ import {
   ContainerForm,
   ContainerPopular,
   SharedContainer,
-  Page,
   SocialsTitle,
 } from './AddRecipePage.styled';
 
 const AddRecipePage = () => {
+  const { isDesktopScreen } = useMedia();
+
   return (
-    <Page>
+    <>
       <MainTitle text="Add recipe" />
       <SharedContainer>
         <ContainerForm>
           <AddRecipeForm />
         </ContainerForm>
         <ContainerPopular>
-          <>
-            <SocialsTitle>Follow us</SocialsTitle>
-            <FollowUs />
-          </>
+          {isDesktopScreen && (
+            <Box mb={100}>
+              <SocialsTitle>Follow us</SocialsTitle>
+              <FollowUs place="recipe-page" sizeIcon={26} />
+            </Box>
+          )}
           <PopularRecipe />
         </ContainerPopular>
       </SharedContainer>
-    </Page>
+    </>
   );
 };
 

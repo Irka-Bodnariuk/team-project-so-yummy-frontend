@@ -72,7 +72,7 @@ export const AddRecipeForm = props => {
     formData.append('ingredients', JSON.stringify(ingredientsList));
 
     const dataFile = Object.fromEntries(formData.entries());
-    console.log(dataFile);
+    // console.log(dataFile);
 
     dispatch(addRecipe(formData));
     // .unwrap()

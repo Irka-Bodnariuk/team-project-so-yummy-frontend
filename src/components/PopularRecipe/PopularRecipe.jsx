@@ -28,13 +28,9 @@ export const PopularRecipe = () => {
   const error = useSelector(selectError);
   const recipeList = useSelector(selectPopular);
 
-  console.log(error);
-
   useEffect(() => {
     dispatch(getPopularList());
   }, [dispatch]);
-
-  console.log(recipeList);
 
   return (
     <ContainerPopularRecipe>

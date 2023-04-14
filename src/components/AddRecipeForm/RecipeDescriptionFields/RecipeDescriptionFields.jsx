@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Field } from 'formik';
 import placeholder from 'images/mobile/form-add-placeholder.png';
@@ -28,9 +27,6 @@ export const RecipeDescriptionFields = ({
 }) => {
   const [preview, setPreview] = useState(null);
   const [loading, setLoading] = useState(false);
-  const mode = useSelector(state => state.theme);
-
-  console.log(mode);
 
   const handleFileUpload = async e => {
     const selectedFile = e.target.files[0];

@@ -7,7 +7,7 @@ export const Container = styled.div`
   padding: 4px 0;
   display: flex;
   align-items: center;
-  border: 1px solid rgba(51, 51, 51, 0.3);
+  border: 1px solid ${p => p.theme.colors.formAddCounterBorder};
   border-radius: 18px;
   overflow: hidden;
 
@@ -30,8 +30,8 @@ export const Button = styled.button`
   svg {
     fill: ${p =>
       p.value <= 0
-        ? p.theme.colors.button.primaryCancelBg
-        : p.theme.colors.accentColor};
+        ? p.theme.colors.formAddCounterBorder
+        : p.theme.colors.formAddCounterBtn};
     width: 14px;
     height: 14px;
   }
@@ -40,6 +40,7 @@ export const Button = styled.button`
 export const Value = styled.span`
   font-size: ${p => `${p.theme.fontSizes.s}px`};
   line-height: 1.2;
+  color: ${p => p.theme.colors.formAddInputText};
 
   @media ${props => props.theme.device.tablet} {
     font-size: ${p => `${p.theme.fontSizes.sm}px`};

@@ -1,13 +1,5 @@
 import styled from 'styled-components';
 
-export const Page = styled.div`
-  padding-top: 50px;
-
-  @media ${props => props.theme.device.tablet} {
-    padding-top: 72px;
-  }
-`;
-
 export const SharedContainer = styled.div`
   margin-top: 72px;
 
@@ -42,5 +34,5 @@ export const SocialsTitle = styled.b`
   font-size: 24px;
   line-height: 1;
   letter-spacing: -0.24px;
-  color: ${p => p.theme.colors.modes.light.primaryText};
+  color: ${p => p.theme.colors.primaryText};
 `;
