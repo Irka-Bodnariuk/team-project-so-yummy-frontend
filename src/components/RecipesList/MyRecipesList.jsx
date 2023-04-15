@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { deleteMyRecipe, getMyRecipes } from 'api/index';
 import MyRecipeItem from 'components/RecipeItem/MyRecipeItem';
 import { Loader } from '../Loader/Loader';
-// import Pagination from '../Pagination/Pagination';
+import Pagination from '../Pagination/Pagination';
 
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
@@ -11,25 +11,25 @@ const MyRecipesList = () => {
   const [loading, setLoading] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
-  const [totalPage, ] = useState(null);
-  // const location = useLocation();
+  const [totalPage,setTotalPage ] = useState(null);
+
 
    useEffect(() => {
       const renderMovies = async () => {
-        // setLoading(true);
+        setLoading(true);
         try {
           const data = await getMyRecipes();
 
           setAllRecipes(data);
 
-          // const totalCountPage = Math.ceil(data.total / 4);
-          // if (totalCountPage > 1) {
-          //    setTotalPage(totalCountPage);
-          // }
+          const totalCountPage = Math.ceil(data.total / 4);
+          if (totalCountPage > 1) {
+             setTotalPage(totalCountPage);
+          }
         } catch (error) {
           console.log(error);
         } finally {
-          // setLoading(false);
+          setLoading(false);
         }
       };
       renderMovies();
@@ -46,9 +46,9 @@ const MyRecipesList = () => {
     }
   };
 
-  // const handleChange = e => {
-  //   setPage(e.selected + 1);
-  // };
+  const handleChange = e => {
+    setPage(e.selected + 1);
+  };
 
   return (
     <List>
@@ -74,9 +74,9 @@ const MyRecipesList = () => {
       ) : (
         <ListText>You don't have your recipes</ListText>
       )}
-      {/* {totalPage && (
+      {totalPage && (
         <Pagination pageCount={totalPage} page={page} change={handleChange} />
-      )} */}
+      )}
     </List>
   );
 };
