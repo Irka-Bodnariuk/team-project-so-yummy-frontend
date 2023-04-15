@@ -1,52 +1,54 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
-import { getMyRecipes, deleteMyRecipe } from 'api/index';
+import { deleteMyRecipe, getMyRecipes } from 'api/index';
 import MyRecipeItem from 'components/RecipeItem/MyRecipeItem';
 import { Loader } from '../Loader/Loader';
-import Pagination from '../Pagination/Pagination';
+// import Pagination from '../Pagination/Pagination';
 
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
 const MyRecipesList = () => {
-  const [loading, ] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [allRecipes, setAllRecipes] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPage, ] = useState(null);
   // const location = useLocation();
 
-  //  useEffect(() => {
-  //     const renderMovies = async () => {
-  //       setLoading(true);
-  //       try {
-  //         const data = await getMyRecipes(page);
-  //         setAllRecipes(data);
+   useEffect(() => {
+      const renderMovies = async () => {
+        // setLoading(true);
+        try {
+          const data = await getMyRecipes();
 
-  //         const totalCountPage = Math.ceil(data.total / 4);
-  //         if (totalCountPage > 1) {
-  //           setTotalPage(totalCountPage);
-  //         }
-  //       } catch (error) {
-  //         console.log(error);
-  //       } finally {
-  //         setLoading(false);
-  //       }
-  //     };
-  //     renderMovies();
-  //   }, [page]);
+          setAllRecipes(data);
 
-  const handelDelete = async id => {
+          // const totalCountPage = Math.ceil(data.total / 4);
+          // if (totalCountPage > 1) {
+          //    setTotalPage(totalCountPage);
+          // }
+        } catch (error) {
+          console.log(error);
+        } finally {
+          // setLoading(false);
+        }
+      };
+      renderMovies();
+    }, []);
+
+  const handleDelete = async id => {
     try {
       await deleteMyRecipe(id);
-      const data = await getMyRecipes(page);
-      setAllRecipes(data.result);
+      const data = await getMyRecipes(); 
+      console.log(data);
+      setAllRecipes(data);
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleChange = e => {
-    setPage(e.selected + 1);
-  };
+  // const handleChange = e => {
+  //   setPage(e.selected + 1);
+  // };
 
   return (
     <List>
@@ -55,8 +57,8 @@ const MyRecipesList = () => {
           <Loader />
         </LoaderBox>
       )}
-      {allRecipes.length !== 0 && !loading ? (
-        allRecipes.map(({ description, preview, time, title, _id }) => (
+      {allRecipes !== 0 && !loading ? (
+        allRecipes?.map(({ description, preview, time, title, _id }) => (
           <MyRecipeItem
             key={_id}
             description={description}
@@ -64,7 +66,7 @@ const MyRecipesList = () => {
             time={time}
             title={title}
             id={_id}
-            handelDelete={handelDelete}
+            handleDelete={handleDelete}
             styleDel="green"
             styleBtn="dark"
           />
@@ -72,9 +74,9 @@ const MyRecipesList = () => {
       ) : (
         <ListText>You don't have your recipes</ListText>
       )}
-      {totalPage && (
+      {/* {totalPage && (
         <Pagination pageCount={totalPage} page={page} change={handleChange} />
-      )}
+      )} */}
     </List>
   );
 };
