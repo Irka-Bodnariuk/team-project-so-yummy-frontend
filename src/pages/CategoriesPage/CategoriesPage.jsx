@@ -4,6 +4,7 @@ import { getRecipesByCategory } from 'api/categories';
 import { CategoriesList } from 'components/Categories/CategoriesList/CategoriesList';
 import { RecipesList } from 'components/Categories/CategoriesRecipesList/CategoriesRecipesList';
 import MainTitle from 'components/MainTitle/MainTitle';
+import BGDots from 'reusableComponents/BGDots/BGDots';
 import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Paginator } from 'components/Paginator/Paginator';
@@ -42,6 +43,7 @@ const CategoriesPage = () => {
 
   return (
     <main>
+      <BGDots />
       <MainTitle text={'Categories'} />
       <CategoriesList />
       {loading && (
