@@ -1,6 +1,9 @@
 import MobileBackground1x from '../../images/mobile/mainpage1x_mob.png';
 import TabletBackground1x from '../../images/tablet/mainpage1x_tab.png';
 import DesktopBackground1x from '../../images/desktop/mainpage1x_desk.png';
+import MobileBackground2x from '../../images/mobile/mainpage2x_mob.png';
+import TabletBackground2x from '../../images/tablet/mainpage2x_tab.png';
+import DesktopBackground2x from '../../images/desktop/mainpage2x_desk.png';
 
 import styled from 'styled-components';
 
@@ -36,11 +39,21 @@ const MainPageStyled = styled.div`
   margin-left: ${p => -p.theme.space[4]}px;
   margin-right: ${p => -p.theme.space[4]}px;
 
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background: url(${MobileBackground2x});
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: none;
+    background-position-y: 100%;
+  }
+
   @media ${props => props.theme.device.tablet} {
     background: url(${TabletBackground1x});
-    box-sizing: border-box;
     background-repeat: no-repeat;
     background-position-y: 0%;
+    box-sizing: border-box;
     align-items: flex-start;
     padding-bottom: 125px;
     margin-bottom: 0px;
@@ -48,24 +61,37 @@ const MainPageStyled = styled.div`
     background-size: cover;
     margin-left: ${p => -p.theme.space[5]}px;
     margin-right: ${p => -p.theme.space[5]}px;
-
     & > div:first-of-type {
       display: flex;
       flex-direction: row;
+    }
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background: url(${TabletBackground2x});
+      background-size: contain;
+      background-repeat: no-repeat;
     }
   }
 
   @media ${props => props.theme.device.desktop} {
     background: url(${DesktopBackground1x});
-    padding-bottom: 210px;
     background-position-y: 0%;
+    background-size: cover;
+    padding-bottom: 210px;
     margin-top: -164px;
     padding-bottom: 100px;
     margin-bottom: 110px;
     margin-left: -100px;
     margin-right: -100px;
-    /* max-width: 1440px; */
-    background-size: cover;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background: url(${DesktopBackground2x});
+      background-position-y: 0%;
+      background-size: cover;
+    }
   }
 
   & > h1 {
