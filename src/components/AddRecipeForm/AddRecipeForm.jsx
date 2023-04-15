@@ -1,42 +1,42 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCategory,
   selectError,
   selectIngredients,
-} from "store/addRecipe/addRecipeSelectors";
+} from 'store/addRecipe/addRecipeSelectors';
 import {
   getCategoryList,
   getIngredientsList,
   addRecipe,
-} from "store/addRecipe/addRecipeOperation";
-import { Formik } from "formik";
+} from 'store/addRecipe/addRecipeOperation';
+import { Formik } from 'formik';
 import {
   createOptionCategory,
   createOptionTimes,
   createOptionMeasure,
   createOptionIngredients,
-} from "helpers/createOptionsSelectAddRecipeForm";
-import { validationSchema } from "helpers/validationSchemaAddRecipeForm";
-import { RecipeDescriptionFields } from "./RecipeDescriptionFields/RecipeDescriptionFields";
-import { RecipeIngredientsFields } from "./RecipeIngredientsFields/RecipeIngredientsFields";
-import { RecipePreapationFields } from "./RecipePreapationFields/RecipePreapationFields";
-import { Button } from "components/Button/Button";
-import { ShowToastError } from "helpers/showToastError";
-import { createArrTimesPrepare } from "helpers/createArrTimesPrepare";
-import { RecipeForm } from "./AddRecipeForm.styled";
+} from 'helpers/createOptionsSelectAddRecipeForm';
+import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipePreapationFields } from './RecipePreapationFields/RecipePreapationFields';
+import { Button } from 'components/Button/Button';
+import { ShowToastError } from 'helpers/showToastError';
+import { createArrTimesPrepare } from 'helpers/createArrTimesPrepare';
+import { RecipeForm } from './AddRecipeForm.styled';
 
 const initialValues = {
-  file: "",
-  title: "",
-  about: "",
-  category: "breakfast",
-  time: "40",
-  ingredients: [{ quantity: "", measure: "tbs", id: "" }],
+  file: '',
+  title: '',
+  about: '',
+  category: 'breakfast',
+  time: '40',
+  ingredients: [{ quantity: '', measure: 'tbs', id: '' }],
   preparation: [],
 };
 
-export const AddRecipeForm = (props) => {
+export const AddRecipeForm = props => {
   const dispatch = useDispatch();
   const categoryList = useSelector(selectCategory);
   const ingredientsList = useSelector(selectIngredients);
@@ -55,30 +55,26 @@ export const AddRecipeForm = (props) => {
   const handleSubmit = (values, actions) => {
     const { file, title, about, category, time, ingredients, preparation } =
       values;
-    const instructions = preparation.join("\n");
-    const ingredientsList = ingredients.map((item) => ({
+    const instructions = preparation.join('\n');
+    const ingredientsList = ingredients.map(item => ({
       id: item.id,
       measure: `${item.quantity} ${item.measure}`,
     }));
     const formData = new FormData();
 
-    formData.append("title", title);
-    formData.append("category", category);
-    formData.append("description", about);
-    formData.append("instructions", instructions);
-    formData.append("preview", file);
-    // formData.append('thumb', file);
-    formData.append("time", time);
-    formData.append("ingredients", JSON.stringify(ingredientsList));
+    formData.append('title', title);
+    formData.append('category', category);
+    formData.append('description', about);
+    formData.append('instructions', instructions);
+    formData.append('favorite', false);
+    formData.append('preview', file);
+    formData.append('time', time);
+    formData.append('ingredients', JSON.stringify(ingredientsList));
 
-    // const dataFile = Object.fromEntries(formData.entries());
-    // console.log(dataFile);
-
-    dispatch(addRecipe(formData));
-    // .unwrap()
-    // .then(res => res)
-    // .catch(() => <ShowToastError msg="Ooops.. It try again" />);
-
+    dispatch(addRecipe(formData))
+      .unwrap()
+      .then(res => console.log(res, 'res'))
+      .catch(() => <ShowToastError msg="Ooops.. It try again" />);
     actions.resetForm();
   };
 
