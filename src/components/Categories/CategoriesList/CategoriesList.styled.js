@@ -1,12 +1,18 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+    padding-top: 50px;
+    @media screen and (min-width: 1440px) {
+        padding-top: 100px;
+    }
+`
 
-export const Bar = styled.div`
+export const Bar = styled.ul`
     
     display: flex;
     gap: 28px;
-    padding: 50px 30px 22px ;
+    padding: 0px 30px 22px ;
     border-bottom: 1px solid #E0E0E0;
     overflow-y: scroll;
     transform: matrix(1, 0, 0, 1, 0, 0);
@@ -16,11 +22,11 @@ export const Bar = styled.div`
     }
     @media screen and (min-width: 768px) {
         gap: 55px;
-        padding: 50px 30px 18px 30px;
+        padding: 0px 30px 18px 30px;
     }
     @media screen and (min-width: 1440px) {
         gap: 55px;
-        padding-top: 100px;
+        /* padding-top: 100px; */
     }
 `;
 
