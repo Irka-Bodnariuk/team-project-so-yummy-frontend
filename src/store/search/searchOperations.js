@@ -1,7 +1,7 @@
-// import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL =
+  'https://team-project-so-yummy-backend.onrender.com/api';
 
 export const patchRecipeFavoriteById = async id => {
   try {
@@ -16,7 +16,6 @@ export const patchRecipeFavoriteById = async id => {
 export const patchRecipeLikeById = async id => {
   try {
     const { data } = await axios.patch(`/recipes/like/${id}`);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error.message);
