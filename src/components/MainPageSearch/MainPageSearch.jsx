@@ -16,7 +16,7 @@ const MainPageSearch = () => {
       setSearch('');
       return;
     }
-    navigate(`/search/?search=${search}`, { replace: true });
+    navigate(`/search?query=${search}`);
     setSearch('');
   };
 

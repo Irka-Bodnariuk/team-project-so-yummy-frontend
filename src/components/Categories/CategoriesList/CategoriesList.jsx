@@ -1,4 +1,8 @@
 import { Bar, ItemLink } from "./CategoriesList.styled";
+import { useRef } from "react";
+import { Wrapper } from "./CategoriesList.styled";
+
+import usePreventBodyScroll from "helpers/hScrollEvListener";
 
 
 const categories = [
@@ -16,15 +20,38 @@ const categories = [
     'Starter',
     'Vegan',
     'Vegetarian',
-  ];    
+];    
+
+
+
+
+  
+
 
 
 export const CategoriesList = () => {
+    
+    const { disableScroll, enableScroll } = usePreventBodyScroll();
+    const scrollRef = useRef(null);
+
+    const handleWheel = (event) => {
+        const scrollContainer = scrollRef.current;
+        if (scrollContainer) {
+            const scrollAmount = event.deltaY;
+            scrollContainer.scrollLeft += scrollAmount;
+        }
+    }
     return (
-        <Bar>
-            {categories.map(category => (
-                <ItemLink to={`/categories/${category.toLowerCase()}`} key={category}>{category}</ItemLink>
-            ))}
-        </Bar>
+        <Wrapper>
+
+            <Bar onMouseEnter={disableScroll} onMouseLeave={enableScroll} ref={scrollRef} onWheel={handleWheel}>
+                {categories.map(category => (
+                    <ItemLink to={`/categories/${category.toLowerCase()}`} key={category}>{category}</ItemLink>
+                ))}
+            </Bar>
+
+        </Wrapper>
+            
     )
-}
+};
+

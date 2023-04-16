@@ -3,6 +3,7 @@ import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
+import { useSearchParams } from 'react-router-dom';
 import { useMedia } from 'hooks';
 
 import {
@@ -50,6 +51,7 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const [isSearchResult, setIsSearchResult] = useState(false);
   const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const onPageChange = (e, page) => {
     setPage(page);
@@ -67,7 +69,6 @@ const Search = () => {
       location.state.ingredient = false;
     }
     if (searchType === 'title') {
-      console.log(location);
       if (searchQuery) {
         setLoading(true);
         getSearchByTitle(searchQuery, page)
@@ -118,9 +119,23 @@ const Search = () => {
     searchType,
   ]);
 
+  useEffect(() => {
+    if (searchParams.get('query')) {
+      onFormSubmit();
+    }
+    // eslint-disable-next-line
+  }, []);
+
   const onFormSubmit = e => {
-    e.preventDefault();
-    const newSearchQuery = e.target.elements.search.value;
+    let newSearchQuery = '';
+    if (searchParams.get('query') && !e) {
+      newSearchQuery = searchParams.get('query');
+    } else {
+      e.preventDefault();
+      newSearchQuery = e.target.elements.search.value;
+    }
+
+    setSearchParams({ query: newSearchQuery });
     setPage(1);
     if (
       !newSearchQuery ||
@@ -131,6 +146,7 @@ const Search = () => {
     }
     dispatch(updateSearchQuery(newSearchQuery));
   };
+
   return (
     <Container>
       {loading && <Loader />}
