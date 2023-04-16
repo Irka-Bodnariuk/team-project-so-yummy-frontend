@@ -1,7 +1,7 @@
 import * as yup from 'yup';
 
 export const validationSchema = yup.object().shape({
-  file: yup.string().required('You should upload an image'),
+  file: yup.string(),
   title: yup.string().required('Title is required'),
   about: yup.string().required('About recipe is required'),
   category: yup.string(),
