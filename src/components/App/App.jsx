@@ -93,7 +93,7 @@ export const App = () => {
               <Route
                 path="add"
                 element={
-                  <Suspense fallback={<Loader />}>
+                  <Suspense fallback={<Loader pageHeight="100vh" />}>
                     <AddRecipePage />
                   </Suspense>
                 }
@@ -111,7 +111,7 @@ export const App = () => {
               <Route
                 path="recipe/:recipeId"
                 element={
-                  <Suspense fallback={<Loader />}>
+                  <Suspense fallback={<Loader pageHeight="100vh" />}>
                     <RecipePage />
                   </Suspense>
                 }
@@ -177,7 +177,7 @@ export const App = () => {
           pauseOnFocusLoss
           draggable
           pauseOnHover
-          theme="light"
+          theme={darkMode ? 'dark' : 'light'}
         />
       </ThemeProvider>
     </ColorModeContext.Provider>

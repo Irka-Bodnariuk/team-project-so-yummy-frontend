@@ -28,7 +28,7 @@ export const Container = styled.header`
   align-items: center;
   margin: 0 auto;
   min-width: 375px;
-
+  z-index: 1;
   padding-top: ${p => p.theme.space[4] + 2}px;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;

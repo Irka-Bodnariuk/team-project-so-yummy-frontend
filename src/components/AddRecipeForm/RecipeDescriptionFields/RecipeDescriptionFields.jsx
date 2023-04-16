@@ -76,7 +76,6 @@ export const RecipeDescriptionFields = ({
               />
             )}
           </LabelFile>
-          <FormErrorMsg name="file" position="center" />
         </Box>
         <Box
           display="flex"

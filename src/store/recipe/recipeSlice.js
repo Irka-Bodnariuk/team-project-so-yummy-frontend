@@ -1,4 +1,4 @@
-import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import {
   getRecipeById,
   addRecipeToFavorite,
@@ -7,25 +7,31 @@ import {
   removeFromShoppingList,
 } from './recipeOperation';
 import {
-  getActions,
+  getRecipeByIdPendingReducer,
   getRecipeByIdFulfilledReducer,
+  getRecipeByIdRejectedReducer,
+  favoritePendingReducer,
+  favoriteRejectedReducer,
   addRecipeToFavoriteFulfilledReducer,
   removeRecipeFromFavoriteFulfilledReducer,
-  addToShoppingListFulfilledReducer,
-  removeFromShoppingListFulfilledReducer,
+  shoppingListRejectedReducer,
 } from './recipeHelpers';
-import {
-  handlePending,
-  handleFulfilled,
-  handleRejected,
-} from '../helpers/sharedReducerHelpers';
 
 const initialState = {
-  recipe: null,
-  favorite: false,
-  inCart: false,
-  isLoading: false,
-  error: null,
+  recipe: {
+    item: null,
+    isLoading: false,
+    error: null,
+  },
+  favorite: {
+    isFavorite: false,
+    isLoading: false,
+    error: null,
+  },
+
+  shoppingList: {
+    error: null,
+  },
 };
 
 const recipeSlice = createSlice({
@@ -33,23 +39,29 @@ const recipeSlice = createSlice({
   initialState: initialState,
   extraReducers: builder =>
     builder
+      .addCase(getRecipeById.pending, getRecipeByIdPendingReducer)
       .addCase(getRecipeById.fulfilled, getRecipeByIdFulfilledReducer)
-      .addCase(addToShoppingList.fulfilled, addToShoppingListFulfilledReducer)
-      .addCase(
-        removeFromShoppingList.fulfilled,
-        removeFromShoppingListFulfilledReducer
-      )
+      .addCase(getRecipeById.rejected, getRecipeByIdRejectedReducer)
+
+      .addCase(addRecipeToFavorite.pending, favoritePendingReducer)
       .addCase(
         addRecipeToFavorite.fulfilled,
         addRecipeToFavoriteFulfilledReducer
       )
+      .addCase(addRecipeToFavorite.rejected, favoriteRejectedReducer)
+
+      .addCase(removeRecipeFromFavorite.pending, favoritePendingReducer)
       .addCase(
         removeRecipeFromFavorite.fulfilled,
         removeRecipeFromFavoriteFulfilledReducer
       )
-      .addMatcher(isAnyOf(...getActions('pending')), handlePending)
-      .addMatcher(isAnyOf(...getActions('fulfilled')), handleFulfilled)
-      .addMatcher(isAnyOf(...getActions('rejected')), handleRejected),
+      .addCase(removeRecipeFromFavorite.rejected, favoriteRejectedReducer)
+
+      .addCase(addToShoppingList.fulfilled)
+      .addCase(addToShoppingList.rejected, shoppingListRejectedReducer)
+
+      .addCase(removeFromShoppingList.fulfilled)
+      .addCase(removeFromShoppingList.rejected, shoppingListRejectedReducer),
 });
 
 export const recipeReducer = recipeSlice.reducer;

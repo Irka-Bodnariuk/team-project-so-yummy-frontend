@@ -1,9 +1,10 @@
 // import { useState } from 'react';
-// import PropTypes from 'prop-types';
-import placeholder from 'images/recipepage/placeholder-meal.png';
+import PropTypes from 'prop-types';
+import placeholder from 'images/recipepage/placeholder-meal.jpg';
 import { Box } from 'components/Box';
 import {
   Title,
+  Container,
   Instruction,
   BoxImg,
   Images,
@@ -20,21 +21,29 @@ export const RecipePreparation = ({ recipe }) => {
     .filter(str => str.trim() !== '');
 
   return (
-    <Box>
-      <Title>Recipe Preparation</Title>
-      <InstructionList>
-        {instructions.map((item, idx) => (
-          <Item key={idx}>
-            <IconNum>{idx + 1}</IconNum>
-            <Instruction>{item.trim()}</Instruction>
-          </Item>
-        ))}
-      </InstructionList>
+    <Container>
+      <Box>
+        <Title>Recipe Preparation</Title>
+        <InstructionList>
+          {instructions.map((item, idx) => (
+            <Item key={idx}>
+              <IconNum>{idx + 1}</IconNum>
+              <Instruction>{item.trim()}</Instruction>
+            </Item>
+          ))}
+        </InstructionList>
+      </Box>
       <BoxImg>
         <Images src={images} alt={recipe.title} />
       </BoxImg>
-    </Box>
+    </Container>
   );
 };
 
-RecipePreparation.propTypes = {};
+RecipePreparation.propTypes = {
+  recipe: PropTypes.shape({
+    instructions: PropTypes.string,
+    previewImg: PropTypes.string,
+    preview: PropTypes.string,
+  }).isRequired,
+};
