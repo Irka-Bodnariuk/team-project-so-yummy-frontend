@@ -12,16 +12,24 @@ export const List = styled.ul`
   }
 `;
 
-export const Item = styled.li``;
+export const Item = styled.li`
+  transition: all 250ms linear;
+  :hover {
+    border-radius: 6px;
+    background: ${p => (p.dark ? '#8BAA36' : '#22252A')};
+  }
+`;
 
 export const Link = styled.a`
+  transition: all 250ms linear;
   padding: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
 
-  svg {
-    color: ${p => p.theme.colors.footerSocialIcons};
-    fill: ${p => p.theme.colors.footerSocialIcons};
+  color: ${p => p.theme.colors.footerSocialIcons};
+
+  :hover {
+    color: ${p => (p.dark ? '#22252A' : '#FAFAFA')};
   }
 `;

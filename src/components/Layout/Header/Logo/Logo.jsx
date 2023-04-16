@@ -2,7 +2,7 @@ import { useMedia } from 'hooks';
 import { MainIcon, FooterIcon } from 'images/svgIcons';
 
 import { NavLink, useLocation } from 'react-router-dom';
-import { WrapLogo } from './Logo.styled';
+import { WrapLogo, StyleLink } from './Logo.styled';
 
 const Logo = ({ handleClick }) => {
   const { pathname } = useLocation();
@@ -13,7 +13,7 @@ const Logo = ({ handleClick }) => {
     }
   };
   return (
-    <NavLink onClick={() => onDesktop()} to="/main">
+    <StyleLink onClick={() => onDesktop()} to="/main">
       {isMobileScreen ? (
         <>
           {pathname === '/main' ? (
@@ -27,7 +27,7 @@ const Logo = ({ handleClick }) => {
       ) : (
         <MainIcon mobile={isMobileScreen} />
       )}
-    </NavLink>
+    </StyleLink>
   );
 };
 
