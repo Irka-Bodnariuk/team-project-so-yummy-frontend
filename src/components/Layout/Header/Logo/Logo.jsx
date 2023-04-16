@@ -1,8 +1,8 @@
-import { useMedia } from 'hooks';
-import { MainIcon, FooterIcon } from 'images/svgIcons';
+import { useMedia } from "hooks";
+import { MainIcon, FooterIcon } from "images/svgIcons";
 
-import { NavLink, useLocation } from 'react-router-dom';
-import { WrapLogo, StyleLink } from './Logo.styled';
+import { useLocation } from "react-router-dom";
+import { WrapLogo, StyleLink } from "./Logo.styled";
 
 const Logo = ({ handleClick }) => {
   const { pathname } = useLocation();
@@ -16,7 +16,7 @@ const Logo = ({ handleClick }) => {
     <StyleLink onClick={() => onDesktop()} to="/main">
       {isMobileScreen ? (
         <>
-          {pathname === '/main' ? (
+          {pathname === "/main" ? (
             <WrapLogo>
               <FooterIcon mobile={isMobileScreen} />
             </WrapLogo>
