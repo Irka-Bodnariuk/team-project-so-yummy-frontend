@@ -25,6 +25,7 @@ import { Button } from 'components/Button/Button';
 import { ShowToastError } from 'helpers/showToastError';
 import { createArrTimesPrepare } from 'helpers/createArrTimesPrepare';
 import { RecipeForm } from './AddRecipeForm.styled';
+import placeholderNoUserImg from 'images/recipepage/placeholder-meal.jpg';
 
 const initialValues = {
   file: '',
@@ -60,6 +61,8 @@ export const AddRecipeForm = props => {
       id: item.id,
       measure: `${item.quantity} ${item.measure}`,
     }));
+    const preview = file === '' ? placeholderNoUserImg : file;
+
     const formData = new FormData();
 
     formData.append('title', title);
@@ -67,7 +70,7 @@ export const AddRecipeForm = props => {
     formData.append('description', about);
     formData.append('instructions', instructions);
     formData.append('favorite', false);
-    formData.append('preview', file);
+    formData.append('preview', preview);
     formData.append('time', time);
     formData.append('ingredients', JSON.stringify(ingredientsList));
 

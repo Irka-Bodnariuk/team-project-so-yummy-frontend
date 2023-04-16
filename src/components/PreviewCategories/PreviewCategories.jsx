@@ -23,9 +23,9 @@ const PreviewCategories = () => {
       {popularCategories &&
         popularCategories.map(category => (
           <CategoryCard
-            key={category.id}
-            name={category.id}
-            popular={category.firstFour}
+            key={`cat_key${category[0].id}`}
+            name={category[0].category}
+            popular={category}
           />
         ))}
       <Button

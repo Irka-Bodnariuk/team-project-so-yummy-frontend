@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { HiMenuAlt2 } from 'react-icons/hi';
 export const ContainerHeader = styled.header`
   position: relative;
-  z-index: 200;
+
   display: flex;
   justify-content: center;
   min-width: 375px;
@@ -28,7 +28,7 @@ export const Container = styled.div`
   align-items: center;
   margin: 0 auto;
   min-width: 375px;
-
+  z-index: 1;
   padding-top: ${p => p.theme.space[4] + 2}px;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FiEdit2, FiArrowRight } from 'react-icons/fi';
 
 export const Overlay = styled.div`
-  z-index: 1;
+  z-index: 120;
   position: fixed;
   width: 100%;
   height: 100vh;

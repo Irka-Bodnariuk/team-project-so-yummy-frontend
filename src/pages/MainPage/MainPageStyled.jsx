@@ -61,9 +61,11 @@ const MainPageStyled = styled.div`
     background-size: cover;
     margin-left: ${p => -p.theme.space[5]}px;
     margin-right: ${p => -p.theme.space[5]}px;
+
     & > div:first-of-type {
       display: flex;
       flex-direction: row;
+      width: 100%;
     }
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -78,6 +80,8 @@ const MainPageStyled = styled.div`
     background: url(${DesktopBackground1x});
     background-position-y: 0%;
     background-size: cover;
+    background-repeat: no-repeat;
+
     padding-bottom: 210px;
     margin-top: -164px;
     padding-bottom: 100px;

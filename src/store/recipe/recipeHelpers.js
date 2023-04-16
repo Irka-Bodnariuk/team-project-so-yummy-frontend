@@ -1,40 +1,35 @@
-import {
-  getRecipeById,
-  addRecipeToFavorite,
-  removeRecipeFromFavorite,
-  addToShoppingList,
-  removeFromShoppingList,
-} from './recipeOperation';
-
-const extraActions = [
-  getRecipeById,
-  addRecipeToFavorite,
-  removeRecipeFromFavorite,
-  addToShoppingList,
-  removeFromShoppingList,
-];
-export const getActions = type => extraActions.map(action => action[type]);
-
+export const getRecipeByIdPendingReducer = state => {
+  state.recipe.isLoading = true;
+};
 export const getRecipeByIdFulfilledReducer = (state, action) => {
-  state.recipe = action.payload;
-  state.favorite = action.payload.favorite;
-  state.recipeError = null;
+  state.recipe.item = action.payload;
+  state.favorite.isFavorite = action.payload.favorite;
+  state.recipe.isLoading = false;
+  state.recipe.error = null;
 };
 export const getRecipeByIdRejectedReducer = (state, action) => {
-  state.recipeError = action.payload;
+  state.recipe.isLoading = false;
+  state.recipe.error = action.payload;
 };
 
+export const favoritePendingReducer = state => {
+  state.favorite.isLoading = true;
+};
+export const favoriteRejectedReducer = (state, action) => {
+  state.favorite.isLoading = false;
+  state.favorite.error = action.payload;
+};
 export const addRecipeToFavoriteFulfilledReducer = state => {
-  state.favorite = true;
+  state.favorite.isFavorite = true;
+  state.favorite.isLoading = false;
+  state.favorite.error = false;
 };
 export const removeRecipeFromFavoriteFulfilledReducer = state => {
-  state.favorite = false;
+  state.favorite.isFavorite = false;
+  state.favorite.isLoading = false;
+  state.favorite.error = false;
 };
 
-export const addToShoppingListFulfilledReducer = (state, action) => {
-  state.inCart = action.payload;
-};
-
-export const removeFromShoppingListFulfilledReducer = (state, action) => {
-  state.inCart = action.payload;
+export const shoppingListRejectedReducer = (state, action) => {
+  state.shoppingList.error = action.payload;
 };

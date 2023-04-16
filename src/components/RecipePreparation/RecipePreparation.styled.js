@@ -8,10 +8,26 @@ export const Title = styled.h2`
 
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.primaryText};
+
+  @media ${props => props.theme.device.tablet} {
+    margin-bottom: 32px;
+  }
+`;
+
+export const Container = styled.div`
+  @media ${props => props.theme.device.desktop} {
+    display: flex;
+    align-items: flex-start;
+    gap: 50px;
+  }
 `;
 
 export const InstructionList = styled.ul`
   margin-bottom: 40px;
+
+  @media ${props => props.theme.device.tablet} {
+    margin-bottom: 50px;
+  }
 `;
 
 export const Item = styled.li`
@@ -38,6 +54,11 @@ export const IconNum = styled.span`
   color: ${p => p.theme.colors.secondaryTextColor};
   border-radius: 50%;
   background-color: ${p => p.theme.colors.accentColor};
+
+  @media ${props => props.theme.device.tablet} {
+    padding: 5px 15px;
+    font-size: 14px;
+  }
 `;
 
 export const Instruction = styled.p`
@@ -45,6 +66,10 @@ export const Instruction = styled.p`
   line-height: 1.2;
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.primaryText};
+
+  @media ${props => props.theme.device.tablet} {
+    font-size: 14px;
+  }
 `;
 
 export const BoxImg = styled.div`
@@ -52,9 +77,19 @@ export const BoxImg = styled.div`
   height: auto;
   border-radius: 8px;
   overflow: hidden;
+
+  @media ${props => props.theme.device.tablet} {
+    width: 433px;
+  }
+
+  @media ${props => props.theme.device.desktop} {
+    align-self: flex-start;
+    min-width: 433px;
+  }
 `;
 
 export const Images = styled.img`
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;

@@ -1,36 +1,35 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  selectInCartShopping,
-  selectError,
-} from 'store/recipe/recipeSelectors';
+import { selectShoppingListError } from 'store/recipe/recipeSelectors';
 import {
   addToShoppingList,
   removeFromShoppingList,
 } from 'store/recipe/recipeOperation';
 import { ShowToastError } from 'helpers/showToastError';
-// import { BsCheckLg } from 'react-icons/bs';
+import { BsCheckLg } from 'react-icons/bs';
 import placeholder from '../../images/recipepage/placeholder.png';
 import { Box } from 'components/Box';
 import {
   Section,
   TableData,
-  BoxTitle,
+  Container,
   Title,
   List,
   Item,
+  RecipeImage,
   IngredientTitle,
   MeasureInfo,
+  ContainerCheckbox,
+  Checkbox,
+  Icon,
 } from './RecipeIngredientsList.styled';
 
 export const RecipeIngredientsList = ({ ingredients }) => {
   const dispatch = useDispatch();
   const [checkedItems, setCheckedItems] = useState({});
-  const inCartShopping = useSelector(selectInCartShopping);
-  const error = useSelector(selectError);
-
-  console.log(inCartShopping);
+  const error = useSelector(selectShoppingListError);
 
   const handleChange = (e, item) => {
     const checked = e.target.checked;
@@ -38,42 +37,53 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       ...checkedItems,
       [e.target.name]: checked,
     });
-    console.log(checked);
+    const data = {
+      productId: item._id,
+      measure: item.measure,
+    };
+    console.log(data);
     if (checked) {
-      dispatch(addToShoppingList(item));
-    } else dispatch(removeFromShoppingList(item.id));
+      dispatch(addToShoppingList(data))
+        .unwrap()
+        .then(() => toast.success(`${item.title} add to shopping list`))
+        .catch(err => err);
+    } else
+      dispatch(removeFromShoppingList(item._id))
+        .unwrap()
+        .then(() => toast.success(`${item.title} removed from shopping list`))
+        .catch(err => err);
   };
 
   return (
     <Section>
       <TableData>
         <Title>Ingredients</Title>
-        <BoxTitle>
+        <Container>
           <Title>Number</Title>
           <Title>Add to list</Title>
-        </BoxTitle>
+        </Container>
       </TableData>
       <List>
-        {ingredients.map((item, idx) => (
+        {ingredients.map(item => (
           <Item key={item._id}>
             <Box display="flex" alignItems="center">
-              <img
-                src={item.thumb ?? placeholder}
-                alt={item.title}
-                width={65}
-                height={65}
-              />
+              <RecipeImage src={item.thumb ?? placeholder} alt={item.title} />
               <IngredientTitle>{item.title}</IngredientTitle>
             </Box>
-            <BoxTitle>
+            <Container>
               <MeasureInfo>{item.measure}</MeasureInfo>
-              <input
-                type="checkbox"
-                checked={checkedItems[item._id] ?? false}
-                onChange={e => handleChange(e, item)}
-                name={item._id}
-              />
-            </BoxTitle>
+              <ContainerCheckbox>
+                <Checkbox
+                  type="checkbox"
+                  checked={checkedItems[item._id] ?? false}
+                  onChange={e => handleChange(e, item)}
+                  name={item._id}
+                />
+                <Icon>
+                  <BsCheckLg />
+                </Icon>
+              </ContainerCheckbox>
+            </Container>
           </Item>
         ))}
       </List>
