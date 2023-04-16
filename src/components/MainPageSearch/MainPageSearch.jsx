@@ -2,17 +2,27 @@ import MainPageSearchStyled from './MainPageSearchStyled';
 import { Button } from 'components/Button/Button';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from 'react-redux';
 
 const MainPageSearch = () => {
   const [search, setSearch] = useState('');
   const navigate = useNavigate();
+  const theme = useSelector(state => state.theme.darkMode);
 
   const handleNameChange = event => setSearch(event.target.value);
 
   const onSubmit = e => {
     e.preventDefault();
     if (search.trim() === '') {
-      alert('Please, enter a valid search request');
+      toast.error('Please, enter a valid search request!', {
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        progress: undefined,
+        theme: theme ? 'dark' : 'light',
+      });
       setSearch('');
       return;
     }
@@ -31,7 +41,6 @@ const MainPageSearch = () => {
 
       <Button
         type="submit"
-        // onClick={onSubmit}
         look="rounded"
         width="113px"
         heigth="52px"

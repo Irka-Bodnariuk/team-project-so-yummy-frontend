@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-// ${p => p.theme.colors.form.inputError}
-
 export const СhooseYourBreakfastStyled = styled.div`
   width: 225px;
   background: ${p => p.theme.colors.background};
@@ -17,7 +15,8 @@ export const СhooseYourBreakfastStyled = styled.div`
     width: 260px;
     padding: 12px;
     margin-top: -12px;
-    margin-left: 78px;
+    margin-left: auto;
+    margin-right: 34px;
   }
 
   @media ${props => props.theme.device.desktop} {
@@ -68,13 +67,6 @@ export const СhooseYourBreakfastStyled = styled.div`
 
     @media ${props => props.theme.device.desktop} {
       margin-right: 1px;
-    }
-
-    & > img {
-      /* display: inline-block; */
-      width: 16px;
-      height: 10px;
-      margin-left: 5px;
     }
 
     & > span {
