@@ -1,21 +1,10 @@
 const getCategoryList = async (token) => {
 
-  const optimizationObject = (obj) => {
-    return {
-      id: obj._id,
-      title: obj.title,
-      preview: obj.preview
-    }
+  const recipeOptimization = recipe => {
+    return { id: recipe._id, title: recipe.title, preview: recipe.preview, category: recipe.category }
   }
 
-  const optimizationMiddleWare = (category) => {
-    const newFirstFour = category.firstFour.map(recipe => optimizationObject(recipe));
-    const newObj = {
-      id: category._id,
-      firstFour: newFirstFour
-    }
-    return newObj
-  }
+  const categoryOptimization = category => category.map(recipe => recipeOptimization(recipe))
 
   const list = await fetch('https://team-project-so-yummy-backend.onrender.com/api/recipes/main-page', {
     method: 'GET',
@@ -24,9 +13,11 @@ const getCategoryList = async (token) => {
       'Content-Type': 'application/json'
     }
   })
-  const listToReceived = await list.json();
-  const adaptedList = listToReceived.result.map(x => optimizationMiddleWare(x))
-  return adaptedList;
+
+  const responseReceived = await list.json();
+  const result = responseReceived.result.map(category => categoryOptimization(category));
+  return result;
 }
+
 
 export default getCategoryList;
