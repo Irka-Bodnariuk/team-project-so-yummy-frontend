@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { HiMenuAlt2 } from 'react-icons/hi';
-export const ContainerHeader = styled.div`
+export const ContainerHeader = styled.header`
   position: relative;
-
+  z-index: 200;
   display: flex;
   justify-content: center;
   min-width: 375px;
@@ -16,7 +16,7 @@ export const ContainerHeader = styled.div`
   }
 `;
 
-export const Container = styled.header`
+export const Container = styled.div`
   position: absolute;
   width: 100vw;
   display: flex;
@@ -74,11 +74,11 @@ export const MenuIcon = styled(HiMenuAlt2)`
   width: 28px;
   height: 28px;
   color: ${p => (p.recipe?.recipeId ? '#23262A' : p.theme.colors.headerText)};
+  transition: all 250ms ease-in-out;
 
   &:hover,
   &:focus {
     color: ${p => p.theme.colors.accentColor};
-    /* color: #8baa36; */
   }
   @media screen and (min-width: 768px) {
     width: 32px;

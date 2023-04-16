@@ -1,13 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-import { BsFillPlusCircleFill } from "react-icons/bs";
-import { FiEdit2, FiUser } from "react-icons/fi";
-import { IoClose } from "react-icons/io5";
-import { Form, Field } from "formik";
+import { BsFillPlusCircleFill } from 'react-icons/bs';
+import { FiEdit2, FiUser } from 'react-icons/fi';
+import { IoClose } from 'react-icons/io5';
+import { Form, Field } from 'formik';
 
 export const FormEdit = styled(Form)`
-  margin-bottom: ${(p) => p.theme.space[3]}px;
-  margin-top: ${(p) => p.theme.space[3]}px;
+  margin-bottom: ${p => p.theme.space[3]}px;
+  margin-top: ${p => p.theme.space[3]}px;
   @media screen and (min-width: 768px) {
     margin-bottom: 10px;
     margin-top: 10px;
@@ -26,11 +26,11 @@ export const ButtonClose = styled.button`
   width: 20px;
   height: 20px;
 
-  color: ${(p) => (p.dark ? "#FAFAFA" : "#333333")};
+  color: ${p => (p.dark ? '#FAFAFA' : '#333333')};
   transition: all 250ms linear;
   &:hover,
   &:focus {
-    color: ${(p) => p.theme.colors.accentColor};
+    color: ${p => p.theme.colors.accentColor};
   }
   @media screen and (min-width: 768px) {
     width: 24px;
@@ -91,12 +91,14 @@ export const ButtonAdd = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: ${(p) => p.theme.colors.accentColor};
+  color: ${p => p.theme.colors.accentColor};
 
   transition: all 250ms linear;
+
   &:hover,
   &:focus {
-    color: ${(p) => (p.dark ? "#FAFAFA" : "#333333")};
+    transform: scale(1.2);
+    color: ${p => (p.dark ? '#FAFAFA' : '#333333')};
   }
 
   @media screen and (min-width: 768px) {
@@ -112,10 +114,10 @@ export const PlusIcon = styled(BsFillPlusCircleFill)`
 
 export const LabelInput = styled.label`
   position: relative;
-  color: ${(p) => p.theme.colors.headerText};
+  color: ${p => p.theme.colors.headerText};
 
   :focus-within > svg {
-    color: ${(p) => p.theme.colors.accentColor};
+    color: ${p => p.theme.colors.accentColor};
   }
 `;
 export const UserIcon = styled(FiUser)`
@@ -162,27 +164,27 @@ export const Input = styled(Field)`
   padding: 15px 40px 11px 40px;
   font-family: 'Poppins';
   font-style: normal;
-  font-weight: ${(p) => p.theme.fontWeights.body};
-  font-size: ${(p) => p.theme.fontSizes.s}px;
+  font-weight: ${p => p.theme.fontWeights.body};
+  font-size: ${p => p.theme.fontSizes.s}px;
   line-height: 1.5;
   letter-spacing: -0.02em;
-  color: ${(p) => p.theme.colors.headerText};
+  color: ${p => p.theme.colors.headerText};
   outline: none;
   background-color: transparent;
   width: 282px;
 
-  border: 1px solid ${(p) => p.theme.colors.headerText};
+  border: 1px solid ${p => p.theme.colors.headerText};
   border-radius: 6px;
   margin-bottom: 24px;
   :focus-within {
-    border: 1px solid ${(p) => p.theme.colors.accentColor};
+    border: 1px solid ${p => p.theme.colors.accentColor};
   }
 
   @media screen and (min-width: 768px) {
     width: 400px;
     padding: 16px 50px 14px 50px;
     margin-bottom: 32px;
-    font-size: ${(p) => p.theme.fontSizes.m}px;
+    font-size: ${p => p.theme.fontSizes.m}px;
   }
 
   @media screen and (min-width: 1440px) {

@@ -21,6 +21,10 @@ export const WrapPhoto = styled.button`
   cursor: pointer;
   padding: 6px 0;
   margin: 0;
+  transition: all 250ms ease-in-out;
+  :hover > p {
+    color: ${p => p.theme.colors.accentColor};
+  }
 `;
 
 export const Photo = styled.img`

@@ -12,7 +12,7 @@ export const Overlay = styled.div`
 `;
 export const Wrapper = styled.div`
   position: fixed;
-  z-index: 10;
+
   background-color: ${p => p.theme.colors.shoppingItemImageBg};
   width: 100%;
 

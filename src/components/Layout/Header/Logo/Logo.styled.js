@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const WrapLogo = styled.div`
   svg {
@@ -10,6 +11,12 @@ export const WrapLogo = styled.div`
       width: 44px;
       height: 44px;
     }
+  }
+`;
+export const StyleLink = styled(NavLink)`
+  transition: all 250ms ease-in-out;
+  :hover {
+    transform: scale(1.1);
   }
 `;
 

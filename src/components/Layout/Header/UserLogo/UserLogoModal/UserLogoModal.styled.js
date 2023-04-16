@@ -56,7 +56,10 @@ export const ButtonEdit = styled.button`
   align-items: center;
   color: ${p => p.theme.colors.headerText};
   cursor: pointer;
+  transition: all 250ms ease-in-out;
+
   &:hover {
+    transform: scale(1.4);
     color: ${p => p.theme.colors.accentColor};
   }
 `;
