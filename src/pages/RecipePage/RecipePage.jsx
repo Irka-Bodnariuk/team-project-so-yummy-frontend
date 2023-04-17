@@ -51,8 +51,6 @@ const RecipePage = () => {
     }
   }, [currentRecipe]);
 
-  console.log(isOwn);
-
   return (
     <>
       <GoToTop />
