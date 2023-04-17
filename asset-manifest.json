@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/team-project-so-yummy-frontend/static/css/main.f23a6728.css",
-    "main.js": "/team-project-so-yummy-frontend/static/js/main.8a826b65.js",
+    "main.js": "/team-project-so-yummy-frontend/static/js/main.5fda03dd.js",
     "static/js/556.3ccf50a9.chunk.js": "/team-project-so-yummy-frontend/static/js/556.3ccf50a9.chunk.js",
     "static/js/369.98ffa517.chunk.js": "/team-project-so-yummy-frontend/static/js/369.98ffa517.chunk.js",
     "static/js/725.4df6bd0a.chunk.js": "/team-project-so-yummy-frontend/static/js/725.4df6bd0a.chunk.js",
@@ -67,7 +67,7 @@
     "static/media/photo-icon.svg": "/team-project-so-yummy-frontend/static/media/photo-icon.d5abba0d2a5cd1f9bb1aa90c017384f8.svg",
     "index.html": "/team-project-so-yummy-frontend/index.html",
     "main.f23a6728.css.map": "/team-project-so-yummy-frontend/static/css/main.f23a6728.css.map",
-    "main.8a826b65.js.map": "/team-project-so-yummy-frontend/static/js/main.8a826b65.js.map",
+    "main.5fda03dd.js.map": "/team-project-so-yummy-frontend/static/js/main.5fda03dd.js.map",
     "556.3ccf50a9.chunk.js.map": "/team-project-so-yummy-frontend/static/js/556.3ccf50a9.chunk.js.map",
     "369.98ffa517.chunk.js.map": "/team-project-so-yummy-frontend/static/js/369.98ffa517.chunk.js.map",
     "725.4df6bd0a.chunk.js.map": "/team-project-so-yummy-frontend/static/js/725.4df6bd0a.chunk.js.map",
@@ -85,6 +85,6 @@
   },
   "entrypoints": [
     "static/css/main.f23a6728.css",
-    "static/js/main.8a826b65.js"
+    "static/js/main.5fda03dd.js"
   ]
 }
