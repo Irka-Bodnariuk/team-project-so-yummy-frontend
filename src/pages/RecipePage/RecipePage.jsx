@@ -7,6 +7,7 @@ import {
   selectRecipeError,
 } from 'store/recipe/recipeSelectors';
 import { getRecipeById } from 'store/recipe/recipeOperation';
+import GoToTop from 'helpers/scrollToTop';
 import { Loader } from 'components/Loader/Loader';
 import { ShowToastError } from 'helpers/showToastError';
 import { RecipePageHero } from 'components/RecipePageHero/RecipePageHero';
@@ -26,6 +27,7 @@ const RecipePage = () => {
 
   return (
     <>
+      <GoToTop />
       {isLoading && <Loader pageHeight="100vh" />}
       {recipe !== null && (
         <div>
