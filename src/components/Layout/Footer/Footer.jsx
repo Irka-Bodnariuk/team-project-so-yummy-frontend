@@ -8,7 +8,7 @@ const Footer = () => {
       <Wrapper>
         <Navigation />
       </Wrapper>
-      <Copyright/>
+      <Copyright />
     </Conteiner>
   );
 };
