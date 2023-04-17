@@ -1,9 +1,11 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   selectCategory,
   selectError,
   selectIngredients,
+  selectIsLoading,
 } from 'store/addRecipe/addRecipeSelectors';
 import {
   getCategoryList,
@@ -18,6 +20,7 @@ import {
   createOptionIngredients,
 } from 'helpers/createOptionsSelectAddRecipeForm';
 import { validationSchema } from 'helpers/validationSchemaAddRecipeForm';
+import { Loader } from 'components/Loader/Loader';
 import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
 import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
 import { RecipePreapationFields } from './RecipePreapationFields/RecipePreapationFields';
@@ -40,8 +43,10 @@ const initialValues = {
 export const AddRecipeForm = props => {
   const dispatch = useDispatch();
   const categoryList = useSelector(selectCategory);
-  const ingredientsList = useSelector(selectIngredients);
+  const ingredientsListAll = useSelector(selectIngredients);
   const error = useSelector(selectError);
+  const isLoading = useSelector(selectIsLoading);
+  const [submitRecipe, setSubmitRecipe] = useState(false);
 
   useEffect(() => {
     dispatch(getCategoryList());
@@ -50,18 +55,32 @@ export const AddRecipeForm = props => {
 
   const optionsCategory = createOptionCategory(categoryList);
   const optionsTimes = createOptionTimes(createArrTimesPrepare(5, 120, 5));
-  const optionsIngredients = createOptionIngredients(ingredientsList);
+  const optionsIngredients = createOptionIngredients(ingredientsListAll);
   const optionMesure = createOptionMeasure();
 
-  const handleSubmit = (values, actions) => {
+  const handleSubmit = async (values, actions) => {
     const { file, title, about, category, time, ingredients, preparation } =
       values;
     const instructions = preparation.join('\n');
-    const ingredientsList = ingredients.map(item => ({
-      id: item.id,
-      measure: `${item.quantity} ${item.measure}`,
-    }));
-    const preview = file === '' ? placeholderNoUserImg : file;
+    const ingredientsList = ingredients.flatMap(item => {
+      return ingredientsListAll.reduce((acc, ingr) => {
+        if (item.id === ingr._id) {
+          acc.id = ingr._id;
+          acc.measure = `${item.quantity} ${item.measure}`;
+          acc.thumb = ingr.thb;
+          acc.title = ingr.ttl;
+          acc.desc = ingr.desc;
+        }
+        return acc;
+      }, {});
+    });
+
+    const res = await fetch(placeholderNoUserImg);
+    const blob = await res.blob();
+    const fileName = placeholderNoUserImg.split('/').pop();
+    const placeholder = new File([blob], fileName, { type: blob.type });
+
+    const preview = file === '' ? placeholder : file;
 
     const formData = new FormData();
 
@@ -76,10 +95,14 @@ export const AddRecipeForm = props => {
 
     dispatch(addRecipe(formData))
       .unwrap()
-      .then(res => console.log(res, 'res'))
-      .catch(() => <ShowToastError msg="Ooops.. It try again" />);
+      .then(() => setSubmitRecipe(true))
+      .catch(() => <ShowToastError msg="Failed to send recipe" />);
     actions.resetForm();
   };
+
+  if (submitRecipe) {
+    return <Navigate to="/my" replace />;
+  }
 
   return (
     <>
@@ -114,12 +137,12 @@ export const AddRecipeForm = props => {
               fontSize="16px"
               lineHeight="24px"
             >
-              Add
+              {isLoading ? <Loader size="30" /> : 'Add'}
             </Button>
           </RecipeForm>
         )}
       </Formik>
-      {error && <ShowToastError msg="Ooops.. Something went wrong" />}
+      {error && <ShowToastError msg="Something went wrong" />}
     </>
   );
 };
