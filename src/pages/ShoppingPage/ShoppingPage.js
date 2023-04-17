@@ -6,6 +6,7 @@ import { ShoppingList } from 'components/ShoppingList/ShoppingList';
 import { useDispatch, useSelector } from 'react-redux';
 import { getList } from 'store/shoppingList/shoppingListOperations';
 import { Loader } from 'components/Loader/Loader';
+import GoToTop from 'helpers/scrollToTop';
 
 const ShoppingPage = () => {
   const { screenType } = useMedia();
@@ -51,6 +52,7 @@ const ShoppingPage = () => {
           You haven't added any ingredients to your shopping list yet!
         </EmptyMessage>
       )}
+      <GoToTop />
     </main>
   );
 };
