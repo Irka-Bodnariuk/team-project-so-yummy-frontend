@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const Section = styled.div`
-  padding: 374px 0 50px 0;
+  padding: 420px 0 50px 0;
 
   @media ${props => props.theme.device.tablet} {
-    padding: 500px 0 96px 0;
+    padding: 540px 0 96px 0;
   }
   @media ${props => props.theme.device.desktop} {
-    padding: 510px 0 96px 0;
+    padding: 570px 0 96px 0;
   }
 `;
 
