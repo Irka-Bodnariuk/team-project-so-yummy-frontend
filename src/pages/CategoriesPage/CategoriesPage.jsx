@@ -8,6 +8,7 @@ import BGDots from 'reusableComponents/BGDots/BGDots';
 import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Paginator } from 'components/Paginator/Paginator';
+import GoToTop from 'helpers/scrollToTop';
 
 const CategoriesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -61,6 +62,7 @@ const CategoriesPage = () => {
       {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
 
       <Paginator totalItems={totalRecipies} setPage={setPage} page={page} />
+      <GoToTop />
     </main>
   );
 };

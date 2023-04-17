@@ -10,6 +10,7 @@ import {
   SharedContainer,
   SocialsTitle,
 } from './AddRecipePage.styled';
+import GoToTop from 'helpers/scrollToTop';
 
 const AddRecipePage = () => {
   const { isDesktopScreen } = useMedia();
@@ -30,6 +31,7 @@ const AddRecipePage = () => {
           <PopularRecipe />
         </ContainerPopular>
       </SharedContainer>
+      <GoToTop />
     </>
   );
 };
