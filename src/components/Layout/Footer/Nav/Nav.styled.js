@@ -1,11 +1,11 @@
-import styled from "styled-components";
-import { NavLink } from "react-router-dom";
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const List = styled.ul`
-   @media screen and (max-width: 767px) {
-     text-align: center;
-     margin-left: auto;
-     margin-right: auto;
+  @media screen and (max-width: 767px) {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -16,6 +16,9 @@ export const Link = styled(NavLink)`
   line-height: 18px;
   letter-spacing: -0.02em;
   color: ${p => p.theme.colors.footerText};
+  :hover {
+    color: ${p => p.theme.colors.accentColor};
+  }
 `;
 
 export const Item = styled.li`
@@ -25,7 +28,7 @@ export const Item = styled.li`
     margin-bottom: 0;
   }
 
-   @media screen and (min-width: 768px) {
+  @media screen and (min-width: 768px) {
     margin-bottom: 20px;
   }
 
