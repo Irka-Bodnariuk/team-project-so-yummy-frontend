@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectRecipeById,
   selectRecipeIsLoading,
   selectRecipeError,
+  selectOwnRecipeById,
 } from 'store/recipe/recipeSelectors';
-import { getRecipeById } from 'store/recipe/recipeOperation';
+import { getRecipeById, getOwnRecipeById } from 'store/recipe/recipeOperation';
 import GoToTop from 'helpers/scrollToTop';
 import { Loader } from 'components/Loader/Loader';
 import { ShowToastError } from 'helpers/showToastError';
@@ -18,25 +19,45 @@ const RecipePage = () => {
   const { recipeId } = useParams();
   const dispatch = useDispatch();
   const recipe = useSelector(selectRecipeById);
+  const ownRecipe = useSelector(selectOwnRecipeById);
   const isLoading = useSelector(selectRecipeIsLoading);
   const error = useSelector(selectRecipeError);
+  const [currentRecipe, setCurrentRecipe] = useState(null);
+  const [currentIngredients, setCurrentIngredients] = useState([]);
+
+  console.log(currentRecipe);
+  console.log(currentIngredients);
 
   useEffect(() => {
     dispatch(getRecipeById(recipeId));
+    dispatch(getOwnRecipeById(recipeId));
   }, [recipeId, dispatch]);
+
+  useEffect(() => {
+    setCurrentRecipe(recipe ?? ownRecipe);
+  }, [recipe, ownRecipe]);
+
+  useEffect(() => {
+    if (currentRecipe !== null) {
+      const { ingredients, ingredientsParse } = currentRecipe;
+      setCurrentIngredients(ingredients ?? ingredientsParse);
+    }
+  }, [currentRecipe]);
 
   return (
     <>
       <GoToTop />
       {isLoading && <Loader pageHeight="100vh" />}
-      {recipe !== null && (
+      {currentRecipe !== null && (
         <div>
-          <RecipePageHero recipe={recipe} />
-          <RecipeIngredientsList ingredients={recipe.ingredients} />
-          <RecipePreparation recipe={recipe} />
+          <RecipePageHero recipe={currentRecipe} />
+          <RecipeIngredientsList ingredients={currentIngredients} />
+          <RecipePreparation recipe={currentRecipe} />
         </div>
       )}
-      {error && <ShowToastError msg="Ooops.. Can't upload recipe" />}
+      {recipe && ownRecipe && error && (
+        <ShowToastError msg="Can't upload recipe" />
+      )}
     </>
   );
 };

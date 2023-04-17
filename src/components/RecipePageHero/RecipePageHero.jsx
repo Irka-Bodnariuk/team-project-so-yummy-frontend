@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -22,7 +22,11 @@ export const RecipePageHero = ({ recipe }) => {
   const favorite = useSelector(selectFavorite);
   const isLoading = useSelector(selectFavoriteIsLoading);
   const error = useSelector(selectFavoriteError);
-  const [currentFavorite, setCurrentFavorite] = useState(recipe.favorite);
+  const [currentFavorite, setCurrentFavorite] = useState(favorite);
+
+  useEffect(() => {
+    setCurrentFavorite(favorite);
+  }, [favorite]);
 
   const handleAddToFavorite = () => {
     dispatch(addRecipeToFavorite(recipe._id));

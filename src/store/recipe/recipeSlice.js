@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
   getRecipeById,
+  getOwnRecipeById,
   addRecipeToFavorite,
   removeRecipeFromFavorite,
   addToShoppingList,
@@ -19,6 +20,11 @@ import {
 
 const initialState = {
   recipe: {
+    item: null,
+    isLoading: false,
+    error: null,
+  },
+  ownRecipe: {
     item: null,
     isLoading: false,
     error: null,
@@ -43,6 +49,10 @@ const recipeSlice = createSlice({
       .addCase(getRecipeById.fulfilled, getRecipeByIdFulfilledReducer)
       .addCase(getRecipeById.rejected, getRecipeByIdRejectedReducer)
 
+      .addCase(getOwnRecipeById.pending, getRecipeByIdPendingReducer)
+      .addCase(getOwnRecipeById.fulfilled, getRecipeByIdFulfilledReducer)
+      .addCase(getOwnRecipeById.rejected, getRecipeByIdRejectedReducer)
+
       .addCase(addRecipeToFavorite.pending, favoritePendingReducer)
       .addCase(
         addRecipeToFavorite.fulfilled,
@@ -57,9 +67,11 @@ const recipeSlice = createSlice({
       )
       .addCase(removeRecipeFromFavorite.rejected, favoriteRejectedReducer)
 
+      .addCase(addToShoppingList.pending)
       .addCase(addToShoppingList.fulfilled)
       .addCase(addToShoppingList.rejected, shoppingListRejectedReducer)
 
+      .addCase(removeFromShoppingList.pending)
       .addCase(removeFromShoppingList.fulfilled)
       .addCase(removeFromShoppingList.rejected, shoppingListRejectedReducer),
 });

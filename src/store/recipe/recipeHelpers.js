@@ -12,6 +12,20 @@ export const getRecipeByIdRejectedReducer = (state, action) => {
   state.recipe.error = action.payload;
 };
 
+export const getOwnRecipeByIdPendingReducer = state => {
+  state.ownRecipe.isLoading = true;
+};
+export const getOwnRecipeByIdFulfilledReducer = (state, action) => {
+  state.ownRecipe.item = action.payload;
+  state.favorite.isFavorite = action.payload.favorite;
+  state.ownRecipe.isLoading = false;
+  state.ownRecipe.error = null;
+};
+export const getOwnRecipeByIdRejectedReducer = (state, action) => {
+  state.ownRecipe.isLoading = false;
+  state.ownRecipe.error = action.payload;
+};
+
 export const favoritePendingReducer = state => {
   state.favorite.isLoading = true;
 };

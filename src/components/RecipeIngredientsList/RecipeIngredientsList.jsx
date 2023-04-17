@@ -26,7 +26,7 @@ import {
   Icon,
 } from './RecipeIngredientsList.styled';
 
-export const RecipeIngredientsList = ({ ingredients }) => {
+export const RecipeIngredientsList = ({ ingredients = [] }) => {
   const dispatch = useDispatch();
   const [checkedItems, setCheckedItems] = useState({});
   const error = useSelector(selectShoppingListError);
@@ -38,17 +38,17 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       [e.target.name]: checked,
     });
     const data = {
-      productId: item._id,
+      productId: item._id ?? item.id,
       measure: item.measure,
     };
-    console.log(data);
+
     if (checked) {
       dispatch(addToShoppingList(data))
         .unwrap()
         .then(() => toast.success(`${item.title} add to shopping list`))
         .catch(err => err);
     } else
-      dispatch(removeFromShoppingList(item._id))
+      dispatch(removeFromShoppingList(item._id ?? item.id))
         .unwrap()
         .then(() => toast.success(`${item.title} removed from shopping list`))
         .catch(err => err);
@@ -65,7 +65,7 @@ export const RecipeIngredientsList = ({ ingredients }) => {
       </TableData>
       <List>
         {ingredients.map(item => (
-          <Item key={item._id}>
+          <Item key={item._id ?? item.id}>
             <Box display="flex" alignItems="center">
               <RecipeImage src={item.thumb ?? placeholder} alt={item.title} />
               <IngredientTitle>{item.title}</IngredientTitle>
@@ -75,9 +75,9 @@ export const RecipeIngredientsList = ({ ingredients }) => {
               <ContainerCheckbox>
                 <Checkbox
                   type="checkbox"
-                  checked={checkedItems[item._id] ?? false}
+                  checked={checkedItems[item._id ?? item.id] ?? false}
                   onChange={e => handleChange(e, item)}
-                  name={item._id}
+                  name={item._id ?? item.id}
                 />
                 <Icon>
                   <BsCheckLg />
@@ -95,10 +95,10 @@ export const RecipeIngredientsList = ({ ingredients }) => {
 RecipeIngredientsList.propTypes = {
   ingredients: PropTypes.arrayOf(
     PropTypes.shape({
-      desc: PropTypes.string.isRequired,
-      measure: PropTypes.string.isRequired,
+      desc: PropTypes.string,
+      measure: PropTypes.string,
       thumb: PropTypes.string,
-      title: PropTypes.string.isRequired,
+      title: PropTypes.string,
     })
   ).isRequired,
 };
