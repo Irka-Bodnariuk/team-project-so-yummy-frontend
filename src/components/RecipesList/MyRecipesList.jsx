@@ -1,9 +1,7 @@
 import { useState, useEffect } from 'react';
-
+import { Loader } from '../Loader/Loader';
 import { deleteMyRecipe, getMyRecipes } from 'api/index';
 import MyRecipeItem from 'components/RecipeItem/MyRecipeItem';
-import { Loader } from '../Loader/Loader';
-
 import { List, ListText, LoaderBox } from '../FavoriteList/FavoriteList.styled';
 
 const MyRecipesList = () => {
@@ -11,7 +9,7 @@ const MyRecipesList = () => {
   const [allRecipes, setAllRecipes] = useState([]);
 
    useEffect(() => {
-      const renderMovies = async () => {
+      const renderRecipies = async () => {
         setLoading(true);
         try {
           const data = await getMyRecipes();
@@ -22,7 +20,7 @@ const MyRecipesList = () => {
           setLoading(false);
         }
       };
-      renderMovies();
+      renderRecipies();
     }, []);
 
   const handleDelete = async id => {
