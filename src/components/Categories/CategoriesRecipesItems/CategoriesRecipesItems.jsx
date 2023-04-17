@@ -8,7 +8,7 @@ export const RecipesItem = ({ recipe }) => {
         <RecipeItem>
             <NavLink to={`/recipe/${recipe._id}`}>
                 <Wrapper>
-                    <img src={recipe.thumb} alt={recipe.title} />
+                    <img src={recipe.preview} alt={recipe.title} />
                     <TitleBox>
                         <p>{recipe.title}</p>
                     </TitleBox>
