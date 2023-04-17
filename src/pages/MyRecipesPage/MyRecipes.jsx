@@ -12,3 +12,5 @@ const MyRecipes = () => (
     <GoToTop />
   </Page>
 );
+
+export default MyRecipes;
