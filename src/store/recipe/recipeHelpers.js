@@ -17,7 +17,6 @@ export const getOwnRecipeByIdPendingReducer = state => {
 };
 export const getOwnRecipeByIdFulfilledReducer = (state, action) => {
   state.ownRecipe.item = action.payload;
-  state.favorite.isFavorite = action.payload.favorite;
   state.ownRecipe.isLoading = false;
   state.ownRecipe.error = null;
 };
