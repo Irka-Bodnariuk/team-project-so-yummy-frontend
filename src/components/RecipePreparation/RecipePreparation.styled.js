@@ -18,6 +18,7 @@ export const Container = styled.div`
   @media ${props => props.theme.device.desktop} {
     display: flex;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 50px;
   }
 `;

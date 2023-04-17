@@ -24,6 +24,7 @@ const RecipePage = () => {
   const error = useSelector(selectRecipeError);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [currentIngredients, setCurrentIngredients] = useState([]);
+
   const [myRecipe, setOwnRecipe] = useState(null);
 
   const location = useLocation();
@@ -38,6 +39,7 @@ const RecipePage = () => {
     }
   }, [recipeId, dispatch, location.state.from?.pathname]);
 
+
   useEffect(() => {
     setCurrentRecipe(recipe ?? ownRecipe);
   }, [recipe, ownRecipe]);
@@ -49,13 +51,17 @@ const RecipePage = () => {
     }
   }, [currentRecipe]);
 
+  console.log(isOwn);
+
   return (
     <>
       <GoToTop />
       {isLoading && <Loader pageHeight="100vh" />}
       {currentRecipe !== null && (
         <div>
+
           <RecipePageHero recipe={currentRecipe} isMyrecipe={myRecipe} />
+
           <RecipeIngredientsList ingredients={currentIngredients} />
           <RecipePreparation recipe={currentRecipe} />
         </div>

@@ -18,6 +18,7 @@ import { TbClockHour4 } from 'react-icons/tb';
 import { Hero, Description, Time, ContainerBtn } from './RecipePageHero.styled';
 
 export const RecipePageHero = ({ recipe, isMyrecipe }) => {
+
   const dispatch = useDispatch();
   const favorite = useSelector(selectFavorite);
   const isLoading = useSelector(selectFavoriteIsLoading);
@@ -42,6 +43,7 @@ export const RecipePageHero = ({ recipe, isMyrecipe }) => {
     <Hero>
       <MainPageTitle title={recipe.title} />
       <Description>{recipe.description}</Description>
+
       {!isMyrecipe && (
         <ContainerBtn>
           {currentFavorite ? (
