@@ -12,13 +12,13 @@ import {
 } from './Navigation.styled';
 
 const Navigation = ({ handleClick }) => {
-  const { category = 'beef' } = useParams();
+  const { categoryName } = useParams();
   const recipe = useParams();
   const { isDesktopScreen } = useMedia();
 
   const pageList = [
     {
-      to: `/categories/${category}`,
+      to: `/categories/${categoryName ? categoryName : 'beef'}`,
       text: 'Categories',
     },
     {
