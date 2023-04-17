@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 
 // export const getCategoryList = async () => {
 //   try {
@@ -9,10 +9,12 @@ import axios from "axios";
 //   }
 // }
 
-export const getRecipesByCategory = async (categoryName) => {
+export const getRecipesByCategory = async (categoryName, page = 1) => {
   try {
-    const res = await axios.get(`/recipes/category/${categoryName}`)
-    return res.data
+    const res = await axios.get(
+      `/recipes/category/${categoryName}?page=${page}`
+    );
+    return res.data;
   } catch (error) {
     console.log(error.message);
   }

@@ -1,5 +1,4 @@
 import { toast } from 'react-toastify';
-import ReactPaginate from 'react-paginate';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router';
@@ -33,12 +32,12 @@ import {
   SearchItem,
   NoRecipesImg,
   NoRecipesText,
-  PaginationWrapper,
 } from './Search.styled';
 import SearchTypeSelector from './SearchTypeSelector/SearchTypeSelector';
 import noRecipesImgmob from 'images/bg/bgSearch/bg_search_mob@1x.png';
 import noRecipesImgtab from 'images/bg/bgSearch/bg_search_tablet@1x.png';
 import noRecipesImgdes from 'images/bg/bgSearch/bg_search_desktop@1x.png';
+import { Paginator } from 'components/Paginator/Paginator';
 
 const Search = () => {
   const location = useLocation();
@@ -52,10 +51,6 @@ const Search = () => {
   const [isSearchResult, setIsSearchResult] = useState(false);
   const { isMobileScreen, isTabletScreen, isDesktopScreen } = useMedia();
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const onPageChange = (e, page) => {
-    setPage(page);
-  };
 
   useEffect(() => {
     return () => {
@@ -78,8 +73,7 @@ const Search = () => {
               setLoading(false);
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            setCount(res.total);
             setIsSearchResult(true);
             setLoading(false);
           })
@@ -99,8 +93,7 @@ const Search = () => {
               toast.warning(' Nothing... Try another search query');
             }
             dispatch(updateSearchResult(res.recipes));
-            const totalPages = Math.ceil(res.total / res.limit);
-            setCount(totalPages);
+            setCount(res.total);
             setIsSearchResult(true);
             setLoading(false);
           })
@@ -194,22 +187,12 @@ const Search = () => {
                   )
                 )}
               </SearchList>
-              <PaginationWrapper>
-                {count > 1 && (
-                  <ReactPaginate
-                    breakLabel="..."
-                    nextLabel="next >"
-                    onPageChange={onPageChange}
-                    pageRangeDisplayed={page}
-                    pageCount={count}
-                    previousLabel="< previous"
-                    renderOnZeroPageCount={null}
-                  />
-                )}
-              </PaginationWrapper>
             </>
           )}
         </>
+      )}
+      {searchResult.length && (
+        <Paginator totalData={count} perPage={12} setPage={setPage} />
       )}
     </Container>
   );
