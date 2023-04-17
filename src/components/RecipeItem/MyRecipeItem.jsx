@@ -12,6 +12,7 @@ import {
   ButtonDelete,
   ButtonWrapper,
 } from './MyRecipeItem.styled';
+import { useLocation } from 'react-router-dom';
 
 const MyRecipeItem = ({
   description,
@@ -22,6 +23,7 @@ const MyRecipeItem = ({
   handleDelete,
   styleDel,
 }) => {
+  const location = useLocation();
   return (
     <CardItem>
       <ImgBox>
@@ -39,6 +41,7 @@ const MyRecipeItem = ({
           <ButtonWrapper>
             <Time>{time} min</Time>
             <Button
+              state={{ from: location }}
               to={`/recipe/${id}`}
               look="rounded"
               width="87px"

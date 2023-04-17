@@ -19,10 +19,12 @@ export const Button = ({
   lineHeight,
   lineHeightTablet,
   lineHeightDesktop,
+  state,
 }) => {
   if (to) {
     return (
       <LinkStyled
+        state={state}
         to={to}
         type={type}
         width={width}

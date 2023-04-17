@@ -12,14 +12,14 @@ export const LayoutContainer = styled.div`
   margin: 0 auto;
   padding-left: ${p => p.theme.space[4]}px;
   padding-right: ${p => p.theme.space[4]}px;
-  padding-top: 114px;
+  padding-top: 54px;
   padding-bottom: 100px;
   min-width: 375px;
   background-color: ${p => p.theme.colors.background};
   overflow: hidden;
   @media screen and (min-width: 768px) {
     min-width: 768px;
-    padding-top: 136px;
+    padding-top: 86px;
     padding-left: ${p => p.theme.space[5]}px;
     padding-right: ${p => p.theme.space[5]}px;
     padding-bottom: 200px;
@@ -28,7 +28,7 @@ export const LayoutContainer = styled.div`
     max-width: 1600px;
     padding-left: 100px;
     padding-right: 100px;
-    padding-top: 164px;
+    padding-top: 104px;
     background-color: ${p => p.theme.colors.background};
   }
 `;
@@ -43,6 +43,7 @@ export const LeafBackground = styled.div`
 
   background-image: url(${MobileBackgroundSecond1x});
   background-size: cover;
+  pointer-events: none;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
