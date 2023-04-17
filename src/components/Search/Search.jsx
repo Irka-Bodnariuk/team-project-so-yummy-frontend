@@ -191,7 +191,7 @@ const Search = () => {
           )}
         </>
       )}
-      {searchResult.length && (
+      {!!searchResult.length && (
         <Paginator totalData={count} perPage={12} setPage={setPage} />
       )}
     </Container>
