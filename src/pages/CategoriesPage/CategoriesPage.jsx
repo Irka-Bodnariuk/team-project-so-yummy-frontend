@@ -9,6 +9,7 @@ import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Paginator } from 'components/Paginator/Paginator';
 import GoToTop from 'helpers/scrollToTop';
+import { Box } from 'components/Box';
 
 const CategoriesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -57,12 +58,15 @@ const CategoriesPage = () => {
       {recipes.length > 0 && !loading && <RecipesList items={recipes} />}
       {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
 
-      <Paginator
-        totalData={totalRecipies}
-        perPage={8}
-        setPage={setPage}
-        page={page}
-      />
+      <Box mt={20}>
+        <Paginator
+          totalData={totalRecipies}
+          perPage={8}
+          setPage={setPage}
+          page={page}
+        />
+      </Box>
+       
       <GoToTop />
     </main>
   );
