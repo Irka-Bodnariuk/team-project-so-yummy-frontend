@@ -5,6 +5,7 @@ import { AddRecipeForm } from 'components/AddRecipeForm/AddRecipeForm';
 import { PopularRecipe } from 'components/PopularRecipe/PopularRecipe';
 import FollowUs from 'components/Layout/Footer/FollowUs/FollowUs';
 import {
+  Page,
   ContainerForm,
   ContainerPopular,
   SharedContainer,
@@ -15,7 +16,7 @@ import GoToTop from 'helpers/scrollToTop';
 const AddRecipePage = () => {
   const { isDesktopScreen } = useMedia();
   return (
-    <>
+    <Page>
       <MainTitle text="Add recipe" />
       <SharedContainer>
         <ContainerForm>
@@ -32,7 +33,7 @@ const AddRecipePage = () => {
         </ContainerPopular>
       </SharedContainer>
       <GoToTop />
-    </>
+    </Page>
   );
 };
 

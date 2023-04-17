@@ -24,13 +24,14 @@ const RecipePage = () => {
   const error = useSelector(selectRecipeError);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [currentIngredients, setCurrentIngredients] = useState([]);
-
-  console.log(currentRecipe);
-  console.log(currentIngredients);
+  const [isOwn, setIsOwn] = useState(false);
 
   useEffect(() => {
     dispatch(getRecipeById(recipeId));
-    dispatch(getOwnRecipeById(recipeId));
+    dispatch(getOwnRecipeById(recipeId))
+      .unwrap()
+      .then(() => setIsOwn(true))
+      .catch(err => err);
   }, [recipeId, dispatch]);
 
   useEffect(() => {
@@ -44,13 +45,15 @@ const RecipePage = () => {
     }
   }, [currentRecipe]);
 
+  console.log(isOwn);
+
   return (
     <>
       <GoToTop />
       {isLoading && <Loader pageHeight="100vh" />}
       {currentRecipe !== null && (
         <div>
-          <RecipePageHero recipe={currentRecipe} />
+          <RecipePageHero recipe={currentRecipe} isOwn={isOwn} />
           <RecipeIngredientsList ingredients={currentIngredients} />
           <RecipePreparation recipe={currentRecipe} />
         </div>

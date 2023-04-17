@@ -29,7 +29,7 @@ export const Button = styled.button`
 
   svg {
     fill: ${p =>
-      p.value <= 0
+      p.value <= 1
         ? p.theme.colors.formAddCounterBorder
         : p.theme.colors.formAddCounterBtn};
     width: 14px;

@@ -9,7 +9,7 @@ export const Counter = ({ value, handleDecrement, handleIncrement }) => {
         type="button"
         aria-label="button-decrement"
         value={value}
-        disabled={value <= 0}
+        disabled={value <= 1}
         onClick={handleDecrement}
       >
         <FaMinus />
