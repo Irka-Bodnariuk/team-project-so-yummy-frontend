@@ -30,7 +30,7 @@ const RecipePage = () => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.state?.from.pathname === '/my') {
+    if (location?.state?.from.pathname === '/my') {
       setOwnRecipe(true);
       dispatch(getOwnRecipeById(recipeId));
     } else {
