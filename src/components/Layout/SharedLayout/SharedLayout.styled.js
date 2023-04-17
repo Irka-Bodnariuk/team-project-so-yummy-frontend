@@ -43,6 +43,7 @@ export const LeafBackground = styled.div`
 
   background-image: url(${MobileBackgroundSecond1x});
   background-size: cover;
+  pointer-events: none;
 
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
