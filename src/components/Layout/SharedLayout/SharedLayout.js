@@ -1,7 +1,7 @@
 import Footer from './../Footer/Footer';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import Header from './../Header/Header';
-import { LayoutContainer } from './SharedLayout.styled';
+import { LayoutContainer, LeafBackground } from './SharedLayout.styled';
 import { useSelector } from 'react-redux';
 
 export const SharedLayout = () => {
@@ -14,6 +14,7 @@ export const SharedLayout = () => {
       <Header />
       <LayoutContainer>
         <Outlet />
+        <LeafBackground></LeafBackground>
       </LayoutContainer>
       <Footer />
     </div>
