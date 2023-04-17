@@ -37,7 +37,7 @@ const RecipePage = () => {
       dispatch(getRecipeById(recipeId));
       setOwnRecipe(false);
     }
-  }, [recipeId, dispatch, location.state.from?.pathname]);
+  }, [recipeId, dispatch, location?.state?.from.pathname]);
 
 
   useEffect(() => {
