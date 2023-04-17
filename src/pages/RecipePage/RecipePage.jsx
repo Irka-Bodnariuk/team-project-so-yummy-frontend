@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectRecipeById,
@@ -24,14 +24,19 @@ const RecipePage = () => {
   const error = useSelector(selectRecipeError);
   const [currentRecipe, setCurrentRecipe] = useState(null);
   const [currentIngredients, setCurrentIngredients] = useState([]);
+  const [myRecipe, setOwnRecipe] = useState(null);
 
-  console.log(currentRecipe);
-  console.log(currentIngredients);
+  const location = useLocation();
 
   useEffect(() => {
-    dispatch(getRecipeById(recipeId));
-    dispatch(getOwnRecipeById(recipeId));
-  }, [recipeId, dispatch]);
+    if (location.state.from?.pathname === '/my') {
+      setOwnRecipe(true);
+      dispatch(getOwnRecipeById(recipeId));
+    } else {
+      dispatch(getRecipeById(recipeId));
+      setOwnRecipe(false);
+    }
+  }, [recipeId, dispatch, location.state.from?.pathname]);
 
   useEffect(() => {
     setCurrentRecipe(recipe ?? ownRecipe);
@@ -50,7 +55,7 @@ const RecipePage = () => {
       {isLoading && <Loader pageHeight="100vh" />}
       {currentRecipe !== null && (
         <div>
-          <RecipePageHero recipe={currentRecipe} />
+          <RecipePageHero recipe={currentRecipe} isMyrecipe={myRecipe} />
           <RecipeIngredientsList ingredients={currentIngredients} />
           <RecipePreparation recipe={currentRecipe} />
         </div>
