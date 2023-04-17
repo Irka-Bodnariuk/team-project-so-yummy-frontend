@@ -17,7 +17,8 @@ import { Button } from 'components/Button/Button';
 import { TbClockHour4 } from 'react-icons/tb';
 import { Hero, Description, Time, ContainerBtn } from './RecipePageHero.styled';
 
-export const RecipePageHero = ({ recipe, isOwn }) => {
+export const RecipePageHero = ({ recipe, isMyrecipe }) => {
+
   const dispatch = useDispatch();
   const favorite = useSelector(selectFavorite);
   const isLoading = useSelector(selectFavoriteIsLoading);
@@ -42,7 +43,8 @@ export const RecipePageHero = ({ recipe, isOwn }) => {
     <Hero>
       <MainPageTitle title={recipe.title} />
       <Description>{recipe.description}</Description>
-      {!isOwn && (
+
+      {!isMyrecipe && (
         <ContainerBtn>
           {currentFavorite ? (
             <Button
