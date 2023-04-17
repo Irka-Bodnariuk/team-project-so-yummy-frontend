@@ -16,22 +16,18 @@ const CategoriesPage = () => {
   const [error, setError] = useState(null);
   const [totalRecipies, setTotalRecipies] = useState(0);
   const [page, setPage] = useState(1);
-  console.log(
-    '🚀 ~ file: CategoriesPage.jsx:17 ~ CategoriesPage ~ page:',
-    page
-  );
 
   const { categoryName } = useParams();
 
   useEffect(() => {
     setPage(1);
-  }, []);
+  }, [categoryName]);
 
   useEffect(() => {
     setLoading(true);
     const getRecipes = async () => {
       try {
-        const data = await getRecipesByCategory(categoryName);
+        const data = await getRecipesByCategory(categoryName, page);
         setTotalRecipies(data.total);
         setRecipes(data.recipes);
         setLoading(false);
@@ -40,7 +36,7 @@ const CategoriesPage = () => {
       }
     };
     getRecipes();
-  }, [categoryName]);
+  }, [categoryName, page]);
 
   return (
     <main>
@@ -61,7 +57,12 @@ const CategoriesPage = () => {
       {recipes.length > 0 && !loading && <RecipesList items={recipes} />}
       {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
 
-      <Paginator totalItems={totalRecipies} setPage={setPage} page={page} />
+      <Paginator
+        totalData={totalRecipies}
+        perPage={8}
+        setPage={setPage}
+        page={page}
+      />
       <GoToTop />
     </main>
   );
