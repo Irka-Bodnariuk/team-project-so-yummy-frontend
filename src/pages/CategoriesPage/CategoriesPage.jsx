@@ -9,6 +9,7 @@ import { EmptyMessage } from 'pages/ShoppingPage/ShoppingPage.styled';
 import { Loader } from 'components/Loader/Loader';
 import { Paginator } from 'components/Paginator/Paginator';
 import GoToTop from 'helpers/scrollToTop';
+import { Box } from 'components/Box';
 
 const CategoriesPage = () => {
   const [recipes, setRecipes] = useState([]);
@@ -16,22 +17,18 @@ const CategoriesPage = () => {
   const [error, setError] = useState(null);
   const [totalRecipies, setTotalRecipies] = useState(0);
   const [page, setPage] = useState(1);
-  console.log(
-    '🚀 ~ file: CategoriesPage.jsx:17 ~ CategoriesPage ~ page:',
-    page
-  );
 
   const { categoryName } = useParams();
 
   useEffect(() => {
     setPage(1);
-  }, []);
+  }, [categoryName]);
 
   useEffect(() => {
     setLoading(true);
     const getRecipes = async () => {
       try {
-        const data = await getRecipesByCategory(categoryName);
+        const data = await getRecipesByCategory(categoryName, page);
         setTotalRecipies(data.total);
         setRecipes(data.recipes);
         setLoading(false);
@@ -40,7 +37,7 @@ const CategoriesPage = () => {
       }
     };
     getRecipes();
-  }, [categoryName]);
+  }, [categoryName, page]);
 
   return (
     <main>
@@ -61,7 +58,15 @@ const CategoriesPage = () => {
       {recipes.length > 0 && !loading && <RecipesList items={recipes} />}
       {error && <EmptyMessage>Something went wrong...</EmptyMessage>}
 
-      <Paginator totalItems={totalRecipies} setPage={setPage} page={page} />
+      <Box mt={20}>
+        <Paginator
+          totalData={totalRecipies}
+          perPage={8}
+          setPage={setPage}
+          page={page}
+        />
+      </Box>
+       
       <GoToTop />
     </main>
   );

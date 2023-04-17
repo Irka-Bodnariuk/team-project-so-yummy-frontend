@@ -20,7 +20,8 @@ export const LayoutContainer = styled.div`
   @media (min-device-pixel-ratio: 2),
     (min-resolution: 192dpi),
     (min-resolution: 2dppx) {
-    background: url(${MobileBackgroundSecond2x}) ${p => p.theme.colors.background};
+    background: url(${MobileBackgroundSecond2x})
+      ${p => p.theme.colors.background};
     background-repeat: no-repeat;
     background-position-y: 110%;
     background-size: 85%;
@@ -31,30 +32,35 @@ export const LayoutContainer = styled.div`
     padding-left: ${p => p.theme.space[5]}px;
     padding-right: ${p => p.theme.space[5]}px;
     padding-bottom: 200px;
-    background: url(${TabletBackgroundSecond1x}) ${p => p.theme.colors.background};
+    background: url(${TabletBackgroundSecond1x})
+      ${p => p.theme.colors.background};
     background-repeat: no-repeat;
     background-position-y: 117%;
-      @media (min-device-pixel-ratio: 2),
+    @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background: url(${TabletBackgroundSecond2x}) ${p => p.theme.colors.background};
+      background: url(${TabletBackgroundSecond2x})
+        ${p => p.theme.colors.background};
       background-repeat: no-repeat;
       background-position-y: 117%;
       background-size: 65%;
     }
   }
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    /* max-width: 1440px; */
+    max-width: 1600px;
     padding-left: 100px;
     padding-right: 100px;
     padding-top: 164px;
-    background: url(${DesktopBackgroundSecond1x}) ${p => p.theme.colors.background};
+    background: url(${DesktopBackgroundSecond1x})
+      ${p => p.theme.colors.background};
     background-repeat: no-repeat;
     background-position-y: 121%;
-     @media (min-device-pixel-ratio: 2),
+    @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
       (min-resolution: 2dppx) {
-      background: url(${DesktopBackgroundSecond2x}) ${p => p.theme.colors.background};
+      background: url(${DesktopBackgroundSecond2x})
+        ${p => p.theme.colors.background};
       background-repeat: no-repeat;
       background-position-y: 123%;
       background-size: 50%;

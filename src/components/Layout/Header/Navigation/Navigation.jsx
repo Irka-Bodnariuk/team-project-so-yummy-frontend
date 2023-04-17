@@ -1,5 +1,5 @@
-import { useParams } from 'react-router-dom';
-import { useMedia } from 'hooks';
+import { useParams } from "react-router-dom";
+import { useMedia } from "hooks";
 
 import {
   Container,
@@ -9,38 +9,38 @@ import {
   SearchIcon,
   Wrap,
   Text,
-} from './Navigation.styled';
+} from "./Navigation.styled";
 
 const Navigation = ({ handleClick }) => {
-  const { category = 'beef' } = useParams();
+  // const { categoryName } = useParams();
   const recipe = useParams();
   const { isDesktopScreen } = useMedia();
 
   const pageList = [
     {
-      to: `/categories/${category}`,
-      text: 'Categories',
+      to: `/categories/${recipe.categoryName ? recipe.categoryName : "beef"}`,
+      text: "Categories",
     },
     {
-      to: '/add',
-      text: 'Add recipes',
+      to: "/add",
+      text: "Add recipes",
     },
     {
-      to: '/my',
-      text: 'My recipes',
+      to: "/my",
+      text: "My recipes",
     },
 
     {
-      to: '/favorite',
-      text: 'Favorites',
+      to: "/favorite",
+      text: "Favorites",
     },
     {
-      to: '/shopping-list',
-      text: 'Shopping list',
+      to: "/shopping-list",
+      text: "Shopping list",
     },
     {
-      to: '/search',
-      text: 'Search',
+      to: "/search",
+      text: "Search",
     },
   ];
 
@@ -56,8 +56,8 @@ const Navigation = ({ handleClick }) => {
         {pageList.map(({ to, text }) => (
           <Item onClick={() => onDesktop()} key={to}>
             <Link to={to} recipe={recipe}>
-              {text !== 'Search' || isDesktopScreen ? (
-                <>{text !== 'Search' ? <Text>{text}</Text> : <SearchIcon />}</>
+              {text !== "Search" || isDesktopScreen ? (
+                <>{text !== "Search" ? <Text>{text}</Text> : <SearchIcon />}</>
               ) : (
                 <>
                   {isDesktopScreen ? (

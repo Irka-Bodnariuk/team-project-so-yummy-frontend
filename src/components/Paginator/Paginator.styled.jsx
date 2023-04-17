@@ -2,18 +2,23 @@ import ReactPaginate from 'react-paginate';
 import styled from 'styled-components';
 
 export const StyledPaginator = styled(ReactPaginate)`
-  width: fit-content;
-  max-width: 480px;
+  margin: 0 auto;
+  /* width: fit-content; */
+  max-width: 324px;
   height: 55px;
   padding: 20px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 15px;
+  /* gap: 15px; */
 
   background: ${p => p.theme.colors.paginateBg};
   box-shadow: 0px 4px 4px rgba(135, 135, 135, 0.2);
   border-radius: 26px;
+
+  @media screen and(min-width: 767px) {
+    width: 324px;
+  }
 
   & .arrowBtn {
     width: 40px;
@@ -47,6 +52,12 @@ export const StyledPaginator = styled(ReactPaginate)`
     border-radius: 50%;
 
     transition: all 250ms linear;
+
+    &:hover,
+    &:focus {
+      background-color: ${p => p.theme.colors.accentColor};
+      color: white;
+    }
 
     &.selected {
       background-color: ${p => p.theme.colors.paginateActive};
