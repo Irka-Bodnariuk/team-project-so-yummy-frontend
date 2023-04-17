@@ -1,6 +1,4 @@
 import styled from 'styled-components';
-import { ReactComponent as FavoriteIco } from './fav.svg';
-import { ReactComponent as LikeIco } from './like.svg';
 
 export const CardContainer = styled.div`
   position: relative;
@@ -30,43 +28,6 @@ export const Image = styled.img`
   height: 100%;
   border-radius: 8px;
   object-fit: cover;
-`;
-
-export const BtnLike = styled.button`
-  position: absolute;
-  border: 0;
-  background: transparent;
-
-  top: 70px;
-  left: 20px;
-`;
-
-export const BtnFav = styled.button`
-  position: absolute;
-  border: 0;
-  background: transparent;
-  fill: #f3a406;
-
-  top: 20px;
-  left: 20px;
-`;
-
-export const Like = styled(LikeIco)`
-  width: 40px;
-  height: 40px;
-
-  &:hover {
-    fill: #f3a406;
-  }
-`;
-
-export const Favorite = styled(FavoriteIco)`
-  width: 40px;
-  height: 40px;
-
-  &:hover {
-    fill: #f3a406;
-  }
 `;
 
 export const TextContainer = styled.button`

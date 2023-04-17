@@ -12,6 +12,7 @@ const SearchInput = ({ dark, name, searchQuery }) => {
   return (
     <Wrapper>
       <Input
+        autoComplete="off"
         placeholder="Enter query"
         onChange={async e => {
           const searchQuerySchema = yup.string().matches(searchQueryRegex);
