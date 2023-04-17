@@ -9,7 +9,7 @@ export const Conteiner = styled.footer`
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 1440px;
+    max-width: 1600px;
   }
 `;
 
@@ -27,7 +27,6 @@ export const Wrapper = styled.div`
     padding-bottom: ${p => p.theme.space[3] * 3}px;
   }
   @media screen and (min-width: 1440px) {
-   
     padding-top: ${p => p.theme.space[2] * 15}px;
     padding-left: ${p => p.theme.space[2] * 25}px;
     padding-right: ${p => p.theme.space[2] * 25}px;
