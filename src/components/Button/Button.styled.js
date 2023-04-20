@@ -17,13 +17,11 @@ export const ButtonStyled = styled.button`
   color: ${({ look, theme }) =>
     look === 'cancel' || look === 'rounded_other'
       ? `${theme.colors.roundedOtherBtnColor}`
-      : '#fafafa'};
+      : `${theme.colors.secondaryTextColor}`};
   background-color: ${({ look, theme }) => {
     switch (look) {
       case 'subscribe':
         return `${theme.colors.subscribeBgColor}`;
-      case 'subscribe_dark':
-        return '#1E1F28';
       case 'rounded':
         return `${theme.colors.roundedBgColor}`;
       case 'rounded_dark':
@@ -33,11 +31,11 @@ export const ButtonStyled = styled.button`
       case 'rounded_other':
         return 'transparent';
       case 'logout':
-        return '#8baa36';
+        return `${theme.colors.accentColor}`;
       case 'cancel':
-        return '#D9D9D9';
+        return `${theme.colors.primaryCancelBg}`;
       default:
-        return '#22252a';
+        return `${theme.colors.secondaryBg}`;
     }
   }};
   border: ${({ look }) => {
@@ -89,8 +87,6 @@ export const ButtonStyled = styled.button`
       switch (look) {
         case 'subscribe':
           return `${theme.colors.subscribeBgColor}`;
-        case 'subscribe_dark':
-          return '#1E1F28';
         case 'rounded':
           return `${theme.colors.roundedBgHoverColor}`;
         case 'rounded_dark':
@@ -121,8 +117,6 @@ export const ButtonStyled = styled.button`
           return '#fafafa';
         case 'logout':
           return '#fafafa';
-        case 'subscribe_dark':
-          return '#8baa36';
         default:
           return '#22252a';
       }
@@ -163,8 +157,6 @@ export const LinkStyled = styled(Link)`
     switch (look) {
       case 'subscribe':
         return `${theme.colors.subscribeBgColor}`;
-      case 'subscribe_dark':
-        return '#1E1F28';
       case 'rounded':
         return `${theme.colors.roundedBgColor}`;
       case 'rounded_dark':
@@ -232,8 +224,6 @@ export const LinkStyled = styled(Link)`
       switch (look) {
         case 'subscribe':
           return `${theme.colors.subscribeBgColor}`;
-        case 'subscribe_dark':
-          return '#1E1F28';
         case 'rounded':
           return `${theme.colors.roundedBgHoverColor}`;
         case 'rounded_dark':
@@ -264,8 +254,6 @@ export const LinkStyled = styled(Link)`
           return '#fafafa';
         case 'logout':
           return '#fafafa';
-        case 'subscribe_dark':
-          return '#8baa36';
         default:
           return '#22252a';
       }
